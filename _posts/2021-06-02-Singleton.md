@@ -9,7 +9,7 @@ keywords: keyword1, keyword2
 应用场景：
 只需要一个实例，比如各种Mgr和Factory
 
-## 饿汉式
+# 饿汉式
 ```java
 /*
 * 饿汉式
@@ -51,7 +51,7 @@ public class Mgr02 {
 }
 ```
 
-## 懒汉式
+# 懒汉式
 ```java
 /*
 * 用的时候才初始化
@@ -115,7 +115,7 @@ public class Mgr05 {
 }
 
 ```
-## 双检锁
+# 双检锁
 ```java
 /*
  * Mgr05的改进，双重检查
