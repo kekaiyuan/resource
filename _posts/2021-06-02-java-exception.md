@@ -50,14 +50,8 @@ try、catch、finally、throw、throws
 3. 多重catch块
 
 	1. 引发多种类型的异常
-
 	2. 排列catch 语句的顺序：先子类后父类
-
 	3. 发生异常时按顺序逐个匹配
-
-
-
-
 	4. 只执行第一个与异常类型匹配的catch语句
 		
 
@@ -95,18 +89,20 @@ Throwable是所有异常的父类
 	有时可以将异常抛出，由外部的调用方法进行处理
 ```java
 	public class ExceptionThrow {
+	
 		public static void main(String[] args) {
 			try{
 				test();
 			}catch (Exception e){
 				...
 			}
-    }
+   	 	}
 
-    public static void test() throws Exception{
-        ...
-    }
-}
+    	public static void test() throws Exception{
+       	 ...
+    	}
+	}
+
 ```
 
 此时test方法会将异常抛出到main方法中进行处理
