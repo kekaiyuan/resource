@@ -11,6 +11,7 @@ keywords: keyword1, keyword2
 
 单例模式的演化之路
 
+饿汉式
 ```java
 /*
 * 饿汉式
@@ -52,10 +53,9 @@ public class Mgr02 {
 }
 ```
 
-
+懒汉式
 ```java
 /*
-* 懒汉式
 * 用的时候才初始化
 * 多线程并发访问时容易创建出多个实例，无法达成单例的目的
 * */
@@ -116,8 +116,8 @@ public class Mgr05 {
     }
 }
 
-
 ```
+双检锁
 ```java
 /*
  * Mgr05的改进，双重检查
@@ -125,6 +125,7 @@ public class Mgr05 {
  * */
 public class Mgr06 {
 
+	//使用volatile关键字，防止JVM内部语句重排后，没有初始化就放回INSTANCE
     private static volatile Mgr06 INSTANCE;
 
     private Mgr06(){}
@@ -143,6 +144,7 @@ public class Mgr06 {
 
 }
 ```
+静态内部类
 ```java
 /*
 * 静态内部类方式
@@ -164,10 +166,16 @@ public class Mgr07 {
 	
 }
 
+
+java的反射可以通过class文件new实例，以上七种办法都无法抵挡。
+想要防止反序列化，需要设置一些内部变量，非常复杂。
+最简单的办法就是枚举单例，因为枚举类没有构造方法。
+
+枚举
 ```
 ```java
 /*
-* 不仅可以解决线程同步，还可以实现反序列化
+* 不仅可以解决线程同步，还可以防止反序列化
 * 完美版本3
 * */
 public enum Mgr08 {
