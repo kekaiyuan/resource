@@ -1,9 +1,9 @@
 ---
 layout: post
 title: 单例模式
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+categories: DesignPatterns
+description: Java设计模式（一）——单例模式
+keywords: Java，设计模式
 ---
 
 应用场景：
