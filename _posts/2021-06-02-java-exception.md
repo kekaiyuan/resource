@@ -44,19 +44,17 @@ try{
 	- 正常执行，只执行try中的代码
 	- 遇到异常情况，会处理try中异常代码之前的逻辑，后面的逻辑不会执行，然后执行catch中的代码
 
+
 - try块中存放可能会发生异常的代码。
 	- 尽量放置少量的代码，做到精准地处理程序中的异常。
 
+
 - catch块将对异常进行处理。
-   
 	- 参数为某具体异常
-	
 	![常见的异常类型](/images/posts/java/exception/java-exception-type.jpg)
-	
 	- 可使用printStackTrace函数的堆栈跟踪功能显示出程序运行到当前类的执行流程
 
 - 多重catch块
-
 	- 引发多种类型的异常
 	- 排列catch 语句的顺序：先子类后父类
 	- 发生异常时按顺序逐个匹配
@@ -105,9 +103,8 @@ public class ExceptionThrow {
 ```
 
 应用场景：
-1. 多个方法之间的调用，每个方法中都可能出现异常。此时可选择将所有异常由最外层的方法进行统一处理。	
-2. 在程序的调用过程中，如果某方法的外层的调用方法有对异常的处理，那么可以直接使用throws，否则，需要使用try...catch...处理本方法中的异常
-	
+- 多个方法之间的调用，每个方法中都可能出现异常。此时可选择将所有异常由最外层的方法进行统一处理。	
+- 在程序的调用过程中，如果某方法的外层的调用方法有对异常的处理，那么可以直接使用throws，否则，需要使用try...catch...处理本方法中的异常
 # 抛出异常
 除了被自动捕获的异常外，我们还可以手动地抛出异常
 
@@ -218,11 +215,12 @@ public class TryTest{
 	90
 ```
 执行顺序：
-1. “return num += 80;”被拆分成了“num = num+80;”和“return num;”两个语句
-2. num = num+80;
-3. finally块
-4. return num;
-5. 外面的"System.out.println("method end");"则不会被执行
+- “return num += 80;”被拆分成了“num = num+80;”和“return num;”两个语句
+- num = num+80;
+- finally块
+- return num;
+- 外面的"System.out.println("method end");"则不会被执行
+
 
 情况二：try和finally中均有return
 ```java
@@ -326,8 +324,7 @@ class Num{
 
    
   
-
-        
+# 异常的分类
 		
 ![常见的异常类型](/images/posts/java/exception/java-exception-class.jpg)
 - checked异常
