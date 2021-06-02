@@ -9,9 +9,7 @@ keywords: keyword1, keyword2
 应用场景：
 只需要一个实例，比如各种Mgr和Factory
 
-单例模式的演化之路
-
-饿汉式
+## 饿汉式
 ```java
 /*
 * 饿汉式
@@ -53,7 +51,7 @@ public class Mgr02 {
 }
 ```
 
-懒汉式
+## 懒汉式
 ```java
 /*
 * 用的时候才初始化
@@ -117,7 +115,7 @@ public class Mgr05 {
 }
 
 ```
-双检锁
+## 双检锁
 ```java
 /*
  * Mgr05的改进，双重检查
@@ -144,7 +142,7 @@ public class Mgr06 {
 
 }
 ```
-静态内部类
+## 静态内部类
 ```java
 /*
 * 静态内部类方式
@@ -171,7 +169,7 @@ java的反射可以通过class文件new实例，以上七种办法都无法抵�
 想要防止反序列化，需要设置一些内部变量，非常复杂。
 最简单的办法就是枚举单例，因为枚举类没有构造方法。
 
-枚举
+## 枚举
 
 ```java
 /*
@@ -184,22 +182,10 @@ public enum Mgr08 {
 
 }
 ```
-如何检查是否是单例模式？
+## 如何检查是否是单例模式？
 ```java
 //多线程访问，通过hashcode检验是否是单例模式
 for(int i=0;i<100;i++){
 	new Thread(()-> System.out.println(XXX.getInstance().hashCode())).start();
 }
-```
-```java
-```
-```java
-```
-```java
-```
-```java
-```
-```java
-```
-```java
 ```
