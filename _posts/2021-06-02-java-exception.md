@@ -18,14 +18,14 @@ keywords: Java，异常
 Java编程语言使用异常处理机制为程序提供了错误处理的能力。
 		
 加入异常处理后，程序遇到异常后不会中断，而是会转入异常处理程序，正确处理后继续运行。  
-		
+
 ![enter description here](/images/posts/java/exception/java-exception-process.jpg)  
 
 # 关键字：  
 try、catch、finally、throw、throws
 	
 # 捕获异常：  
-	![enter description here](/images/posts/java/exception/java-exception-catch.jpg)
+![enter description here](/images/posts/java/exception/java-exception-catch.jpg)
 ```java
 	try{
 		//可能会发生异常的块
@@ -54,9 +54,6 @@ try、catch、finally、throw、throws
 	3. 发生异常时按顺序逐个匹配
 	4. 只执行第一个与异常类型匹配的catch语句
 		
-
-
-	
 ```java
 	try{
 		...
@@ -74,19 +71,11 @@ try、catch、finally、throw、throws
 	
 ```
 
-	
-
-
-Exception是InputMismatchException的父类，所以处理Exception的catch块必须放在处理InputMismatchException的catch块的下面
-
-finally块
+4. finally块
 	finally块中存放的代码是一定会被执行的，除了唯一一种情况：在try块或catch块中添加System.exit(1)
 
-![常见的异常类型](/images/posts/java/exception/java-exception-class.jpg)
-Throwable是所有异常的父类
-
-声明异常
-	有时可以将异常抛出，由外部的调用方法进行处理
+5. 声明异常
+   有时可以将异常抛出，由外部的调用方法进行处理
 ```java
 	public class ExceptionThrow {
 	
@@ -97,15 +86,12 @@ Throwable是所有异常的父类
 				...
 			}
    	 	}
-
+		
     	public static void test() throws Exception{
        	 ...
     	}
 	}
-
 ```
-
-此时test方法会将异常抛出到main方法中进行处理
 
 应用场景：
 	多个方法之间的调用，每个方法中都可能出现异常。此时可选择将所有异常由最外层的方法进行统一处理。
@@ -252,5 +238,8 @@ Throwable是所有异常的父类
     情况三：如果finally中没有return语句，但是改变了要返回的值，这里有点类似与引用传递和值传递的区别，分以下两种情况：
         1）如果return的数据是基本数据类型或文本字符串，则在finally中对该基本数据的改变不起作用，try中的return语句依然会返回进入finally块之前保留的值。
         2）如果return的数据是引用数据类型，而在finally中对该引用数据类型的属性值的改变起作用，try中的return语句返回的就是在finally中改变后的该属性的值。
+		
+![常见的异常类型](/images/posts/java/exception/java-exception-class.jpg)
+Throwable是所有异常的父类
 		
 		
