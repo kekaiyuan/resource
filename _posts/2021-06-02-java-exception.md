@@ -331,10 +331,8 @@ class Num{
 	- 主流ide在编译时check出的代码错误。
 - RunTimeException
 	- 运行时在某种条件下才会发生的异常，例如除0异常、空指针异常
-
-
-Q:所有异常的父类?
-- A:Throwable
+- Q:所有异常的父类?
+	- A:Throwable
 
 
 		
