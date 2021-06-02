@@ -31,13 +31,13 @@ Java编程语言使用异常处理机制为程序提供了错误处理的能力�
 # 捕获异常
 ![enter description here](/images/posts/java/exception/java-exception-catch.jpg)
 ```java
-	try{
-		//可能会发生异常的代码块
-	}catch(ExceptionType e){
-		//处理异常
-	}finally{
-		//无论是否发生异常都会执行的块
-	}
+try{
+	//可能会发生异常的代码块
+}catch(ExceptionType e){
+	//处理异常
+}finally{
+	//无论是否发生异常都会执行的块
+}
 ```
 
 - 执行过程中可能会发生的情况
@@ -63,19 +63,19 @@ Java编程语言使用异常处理机制为程序提供了错误处理的能力�
 	- 只执行第一个与异常类型匹配的catch语句
 		
 ```java
-	try{
-		...
-	}catch(ExceptionType1 e){
-		//捕获到ExceptionType1的异常如何处理
-		...
-	}catch(ExceptionType2 e){
-		//捕获到ExceptionType2的异常如何处理
-		...
-	}catch(ExceptionType3 e){
-		//捕获到ExceptionType3的异常如何处理
-		...
-	}
+try{
 	...
+}catch(ExceptionType1 e){
+	//捕获到ExceptionType1的异常如何处理
+	...
+}catch(ExceptionType2 e){
+	//捕获到ExceptionType2的异常如何处理
+	...
+}catch(ExceptionType3 e){
+	//捕获到ExceptionType3的异常如何处理
+	...
+}
+...
 	
 ```
 
@@ -88,20 +88,20 @@ Java编程语言使用异常处理机制为程序提供了错误处理的能力�
 # 声明异常
    - 有时可以将异常抛出，由外部的调用方法进行处理
  ```java
-	public class ExceptionThrow {
-	
-		public static void main(String[] args) {
-			try{
-				test();
-			}catch (Exception e){
-				...
-			}
-   	 	}
-		
-    	public static void test() throws Exception{
-       	 ...
-    	}
+public class ExceptionThrow {
+
+	public static void main(String[] args) {
+		try{
+			test();
+		}catch (Exception e){
+			...
+		}
 	}
+
+	public static void test() throws Exception{
+	 ...
+	}
+}
 ```
 
 应用场景：
@@ -111,38 +111,104 @@ Java编程语言使用异常处理机制为程序提供了错误处理的能力�
 # 抛出异常
 除了被自动捕获的异常外，我们还可以手动地抛出异常
 
-	
+```java
+public class ExceptionThrow {
 
+    public static void main(String[] args) {
+        try{
+            test();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void test() throws Exception{
+        throw new Exception();
+    }
+}
+```
+结果
+
+```java
+java.lang.Exception
+	at ExceptionThrow.test(ExceptionThrow.java:16)
+	at ExceptionThrow.main(ExceptionThrow.java:9)
+```
+
+可以在Exception()中添加参数，打印错误信息
+
+```java
+public class ExceptionThrow {
+
+    public static void main(String[] args) {
+        try{
+            test();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public static void test() throws Exception{
+        throw new Exception("It's exception!!!");
+    }
+}
+```
+结果
+```java
+java.lang.Exception: It's exception!!!
+	at ExceptionThrow.test(ExceptionThrow.java:16)
+	at ExceptionThrow.main(ExceptionThrow.java:9)
+```
 	
+# 自定义异常
+在java的api中提供了非常丰富的异常类，但是在某些情况下不太满足我们的需求，此时需要自定义异常
+
+步骤：
+- 继承Exception类
+- 自定义实现构造方法
+- 需要使用的时候，使用throw new 自定义异常的名称；
+
+```java
+public class GenderException extends Exception {
+
+    public GenderException(){
+        System.out.println("性别异常");
+    }
+
+    public GenderException(String msg){
+        System.out.println(msg);
+    }
+}
+```
 
 
 # 异常中的return
 
 情况一：try中有return，finally中没有return
 ```java
-	public class TryTest{
-	
-		public static void main(String[] args){
-			System.out.println(test());
-		}
+public class TryTest{
 
-		private static int test(){
-			int num = 10;
-			try{
-				System.out.println("try");
-				return num += 80;
-			}catch(Exception e){
-				System.out.println("error");
-			}finally{
-				if (num > 20){
-					System.out.println("num : " + num);
-				}
-				System.out.println("finally");
-			}
-			System.out.println("method end");
-			return num;
-		}
+	public static void main(String[] args){
+		System.out.println(test());
 	}
+
+	private static int test(){
+		int num = 10;
+		try{
+			System.out.println("try");
+			return num += 80;
+		}catch(Exception e){
+			System.out.println("error");
+		}finally{
+			if (num > 20){
+				System.out.println("num : " + num);
+			}
+			System.out.println("finally");
+		}
+		System.out.println("method end");
+		return num;
+	}
+}
 ```
 执行结果
 ```java
@@ -160,21 +226,21 @@ Java编程语言使用异常处理机制为程序提供了错误处理的能力�
 
 情况二：try和finally中均有return
 ```java
-	public class TryTest{
-			
-		public static void main(String[] args){
-			System.out.println(test());
-		}
-	
-		private static int test(){
-			try{
-				return 80;
-			}catch(Exception e){
-			}finally{
-				return 100;
-			}
+public class TryTest{
+
+	public static void main(String[] args){
+		System.out.println(test());
+	}
+
+	private static int test(){
+		try{
+			return 80;
+		}catch(Exception e){
+		}finally{
+			return 100;
 		}
 	}
+}
 ```
 执行结果：
 ```java
@@ -186,23 +252,23 @@ Java编程语言使用异常处理机制为程序提供了错误处理的能力�
 
 情况三：finally中改变返回值num
 ```java
-	public class TryTest{
-	
-		public static void main(String[] args){
-			System.out.println(test());
-		}
+public class TryTest{
 
-		private static int test(){
-			int num = 10;
-			try{
-				return num;
-			}catch(Exception e){
-			}finally{
-				num = 100;
-			}
-			return num;
-		}
+	public static void main(String[] args){
+		System.out.println(test());
 	}
+
+	private static int test(){
+		int num = 10;
+		try{
+			return num;
+		}catch(Exception e){
+		}finally{
+			num = 100;
+		}
+		return num;
+	}
+}
 ```
 
 执行结果：
@@ -218,26 +284,26 @@ Java编程语言使用异常处理机制为程序提供了错误处理的能力�
 				
 情况四：将num的值包装在Num类中
 ```java
-	public class TryTest{
-		public static void main(String[] args){
-			System.out.println(test().num);
-		}
+public class TryTest{
+	public static void main(String[] args){
+		System.out.println(test().num);
+	}
 
-		private static Num test(){
-			Num number = new Num();
-			try{
-				return number;
-			}catch(Exception e){
-			}finally{
-				number.num = 100;
-			}
+	private static Num test(){
+		Num number = new Num();
+		try{
 			return number;
+		}catch(Exception e){
+		}finally{
+			number.num = 100;
 		}
+		return number;
 	}
+}
 
-	class Num{
-		public int num = 10;
-	}
+class Num{
+	public int num = 10;
+}
 ```
 
 执行结果：
