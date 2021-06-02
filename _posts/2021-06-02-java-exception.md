@@ -6,20 +6,25 @@ description: some word here
 keywords: Java，异常
 ---
 
-什么是异常？  
-									异常是指在程序的运行过程中所发生的不正常的事件，它会中断正在运行的程序。  
-	除数为0，数组越界，空指针都属于异常。  
-	当异常发生时，程序会中断运行。  
-	
-异常处理：  
-		Java编程语言使用异常处理机制为程序提供了错误处理的能力。
-		加入异常处理后，程序遇到异常后不会中断，而是会转入异常处理程序，正确处理后继续运行。  
-		![enter description here](/images/posts/java/exception/java-exception-process.jpg)  
+# 什么是异常？
 
-关键字：  
-	try、catch、finally、throw、throws
+异常是指在程序的运行过程中所发生的不正常的事件，它会中断正在运行的程序。
+
+除数为0，数组越界，空指针都属于异常。  
+
+当异常发生时，程序会中断运行。  
 	
-捕获异常：  
+# 异常处理：  
+Java编程语言使用异常处理机制为程序提供了错误处理的能力。
+		
+加入异常处理后，程序遇到异常后不会中断，而是会转入异常处理程序，正确处理后继续运行。  
+		
+![enter description here](/images/posts/java/exception/java-exception-process.jpg)  
+
+# 关键字：  
+try、catch、finally、throw、throws
+	
+# 捕获异常：  
 	![enter description here](/images/posts/java/exception/java-exception-catch.jpg)
 ```java
 	try{
@@ -30,28 +35,32 @@ keywords: Java，异常
 		//无论是否发生异常都会执行的块
 	}
 ```
-try块中存放可能会发生异常的代码。
-尽量放置少量的代码，做到精准地处理程序中的异常。
-	
-catch块将对异常进行处理。
-参数为某具体的异常
-![常见的异常类型](/images/posts/java/exception/java-exception-type.jpg)
-可使用printStackTrace函数的堆栈跟踪功能显示出程序运行到当前类的执行流程
+1. try块中存放可能会发生异常的代码。
 
-多重catch块
-	▪ 引发多种类型的异常
-		– 排列catch 语句的顺序：先子类后父类
-```java
-	try{
-		...
-	}catch (InputMismatchException e){
-		...
-	}catch (Exception e){
-		...
-	}
-```
-		– 发生异常时按顺序逐个匹配
-		– 只执行第一个与异常类型匹配的catch语句
+	尽量放置少量的代码，做到精准地处理程序中的异常。
+
+2. catch块将对异常进行处理。
+   
+	参数为某具体异常
+	
+	![常见的异常类型](/images/posts/java/exception/java-exception-type.jpg)
+	
+	可使用printStackTrace函数的堆栈跟踪功能显示出程序运行到当前类的执行流程
+
+3. 多重catch块
+
+	1. 引发多种类型的异常
+
+	2. 排列catch 语句的顺序：先子类后父类
+
+	3. 发生异常时按顺序逐个匹配
+
+
+
+
+	4. 只执行第一个与异常类型匹配的catch语句
+		
+
 
 	
 ```java
