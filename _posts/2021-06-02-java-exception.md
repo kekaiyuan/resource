@@ -14,13 +14,13 @@ keywords: Java，异常
 异常处理：
 	Java编程语言使用异常处理机制为程序提供了错误处理的能力。
 	加入异常处理后，程序遇到异常后不会中断，而是会转入异常处理程序，正确处理后继续运行。
-	![enter description here](./images/posts/java/java-exception-process.jpg)
+	![enter description here](./images/posts/java/exception/java-exception-process.jpg)
 
 关键字：
 	try、catch、finally、throw、throws
 	
 捕获异常：
-	![enter description here](./images/posts/java/java-exception-catch.jpg)
+	![enter description here](./images/posts/java/exception/java-exception-catch.jpg)
 ```java
 	try{
 		//可能会发生异常的块
@@ -35,7 +35,7 @@ try块中存放可能会发生异常的代码。
 	
 catch块将对异常进行处理。
 参数为某具体的异常
-![常见的异常类型](./images/posts/java/java-exception-type.jpg)
+![常见的异常类型](./images/posts/java/exception/java-exception-type.jpg)
 可使用printStackTrace函数的堆栈跟踪功能显示出程序运行到当前类的执行流程
 
 多重catch块
@@ -79,7 +79,7 @@ Exception是InputMismatchException的父类，所以处理Exception的catch块�
 finally块
 	finally块中存放的代码是一定会被执行的，除了唯一一种情况：在try块或catch块中添加System.exit(1)
 
-![常见的异常类型](./images/posts/java/java-exception-class.jpg)
+![常见的异常类型](./images/posts/java/exception/java-exception-class.jpg)
 Throwable是所有异常的父类
 
 声明异常
