@@ -6,7 +6,7 @@ description: some word here
 keywords: Java，异常
 ---
 
-# 什么是异常？
+# 什么是异常
 
 异常是指在程序的运行过程中所发生的不正常的事件，它会中断正在运行的程序。
 
@@ -14,17 +14,17 @@ keywords: Java，异常
 
 当异常发生时，程序会中断运行。  
 	
-# 异常处理：  
+# 异常处理 
 Java编程语言使用异常处理机制为程序提供了错误处理的能力。
 		
 加入异常处理后，程序遇到异常后不会中断，而是会转入异常处理程序，正确处理后继续运行。  
 
 ![enter description here](/images/posts/java/exception/java-exception-process.jpg)  
 
-# 关键字：  
+# 关键字
 try、catch、finally、throw、throws
 	
-# 捕获异常：  
+# 捕获异常
 ![enter description here](/images/posts/java/exception/java-exception-catch.jpg)
 ```java
 	try{
@@ -75,8 +75,8 @@ try、catch、finally、throw、throws
 	finally块中存放的代码是一定会被执行的，除了唯一一种情况：在try块或catch块中添加System.exit(1)
 
 5. 声明异常
-   有时可以将异常抛出，由外部的调用方法进行处理
-```java
+   - 有时可以将异常抛出，由外部的调用方法进行处理
+ ```java
 	public class ExceptionThrow {
 	
 		public static void main(String[] args) {
@@ -94,16 +94,16 @@ try、catch、finally、throw、throws
 ```
 
 应用场景：
-	多个方法之间的调用，每个方法中都可能出现异常。此时可选择将所有异常由最外层的方法进行统一处理。
-	在程序的调用过程中，如果某方法的外层的调用方法有对异常的处理，那么可以直接使用throws，否则，需要使用try...catch...处理本方法中的异常
+1. 多个方法之间的调用，每个方法中都可能出现异常。此时可选择将所有异常由最外层的方法进行统一处理。	
+2. 在程序的调用过程中，如果某方法的外层的调用方法有对异常的处理，那么可以直接使用throws，否则，需要使用try...catch...处理本方法中的异常
 	
-抛出异常
-	
-
+# 抛出异常
 	
 
+	
 
-关于try、catch、finally与return的二三事
+
+# 异常中的return
 
 情况一：try中有return，finally中没有return
 ```java
