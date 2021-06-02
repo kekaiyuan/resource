@@ -22,37 +22,45 @@ Java编程语言使用异常处理机制为程序提供了错误处理的能力�
 ![enter description here](/images/posts/java/exception/java-exception-process.jpg)  
 
 # 关键字
-try、catch、finally、throw、throws
+- try
+- catch
+- finally
+- throw
+- throws
 	
 # 捕获异常
 ![enter description here](/images/posts/java/exception/java-exception-catch.jpg)
 ```java
 	try{
-		//可能会发生异常的块
+		//可能会发生异常的代码块
 	}catch(ExceptionType e){
 		//处理异常
 	}finally{
 		//无论是否发生异常都会执行的块
 	}
 ```
-1. try块中存放可能会发生异常的代码。
 
-	尽量放置少量的代码，做到精准地处理程序中的异常。
+- 执行过程中可能会发生的情况
+	- 正常执行，只执行try中的代码
+	- 遇到异常情况，会处理try中异常代码之前的逻辑，后面的逻辑不会执行，然后执行catch中的代码
 
-2. catch块将对异常进行处理。
+- try块中存放可能会发生异常的代码。
+	- 尽量放置少量的代码，做到精准地处理程序中的异常。
+
+- catch块将对异常进行处理。
    
-	参数为某具体异常
+	- 参数为某具体异常
 	
 	![常见的异常类型](/images/posts/java/exception/java-exception-type.jpg)
 	
-	可使用printStackTrace函数的堆栈跟踪功能显示出程序运行到当前类的执行流程
+	- 可使用printStackTrace函数的堆栈跟踪功能显示出程序运行到当前类的执行流程
 
-3. 多重catch块
+- 多重catch块
 
-	1. 引发多种类型的异常
-	2. 排列catch 语句的顺序：先子类后父类
-	3. 发生异常时按顺序逐个匹配
-	4. 只执行第一个与异常类型匹配的catch语句
+	- 引发多种类型的异常
+	- 排列catch 语句的顺序：先子类后父类
+	- 发生异常时按顺序逐个匹配
+	- 只执行第一个与异常类型匹配的catch语句
 		
 ```java
 	try{
@@ -71,10 +79,13 @@ try、catch、finally、throw、throws
 	
 ```
 
-4. finally块
-	finally块中存放的代码是一定会被执行的，除了唯一一种情况：在try块或catch块中添加System.exit(1)
+- finally块
+	- finally块中存放的代码是一定会被执行的，除了唯一一种情况：在try块或catch块中添加System.exit(1)
+	- finally包含哪些处理逻辑？
+		- IO流的关闭操作
+		- 数据库的连接关闭操作
 
-5. 声明异常
+# 声明异常
    - 有时可以将异常抛出，由外部的调用方法进行处理
  ```java
 	public class ExceptionThrow {
@@ -98,6 +109,8 @@ try、catch、finally、throw、throws
 2. 在程序的调用过程中，如果某方法的外层的调用方法有对异常的处理，那么可以直接使用throws，否则，需要使用try...catch...处理本方法中的异常
 	
 # 抛出异常
+除了被自动捕获的异常外，我们还可以手动地抛出异常
+
 	
 
 	
@@ -240,8 +253,8 @@ try、catch、finally、throw、throws
 	
  - try语句在返回前，将其他所有的操作执行完，保留好要返回的值，而后转入执行finally中的语句，而后分为以下三种情况：
 	 - 情况一：如果finally中有return语句，则会将try中的return语句”覆盖“掉，直接执行finally中的return语句，得到返回值，这样便无法得到try之前保留好的返回值。
-	 -  情况二：如果finally中没有return语句，也没有改变要返回值，则执行完finally中的语句后，会接着执行try中的return语句，返回之前保留的值。
-	 -    情况三：如果finally中没有return语句，但是改变了要返回的值，这里有点类似与引用传递和值传递的区别，分以下两种情况：
+	 - 情况二：如果finally中没有return语句，也没有改变要返回值，则执行完finally中的语句后，会接着执行try中的return语句，返回之前保留的值。
+	 - 情况三：如果finally中没有return语句，但是改变了要返回的值，这里有点类似与引用传递和值传递的区别，分以下两种情况：
 		 - 1）如果return的数据是基本数据类型或文本字符串，则在finally中对该基本数据的改变不起作用，try中的return语句依然会返回进入finally块之前保留的值。
 		 - 2）如果return的数据是引用数据类型，而在finally中对该引用数据类型的属性值的改变起作用，try中的return语句返回的就是在finally中改变后的该属性的值。
 
