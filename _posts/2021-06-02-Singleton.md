@@ -125,7 +125,7 @@ public class Mgr05 {
  * */
 public class Mgr06 {
 
-    private static Mgr06 INSTANCE;
+    private static volatile Mgr06 INSTANCE;
 
     private Mgr06(){}
 
