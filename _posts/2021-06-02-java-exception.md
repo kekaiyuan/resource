@@ -7,15 +7,14 @@ keywords: Java，异常
 ---
 
 什么是异常？
-
 	异常是指在程序的运行过程中所发生的不正常的事件，它会中断正在运行的程序。  
 	除数为0，数组越界，空指针都属于异常。  
 	当异常发生时，程序会中断运行。  
 	
 异常处理：
-	Java编程语言使用异常处理机制为程序提供了错误处理的能力。
-	加入异常处理后，程序遇到异常后不会中断，而是会转入异常处理程序，正确处理后继续运行。
-	![enter description here](/images/posts/java/exception/java-exception-process.jpg)
+	Java编程语言使用异常处理机制为程序提供了错误处理的能力。  
+	加入异常处理后，程序遇到异常后不会中断，而是会转入异常处理程序，正确处理后继续运行。  
+	![enter description here](/images/posts/java/exception/java-exception-process.jpg)  
 
 关键字：
 	try、catch、finally、throw、throws
