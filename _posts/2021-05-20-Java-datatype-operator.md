@@ -149,6 +149,10 @@ keywords: Java
 		- x为true，整个三目运算的结果为表达式 y 的值
 		- x为false，整个三目运算的结果为表达式 z 的值
 	- 经常用来代替简单的if-else判断
+	- a?b:c?d:e的返回值？
+		- 该式应该这样看a?b:(c?d:e)
+		- a为true，返回b
+		- a为false，返回(c?d:e)的结果
 - 运算符的优先级
 	- ![enter description here](/images/posts/java/02datatype-operator/op-priority.png)
 	- 赋值<三目<逻辑<关系 <算术<单目
