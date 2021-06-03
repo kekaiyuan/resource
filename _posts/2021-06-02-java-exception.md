@@ -286,28 +286,28 @@ public class TryTest{
 			- 执行finally块
 			- return第一步存储的num的值
 				
-- 情况四：将num的值包装在Num类中1
+- 情况四：将num的值包装在Num类中
 ```java
-		public class TryTest{
-			public static void main(String[] args){
-				System.out.println(test().num);
-			}
+	public class TryTest{
+		public static void main(String[] args){
+			System.out.println(test().num);
+		}
 
-			private static Num test(){
-				Num number = new Num();
-				try{
-					return number;
-				}catch(Exception e){
-				}finally{
-					number.num = 100;
-				}
+		private static Num test(){
+			Num number = new Num();
+			try{
 				return number;
+			}catch(Exception e){
+			}finally{
+				number.num = 100;
 			}
+			return number;
 		}
+	}
 
-		class Num{
-			public int num = 10;
-		}
+	class Num{
+		public int num = 10;
+	}
 ```
 
 	- 执行结果：
