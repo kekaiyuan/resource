@@ -36,7 +36,7 @@ keywords: Java
 	- 最新GBK的扩展，可以表示汉字、维吾尔文、藏文等中华民族字符 2个字节
 - Unicode
 	- 国际通用字符集 2个字节
-- ![enter description here](/images/posts/java/02datatype-operator/java-char-set.jpg)
+- ![enter description here](/images/posts/java/02datatype-operator/char-set.jpg)
 
 # Java数据类型
 Java是一种强类型语言
