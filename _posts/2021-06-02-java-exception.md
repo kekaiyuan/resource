@@ -85,8 +85,8 @@ try{
 
 # 声明异常
 ![常见的异常类型](/images/posts/java/exception/java-exception-throws.jpg)
-   - 有时可以将异常抛出，由外部的调用方法进行处理
- ```java
+ 有时可以将异常抛出，由外部的调用方法进行处理
+```java
 public class ExceptionThrow {
 
 	public static void main(String[] args) {
@@ -103,11 +103,14 @@ public class ExceptionThrow {
 }
 ```
 
-应用场景：
-- 多个方法之间的调用，每个方法中都可能出现异常。此时可选择将所有异常由最外层的方法进行统一处理。	
-- 在程序的调用过程中，如果某方法的外层的调用方法有对异常的处理，那么可以直接使用throws，否则，需要使用try...catch...处理本方法中的异常
-# 抛出异常throws
+  应用场景：
+	- 多个方法之间的调用，每个方法中都可能出现异常。此时可选择将所有异常由最外层的方法进行统一处理。
+	- 在程序的调用过程中，如果某方法的外层的调用方法有对异常的处理，那么可以直接使用throws，否则，需要使用try...catch...处理本方法中的异常
+	
+# 抛出异常
 ![常见的异常类型](/images/posts/java/exception/java-exception-throw.jpg)
+
+
 除了被自动捕获的异常外，我们还可以手动地抛出异常
 
 ```java
@@ -165,7 +168,7 @@ java.lang.Exception: It's exception!!!
 步骤：
 - 继承Exception类
 - 自定义实现构造方法
-- 需要使用的时候，使用throw new 自定义异常的名称；
+- 需要使用的时候，使用throw new 自定义异常的名称
 
 ```java
 public class GenderException extends Exception {
