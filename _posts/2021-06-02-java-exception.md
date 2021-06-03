@@ -226,10 +226,7 @@ public class TryTest{
 		- num = num+80;
 		- finally块
 		- return num;
-		- 外面的"System.out.println("method end");"则不会被执行
-
-
-&nbsp;
+		- 外面的"System.out.println("method end");"则不会被执行         
 
 - 情况二：try和finally中均有return
 ```java
