@@ -328,8 +328,6 @@ public class TryTest{
 			 - 1）如果return的数据是基本数据类型或文本字符串，则在finally中对该基本数据的改变不起作用，try中的return语句依然会返回进入finally块之前保留的值。
 			 - 2）如果return的数据是引用数据类型，而在finally中对该引用数据类型的属性值的改变起作用，try中的return语句返回的就是在finally中改变后的该属性的值。
 
-   
-  
 # 异常的分类
 		
 ![常见的异常类型](/images/posts/java/11exception/java-exception-class.jpg)
