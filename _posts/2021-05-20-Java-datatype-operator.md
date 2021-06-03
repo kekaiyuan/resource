@@ -115,7 +115,7 @@ keywords: Java
 			- 如果两个操作数有一个为double,则结果为double.
 			- 只有两个操作数都是float,则结果才为float.
 	- 一元运算符
-		- ++,--
+		- ++,\-\-
 		- ![enter description here](/images/posts/java/02datatype-operator/unitary.png)
 - 赋值运算符
 	- 基本赋值运算符
@@ -135,7 +135,7 @@ keywords: Java
 			- 无论任何情况，“&”两边的表达式都会参与计算
 		- &&
 			- 当“&&”的左边为false，则将不会计算其右边的表达式。即左false则false
-		- “|”和“||”的区别与“&”和“&&”的区别类似。
+		- “\|”和“\|\|”的区别与“&”和“&&”的区别类似。
 - 位运算符
 	- 对操作数以二进制比特位为单位进行操作和运算，操作数和结果都是整型数
 	- 如果操作的对象是char、byte、short，位移动作发生前其值会自动晋升为int，运算结果也为int
@@ -147,7 +147,7 @@ keywords: Java
 	- 执行过程
 		- x 为 boolean 类型表达式
 		- x为true，整个三目运算的结果为表达式 y 的值
-		- x为false，整个三目运算的结果为表达式 z在的值
+		- x为false，整个三目运算的结果为表达式 z 的值
 	- 经常用来代替简单的if-else判断
 - 运算符的优先级
 	- ![enter description here](/images/posts/java/02datatype-operator/op-priority.png)
@@ -157,8 +157,14 @@ keywords: Java
 - 在赋值运算或算术运算时，要求数据类型相同，否则要进行类型转换
 - 转换方式
 	- 自动转换
+		- 左侧宽度>右侧宽度
 	- 强制转换
+		- 左侧宽度<右侧宽度
 - 除boolean类型外，所有的基本数据类型因为各自的精度不同，赋值时都要考虑这个问题
+- 算术运算时的转换
+	- 整型,浮点型,字符型数据可以混合运算。
+	- 运算中，不同类型的数据先转化为同一类型，然后进行运算，转换从低级到高级。
+	- ![enter description here](/images/posts/java/02datatype-operator/math-trans.png)
 	
 	
 	
