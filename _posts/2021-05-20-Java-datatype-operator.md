@@ -60,34 +60,42 @@ keywords: Java
 	- 常量是有数据类型的
 	- 变量都必须声明其数据类型。
 	- ![enter description here](/images/posts/java/study/02-datatype-operator/datatype.png)
-- 整型常量
-	- ![enter description here](/images/posts/java/study/02-datatype-operator/integer.png)
-	- 十进制整数
-		- 99,-500,0
-	- 八进制整数
-		- 以0开头，如：015
-	- 十六进制整数
-		- 0x或0X开头，如：0x15
-	- 整型常量默认为int型，声明long型常量可以后加‘l’或‘L‘，推荐使用大写，便于与数字1区分
-- 浮点型
-	- ![enter description here](/images/posts/java/study/02-datatype-operator/float.png)
-	- float类型
-		- 单精度，尾数到小数点后7位数，大多数情况下精度不够
-	- double类型
-		- 双精度，精度是float的双倍，推荐使用
-	- 浮点型默认为double类型，要变为float，需在后面添加f/F，如3.14f/3.14F
-	- 浮点数存在舍入误差，很多数字不能精确表示。如果需要进行不产生舍入误差的精确数字计算，需要使用BigDecimal类。
-- 字符数据类型（2个字节）
-	- 单引号用来表示字符常量，双引号表示字符串
-		- 'A'是一个字符
-		- "A"是含有一个字符的字符串
-	- char类型用来表示在Unicode编码表中的字符
-		- Unicode编码被设计用来处理各种语言的所有文字，它占2个字节，可允许有65536个字符；ASCII码占1个字节，可允许有128个字符（最高位是0），是Unicode编码表中前128个字符。
-	- 使用转义字符‘\’来将其后的字符转变为其它的含义
-		- ![enter description here](/images/posts/java/study/02-datatype-operator/char.png)
-	- char类型在内存中存储的是该字符的Unicode编码值，所以char类型可以当做int类型来处理
-- 布尔数据类型（一位，不是一个字节）
-	- boolean类型只有两个值，true和false，用来判断逻辑条件，控制程序流程
+
+
+## 整型常量
+- ![enter description here](/images/posts/java/study/02-datatype-operator/integer.png)
+- 十进制整数
+	- 99,-500,0
+- 八进制整数
+	- 以0开头，如：015
+- 十六进制整数
+	- 0x或0X开头，如：0x15
+- 整型常量默认为int型，声明long型常量可以后加‘l’或‘L‘，推荐使用大写，便于与数字1区分
+
+
+## 浮点型
+- ![enter description here](/images/posts/java/study/02-datatype-operator/float.png)
+- float类型
+	- 单精度，尾数到小数点后7位数，大多数情况下精度不够
+- double类型
+	- 双精度，精度是float的双倍，推荐使用
+- 浮点型默认为double类型，要变为float，需在后面添加f/F，如3.14f/3.14F
+- 浮点数存在舍入误差，很多数字不能精确表示。如果需要进行不产生舍入误差的精确数字计算，需要使用BigDecimal类。
+
+
+## 字符数据类型（2个字节）
+- 单引号用来表示字符常量，双引号表示字符串
+	- 'A'是一个字符
+	- "A"是含有一个字符的字符串
+- char类型用来表示在Unicode编码表中的字符
+	- Unicode编码被设计用来处理各种语言的所有文字，它占2个字节，可允许有65536个字符；ASCII码占1个字节，可允许有128个字符（最高位是0），是Unicode编码表中前128个字符。
+- 使用转义字符‘\’来将其后的字符转变为其它的含义
+	- ![enter description here](/images/posts/java/study/02-datatype-operator/char.png)
+- char类型在内存中存储的是该字符的Unicode编码值，所以char类型可以当做int类型来处理
+
+
+## 布尔数据类型（一位，不是一个字节）
+- boolean类型只有两个值，true和false，用来判断逻辑条件，控制程序流程
 
 # 常量和变量
 - 常量
