@@ -214,26 +214,22 @@ public class TryTest{
 }
 ```
 	- 执行结果
-	- 执行顺序
-		- 
-
-
 ```java
 	try
 	num : 90
 	finally
 	90
 ```
-- 执行顺序：
-	- 
-	- “return num += 80;”被拆分成了“num = num+80;”和“return num;”两个语句
-- num = num+80;
-- finally块
-- return num;
-- 外面的"System.out.println("method end");"则不会被执行
+
+	- 执行顺序：
+		- “return num += 80;”被拆分成了“num = num+80;”和“return num;”两个语句
+		- num = num+80;
+		- finally块
+		- return num;
+		- 外面的"System.out.println("method end");"则不会被执行
 
 
-情况二：try和finally中均有return
+- 情况二：try和finally中均有return
 ```java
 public class TryTest{
 
@@ -251,15 +247,15 @@ public class TryTest{
 	}
 }
 ```
-执行结果：
+	- 执行结果：
 ```java
 	100
 ```
-原因：
+	- 原因：
 
-- try中的return语句会被finally中的return语句覆盖。
+		- try中的return语句会被finally中的return语句覆盖。
 
-情况三：finally中改变返回值num
+- 情况三：finally中改变返回值num
 ```java
 public class TryTest{
 
@@ -280,18 +276,18 @@ public class TryTest{
 }
 ```
 
-执行结果：
+	- 执行结果：
 ```java
 	10
 ```
 
-原因：
-- 在执行"return num;"语句时分为三步:
-	- 存储num的值
-	- 执行finally块
-	- return第一步存储的num的值
+	- 原因：
+		- 在执行"return num;"语句时分为三步:
+			- 存储num的值
+			- 执行finally块
+			- return第一步存储的num的值
 				
-情况四：将num的值包装在Num类中
+- 情况四：将num的值包装在Num类中
 ```java
 public class TryTest{
 	public static void main(String[] args){
@@ -315,23 +311,23 @@ class Num{
 }
 ```
 
-执行结果：
+- 执行结果：
 ```java
 	100
 ```
 
-原因：
+- 原因：
 
-- try中的"return number;"存储的是number的引用，所以会被finally块修改其中的值
+	- try中的"return number;"存储的是number的引用，所以会被finally块修改其中的值
 
-总结：
+- 总结：
 	
- - try语句在返回前，将其他所有的操作执行完，保留好要返回的值，而后转入执行finally中的语句，而后分为以下三种情况：
-	 - 情况一：如果finally中有return语句，则会将try中的return语句”覆盖“掉，直接执行finally中的return语句，得到返回值，这样便无法得到try之前保留好的返回值。
-	 - 情况二：如果finally中没有return语句，也没有改变要返回值，则执行完finally中的语句后，会接着执行try中的return语句，返回之前保留的值。
-	 - 情况三：如果finally中没有return语句，但是改变了要返回的值，这里有点类似与引用传递和值传递的区别，分以下两种情况：
-		 - 1）如果return的数据是基本数据类型或文本字符串，则在finally中对该基本数据的改变不起作用，try中的return语句依然会返回进入finally块之前保留的值。
-		 - 2）如果return的数据是引用数据类型，而在finally中对该引用数据类型的属性值的改变起作用，try中的return语句返回的就是在finally中改变后的该属性的值。
+	 - try语句在返回前，将其他所有的操作执行完，保留好要返回的值，而后转入执行finally中的语句，而后分为以下三种情况：
+		 - 情况一：如果finally中有return语句，则会将try中的return语句”覆盖“掉，直接执行finally中的return语句，得到返回值，这样便无法得到try之前保留好的返回值。
+		 - 情况二：如果finally中没有return语句，也没有改变要返回值，则执行完finally中的语句后，会接着执行try中的return语句，返回之前保留的值。
+		 - 情况三：如果finally中没有return语句，但是改变了要返回的值，这里有点类似与引用传递和值传递的区别，分以下两种情况：
+			 - 1）如果return的数据是基本数据类型或文本字符串，则在finally中对该基本数据的改变不起作用，try中的return语句依然会返回进入finally块之前保留的值。
+			 - 2）如果return的数据是引用数据类型，而在finally中对该引用数据类型的属性值的改变起作用，try中的return语句返回的就是在finally中改变后的该属性的值。
 
    
   
