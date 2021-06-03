@@ -187,7 +187,7 @@ public class GenderException extends Exception {
 
 # 异常中的return
 
-情况一：try中有return，finally中没有return
+- 情况一：try中有return，finally中没有return
 ```java
 public class TryTest{
 
@@ -213,15 +213,20 @@ public class TryTest{
 	}
 }
 ```
-执行结果
+	- 执行结果
+	- 执行顺序
+		- 
+
+
 ```java
 	try
 	num : 90
 	finally
 	90
 ```
-执行顺序：
-- “return num += 80;”被拆分成了“num = num+80;”和“return num;”两个语句
+- 执行顺序：
+	- 
+	- “return num += 80;”被拆分成了“num = num+80;”和“return num;”两个语句
 - num = num+80;
 - finally块
 - return num;
