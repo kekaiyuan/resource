@@ -83,7 +83,8 @@ keywords: Java
 - 浮点数存在舍入误差，很多数字不能精确表示。如果需要进行不产生舍入误差的精确数字计算，需要使用BigDecimal类。
 
 
-## 字符数据类型（2个字节）
+## 字符数据类型
+- 2个字节
 - 单引号用来表示字符常量，双引号表示字符串
 	- 'A'是一个字符
 	- "A"是含有一个字符的字符串
@@ -94,7 +95,8 @@ keywords: Java
 - char类型在内存中存储的是该字符的Unicode编码值，所以char类型可以当做int类型来处理
 
 
-## 布尔数据类型（一位，不是一个字节）
+## 布尔数据类型
+- 一位，不是一个字节
 - boolean类型只有两个值，true和false，用来判断逻辑条件，控制程序流程
 
 # 常量和变量
@@ -113,57 +115,71 @@ keywords: Java
 	- 逻辑运算符:&&，\|\|，!
 	- 位运算符:&，\|，^，~，>>，<<，>>>
 	- 条件运算符:？：
-- 算术运算符
-	- ![enter description here](/images/posts/java/study/02-datatype-operator/math-op.png)
-	- 二元运算符的类型提升
-		- 整数运算
-			- 如果两个操作数有一个为Long,则结果也为long
-			- 没有long时，结果为int。即使操作数全为shot,byte，结果也是int
-		- 浮点运算
-			- 如果两个操作数有一个为double,则结果为double.
-			- 只有两个操作数都是float,则结果才为float.
-	- 一元运算符
-		- ++,\-\-
-		- ![enter description here](/images/posts/java/study/02-datatype-operator/unitary.png)
-- 赋值运算符
-	- 基本赋值运算符
-		- =
-	- 扩展赋值运算符
-		- 算术运算符和赋值运算符结合
-		- ![enter description here](/images/posts/java/study/02-datatype-operator/ex-op.png)
-- 关系运算符
-	- 用于比较运算
-	- 结果为布尔值
-- 逻辑运算符
-	- 逻辑运算符与布尔操作数一起使用，组成逻辑表达式
-	- 逻辑表达式的结果是布尔值
-	- ![enter description here](/images/posts/java/study/02-datatype-operator/logic-op.png)
-	- &和&&的区别
-		- &
-			- 无论任何情况，“&”两边的表达式都会参与计算
-		- &&
-			- 当“&&”的左边为false，则将不会计算其右边的表达式。即左false则false
-		- “\|”和“\|\|”的区别与“&”和“&&”的区别类似。
-- 位运算符
-	- 对操作数以二进制比特位为单位进行操作和运算，操作数和结果都是整型数
-	- 如果操作的对象是char、byte、short，位移动作发生前其值会自动晋升为int，运算结果也为int
-	- ![enter description here](/images/posts/java/study/02-datatype-operator/an-op.png)
-- 条件运算符
-	- 语法格式
-		- x ? y : z
-		- 唯一的三目运算符
-	- 执行过程
-		- x 为 boolean 类型表达式
-		- x为true，整个三目运算的结果为表达式 y 的值
-		- x为false，整个三目运算的结果为表达式 z 的值
-	- 经常用来代替简单的if-else判断
-	- a?b:c?d:e的返回值？
-		- 该式应该这样看a?b:(c?d:e)
-		- a为true，返回b
-		- a为false，返回(c?d:e)的结果
-- 运算符的优先级
-	- ![enter description here](/images/posts/java/study/02-datatype-operator/op-priority.png)
-	- 赋值<三目<逻辑<关系 <算术<单目
+
+
+## 算术运算符
+- ![enter description here](/images/posts/java/study/02-datatype-operator/math-op.png)
+- 二元运算符的类型提升
+	- 整数运算
+		- 如果两个操作数有一个为Long,则结果也为long
+		- 没有long时，结果为int。即使操作数全为shot,byte，结果也是int
+	- 浮点运算
+		- 如果两个操作数有一个为double,则结果为double.
+		- 只有两个操作数都是float,则结果才为float.
+- 一元运算符
+	- ++,\-\-
+	- ![enter description here](/images/posts/java/study/02-datatype-operator/unitary.png)
+
+
+## 赋值运算符
+- 基本赋值运算符
+	- =
+- 扩展赋值运算符
+	- 算术运算符和赋值运算符结合
+	- ![enter description here](/images/posts/java/study/02-datatype-operator/ex-op.png)
+
+
+## 关系运算符
+- 用于比较运算
+- 结果为布尔值
+
+
+## 逻辑运算符
+- 逻辑运算符与布尔操作数一起使用，组成逻辑表达式
+- 逻辑表达式的结果是布尔值
+- ![enter description here](/images/posts/java/study/02-datatype-operator/logic-op.png)
+- &和&&的区别
+	- &
+		- 无论任何情况，“&”两边的表达式都会参与计算
+	- &&
+		- 当“&&”的左边为false，则将不会计算其右边的表达式。即左false则false
+	- “\|”和“\|\|”的区别与“&”和“&&”的区别类似。
+
+
+## 位运算符
+- 对操作数以二进制比特位为单位进行操作和运算，操作数和结果都是整型数
+- 如果操作的对象是char、byte、short，位移动作发生前其值会自动晋升为int，运算结果也为int
+- ![enter description here](/images/posts/java/study/02-datatype-operator/an-op.png)
+
+
+## 条件运算符
+- 语法格式
+	- x ? y : z
+	- 唯一的三目运算符
+- 执行过程
+	- x 为 boolean 类型表达式
+	- x为true，整个三目运算的结果为表达式 y 的值
+	- x为false，整个三目运算的结果为表达式 z 的值
+- 经常用来代替简单的if-else判断
+- a?b:c?d:e的返回值？
+	- 该式应该这样看a?b:(c?d:e)
+	- a为true，返回b
+	- a为false，返回(c?d:e)的结果
+
+
+## 运算符的优先级
+- ![enter description here](/images/posts/java/study/02-datatype-operator/op-priority.png)
+- 赋值<三目<逻辑<关系 <算术<单目
 
 # 类型转换
 - 在赋值运算或算术运算时，要求数据类型相同，否则要进行类型转换
