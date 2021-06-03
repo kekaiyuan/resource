@@ -33,25 +33,32 @@ keywords: Java
 
 # 字符集
 - ASCII
-	- 英文字符集 1个字节
+	- 英文字符集 
+	- 1个字节
 - ISO8859-1
-	- 西欧字符集 1个字节
+	- 西欧字符集 
+	- 1个字节
 - BIG5
-	- 台湾的大五码，表示繁体汉字 2个字节
+	- 台湾的大五码，表示繁体汉字 
+	- 2个字节
 - GB2312
-	- 大陆使用最早、最广的简体中文字符集 2个字节
+	- 大陆使用最早、最广的简体中文字符集 
+	- 2个字节
 - GBK
-	- GB2312的扩展，可以表示繁体中文 2个字节
+	- GB2312的扩展，可以表示繁体中文 
+	- 2个字节
 - GB18030
-	- 最新GBK的扩展，可以表示汉字、维吾尔文、藏文等中华民族字符 2个字节
+	- 最新GBK的扩展，可以表示汉字、维吾尔文、藏文等中华民族字符 
+	- 2个字节
 - Unicode
-	- 国际通用字符集 2个字节
+	- 国际通用字符集 
+	- 2个字节
 - ![enter description here](/images/posts/java/02datatype-operator/char-set.jpg)
 
 # Java数据类型
-Java是一种强类型语言
-- 常量是有数据类型的
-- 变量都必须声明其数据类型。
+- Java是一种强类型语言
+	- 常量是有数据类型的
+	- 变量都必须声明其数据类型。
 	- ![enter description here](/images/posts/java/02datatype-operator/datatype.png)
 - 整型常量
 	- ![enter description here](/images/posts/java/02datatype-operator/integer.png)
@@ -98,7 +105,8 @@ java支持以下运算符
 - 扩展赋值运算符
 	- +=，-=，*=，/=
 - 关系运算符
-	- >，<，>=，<=，==，!=
+	  >，<，>=，<=，==，!=
+	  
 - 逻辑运算符
 	- &&，||，!
 - 位运算符
