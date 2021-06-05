@@ -62,8 +62,21 @@ keywords: Java, 容器
 	- `boolean hasNext()`判断是否存在下一个可访问的元素
 	- `Object next()`返回要访问的下一个元素
 	- `void remove()`删除上次访问返回的对象
+	- Demo
+		- ```java
+			for(Iterator iterator= set.iterator();iterator.hasNext();){
+				System.out.println(iterator.next());
+			}
+		  ```
 - 可以使用Iterator遍历的本质是什么？
 	- 实现Iterable接口
+- For-each循环
+	- 特点
+		- 增强的for循环，遍历array或Collection的时候相当简便
+		- 无需获得集合和数组的长度，无需使用索引访问元素，无需循环条件
+		- 遍历集合时底层调用Iterator完成操作
+	- 缺陷
+		- 
 			
 			
 			
