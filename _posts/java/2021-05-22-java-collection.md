@@ -71,12 +71,28 @@ keywords: Java, 容器
 - 可以使用Iterator遍历的本质是什么？
 	- 实现Iterable接口
 - For-each循环
+	- ```java
+		ArrayList list = new ArrayList();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(4);
+		for (Object i : list) {
+			System.out.println(i);
+		}
+	  ```
 	- 特点
 		- 增强的for循环，遍历array或Collection的时候相当简便
 		- 无需获得集合和数组的长度，无需使用索引访问元素，无需循环条件
 		- 遍历集合时底层调用Iterator完成操作
 	- 缺陷
-		- 
+		- 数组
+			- 丌能方便的访问下标值
+			- 丌要在for-each中尝试对变量赋值，只是一个临时变量
+		- 集合
+			- 不使用Iterator相比，丌能方便 的删除集合中的内容
+	- 总结
+		- 除了简单的遍历并读出其中的内容外，丌建议使用增强for
 			
 			
 			
