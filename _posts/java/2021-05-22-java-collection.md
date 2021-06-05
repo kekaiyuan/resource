@@ -51,3 +51,7 @@ keywords: Java, 容器
 			
 			
 			
+
+
+
+k-v：session、json、Redis、HBase
