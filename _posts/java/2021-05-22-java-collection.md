@@ -60,10 +60,10 @@ keywords: Java, 容器
 	- ```java
 		boolean hasNext();   //判断是否有元素没有被遍历
 		
-		Object next();      //返回游标当前位置的元素并将游标移动到下一个位置
+		Object next();        //返回游标当前位置的元素并将游标移动到下一个位置
 		
-		void remove();      //删除游标左面的元素
-												//在执行完next之后该操作只能执行一次
+		void remove();       //删除游标左面的元素
+							    //在执行完next之后该操作只能执行一次
 	  ```
 	- 
 			
