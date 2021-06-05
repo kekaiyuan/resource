@@ -24,9 +24,9 @@ keywords: Java, 容器
 - Collection 接口存储一组丌唯一，无序的对象
 	- ![enter description here](/images/posts/java/study/collection/collection-sub.png)
 	- List 接口存储一组丌唯一，有序（插入顺序）的对象
-![enter description here](/images/posts/java/study/collection/list.png)
+		- ![enter description here](/images/posts/java/study/collection/list.png)
 	- Set 接口存储一组唯一，无序的对象
-![enter description here](/images/posts/java/study/collection/set.png)
+		- ![enter description here](/images/posts/java/study/collection/set.png)
 - Map接口存储一组键值对象，提供key到value的映射
 	  ![enter description here](/images/posts/java/study/collection/map.png)
 	  
@@ -36,7 +36,7 @@ keywords: Java, 容器
 	- ![enter description here](/images/posts/java/study/collection/list-sub.png)
 	- ArrayList
 		- 实现了长度可变的数组，在内存中分配连续的空间。
-			![enter description here](/images/posts/java/study/collection/arraylist.png)
+			- ![enter description here](/images/posts/java/study/collection/arraylist.png)
 		- 优点
 			- 遍历元素和随机访问元素的效率比较高
 		- 缺点
@@ -44,10 +44,26 @@ keywords: Java, 容器
 			- 按照内容查询效率低
 	- LinkedList
 		- 采用链表存储方式
+			- ![enter description here](/images/posts/java/study/collection/linkedlist.png)
 		- 优点
 			- 插入、删除元素时效率比较高
 		- 缺点
 			- 遍历和随机访问元素效率低下
+- 特有方法
+	- 凡是可以操作索引的方法都是该体系特有方法
+		- ![enter description here](/images/posts/java/study/collection/list-method.png)
+
+# Iterator 接口
+- 所有实现了Collection接口的容器类都有一个iterator方法用以返回一个实现了Iterator接口的对象。
+- Iterator对象称作迭代器，用以方便的实现对容器内元素的遍历操作。
+- Iterator接口定义了如下方法：
+	- ```java
+		boolean hasNext();   //判断是否有元素没有被遍历
+		Object next();      //返回游标当前位置的元素并将游标移动到下一个位置
+		void remove();      //删除游标左面的元素，在执行完next之后该
+												//操作只能执行一次
+	- ```
+	- 
 			
 			
 			
