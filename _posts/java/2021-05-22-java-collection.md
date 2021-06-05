@@ -24,9 +24,9 @@ keywords: Java, 容器
 - Collection 接口存储一组丌唯一，无序的对象
 	- ![enter description here](/images/posts/java/study/collection/collection-sub.png)
 	- List 接口存储一组丌唯一，有序（插入顺序）的对象
-		- ![enter description here](/images/posts/java/study/collection/list.png)
+![enter description here](/images/posts/java/study/collection/list.png)
 	- Set 接口存储一组唯一，无序的对象
-		- ![enter description here](/images/posts/java/study/collection/set.png)
+![enter description here](/images/posts/java/study/collection/set.png)
 - Map接口存储一组键值对象，提供key到value的映射
 	  ![enter description here](/images/posts/java/study/collection/map.png)
 	  
