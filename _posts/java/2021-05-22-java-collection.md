@@ -56,16 +56,14 @@ keywords: Java, 容器
 # Iterator 接口
 - 所有实现了Collection接口的容器类都有一个iterator方法用以返回一个实现了Iterator接口的对象。
 - Iterator对象称作迭代器，用以方便的实现对容器内元素的遍历操作。
-- Iterator接口定义了如下方法：
-	- ```java
-		boolean hasNext();   //判断是否有元素没有被遍历
-		
-		Object next();        //返回游标当前位置的元素并将游标移动到下一个位置
-		
-		void remove();       //删除游标左面的元素
-							    //在执行完next之后该操作只能执行一次
-	  ```
-	- 
+- 所有的集合类均未提供相应的遍历方法，而是把遍历交给迭代器完成。迭代器为集合而生，与门实现集合遍历
+- Iterator是迭代器设计模式的具体实现
+- Iterator方法
+	- `boolean hasNext()`判断是否存在下一个可访问的元素
+	- `Object next()`返回要访问的下一个元素
+	- `void remove()`删除上次访问返回的对象
+- 可以使用Iterator遍历的本质是什么？
+	- 实现Iterable接口
 			
 			
 			
