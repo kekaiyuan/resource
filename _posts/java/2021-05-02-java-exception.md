@@ -288,26 +288,26 @@ public class TryTest{
 				
 - 情况四：将num的值包装在Num类中
 ```java
-public class TryTest{
-	public static void main(String[] args){
-		System.out.println(test().num);
-	}
-
-	private static Num test(){
-		Num number = new Num();
-		try{
-			return number;
-		}catch(Exception e){
-		}finally{
-			number.num = 100;
+	public class TryTest{
+		public static void main(String[] args){
+			System.out.println(test().num);
 		}
-		return number;
-	}
-}
 
-class Num{
-	public int num = 10;
-}
+		private static Num test(){
+			Num number = new Num();
+			try{
+				return number;
+			}catch(Exception e){
+			}finally{
+				number.num = 100;
+			}
+			return number;
+		}
+	}
+
+	class Num{
+		public int num = 10;
+	}
 ```
 
 - 执行结果：
