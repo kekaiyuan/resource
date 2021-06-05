@@ -19,7 +19,7 @@ Java编程语言使用异常处理机制为程序提供了错误处理的能力�
 		
 加入异常处理后，程序遇到异常后不会中断，而是会转入异常处理程序，正确处理后继续运行。  
 
-![enter description here](/images/posts/java/exception/java-exception-process.jpg)  
+![enter description here](/images/posts/java/11exception/java-exception-process.jpg)  
 
 # 关键字
 - try
@@ -29,7 +29,7 @@ Java编程语言使用异常处理机制为程序提供了错误处理的能力�
 - throws
 	
 # 捕获异常
-![enter description here](/images/posts/java/exception/java-exception-catch.jpg)
+![enter description here](/images/posts/java/11exception/java-exception-catch.jpg)
 ```java
 try{
 	//可能会发生异常的代码块
@@ -51,7 +51,7 @@ try{
 
 - catch块将对异常进行处理。
 	- 参数为某具体异常
-	![常见的异常类型](/images/posts/java/exception/java-exception-type.jpg)
+	![常见的异常类型](/images/posts/java/11exception/java-exception-type.jpg)
 	- 可使用printStackTrace函数的堆栈跟踪功能显示出程序运行到当前类的执行流程
 
 - 多重catch块
@@ -84,7 +84,7 @@ try{
 		- 数据库的连接关闭操作
 
 # 声明异常
-![常见的异常类型](/images/posts/java/exception/java-exception-throws.jpg)
+![常见的异常类型](/images/posts/java/11exception/java-exception-throws.jpg)
 
  有时可以将异常抛出，由外部的调用方法进行处理
 ```java
@@ -109,7 +109,7 @@ public class ExceptionThrow {
 - 在程序的调用过程中，如果某方法的外层的调用方法有对异常的处理，那么可以直接使用throws，否则，需要使用try...catch...处理本方法中的异常
 	
 # 抛出异常
-![常见的异常类型](/images/posts/java/exception/java-exception-throw.jpg)
+![常见的异常类型](/images/posts/java/11exception/java-exception-throw.jpg)
 
 
 除了被自动捕获的异常外，我们还可以手动地抛出异常
@@ -332,7 +332,7 @@ class Num{
   
 # 异常的分类
 		
-![常见的异常类型](/images/posts/java/exception/java-exception-class.jpg)
+![常见的异常类型](/images/posts/java/11exception/java-exception-class.jpg)
 - checked异常
 	- 主流ide在编译时check出的代码错误。
 - RunTimeException
