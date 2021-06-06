@@ -128,8 +128,7 @@ keywords: Java
 		- 只有两个操作数都是float,则结果才为float.
 - 一元运算符  ++,\-\-
 	 ![enter description here](/images/posts/java/study/02-datatype-operator/unitary.png)
-- 一元运算符
-  
+- 一元运算符  
 	 ++,\-\-
 	 ![enter description here](/images/posts/java/study/02-datatype-operator/unitary.png)
 
