@@ -8,3 +8,16 @@ keywords: IDEA, Java
 
 # 使用jdk中的方法时报错
 修改`Project Structure`/`Project Settings`/`Modules`的`Language level`与使用的jdk版本一致
+
+# 自动声明变量
+=号左边的东西不用写，将=号右边的东西写完后+`.var`+回车
+```java
+//=号左边东西不写，右边写好
+new File("test.txt")
+
+//+.var
+new File("test.txt").var
+
+//按下回车
+File file = new File("abc.txt");
+```
