@@ -126,8 +126,7 @@ keywords: Java
 	- 浮点运算
 		- 如果两个操作数有一个为double,则结果为double.
 		- 只有两个操作数都是float,则结果才为float.
-- 一元运算符  
-	 ++,\-\-
+- 一元运算符  ++,\-\-
 	 ![enter description here](/images/posts/java/study/02-datatype-operator/unitary.png)
 - 一元运算符
   
