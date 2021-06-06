@@ -63,7 +63,7 @@ keywords: Java
 
 
 ## 整型常量
-- ![enter description here](/images/posts/java/study/02-datatype-operator/integer.png)
+ ![enter description here](/images/posts/java/study/02-datatype-operator/integer.png)
 - 十进制整数
 	- 99,-500,0
 - 八进制整数
@@ -74,7 +74,7 @@ keywords: Java
 
 
 ## 浮点型
-- ![enter description here](/images/posts/java/study/02-datatype-operator/float.png)
+ ![enter description here](/images/posts/java/study/02-datatype-operator/float.png)
 - float类型
 	- 单精度，尾数到小数点后7位数，大多数情况下精度不够
 - double类型
@@ -91,7 +91,7 @@ keywords: Java
 - char类型用来表示在Unicode编码表中的字符
 	- Unicode编码被设计用来处理各种语言的所有文字，它占2个字节，可允许有65536个字符；ASCII码占1个字节，可允许有128个字符（最高位是0），是Unicode编码表中前128个字符。
 - 使用转义字符‘\’来将其后的字符转变为其它的含义
-	- ![enter description here](/images/posts/java/study/02-datatype-operator/char.png)
+	 ![enter description here](/images/posts/java/study/02-datatype-operator/char.png)
 - char类型在内存中存储的是该字符的Unicode编码值，所以char类型可以当做int类型来处理
 
 
@@ -118,7 +118,7 @@ keywords: Java
 
 
 ## 算术运算符
-- ![enter description here](/images/posts/java/study/02-datatype-operator/math-op.png)
+ ![enter description here](/images/posts/java/study/02-datatype-operator/math-op.png)
 - 二元运算符的类型提升
 	- 整数运算
 		- 如果两个操作数有一个为Long,则结果也为long
@@ -127,8 +127,8 @@ keywords: Java
 		- 如果两个操作数有一个为double,则结果为double.
 		- 只有两个操作数都是float,则结果才为float.
 - 一元运算符
-	- ++,\-\-
-	- ![enter description here](/images/posts/java/study/02-datatype-operator/unitary.png)
+	 ++,\-\-
+	 ![enter description here](/images/posts/java/study/02-datatype-operator/unitary.png)
 
 
 ## 赋值运算符
