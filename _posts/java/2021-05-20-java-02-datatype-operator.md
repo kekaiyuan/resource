@@ -128,9 +128,6 @@ keywords: Java
 		- 只有两个操作数都是float,则结果才为float.
 - 一元运算符  ++,\-\-
 	 ![enter description here](/images/posts/java/study/02-datatype-operator/unitary.png)
-- 一元运算符  
-	 ++,\-\-
-	 ![enter description here](/images/posts/java/study/02-datatype-operator/unitary.png)
 
 
 ## 赋值运算符
@@ -138,7 +135,7 @@ keywords: Java
 	- =
 - 扩展赋值运算符
 	- 算术运算符和赋值运算符结合
-	- ![enter description here](/images/posts/java/study/02-datatype-operator/ex-op.png)
+- ![enter description here](/images/posts/java/study/02-datatype-operator/ex-op.png)
 
 
 ## 关系运算符
@@ -149,7 +146,7 @@ keywords: Java
 ## 逻辑运算符
 - 逻辑运算符与布尔操作数一起使用，组成逻辑表达式
 - 逻辑表达式的结果是布尔值
-- ![enter description here](/images/posts/java/study/02-datatype-operator/logic-op.png)
+  ![enter description here](/images/posts/java/study/02-datatype-operator/logic-op.png)
 - &和&&的区别
 	- &
 		- 无论任何情况，“&”两边的表达式都会参与计算
