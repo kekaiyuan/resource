@@ -16,7 +16,7 @@ keywords: Java
 	- 大小写敏感，长度无限制。
 	- 不可以是Java的关键字。
 		- Java关键字是Java语言保留供内部使用的，是预先设置好的，有特殊意义的标识符。
-		- ![enter description here](/images/posts/java/study/02-datatype-operator/keyword.png)  
+		 ![enter description here](/images/posts/java/study/02-datatype-operator/keyword.png)  
 	- 注意
 		- Java不采用通常语言使用的ASCII字符集，而是采用unicode这样的标准的国际字符集。
 		- 因此Java命名所使用的字母除了英文还包括汉字，但是不推荐使用汉字。
@@ -59,7 +59,7 @@ keywords: Java
 - Java是一种强类型语言
 	- 常量是有数据类型的
 	- 变量都必须声明其数据类型。
-	- ![enter description here](/images/posts/java/study/02-datatype-operator/datatype.png)
+	 ![enter description here](/images/posts/java/study/02-datatype-operator/datatype.png)
 
 
 ## 整型常量
