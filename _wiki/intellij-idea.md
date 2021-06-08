@@ -25,6 +25,6 @@ File file = new File("abc.txt");
 ```
 
 # 自动生成serialVersionUID
-勾选`File`/`Settings`/`Editor`/`Inspections`/`Java`/`Serializable issues`/`Serializable class without 'serialVersionUID'`，右边窗口里`Severity`可选择警告的等级和作用范围
+勾选`File`/`Settings`/`Editor`/`Inspections`/`Java`/`Serializable issues`/`Serializable class without 'serialVersionUID'`，右边窗口里`Severity`可选择警告的等级和作用范围，上边窗口里`Profile`可选择该设置是对当前项目生效还是对IDEA生效
 
 这样当实体类继承了Serializable却没有定义serialVersionUID时类名会高亮警告，把鼠标移动到类名上即可自动生成serialVersionUID
