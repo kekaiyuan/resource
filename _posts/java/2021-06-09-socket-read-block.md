@@ -1,9 +1,9 @@
 ---
 layout: post
-title: `socket`通信时`read`方法阻塞问题
+title: socket 通信时 read 方法阻塞问题
 categories: Java
 description: some word here
-keywords: Java, `socket`
+keywords: Java, socket
 ---
 
 `socket`通信用的是`InputStream`和`OutputStream`这两个Io流，其中`InputStream`的`read`方法会有阻塞的风险
