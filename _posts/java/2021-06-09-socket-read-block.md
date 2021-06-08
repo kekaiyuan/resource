@@ -25,6 +25,6 @@ keywords: Java, socket
 		- 约定结束标志，当读到该结束标志时退出不再`read`。
 	- 发送方
 		- 调用`socket`的`shutdownOutput`方法关闭输出流，该方法的文档说明为，将此套接字的输出流置于“流的末尾”，这样另一端的输入流上的`read`操作就会返回-1。不能调用`socket.getInputStream().close()`。这样会导致`socket`被关闭。
-		- 调用`socket.close()`，该方法的文档说明为，任何线程当前被阻塞在这个套接字上的I / O操作将会抛出一个`socket`Exception。
+		- 调用`socket.close()`，该方法的文档说明为，任何线程当前被阻塞在这个套接字上的I / O操作将会抛出一个`socket Exception`。
 		- 上面两种方案都能使`read`方法返回-1
 
