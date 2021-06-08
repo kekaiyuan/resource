@@ -1,13 +1,13 @@
 ---
 layout: post
-title: template page
-categories: [cate1, cate2]
+title: Socket通信时read方法阻塞问题
+categories: Java
 description: some word here
-keywords: keyword1, keyword2
+keywords: Java, Socket
 ---
 
-# socket通信的read方法阻塞问题
 socket通信用的是InputStream和OutputStream这两个Io流，其中InputStream的read方法会有阻塞的风险
+
 - 原因
 	- read方法在读完所有的数据，检测到流的末尾时，会返回值-1。这往往作为我们结束循环的标志。
 	   ```java
