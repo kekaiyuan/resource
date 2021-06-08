@@ -1,6 +1,6 @@
 ---
 layout: post
-title: socket 通信时 read 方法阻塞问题
+title:  socket 通信时 read 方法阻塞问题
 categories: Java
 description: some word here
 keywords: Java, socket
