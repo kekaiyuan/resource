@@ -8,6 +8,9 @@ keywords: IDEA, Java
 
 我的IntelliJ IDEA版本：**Community 2020.03**
 
+# 快捷键
+`Ctrl`+`P`：构造方法提示
+
 # 使用jdk中的方法时报错
 修改`File`/`Project Structure`/`Project Settings`/`Modules`的`Language level`与使用的jdk版本一致
 
