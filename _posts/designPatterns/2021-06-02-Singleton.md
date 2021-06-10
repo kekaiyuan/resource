@@ -1,10 +1,12 @@
 ---
 layout: post
-title: 单例模式
+title: Java设计模式（一）——单例模式
 categories: DesignPatterns
 description: Java设计模式（一）——单例模式
 keywords: Java，设计模式
 ---
+
+Java设计模式（一）——单例模式
 
 应用场景：
 只需要一个实例，比如各种Mgr和Factory
