@@ -39,8 +39,8 @@ File file = new File("abc.txt");
 
 反编译chm文件为html文件<br>
 在chm文件所在目录打开cmd窗口，输入<br>
-hh -decompile doc 文件名全称（包括后缀）<br>
-例如：hh -decompile doc jdk api 1.8_google.CHM
+`hh -decompile doc 文件名全称（包括后缀）`<br>
+例如：`hh -decompile doc jdk api 1.8_google.CHM`
 
 打开`File`/`Project Structure`/`SDKSs`/`Documentation Paths`<br>
 点击下方`+`号添加刚才反编译出的html的文件夹
