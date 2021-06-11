@@ -34,8 +34,8 @@ File file = new File("abc.txt");
 
 # 关联中文API文档
 - 下载中文API的chm文件<br>
-	- 链接：[https://pan.baidu.com/s/1ZiaON_k9VPOL68pqJsl4bw](https://pan.baidu.com/s/1ZiaON_k9VPOL68pqJsl4bw ) <br>
-提取码：22j0 
+	- 链接：[https://pan.baidu.com/s/1a3vvEx5089kbVx48ufTidQ](https://pan.baidu.com/s/1a3vvEx5089kbVx48ufTidQ) <br>
+提取码：3lkw
 
 - 反编译chm文件为html文件<br>
 	- 在chm文件所在目录打开cmd窗口，输入<br>
