@@ -191,3 +191,6 @@ for(int i=0;i<100;i++){
 	new Thread(()-> System.out.println(XXX.getInstance().hashCode())).start();
 }
 ```
+
+# 代码
+该文章源码链接[https://github.com/kky970614/designpatterns/tree/main/singleton](https://github.com/kky970614/designpatterns/tree/main/singleton)
