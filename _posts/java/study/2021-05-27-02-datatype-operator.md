@@ -23,14 +23,27 @@ Java学习笔记之02-Java数据类型和运算符
 		- 因此Java命名所使用的字母除了英文还包括汉字，但是不推荐使用汉字。
 - 命名规范
 	- 所有命名做到见名知意
-	- 变量、方法名：首字母小写，驼峰原则
+	- 驼峰原则
+		- 除第一个单词外所有单词首字母大写
+	- 项目名
+		- 全部小写
+	- 变量、方法名、属性名：首字母小写，驼峰原则
 		- run(),runRun(),age,ageNew,monthSalary
-		- 驼峰原则
-			- 单词的首字母大写
 	- 类名、接口名：首字母大写和驼峰原则 
 		- Man、GoodMan
 	- 常量名：大写+下划线
 		- MAX_VALUE
+	- 属性文件.properties定义变量命名
+		- object.a_b_c格式，全部小写，其中object是宿主，a_b_c多个单词下划线分开。
+		- 例：hibernate.cache.use_second_level_cache，hibernate.cache.provider_class，hibernate.cache.provider_configuration_file_resource_path
+	- xml文件命名
+		- 全部小写，`-`符号是其xml的用途说明，类似applicationContext属习惯命名。比如springmvc-servlet.xml、workdesk-manager.xml、workdesk-servlet.xml、applicationContext-basic.xml等
+		- xml里的内容多个字符间以`-`隔开，比如param-name，filter-mapping等。
+	- 普通文件命名(jsp,js,img等)和java普通变量规范相同。
+	- 属性文件properties
+		- 以下划线隔开：errors_zh_CN.properties，hibernate_test.properties
+	- 数据库命名：
+		- 表、字段命名全部大写，多个单词以_隔开。
 
 # 字符集
 - ASCII
