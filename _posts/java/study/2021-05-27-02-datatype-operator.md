@@ -44,6 +44,8 @@ Java学习笔记之02-Java数据类型和运算符
 		- 以下划线隔开：errors_zh_CN.properties，hibernate_test.properties
 	- 数据库命名：
 		- 表、字段命名全部大写，多个单词以_隔开。
+	- 包名
+		- 全小写
 
 # 字符集
 - ASCII
