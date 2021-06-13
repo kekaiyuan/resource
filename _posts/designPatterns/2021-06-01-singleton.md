@@ -193,4 +193,4 @@ for(int i=0;i<100;i++){
 ```
 
 # 代码
-该文章源码链接[https://github.com/kky970614/designpatterns/tree/main/singleton](https://github.com/kky970614/designpatterns/tree/main/singleton)
+该文章源码链接[https://github.com/kekaiyuan/designpatterns/tree/main/singleton](https://github.com/kekaiyuan/designpatterns/tree/main/singleton)
