@@ -40,15 +40,22 @@ keywords: Java，反射
 	- 通过字符串调用
 	```java
 	String methodName = "Test";
-	Method method = object.getClass().getDeclaredMethod(methodName);
+	Method method = clz.getDeclaredMethod(methodName);
 	method.invoke(object);
 
-	method = object.getClass().getDeclaredMethod(methodName, String.class);
+	method = clz.getDeclaredMethod(methodName, String.class);
 	method.invoke(object, "helloworld");
 
-	method = object.getClass().getDeclaredMethod(methodName, String.class, boolean.class);
+	method = clz.getDeclaredMethod(methodName, String.class, boolean.class);
 	method.invoke(object, "helloworld", true);
 	```
+		- 结果
+		```java
+		I'm Test1
+		I'm Test2
+		I'm Test3
+		```
+		- 需要注意，在使用Class.getDeclaredMethod()方法获取Method对象时，传参除了需要方法名，还需要该方法的参数列表，顺序不能颠倒。使用Method.invoke()调用方法时，也必须传入对应的参数。
 	
 ```java
 	
