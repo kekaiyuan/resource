@@ -37,7 +37,7 @@ keywords: Java，反射
 			System.out.println("I'm Test3");
 		}
 		```
-	1. 通过字符串调用
+
 	```java
 	String methodName = "Test";
 	Method method = object.getClass().getDeclaredMethod(methodName);
