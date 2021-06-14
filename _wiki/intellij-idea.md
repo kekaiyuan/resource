@@ -50,3 +50,10 @@ File file = new File("abc.txt");
 # 通过Maven导入spring的jar包
 项目名右键`Add Framework Support`/勾选`Maven`/`OK`后会生成`pom.xml`文件
 在`<project></project>`标签内加入`<dependencies></dependencies>`标签，然后在`<dependencies></dependencies>`标签内加入我们需要的依赖项的代码
+[https://mvnrepository.com/](https://mvnrepository.com/)搜索spring context
+![enter description here](/images/wiki/intellij-idea/mavenindex.png)
+![enter description here](/images/wiki/intellij-idea/mavenspring01.png)
+把代码粘贴进`<dependencies></dependencies>`标签中
+![enter description here](/images/wiki/intellij-idea/mavenspring02.png)
+![enter description here](/images/wiki/intellij-idea/mavenspring03.png)
+![enter description here](/images/wiki/intellij-idea/mavenspring04.png)
