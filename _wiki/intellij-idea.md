@@ -46,3 +46,7 @@ File file = new File("abc.txt");
 点击下方`+`号添加刚才反编译出的html的文件夹
 
 - 之后把鼠标移到代码上即可查看相关的中文说明
+
+# 通过Maven导入spring的jar包
+项目名右键`Add Framework Support`/勾选`Maven`/`OK`后会生成`pom.xml`文件
+在`<project></project>`标签内加入`<dependencies></dependencies>`标签，然后在`<dependencies></dependencies>`标签内加入我们需要的依赖项的代码
