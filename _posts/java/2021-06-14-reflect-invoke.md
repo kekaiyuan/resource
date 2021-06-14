@@ -24,19 +24,19 @@ keywords: Java，反射
 	```
 2. 找到要调用的方法
 	- 现在Test类有三个test()方法，同名，但是参数不同，属于方法的重载
-		```java
-		public void Test() {
-			System.out.println("I'm Test1");
-		}
+	```java
+	public void Test() {
+		System.out.println("I'm Test1");
+	}
 
-		public void Test(String str) {
-			System.out.println("I'm Test2");
-		}
+	public void Test(String str) {
+		System.out.println("I'm Test2");
+	}
 
-		public void Test(String str, boolean b) {
-			System.out.println("I'm Test3");
-		}
-		```
+	public void Test(String str, boolean b) {
+		System.out.println("I'm Test3");
+	}
+	```
 	- 通过字符串调用
 	```java
 	String methodName = "Test";
