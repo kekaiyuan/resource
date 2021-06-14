@@ -8,7 +8,7 @@ keywords: Java，反射
 
 如何利用Java的反射机制通过字符串调用同名的类和方法？
 
-- 通过类名创建对象
+1. 通过类名创建对象
 	- 找到同名类并创建一个该类的实例
 	```java
 	//要调用的类的包名+类名
@@ -22,9 +22,27 @@ keywords: Java，反射
 	```java
 	Test object = new Test();
 	```
-```java
-	
-```
+2. 调用方法名
+	- 现在Test类有三个test()方法，同名，但是参数不同，属于方法的重载
+	```java
+    public void Test() {
+        System.out.println("I'm Test1");
+    }
+
+    public void Test(String str) {
+        System.out.println("I'm Test2");
+    }
+
+    public void Test(String str, boolean b) {
+        System.out.println("I'm Test3");
+    }
+	```
+	1. 通过字符串调用
+	```java
+	String methodName = "Test";
+	Method method = object.getClass().getDeclaredMethod(methodName);
+	method.invoke(object);
+	```
 ```java
 	
 ```
