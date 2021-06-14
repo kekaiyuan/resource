@@ -42,7 +42,14 @@ keywords: Java，反射
 	String methodName = "Test";
 	Method method = object.getClass().getDeclaredMethod(methodName);
 	method.invoke(object);
+
+	method = object.getClass().getDeclaredMethod(methodName, String.class);
+	method.invoke(object, "helloworld");
+
+	method = object.getClass().getDeclaredMethod(methodName, String.class, boolean.class);
+	method.invoke(object, "helloworld", true);
 	```
+	
 ```java
 	
 ```
