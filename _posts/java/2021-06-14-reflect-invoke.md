@@ -22,7 +22,7 @@ keywords: Java，反射
 	```java
 	Test object = new Test();
 	```
-2. 调用方法名
+2. 找到要调用的方法
 	- 现在Test类有三个test()方法，同名，但是参数不同，属于方法的重载
 		```java
 		public void Test() {
@@ -37,7 +37,7 @@ keywords: Java，反射
 			System.out.println("I'm Test3");
 		}
 		```
-
+	- 通过字符串调用
 	```java
 	String methodName = "Test";
 	Method method = object.getClass().getDeclaredMethod(methodName);
