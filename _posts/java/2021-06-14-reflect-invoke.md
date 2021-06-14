@@ -50,7 +50,7 @@ keywords: Java，反射
 		method.invoke(object, "helloworld", true);
 		```
 		- 结果
-		```java
+		```
 		I'm Test1
 		I'm Test2
 		I'm Test3
