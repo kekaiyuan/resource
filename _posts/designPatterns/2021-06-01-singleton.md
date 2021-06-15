@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Java设计模式之01——单例模式
+title: Java设计模式之01——单例Singleton
 categories: DesignPatterns
-description: Java设计模式之01——单例模式
+description: Java设计模式之01——单例Singleton
 keywords: Java，设计模式
 ---
 
-Java设计模式之01——单例模式
+Java设计模式之01——单例Singleton
 
 # 应用场景
 只需要一个实例，比如各种Mgr和Factory
@@ -192,5 +192,5 @@ for(int i=0;i<100;i++){
 }
 ```
 
-# 源码链接
-本文源码链接[https://github.com/kekaiyuan/designpatterns/tree/main/singleton](https://github.com/kekaiyuan/designpatterns/tree/main/singleton)
+# 代码链接
+该文章源码链接[https://github.com/kekaiyuan/designpatterns/tree/main/singleton](https://github.com/kekaiyuan/designpatterns/tree/main/singleton)
