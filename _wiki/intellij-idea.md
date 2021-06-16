@@ -57,3 +57,14 @@ File file = new File("abc.txt");
 ![enter description here](/images/wiki/intellij-idea/mavenspring02.png)
 ![enter description here](/images/wiki/intellij-idea/mavenspring03.png)
 ![enter description here](/images/wiki/intellij-idea/mavenspring04.png)
+
+然后等待自动下载就好了
+
+# 和Github的通信太慢
+当cmd里和Github的通信没问题，而Idea却太慢时。
+
+找到Idea的安装目录下的bin文件夹。
+
+找到runnerw.exe和runnerw(64).exe
+
+修改这两个文件的文件名或者直接删除他们
