@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Java设计模式之——单例Singleton
+title: 单例模式Singleton
 categories: DesignPatterns
-description: Java设计模式之——单例Singleton
+description: 单例模式Singleton
 keywords: Java，设计模式
 ---
 
-Java设计模式之——单例Singleton
+单例模式Singleton
 
 # 应用场景
 只需要一个实例，比如各种Mgr和Factory
