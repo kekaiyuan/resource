@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 设计模式之——责任链模式Chain of Responsibility Pattern
+title: 设计模式之——责任链模式Chain of Responsibility
 categories: DesignPatterns
-description: 设计模式之——责任链模式Chain of Responsibility Pattern
+description: 设计模式之——责任链模式Chain of Responsibility
 keywords: Java,设计模式
 ---
 
-设计模式之——责任链模式Chain of Responsibility Pattern
+设计模式之——责任链模式Chain of Responsibility
 
 # 什么是责任链？
 
@@ -34,7 +34,7 @@ keywords: Java,设计模式
 - 第三环是坦克和墙的碰撞逻辑
 - 第四环是子弹和墙的碰撞逻辑
 
-![enter description here](/images/posts/designpatterns/chain-of-responsibility-pattern/chain.png)
+![enter description here](/images/posts/designpatterns/chain-of-responsibility/chain.png)
  
 这就是责任链，把对某种对象的处理流程组成一个链条，这样只需要把对象放入链条中，它就会被正确的处理 
 
