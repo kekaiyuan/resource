@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 设计模式之——责任链模式Chain of Responsibility
+title: 设计模式之——责任链Chain of Responsibility
 categories: DesignPatterns
-description: 设计模式之——责任链模式Chain of Responsibility
+description: 设计模式之——责任链Chain of Responsibility
 keywords: Java,设计模式
 ---
 
-设计模式之——责任链模式Chain of Responsibility
+设计模式之——责任链Chain of Responsibility
 
 # 什么是责任链？
 
