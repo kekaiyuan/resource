@@ -16,7 +16,7 @@ windows的文件系统就是树状结构。
 打开一个文件夹A，里面有文件夹B、文件夹C和一堆文件，文件夹B和文件夹C里也有文件夹和文件......
 
 # 概念
-> 以下内容引用自(https://www.runoob.com/design-pattern/composite-pattern.html)[https://www.runoob.com/design-pattern/composite-pattern.html]
+> 以下内容引用自[https://www.runoob.com/design-pattern/composite-pattern.html](https://www.runoob.com/design-pattern/composite-pattern.html)
 > 
 > ### 组合模式
 > 组合模式（Composite Pattern），又叫部分整体模式，是用于把一组相似的对象当作一个单一的对象。组合模式依据树形结构来组合对象，用来表示部分以及整体层次。这种类型的设计模式属于结构型模式，它创建了对象组的树形结构。
