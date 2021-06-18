@@ -146,24 +146,6 @@ class BranchNode extends Node {
 			}
 		}
 	```
-```java
-```
-```java
-```
-```java
-```
-```java
-```
-```java
-```
-```java
-```
-```java
-```
-```java
-```
-```java
-```
 
 # 代码链接
 该文章源码链接[https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/composite](https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/composite)
