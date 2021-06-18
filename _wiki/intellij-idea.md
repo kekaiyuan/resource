@@ -69,7 +69,7 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
 把代码粘贴进`<dependencies></dependencies>`标签中<br>
 ![enter description here](/images/wiki/intellij-idea/mavenspring04.png)<br>
 
-打开 Maven 窗口，右键 reload 项目，等待下载完成
+打开 Maven 窗口，右键 `Reload project` 项目，等待下载完成
 
 # 和Github的通信太慢
 当cmd里和Github的通信没问题，而Idea却太慢时。
