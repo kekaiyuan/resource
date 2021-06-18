@@ -69,7 +69,7 @@ windows的文件系统就是树状结构。
 ```java
 abstract class Node {
     //打印该节点的内容
-    abstract public void p();
+    abstract public void print();
 }
 ```
 - 文件
@@ -82,7 +82,7 @@ class LeafNode extends Node {
     public LeafNode(String content) {this.content = content;}
 
     @Override
-    public void p() {
+    public void print() {
         System.out.println(content);
     }
 }
@@ -100,10 +100,11 @@ class BranchNode extends Node {
     public BranchNode(String name) {this.name = name;}
 
     @Override
-    public void p() {
+    public void print() {
         System.out.println(name);
     }
 
+	//添加子节点
     public void add(Node n) {
         nodes.add(n);
     }
