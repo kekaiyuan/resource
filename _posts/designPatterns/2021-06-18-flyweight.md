@@ -94,7 +94,3 @@ ppt中就有这个功能，把多个图元框选在一起设置为组合。<br>
 设置之后这个组合就成了新的图元，可以执行移动、缩放、复制等操作。<br>
 缓存池中也多了一个由圆和正方形组成的图元。<br>
 ![enter description here](/images/posts/designpatterns/flyweight/composite.png)
-
-
-# 代码链接
-该文章源码链接[url](url)
