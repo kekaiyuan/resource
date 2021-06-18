@@ -62,17 +62,17 @@ keywords: Java，设计模式
 # 使用
 - 享元模式最常用的方式是池化，线程池、常量池都属于享元模式。
 
-- 现在有类A，组建一个类A的池APool。
+- 现在有类A，组建一个类A的池APool。<br>
 当我们需要使用一个A的对象时，不要使用```java A a = new A(XXX);```<br>
 而是使用```java A a = APool.getA(XXX)```<br>
-池会查找有没有符合要求的A对象，如果有的话，返回对象的引用。<br>
+池会查找有没有符合要求的A对象，如果有的话，返回该对象的引用。<br>
 如果没有的话，那就```java return new A(XXX);```<br>
 
 - int的包装类Integer也使用了享元模式。<br>
 Integer类里有个数组存放了值为-128~127的int类型。<br>
 当我们使用```java int a = new Integer(x);```时。<br>
 如果x的值在-128~127的闭区间，返回数组里的成员。<br>
-只有当超出范围后，Integer类才会创建一个新对象。
+只有当超出范围后，Integer类才会创建一个新对象。<br>
 
 # 代码链接
 该文章源码链接[url](url)
