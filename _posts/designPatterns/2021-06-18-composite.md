@@ -66,50 +66,50 @@ windows的文件系统就是树状结构。
 
 - 抽象类`Node`
 	- 文件夹和文件都继承于这个抽象类
-```java
-abstract class Node {
-    //打印该节点的内容
-    abstract public void print();
-}
-```
+	```java
+	abstract class Node {
+		//打印该节点的内容
+		abstract public void print();
+	}
+	```
 - 文件
 	- 在树状结构中，没有子节点的节点称为叶子节点
-```java
-//叶子节点
-class LeafNode extends Node {
-    //文件名
-    String content;
-    public LeafNode(String content) {this.content = content;}
+	```java
+	//叶子节点
+	class LeafNode extends Node {
+		//文件名
+		String content;
+		public LeafNode(String content) {this.content = content;}
 
-    @Override
-    public void print() {
-        System.out.println(content);
-    }
-}
-```
+		@Override
+		public void print() {
+			System.out.println(content);
+		}
+	}
+	```
 - 文件夹
 	- 在树状机构中，有子节点的节点叫做分支节点
-```java
-//分支节点
-class BranchNode extends Node {
-    //该文件夹下的列表，包括文件夹和文件
-    List<Node> nodes = new ArrayList<>();
+	```java
+	//分支节点
+	class BranchNode extends Node {
+		//该文件夹下的列表，包括文件夹和文件
+		List<Node> nodes = new ArrayList<>();
 
-    //文件夹名
-    String name;
-    public BranchNode(String name) {this.name = name;}
+		//文件夹名
+		String name;
+		public BranchNode(String name) {this.name = name;}
 
-    @Override
-    public void print() {
-        System.out.println(name);
-    }
+		@Override
+		public void print() {
+			System.out.println(name);
+		}
 
-	//添加子节点
-    public void add(Node n) {
-        nodes.add(n);
-    }
-}
-```
+		//添加子节点
+		public void add(Node n) {
+			nodes.add(n);
+		}
+	}
+	```
 - 使用方法
 	- 首先定义根目录。
 	```java
