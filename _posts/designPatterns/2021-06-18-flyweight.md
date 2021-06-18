@@ -85,7 +85,8 @@ Integer类里有个数组存放了值为-128~127的int类型。<br>
 如果x的值在-128~127的闭区间，返回数组里的成员。<br>
 只有当超出范围后，Integer类才会创建一个新对象。<br>
 
-- ![enter description here](/images/posts/designpatterns/flyweight/flyweight.png)
+- uml图<br>
+![enter description here](/images/posts/designpatterns/flyweight/flyweight.png)
 
 - 享元模式还可以与组合模式搭配使用。
 圆是图元，正方形也是图元。当圆和正方形的搭配使用次数非常多时，就可以把这个搭配作为新的图元存入缓存池。<br>
