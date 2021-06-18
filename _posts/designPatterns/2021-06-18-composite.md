@@ -67,14 +67,14 @@ windows的文件系统就是树状结构。
 - UML图
 ![enter description here](/images/posts/designpatterns/composite/uml.png)
 
-- 抽象类`Node`
-	- 文件夹和文件都继承于这个抽象类
-	```java
-	abstract class Node {
-		//打印该节点的内容
-		abstract public void print();
-	}
-	```
+- 抽象类
+	- 文件夹和文件都继承于这个抽象类1
+		```java
+		abstract class Node {
+			//打印该节点的内容
+			abstract public void print();
+		}
+		```
 - 文件
 	- 在树状结构中，没有子节点的节点称为叶子节点
 	```java
