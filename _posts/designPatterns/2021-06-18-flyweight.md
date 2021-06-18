@@ -74,5 +74,7 @@ Integer类里有个数组存放了值为-128~127的int类型。<br>
 如果x的值在-128~127的闭区间，返回数组里的成员。<br>
 只有当超出范围后，Integer类才会创建一个新对象。<br>
 
+- ![enter description here](/images/posts/designpatterns/flyweight/flyweight.png)
+
 # 代码链接
 该文章源码链接[url](url)
