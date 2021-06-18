@@ -129,7 +129,7 @@ windows的文件系统就是树状结构。
 
 - 遍历<br>
    树状结构的遍历必须使用递归。
-	```java
+	```
 	//遍历node下的所有内容，depth为该节点的高度
 	static void tree(Node node, int depth) {
 		//为了美观，打印"-"为文件分级
