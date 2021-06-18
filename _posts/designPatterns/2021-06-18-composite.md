@@ -59,6 +59,111 @@ windows的文件系统就是树状结构。
 > 注意事项
 > - 定义时为具体类。
 
+# 案例
+如何用组合模式模拟一个只有文件名的简单文件系统？
+
+该文件系统有文件和文件夹两种成员，文件夹下可以添加任意个文件夹和文件。
+
+- 抽象类`Node`
+	- 文件夹和文件都继承于这个抽象类
+```java
+abstract class Node {
+    //打印该节点的内容
+    abstract public void p();
+}
+```
+- 文件
+	- 在树状结构中，没有子节点的节点称为叶子节点
+```java
+//叶子节点
+class LeafNode extends Node {
+    //文件名
+    String content;
+    public LeafNode(String content) {this.content = content;}
+
+    @Override
+    public void p() {
+        System.out.println(content);
+    }
+}
+```
+- 文件夹
+	- 在树状机构中，有子节点的节点叫做分支节点
+```java
+//分支节点
+class BranchNode extends Node {
+    //该文件夹下的列表，包括文件夹和文件
+    List<Node> nodes = new ArrayList<>();
+
+    //文件夹名
+    String name;
+    public BranchNode(String name) {this.name = name;}
+
+    @Override
+    public void p() {
+        System.out.println(name);
+    }
+
+    public void add(Node n) {
+        nodes.add(n);
+    }
+}
+```
+- 使用方法
+	- 首先定义根目录。
+	```java
+	BranchNode root = new BranchNode("root");
+	```
+	- 在根目录下添加文件。
+	```java
+	Node r1 = new LeafNode("r1");
+	root.add(r1);
+	```
+	- 在根目录下添加文件夹。
+	```java
+	BranchNode chapter1 = new BranchNode("chapter1");
+	root.add(chapter1);
+	```
+	- 子文件夹的操作雷同。
+
+- 遍历<br>
+   树状结构的遍历必须使用递归。
+	```java
+	//遍历node下的所有内容
+		static void tree(Node node, int depth) {
+			//为了美观，打印"-"为文件分级
+			for(int i=0; i<depth; i++) {
+				System.out.print("-");
+			}
+			//打印节点
+			node.print();
+
+			//遍历节点下的子节点
+			if(node instanceof BranchNode) {
+				for (Node n : ((BranchNode)node).nodes) {
+					tree(n, depth + 1);
+				}
+			}
+		}
+	```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
 
 # 代码链接
-该文章源码链接[url](url)
+该文章源码链接[https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/composite](https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/composite)
