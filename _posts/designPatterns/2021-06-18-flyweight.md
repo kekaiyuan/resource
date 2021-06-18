@@ -72,9 +72,12 @@ keywords: Java，设计模式
 当我们需要使用一个A的对象时，不要使用```java A a = new A(XXX);```<br>
 而是使用```java A a = APool.getA(XXX)```<br>
 池会查找有没有符合要求的A对象，如果有的话，返回该对象的引用。<br>
-如果没有的话，那就```java return new A(XXX);```<br>
+如果没有的话，那就```java return new A(XXX);```<br><br>
 在返回新对象的同时，可以考虑将新对象存入缓存池，也可以不存。<br>
-这个取决于该新对象之后是否会被重复使用。
+这个取决于该新对象之后是否会被重复使用。<br>
+在Java中```java String str = "abc";```这条语句执行之前常量池里是没有```java "abc"```的。<br>
+在这条语句执行后，常量池里就有了```java "abc"```<br>
+之后再执行```java String str2 = "abc";```，str2就会和str1指向常量池中的```java "abc"```，而不会创建新对象。
 
 - int的包装类Integer也使用了享元模式。<br>
 Integer类里有个数组存放了值为-128~127的int类型。<br>
