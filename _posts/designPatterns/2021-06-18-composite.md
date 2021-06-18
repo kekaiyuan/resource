@@ -129,22 +129,22 @@ class BranchNode extends Node {
 - 遍历<br>
    树状结构的遍历必须使用递归。
 	```java
-	//遍历node下的所有内容
-		static void tree(Node node, int depth) {
-			//为了美观，打印"-"为文件分级
-			for(int i=0; i<depth; i++) {
-				System.out.print("-");
-			}
-			//打印节点
-			node.print();
+	//遍历node下的所有内容，depth为该节点的高度
+	static void tree(Node node, int depth) {
+		//为了美观，打印"-"为文件分级
+		for(int i=0; i<depth; i++) {
+			System.out.print("-");
+		}
+		//打印节点
+		node.print();
 
-			//遍历节点下的子节点
-			if(node instanceof BranchNode) {
-				for (Node n : ((BranchNode)node).nodes) {
-					tree(n, depth + 1);
-				}
+		//遍历节点下的子节点
+		if(node instanceof BranchNode) {
+			for (Node n : ((BranchNode)node).nodes) {
+				tree(n, depth + 1);
 			}
 		}
+	}
 	```
 
 # 代码链接
