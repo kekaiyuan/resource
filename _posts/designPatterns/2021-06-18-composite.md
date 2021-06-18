@@ -128,7 +128,7 @@ windows的文件系统就是树状结构。
 	- 子文件夹的操作雷同。
 
 - 遍历<br>
-   树状结构的遍历必须使用递归。
+   树状结构的遍历建议使用递归。
 	```
 	//遍历node下的所有内容，depth为该节点的高度
 	static void tree(Node node, int depth) {
