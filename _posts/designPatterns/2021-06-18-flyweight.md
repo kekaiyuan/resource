@@ -63,13 +63,9 @@ keywords: Java，设计模式
 - 享元模式最常用的方式是池化，线程池、常量池都属于享元模式。
 
 - 现在有类A，组建一个类A的池APool。
-
 当我们需要使用一个A的对象时，不要使用```java A a = new A(XXX);```
-
 而是使用```java A a = APool.getA(XXX)```
-
 池会查找有没有符合要求的A对象，如果有的话，返回对象的引用。
-
 如果没有的话，那就```java return new A(XXX);```
 
 - int的包装类Integer也使用了享元模式。
