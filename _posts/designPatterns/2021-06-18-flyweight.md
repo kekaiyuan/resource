@@ -69,7 +69,8 @@ keywords: Java，设计模式
 如果没有的话，那就```java return new A(XXX);```<br>
 
 - int的包装类Integer也使用了享元模式。<br>
-Integer类里有个数组存放了值为-128~127的int类型，当我们使用```java int a = new Integer(x);```<br>
+Integer类里有个数组存放了值为-128~127的int类型。<br>
+当我们使用```java int a = new Integer(x);```时。<br>
 如果x的值在-128~127的闭区间，返回数组里的成员。<br>
 只有当超出范围后，Integer类才会创建一个新对象。
 
