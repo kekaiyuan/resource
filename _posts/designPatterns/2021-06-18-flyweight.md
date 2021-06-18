@@ -12,6 +12,12 @@ keywords: Java，设计模式
 
 重复利用现有对象，避免创建新对象，减少对系统资源的使用。
 
+像各类游戏的场景就十分适合使用享元模式。
+
+树木、汽车、路人这一类重复性非常高的对象，如果每一个都是一个独立的对象，多大的内存都吃不消。
+
+这时候就应该使用享元，让它们指向同一个对象。
+
 # 概念
 
 > 以下内容引用自[https://www.runoob.com/design-pattern/flyweight-pattern.html](https://www.runoob.com/design-pattern/flyweight-pattern.html)
@@ -60,13 +66,15 @@ keywords: Java，设计模式
 > - 这些类必须有一个工厂对象加以控制。
 
 # 使用
-- 享元模式最常用的方式是池化，线程池、常量池都属于享元模式。
+- 享元模式最常用的方式是缓存池，线程池、常量池都属于享元模式。
 
-- 现在有类A，组建一个类A的池APool。<br>
+- 现在有类A，组建一个类A的缓存池APool。<br>
 当我们需要使用一个A的对象时，不要使用```java A a = new A(XXX);```<br>
 而是使用```java A a = APool.getA(XXX)```<br>
 池会查找有没有符合要求的A对象，如果有的话，返回该对象的引用。<br>
 如果没有的话，那就```java return new A(XXX);```<br>
+在返回新对象的同时，可以考虑将新对象存入缓存池，也可以不存。<br>
+这个取决于该新对象之后是否会被重复使用。
 
 - int的包装类Integer也使用了享元模式。<br>
 Integer类里有个数组存放了值为-128~127的int类型。<br>
