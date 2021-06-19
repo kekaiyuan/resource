@@ -47,22 +47,29 @@ File file = new File("abc.txt");
 
 - 之后把鼠标移到代码上即可查看相关的中文说明
 
-# 通过Maven导入spring的jar包
+# 通过Maven导入Jar包
+举例如何导入 Spring 的 Jar 包，其他能在 Maven 上搜到的 Jar 包都是同样的流程。
+
 项目名右键`Add Framework Support`/勾选`Maven`/`OK`后会生成`pom.xml`文件
 
 在`<project></project>`标签内加入`<dependencies></dependencies>`标签，然后在`<dependencies></dependencies>`标签内加入我们需要的依赖项的代码
 
-[https://mvnrepository.com/](https://mvnrepository.com/)搜索spring context
+maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
 
-![enter description here](/images/wiki/intellij-idea/mavenindex.png)
-![enter description here](/images/wiki/intellij-idea/mavenspring01.png)
-把代码粘贴进`<dependencies></dependencies>`标签中
+搜索spring context<br>
+![enter description here](/images/wiki/intellij-idea/mavenindex.png)<br>
 
-![enter description here](/images/wiki/intellij-idea/mavenspring02.png)
-![enter description here](/images/wiki/intellij-idea/mavenspring03.png)
-![enter description here](/images/wiki/intellij-idea/mavenspring04.png)
+---------- 
 
-打开 Maven 窗口，右键 reload 项目，等待下载完成
+![enter description here](/images/wiki/intellij-idea/mavenspring01.png)<br>
+选择需要的版本<br>
+![enter description here](/images/wiki/intellij-idea/mavenspring02.png)<br>
+复制代码<br>
+![enter description here](/images/wiki/intellij-idea/mavenspring03.png)<br>
+把代码粘贴进`<dependencies></dependencies>`标签中<br>
+![enter description here](/images/wiki/intellij-idea/mavenspring04.png)<br>
+
+打开 Maven 窗口，右键 `Reload project` 项目，等待下载完成
 
 # 和Github的通信太慢
 当cmd里和Github的通信没问题，而Idea却太慢时。
