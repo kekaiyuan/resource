@@ -192,5 +192,5 @@ for(int i=0;i<100;i++){
 }
 ```
 
-# 代码链接
+# 源码链接
 该文章源码链接[https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/singleton](https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/singleton)

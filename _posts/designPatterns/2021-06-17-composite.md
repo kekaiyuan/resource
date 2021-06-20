@@ -8,5 +8,5 @@ keywords: Java，设计模式
 
 设计模式之——组合Composite
 
-# 代码链接
+# 源码链接
 该文章源码链接[url](url)
