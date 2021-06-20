@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 设计模式之——装饰者Decorator
+title: 设计模式之——装饰者 Decorator
 categories: DesignPatterns
-description: 设计模式之——装饰者Decorator
+description: 设计模式之——装饰者 Decorator
 keywords: Java，设计模式
 ---
 
-设计模式之——装饰者Decorator
+设计模式之——装饰者 Decorator
 
 # 概念
 

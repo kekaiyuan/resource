@@ -1,15 +1,15 @@
 ---
 layout: post
-title: 设计模式之——单例Singleton
+title: 设计模式之——单例 Singleton
 categories: DesignPatterns
-description: 设计模式之——单例Singleton
+description: 设计模式之——单例 Singleton
 keywords: Java，设计模式
 ---
 
-设计模式之——单例Singleton
+设计模式之——单例 Singleton
 
 # 应用场景
-只需要一个实例，比如各种Mgr和Factory
+只需要一个实例，比如各种 Mgr 和 Factory
 
 # 饿汉式
 ```java
