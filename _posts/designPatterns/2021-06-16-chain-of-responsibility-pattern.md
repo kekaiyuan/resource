@@ -93,16 +93,11 @@ keywords: Java,设计模式
 
 - 接口
 	```java
-	/**
-	 * 负责游戏物体的碰撞
-	 */
+	//负责游戏物体的碰撞
 	public interface Collider {
-
 		boolean collide(GameObject o1,GameObject o2);
-
 	}
 	```
-
 - 子弹与坦克的碰撞
 	```java
 	public class BulletTankCollider implements Collider {
@@ -178,24 +173,24 @@ keywords: Java,设计模式
 	这样写可以实现程序的解耦，无论责任链怎么变，外部的调用都不需要修改。
 	
 # Servlet中的责任链
-Servlet 是常用的前后端交互的技术，它把前端发送的请求传入后端进行处理然后再返回给前端。
-从 Client 到 Server ，称为 Request 。
-从后端到 Client ，称为 Response 。
-在这个过程中，需要用到多个 Filter 过滤器对数据进行处理。
-Request 需要 Filter 过滤掉不必要的前端信息。
+Servlet 是常用的前后端交互的技术，它把前端发送的请求传入后端进行处理然后再返回给前端。<br>
+从 Client 到 Server ，称为 Request 。<br>
+从后端到 Client ，称为 Response 。<br>
+在这个过程中，需要用到多个 Filter 过滤器对数据进行处理。<br>
+Request 需要 Filter 过滤掉不必要的前端信息。<br>
 Response 需要 Filter 加上必要的前端信息。
 
-如果采用这样的设计
+如果采用这样的设计<br>
 ![enter description here](/images/posts/designpatterns/chain-of-responsibility/server01.png)
-这需要实现两个责任链，六个 Filter ，而且需要建立两次 Http 请求。
+这需要实现两个责任链，六个 Filter ，而且需要建立两次 Http 请求。<br>
 一次 Http 请求是从
 
 可以改进一下，使用一条责任链完成
 
-假设现在有三个过滤器，
-从前端到后端，需要经过 Filter1 , Filter2 , Filter3 
-从后端到前端，需要经过 Filter3 , Filter2 , Filter1 
-过滤器在数据的往返时都需要用到，而且顺序是相反的。
+假设现在有三个过滤器，<br>
+从前端到后端，需要经过 Filter1 , Filter2 , Filter3 <br>
+从后端到前端，需要经过 Filter3 , Filter2 , Filter1 <br>
+过滤器在数据的往返时都需要用到，而且顺序是相反的。<br>
 这种设计应该如何用责任链实现?
 
 
