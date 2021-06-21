@@ -87,5 +87,103 @@ keywords: Java,设计模式
 > 注意事项
 > - 在 JAVA WEB 中遇到很多应用。
 
+# 碰撞链
+实现坦克大战中，坦克与坦克、坦克与子弹、坦克与墙、子弹与墙的碰撞链<br>
+坦克、子弹、墙都是 GameObject 的子类
+
+- 接口
+```java
+/**
+ * 负责游戏物体的碰撞
+ */
+public interface Collider {
+
+    boolean collide(GameObject o1,GameObject o2);
+
+}
+```
+
+- 子弹与坦克的碰撞
+```java
+public class BulletTankCollider implements Collider {
+
+    @Override
+    public boolean collide(GameObject o1, GameObject o2) {
+        if (o1 instanceof Tank && o2 instanceof Bullet) {
+            交换 o1 和 o2
+        }
+        if (o1 instanceof Bullet && o2 instanceof Tank) {
+            	处理子弹与坦克的碰撞
+            }
+            return true;
+        }
+        return false;
+    }
+
+}
+```
+其他三个类雷同，分别是 TanksCollider , BulletWallCollier , TankWallCollider 
+
+- 责任链
+	```java
+	public class ColliderChain implements Collider {
+
+		private List<Collider> colliders = new LinkedList<>();
+
+		public ColliderChain() {
+			add(new BulletTankCollider());
+			add(new TanksCollider());
+			add(new BulletWallCollier());
+			add(new TankWallCollider());
+		}
+
+		public void add(Collider collider) {
+			colliders.add(collider);
+		}
+
+		@Override
+		public boolean collide(GameObject o1, GameObject o2) {
+			for (int i = 0; i < colliders.size(); i++) {
+				if (colliders.get(i).collide(o1, o2)) {
+					return false;
+				}
+			}
+			return true;
+		}
+
+	}
+	```
+	- ColliderChain 继承 Collider 的好处
+		- 可以把责任链合并
+	- 为什么 collider 方法的返回值是 boolean
+		- 实现责任链的断开。
+		- BulletTankCollider 是碰撞链的第一环，当它检测到传入责任链的参数是坦克和子弹时，那么就没有必要把参数传入下一环。
+
+- 如何调用
+	```java
+	//碰撞检测的责任链
+    ColliderChain colliderChain = new ColliderChain();
+	
+	//碰撞检测，使用责任链
+	for (int i = 0; i < objects.size(); i++) {
+            for (int j = i + 1; j < objects.size(); j++) {
+                GameObject o1 = objects.get(i);
+                GameObject o2 = objects.get(j);
+                colliderChain.collide(o1, o2);
+            }
+        }
+	```
+	objects 是存储坦克大战中所有游戏对象的数组。
+	只需要用双重循环遍历游戏对象所有可能的两两组合，并把组合传入责任链中，即可实现碰撞检测。
+	这样写可以实现程序的解耦，无论责任链怎么变，外部的调用都不需要修改。
+```java
+
+```
+```java
+
+```
+```java
+
+```
 # 源码链接
 该文章源码链接[url](url)
