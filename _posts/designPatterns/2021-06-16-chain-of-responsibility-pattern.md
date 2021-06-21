@@ -95,12 +95,9 @@ keywords: Java,设计模式
 	```java
 	//负责游戏物体的碰撞
 	public interface Collider {
-
 		boolean collide(GameObject o1,GameObject o2);
-
 	}
 	```
-
 - 子弹与坦克的碰撞
 	```java
 	public class BulletTankCollider implements Collider {
