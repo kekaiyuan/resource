@@ -92,36 +92,36 @@ keywords: Java,设计模式
 坦克、子弹、墙都是 GameObject 的子类
 
 - 接口
-```java
-/**
- * 负责游戏物体的碰撞
- */
-public interface Collider {
+	```java
+	/**
+	 * 负责游戏物体的碰撞
+	 */
+	public interface Collider {
 
-    boolean collide(GameObject o1,GameObject o2);
+		boolean collide(GameObject o1,GameObject o2);
 
-}
-```
+	}
+	```
 
 - 子弹与坦克的碰撞
-```java
-public class BulletTankCollider implements Collider {
+	```java
+	public class BulletTankCollider implements Collider {
 
-    @Override
-    public boolean collide(GameObject o1, GameObject o2) {
-        if (o1 instanceof Tank && o2 instanceof Bullet) {
-            交换 o1 和 o2
-        }
-        if (o1 instanceof Bullet && o2 instanceof Tank) {
-            	处理子弹与坦克的碰撞
-            }
-            return true;
-        }
-        return false;
-    }
+		@Override
+		public boolean collide(GameObject o1, GameObject o2) {
+			if (o1 instanceof Tank && o2 instanceof Bullet) {
+				交换 o1 和 o2
+			}
+			if (o1 instanceof Bullet && o2 instanceof Tank) {
+					处理子弹与坦克的碰撞
+				}
+				return true;
+			}
+			return false;
+		}
 
-}
-```
+	}
+	```
 其他三个类雷同，分别是 TanksCollider , BulletWallCollier , TankWallCollider 
 
 - 责任链
@@ -176,6 +176,29 @@ public class BulletTankCollider implements Collider {
 	objects 是存储坦克大战中所有游戏对象的数组。
 	只需要用双重循环遍历游戏对象所有可能的两两组合，并把组合传入责任链中，即可实现碰撞检测。
 	这样写可以实现程序的解耦，无论责任链怎么变，外部的调用都不需要修改。
+	
+# Servlet中的责任链
+Servlet 是常用的前后端交互的技术，它把前端发送的请求传入后端进行处理然后再返回给前端。
+从 Client 到 Server ，称为 Request 。
+从后端到 Client ，称为 Response 。
+在这个过程中，需要用到多个 Filter 过滤器对数据进行处理。
+Request 需要 Filter 过滤掉不必要的前端信息。
+Response 需要 Filter 加上必要的前端信息。
+
+如果采用这样的设计
+![enter description here](/images/posts/designpatterns/chain-of-responsibility/server01.png)
+这需要实现两个责任链，六个 Filter ，而且需要建立两次 Http 请求。
+一次 Http 请求是从
+
+可以改进一下，使用一条责任链完成
+
+假设现在有三个过滤器，
+从前端到后端，需要经过 Filter1 , Filter2 , Filter3 
+从后端到前端，需要经过 Filter3 , Filter2 , Filter1 
+过滤器在数据的往返时都需要用到，而且顺序是相反的。
+这种设计应该如何用责任链实现?
+
+
 ```java
 
 ```
