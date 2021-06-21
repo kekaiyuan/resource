@@ -93,9 +93,7 @@ keywords: Java,设计模式
 
 - 接口
 	```java
-	/**
-	 * 负责游戏物体的碰撞
-	 */
+	//负责游戏物体的碰撞
 	public interface Collider {
 
 		boolean collide(GameObject o1,GameObject o2);
