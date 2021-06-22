@@ -91,3 +91,6 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
 ![enter description here](/images/wiki/intellij-idea/multify-instances.png)
 
 完成
+
+## Maven 找不到包
+打开 `Setting` ， 输入 `maven` ，打开 `local repository`，把相关的文件删除，重新 `reload`
