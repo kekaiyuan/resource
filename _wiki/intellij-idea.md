@@ -56,17 +56,17 @@ File file = new File("abc.txt");
 
 maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
 
-搜索spring context<br><br>
-![enter description here](/images/wiki/intellij-idea/mavenindex.png)<br>
+搜索spring context<br>
+![enter description here](/images/wiki/intellij-idea/mavenindex.png)<br><br>
 
 ---------- 
 
-![enter description here](/images/wiki/intellij-idea/mavenspring01.png)<br>
-选择需要的版本<br><br>
-![enter description here](/images/wiki/intellij-idea/mavenspring02.png)<br>
-复制代码<br><br>
-![enter description here](/images/wiki/intellij-idea/mavenspring03.png)<br>
-把代码粘贴进`<dependencies></dependencies>`标签中<br><br>
+![enter description here](/images/wiki/intellij-idea/mavenspring01.png)<br><br>
+选择需要的版本<br>
+![enter description here](/images/wiki/intellij-idea/mavenspring02.png)<br><br>
+复制代码<br>
+![enter description here](/images/wiki/intellij-idea/mavenspring03.png)<br><br>
+把代码粘贴进`<dependencies></dependencies>`标签中<br>
 ![enter description here](/images/wiki/intellij-idea/mavenspring04.png)<br>
 
 打开 Maven 窗口，右键 `Reload project` 项目，等待下载完成
