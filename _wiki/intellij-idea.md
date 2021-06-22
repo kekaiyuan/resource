@@ -6,7 +6,7 @@ description: 最好用的 Java IDE
 keywords: IDEA, Java
 ---
 
-# 版本：**Community 2020.03**
+# 版本：Community 2020.03
 
 ## 快捷键
 `Ctrl`+`P`：构造方法提示
@@ -79,3 +79,15 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
 找到`runnerw.exe`和`runnerw(64).exe`
 
 修改这两个文件的文件名或者直接删除他们
+
+# 版本：Community 2021.06
+## 并发启动代码
+在网络开发中，经常需要启动多个客户端测试代码，如何将同一个 class 同时运行多个
+
+在左侧 `Project` 窗口找到要并发启动的文件，右键 `Modify Run Configuration`
+
+在 `Build and run` 窗口，点击 `Modify options` ， 勾选 `Allow multify instances`
+
+![enter description here](/images/wiki/intellij-idea/multify-instances.png)
+
+完成
