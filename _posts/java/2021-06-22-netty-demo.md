@@ -207,5 +207,27 @@ class ServerChildHandler extends ChannelInboundHandlerAdapter{
 # 乱七八糟
 main 方法和 UI 是两个线程
 
+自定义协议，序列化数据太大，效率低
+
+netty自动编码
+
+TCP
+- 拆包
+	- TCP 的传输会把数据分成多个包
+- 黏包
+	- 服务器把收到的数据包合成为数据
+- 如何判断？
+	- 事先约定数据的大小，当服务器收到的数据包的大小总和达到多少时，黏包
+
+使用 EmbeddedChannel 测试 encoder 和 decoder
+EmbeddedChannel 是一个虚假的 Channel ，并没有通过网络连接，是 netty 自带的测试工具
+
+单元测试的好处
+- 复用测试
+  我现在写好了一个程序，编写了单元测试。
+  一测，有BUG。
+  去改，改完还是用这个单元测试去测试。
+  如果没有单元测试，改一遍，自己测一遍
+
 # 源码链接
 该文章源码链接[https://github.com/kekaiyuan/javaquestion/tree/main/nettydemo](https://github.com/kekaiyuan/javaquestion/tree/main/nettydemo)
