@@ -188,16 +188,16 @@ class ServerChildHandler extends ChannelInboundHandlerAdapter{
 		- `public static ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);`<br>
 		  开辟一个通道组，存储所有客户端的通道
 		- ```java
-				//把通道加入通道组
-				@Override
-				public void channelActive(ChannelHandlerContext ctx) throws Exception {
-					Server.clients.add(ctx.channel());
-				}
+			//把通道加入通道组
+			@Override
+			public void channelActive(ChannelHandlerContext ctx) throws Exception {
+				Server.clients.add(ctx.channel());
+			}
 		  ```
 		  在客户端与服务器的通道初始化时，调用该方法，将该通道加入通道组
-		- 把消息群发给所有客户端
+		- 把消息群发给所有客户端<br>
             `Server.clients.writeAndFlush(buf);`
-		- 把消息返回给发送消息的客户端
+		- 把消息返回给发送消息的客户端<br>
 			`ctx.writeAndFlush(buf);`
 
 # 源码链接
