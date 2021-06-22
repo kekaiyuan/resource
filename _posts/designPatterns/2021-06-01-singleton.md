@@ -153,6 +153,8 @@ public class Mgr06 {
 - volatile 关键字
 	- 线程间可见
 	- 防止指令重排
+
+
 # 静态内部类
 ```java
 /*
