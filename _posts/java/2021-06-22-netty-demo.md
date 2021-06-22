@@ -181,6 +181,7 @@ class ServerChildHandler extends ChannelInboundHandlerAdapter{
 	- 有写数据时，不需要手动关闭 ByteBuf
 - Netty 中一切操作都是异步的，如果需要使用同步等待另一端的消息时，需要调用 `ChannelFuture.sync()` 方法
 	- `ChannelFuture.channel().closeFuture().sync()` 方法会将程序一直运行，直到调用 `close()` 方法，用这个可以使客户端或服务器的长时间启动
+		- 不要在 UI 里执行 `ChannelFuture.channel().closeFuture().sync()` 方法，因为 UI 会被这个方法永久阻塞，最好在 main 方法的末尾调用。因为 main 方法和 UI 是两个线程。
 - 一对一通信和转发的区别
 	- 客户端没区别
 	- 服务器
@@ -202,6 +203,9 @@ class ServerChildHandler extends ChannelInboundHandlerAdapter{
 		- 把消息返回给发送消息的客户端<br>
 			`ctx.writeAndFlush(buf);`
 - 如何启动多个客户端[https://kekaiyuan.github.io//wiki/intellij-idea/#%E5%B9%B6%E5%8F%91%E5%90%AF%E5%8A%A8%E4%BB%A3%E7%A0%81](https://kekaiyuan.github.io//wiki/intellij-idea/#%E5%B9%B6%E5%8F%91%E5%90%AF%E5%8A%A8%E4%BB%A3%E7%A0%81)
+
+# 乱七八糟
+main 方法和 UI 是两个线程
 
 # 源码链接
 该文章源码链接[https://github.com/kekaiyuan/javaquestion/tree/main/nettydemo](https://github.com/kekaiyuan/javaquestion/tree/main/nettydemo)
