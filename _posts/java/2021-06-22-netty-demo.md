@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Java Netty 教程
+title: Java——使用 Netty 实现 CS 模型
 categories: Java
 description: Java Netty 教程
 keywords: Java, Netty
