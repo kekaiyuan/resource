@@ -185,7 +185,10 @@ class ServerChildHandler extends ChannelInboundHandlerAdapter{
 - 一对一通信和转发的区别
 	- 客户端没区别
 	- 服务器
-		- `public static ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);`<br>
+		- ```java
+		  public static ChannelGroup clients = 
+			  new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+		  ```<br>
 		  开辟一个通道组，存储所有客户端的通道
 		- ```java
 			//把通道加入通道组
