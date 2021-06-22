@@ -184,10 +184,10 @@ class ServerChildHandler extends ChannelInboundHandlerAdapter{
 	- `ChannelFuture.channel().closeFuture().sync()` 方法会将程序一直运行，直到调用 `close()` 方法，用这个可以使客户端或服务器的长时间启动
 - 一对一通信和转发的区别
 	- 客户端没区别
-	- 服务器1
+	- 服务器
 		- ```java
-			  public static ChannelGroup clients = 
-				  new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+		  public static ChannelGroup clients = 
+			  new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
 		  ```
 		  开辟一个通道组，存储所有客户端的通道
 		- ```java
