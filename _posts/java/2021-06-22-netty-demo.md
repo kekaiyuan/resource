@@ -16,8 +16,8 @@ Netty 实现了对 **NIO** 的**封装**，使用起来更加方便
 使用 Netty 实现基本的客户端服务器模型。
 
 包括两种通讯方式：
-- 客户端和服务器一对一通信
-- 服务器将某客户端的消息转发给所有客户端，实现客户端之间的同步
+- 客户端和服务器**一对一**通信
+- 服务器将某客户端的消息**转发**给所有客户端，实现客户端之间的同步
 
 ## Client
 ```java
@@ -176,16 +176,16 @@ class ServerChildHandler extends ChannelInboundHandlerAdapter{
 }
 ```
 ## 要点
-- netty 的读写都是使用的 ByteBuf ，这是对 NIO 的 ByteBuffer 类的封装，更加方便使用。
-- ByteBuf 需要关闭资源，但是 writeAndFlush 方法会自动关闭 ByteBuf
+- netty 的读写都是使用的 ByteBuf 类，这是对 NIO 的 ByteBuffer 类的封装，更加方便使用。
+- ByteBuf 需要关闭资源，但是 `writeAndFlush` 方法会自动关闭 ByteBuf
 	- 只读数据不写数据时，要手动关闭 ByteBuf
 	- 有写数据时，不需要手动关闭 ByteBuf
-- Netty 中一切操作都是异步的，如果需要使用同步等待另一端的消息时，需要调用ChannelFuture.sync() 方法
-	- ChannelFuture.channel().closeFuture().sync() 方法会将程序一直运行，直到调用 close() 方法，用这个可以客户端或服务器的长时间启动
+- Netty 中一切操作都是异步的，如果需要使用同步等待另一端的消息时，需要调用 `ChannelFuture.sync()` 方法
+	- `ChannelFuture.channel().closeFuture().sync()` 方法会将程序一直运行，直到调用 `close()` 方法，用这个可以使客户端或服务器的长时间启动
 - 一对一通信和转发的区别
 	- 客户端没区别
-	- 服务端
-		- public static ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);
+	- 服务器
+		- `public static ChannelGroup clients = new DefaultChannelGroup(GlobalEventExecutor.INSTANCE);`<br>
 		  开辟一个通道组，存储所有客户端的通道
 		- ```java
 				//把通道加入通道组
