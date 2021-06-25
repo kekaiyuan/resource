@@ -104,6 +104,9 @@ keywords: Java，设计模式
 	//配料装饰类
 	public abstract class CondimentDecorator extends Beverage{
 
+		//被装饰的对象
+		protected Beverage beverage = null;
+
 		@Override
 		public abstract String getDescription();
 	}
@@ -131,8 +134,6 @@ keywords: Java，设计模式
 	//珍珠
 	public class Pearl extends CondimentDecorator{
 
-		private Beverage beverage = null;
-
 		public Pearl(Beverage beverage){
 			this.beverage = beverage;
 		}
@@ -153,7 +154,6 @@ keywords: Java，设计模式
 	```java
 	//椰果
 	public class Coco extends CondimentDecorator{
-		private Beverage beverage = null;
 
 		public Coco(Beverage beverage){
 			this.beverage = beverage;
@@ -218,5 +218,5 @@ keywords: Java，设计模式
 2. 通过无限调用构造方式形成套娃，与递归函数很类似。
 
 
-# 源码链接
-该文章源码链接[url](url)
+## 源码链接
+该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/decorator)
