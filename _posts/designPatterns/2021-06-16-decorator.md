@@ -8,9 +8,30 @@ keywords: Java，设计模式
 
 设计模式之——装饰者 Decorator
 
-# 概念
+装饰者模式，是一种可以给对象**无限**加“**装饰**”的模式。
 
-> 以下内容引用自[菜鸟教程](https://www.runoob.com/design-pattern/decorator-pattern.html)
+日常生活中，穿衣服是装饰行为。
+
+我可以穿一件衣服、两件衣服、三件衣服……数量是无限的
+
+我可以穿一件衬衫。
+我可以穿一件衬衫 + 一件外套。
+我可以穿一件衬衫 + 两件外套。
+我可以穿两件衬衫。
+我可以穿两件衬衫 + 一件外套。
+搭配是无限的。
+
+奶茶也一样。
+
+我可以选择不加配料，一份配料，两份配料……只要杯子装得下，我可以想装多少装多少。
+
+其配料的搭配也是无限的。
+
+这就是装饰者模式。
+
+## 概念
+
+> 以下内容引用自 [菜鸟教程](https://www.runoob.com/design-pattern/decorator-pattern.html)
 > 
 > ### 装饰器模式
 > 装饰器模式（Decorator Pattern）允许向一个现有的对象添加新的功能，同时又不改变其结构。这种类型的设计模式属于结构型模式，它是作为现有的类的一个包装。
@@ -52,6 +73,136 @@ keywords: Java，设计模式
 > 
 > 注意事项
 > - 可代替继承。
+
+## 代码示例
+用装饰者模式实现想加多少配料就加多少配料的奶茶，并且搭配不限。
+
+装饰者模式的关键在于：
+**被装饰类和装饰类都必须继承于同一个类。**
+
+- 抽象类
+
+	Beverage 是被装饰类和装饰类共同的父类
+	```java
+	  public abstract class Beverage {
+
+		//饮料的描述
+		protected String description = null;
+		public String getDescription(){
+			return description;
+		}
+
+		//饮料的价格
+		public abstract double cost();
+	}
+	```
+	
+	配料装饰类
+	```java
+	//配料装饰类
+	public abstract class CondimentDecorator extends Beverage{
+
+		@Override
+		public abstract String getDescription();
+	}
+	```
+	
+- 奶茶的茶底 绿茶
+
+
+	```java
+	public class GreenTea extends Beverage{
+
+		public GreenTea(){
+			this.description = "绿茶";
+		}
+
+		@Override
+		public double cost() {
+			return 8;
+		}
+	}
+	```
+	
+- 奶茶的装饰 珍珠和椰果
+	```java
+	//珍珠
+	public class Pearl extends CondimentDecorator{
+
+		private Beverage beverage = null;
+
+		public Pearl(Beverage beverage){
+			this.beverage = beverage;
+		}
+
+		//价格+1
+		@Override
+		public double cost() {
+			return beverage.cost()+1;
+		}
+
+		//添加描述
+		@Override
+		public String getDescription() {
+			return beverage.getDescription() + " + 珍珠";
+		}
+	}
+	```
+	```java
+	//椰果
+	public class Coco extends CondimentDecorator{
+		private Beverage beverage = null;
+
+		public Coco(Beverage beverage){
+			this.beverage = beverage;
+		}
+
+		//价格+2
+		@Override
+		public double cost() {
+			return beverage.cost()+2;
+		}
+
+		//添加描述
+		@Override
+		public String getDescription() {
+			return beverage.getDescription() + " + 椰果";
+		}
+	}
+	```
+	
+- 测试
+	```java
+	public class Main {
+		public static void main(String[] args) {
+			Beverage beverage = new GreenTea();
+			System.out.println(beverage.getDescription() + " : "+beverage.cost());
+
+			beverage = new Pearl(beverage);
+			System.out.println(beverage.getDescription() + " : "+beverage.cost());
+
+			beverage = new Pearl(beverage);
+			System.out.println(beverage.getDescription() + " : "+beverage.cost());
+
+			beverage = new Coco(beverage);
+			System.out.println(beverage.getDescription() + " : "+beverage.cost());
+
+			beverage = new Coco(beverage);
+			System.out.println(beverage.getDescription() + " : "+beverage.cost());
+
+		}
+	}
+	```
+	
+- 输出
+	```java
+	绿茶 : 8.0
+	绿茶 + 珍珠 : 9.0
+	绿茶 + 珍珠 + 珍珠 : 10.0
+	绿茶 + 珍珠 + 珍珠 + 椰果 : 12.0
+	绿茶 + 珍珠 + 珍珠 + 椰果 + 椰果 : 14.0
+	```
+
 
 # 源码链接
 该文章源码链接[url](url)
