@@ -10,7 +10,7 @@ keywords: Java，设计模式
 
 # 概念
 
-> 以下内容引用自https://www.runoob.com/design-pattern/decorator-pattern.html
+> 以下内容引用自[菜鸟教程](https://www.runoob.com/design-pattern/decorator-pattern.html)
 > 
 > ### 装饰器模式
 > 装饰器模式（Decorator Pattern）允许向一个现有的对象添加新的功能，同时又不改变其结构。这种类型的设计模式属于结构型模式，它是作为现有的类的一个包装。

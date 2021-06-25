@@ -8,9 +8,9 @@ keywords: Java，设计模式
 
 设计模式之——单例 Singleton
 
-# 概念
+## 概念
 
-> 以下内容引用自[菜鸟教程](https://www.runoob.com/design-pattern/singleton-pattern.html)
+> 以下内容引用自 [菜鸟教程](https://www.runoob.com/design-pattern/singleton-pattern.html)
 > 
 > ### 单例模式
 > 单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。
@@ -59,8 +59,8 @@ keywords: Java，设计模式
 > 注意事项
 > - getInstance() 方法中需要使用同步锁 synchronized (Singleton.class) 防止多线程同时进入造成 instance 被多次实例化。
 
-# 类型
-## 饿汉式
+## 类型
+### 饿汉式
 ```java
 /*
 * 饿汉式
@@ -102,7 +102,7 @@ public class Mgr02 {
 }
 ```
 
-## 懒汉式
+### 懒汉式
 ```java
 /*
 * 用的时候才初始化
@@ -166,7 +166,7 @@ public class Mgr05 {
 }
 
 ```
-## 双检锁
+### 双检锁
 ```java
 /*
  * Mgr05的改进，双重检查
@@ -204,7 +204,7 @@ public class Mgr06 {
 	- 防止指令重排
 
 
-## 静态内部类
+### 静态内部类
 ```java
 /*
 * 静态内部类方式
@@ -231,7 +231,7 @@ java的反射可以通过class文件new实例，以上七种办法都无法抵�
 想要防止反序列化，需要设置一些内部变量，非常复杂。
 最简单的办法就是枚举单例，因为枚举类没有构造方法。
 
-## 枚举
+### 枚举
 
 ```java
 /*
@@ -244,7 +244,7 @@ public enum Mgr08 {
 
 }
 ```
-# 如何检查是否是单例模式？
+## 如何检查是否是单例模式？
 ```java
 //多线程访问，通过hashcode检验是否是单例模式
 for(int i=0;i<100;i++){
@@ -253,4 +253,4 @@ for(int i=0;i<100;i++){
 ```
 
 ## 源码链接
-该文章源码链接[https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/singleton](https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/singleton)
+该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/singleton)

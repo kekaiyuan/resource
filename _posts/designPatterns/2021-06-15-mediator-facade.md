@@ -37,7 +37,7 @@ keywords: Java，设计模式
 
 ### 概念
 
-> 以下内容引用自[https://www.runoob.com/design-pattern/mediator-pattern.html](https://www.runoob.com/design-pattern/mediator-pattern.html)
+> 以下内容引用自 [菜鸟教程](https://www.runoob.com/design-pattern/mediator-pattern.html)
 > 
 > - 意图
 > 	- 用一个中介对象来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。
@@ -106,7 +106,7 @@ keywords: Java，设计模式
 
 这种模式涉及到一个单一的类，该类提供了客户端请求的简化方法和对现有系统类方法的委托调用。
 
-> 以下内容引用自[https://www.runoob.com/design-pattern/facade-pattern.html](https://www.runoob.com/design-pattern/facade-pattern.html)
+> 以下内容引用自 [菜鸟教程](https://www.runoob.com/design-pattern/facade-pattern.html)
 > 
 > - 意图
 > 	- 为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。
