@@ -59,7 +59,7 @@ windows的文件系统就是树状结构。
 > 注意事项
 > - 定义时为具体类。
 
-# 案例
+## 案例
 如何用组合模式模拟一个只有文件名的简单文件系统？
 
 该文件系统有文件和文件夹两种成员，文件夹下可以添加任意个文件夹和文件。
@@ -68,7 +68,7 @@ windows的文件系统就是树状结构。
 ![enter description here](/images/posts/designpatterns/composite/uml.png)
 
 - 抽象类
-	- 文件夹和文件都继承于这个抽象类1
+	- 文件夹和文件都继承于这个抽象类
 		```java
 		abstract class Node {
 			//打印该节点的内容
@@ -150,6 +150,21 @@ windows的文件系统就是树状结构。
 		}
 	}
 	```
+- 结果
+	```java
+	root
+	-chapter1
+	--c11
+	--c12
+	-chapter2
+	--section21
+	---c211
+	---c212
+	-r1
+	```
 
-# 源码链接
-该文章源码链接[https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/composite](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/composite)
+## 注意
+遍历树状结构时最好使用**递归**，虽然会增加资源消耗，但是编程简单，不易出错。
+
+## 源码链接
+该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/composite)
