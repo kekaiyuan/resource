@@ -10,7 +10,7 @@ keywords: Java，设计模式
 
 ## 概念
 
-> 以下内容引用自[菜鸟教程](https://www.runoob.com/design-pattern/singleton-pattern.html)
+> 以下内容引用自 [菜鸟教程](https://www.runoob.com/design-pattern/singleton-pattern.html)
 > 
 > ### 单例模式
 > 单例模式（Singleton Pattern）是 Java 中最简单的设计模式之一。这种类型的设计模式属于创建型模式，它提供了一种创建对象的最佳方式。
