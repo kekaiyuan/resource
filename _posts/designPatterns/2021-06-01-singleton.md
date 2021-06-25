@@ -253,4 +253,4 @@ for(int i=0;i<100;i++){
 ```
 
 ## 源码链接
-该文章源码链接[ Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/singleton)
+该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/singleton)
