@@ -218,6 +218,8 @@ TCP
 	- 服务器把收到的数据包合成为数据
 - 如何判断？
 	- 事先约定数据的大小，当服务器收到的数据包的大小总和达到多少时，黏包
+	- 定义消息头，告诉对方我的消息有多长
+		- 消息头，数据长度，数据，校验码
 
 使用 EmbeddedChannel 测试 encoder 和 decoder
 EmbeddedChannel 是一个虚假的 Channel ，并没有通过网络连接，是 netty 自带的测试工具
@@ -228,6 +230,13 @@ EmbeddedChannel 是一个虚假的 Channel ，并没有通过网络连接，是 
   一测，有BUG。
   去改，改完还是用这个单元测试去测试。
   如果没有单元测试，改一遍，自己测一遍
+  
+- nagle算法
+	不会发送小包，而是把小包合成大包发送出去
+	对游戏不适合，禁用nagle算法
+	
+# 自定义协议
+
 
 # 源码链接
 该文章源码链接[https://github.com/kekaiyuan/javaquestion/tree/main/nettydemo](https://github.com/kekaiyuan/javaquestion/tree/main/nettydemo)
