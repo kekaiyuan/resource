@@ -8,7 +8,7 @@ keywords: Java，设计模式
 
 设计模式之——享元 Flyweight
 
-# 什么是享元模式
+## 享元模式
 
 重复利用现有对象，避免创建新对象，减少对系统资源的使用。
 
@@ -18,9 +18,9 @@ keywords: Java，设计模式
 
 这时候就应该使用享元，让它们指向同一个对象。
 
-# 概念
+## 概念
 
-> 以下内容引用自[https://www.runoob.com/design-pattern/flyweight-pattern.html](https://www.runoob.com/design-pattern/flyweight-pattern.html)
+> 以下内容引用自 [菜鸟教程](https://www.runoob.com/design-pattern/flyweight-pattern.html)
 > 
 > ### 享元模式
 > 享元模式（Flyweight Pattern）主要用于减少创建对象的数量，以减少内存占用和提高性能。这种类型的设计模式属于结构型模式，它提供了减少对象数量从而改善应用所需的对象结构的方式。
@@ -65,7 +65,7 @@ keywords: Java，设计模式
 > - 注意划分外部状态和内部状态，否则可能会引起线程安全问题。 
 > - 这些类必须有一个工厂对象加以控制。
 
-# 使用
+## 使用
 - 享元模式最常用的方式是缓存池，线程池、常量池都属于享元模式。
 
 - 现在有类A，组建一个类A的缓存池APool。<br>
