@@ -152,4 +152,4 @@ windows的文件系统就是树状结构。
 	```
 
 # 源码链接
-该文章源码链接[https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/composite](https://github.com/kekaiyuan/designpatterns/tree/main/src/com/kky/dp/composite)
+该文章源码链接[https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/composite](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/composite)
