@@ -86,7 +86,7 @@ keywords: Java，设计模式
 
 	Beverage 是被装饰类和装饰类共同的父类
 	```java
-	  public abstract class Beverage {
+	public abstract class Beverage {
 
 		//饮料的描述
 		protected String description = null;
