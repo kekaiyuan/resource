@@ -8,15 +8,31 @@ keywords: Java，设计模式
 
 设计模式之——组合 Composite
 
-# 什么是组合模式
-组合模式就是将一组类似的对象通过树状结构组织到一起。
+## 组合模式
+组合模式是一种将一组相似的对象组合成单一对象的模式。
 
-windows的文件系统就是树状结构。
+典型就是文件系统。
 
-打开一个文件夹A，里面有文件夹B、文件夹C和一堆文件，文件夹B和文件夹C里也有文件夹和文件......
+文件组合成文件夹，但是文件夹并没有脱离文件的范畴。
+文件夹依然与文件一样，可以与其他的文件或文件夹组成新的文件夹。
 
-# 概念
-> 以下内容引用自[https://www.runoob.com/design-pattern/composite-pattern.html](https://www.runoob.com/design-pattern/composite-pattern.html)
+组合模式是一个对应树状结构的设计模式。
+
+组合模式很简单，“组合” 和 “个体” 都继承于某个类，而 “组合” 只比 “个体” 多了个 add 方法和 remove 方法。
+
+比如说。
+人是对象，一群人就是一组人的组合。作为个体的“人”和作为组合的“一群人”都继承于人这个概念。
+人能做什么，一群人也能做什么，组合无法脱离个体的属性范畴。
+“你给我认真听讲！”
+“你给赶紧吃饭！”
+把 “你” 换成 “你们” ，这些话依然是合理的。
+
+组合唯一多出来的，就是增加和删除。
+一群人中加入一个人或是一群人中踢掉某个人。
+仅此而已。
+
+## 概念
+> 以下内容引用自 [菜鸟教程](https://www.runoob.com/design-pattern/composite-pattern.html)
 > 
 > ### 组合模式
 > 组合模式（Composite Pattern），又叫部分整体模式，是用于把一组相似的对象当作一个单一的对象。组合模式依据树形结构来组合对象，用来表示部分以及整体层次。这种类型的设计模式属于结构型模式，它创建了对象组的树形结构。
@@ -59,7 +75,7 @@ windows的文件系统就是树状结构。
 > 注意事项
 > - 定义时为具体类。
 
-# 案例
+## 案例
 如何用组合模式模拟一个只有文件名的简单文件系统？
 
 该文件系统有文件和文件夹两种成员，文件夹下可以添加任意个文件夹和文件。
@@ -68,7 +84,7 @@ windows的文件系统就是树状结构。
 ![enter description here](/images/posts/designpatterns/composite/uml.png)
 
 - 抽象类
-	- 文件夹和文件都继承于这个抽象类1
+	- 文件夹和文件都继承于这个抽象类
 		```java
 		abstract class Node {
 			//打印该节点的内容
@@ -150,6 +166,21 @@ windows的文件系统就是树状结构。
 		}
 	}
 	```
+- 结果
+	```java
+	root
+	-chapter1
+	--c11
+	--c12
+	-chapter2
+	--section21
+	---c211
+	---c212
+	-r1
+	```
 
-# 源码链接
-该文章源码链接[https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/composite](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/composite)
+## 注意
+遍历树状结构时最好使用**递归**，虽然会增加资源消耗，但是编程简单，不易出错。
+
+## 源码链接
+该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/composite)

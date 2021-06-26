@@ -8,7 +8,7 @@ keywords: Java,设计模式
 
 设计模式之——责任链 Chain of Responsibility
 
-# 什么是责任链？
+## 责任链
 
 现在有一款坦克大战的小游戏，里面有三种对象，坦克、子弹、墙
 
@@ -38,9 +38,9 @@ keywords: Java,设计模式
  
 这就是责任链，把对某种对象的处理流程组成一个链条，这样只需要把对象放入链条中，它就会被正确的处理 
 
-# 概念
+## 概念
 
-> 以下内容引用自[https://www.runoob.com/design-pattern/chain-of-responsibility-pattern.html](https://www.runoob.com/design-pattern/chain-of-responsibility-pattern.html)
+> 以下内容引用自 [菜鸟教程](https://www.runoob.com/design-pattern/chain-of-responsibility-pattern.html)
 > 
 > ### 责任链模式
 > 顾名思义，责任链模式（Chain of Responsibility Pattern）为请求创建了一个接收者对象的链。这种模式给予请求的类型，对请求的发送者和接收者进行解耦。这种类型的设计模式属于行为型模式。
@@ -87,7 +87,7 @@ keywords: Java,设计模式
 > 注意事项
 > - 在 JAVA WEB 中遇到很多应用。
 
-# 碰撞链
+## 碰撞链
 实现坦克大战中，坦克与坦克、坦克与子弹、坦克与墙、子弹与墙的碰撞链<br>
 坦克、子弹、墙都是 GameObject 的子类
 
@@ -172,7 +172,7 @@ keywords: Java,设计模式
 	只需要用双重循环遍历游戏对象所有可能的两两组合，并把组合传入责任链中，即可实现碰撞检测。
 	这样写可以实现程序的解耦，无论责任链怎么变，外部的调用都不需要修改。
 	
-# Servlet中的责任链
+## Servlet中的责任链
 Servlet 是常用的前后端交互的技术，它把前端发送的请求传入后端进行处理然后再返回给前端。<br>
 从 Client 到 Server ，称为 Request 。<br>
 从后端到 Client ，称为 Response 。<br>
@@ -203,5 +203,5 @@ Response 需要 Filter 加上必要的前端信息。
 ```java
 
 ```
-# 源码链接
-该文章源码链接[url](url)
+## 源码链接
+该文章源码链接 [url](url)
