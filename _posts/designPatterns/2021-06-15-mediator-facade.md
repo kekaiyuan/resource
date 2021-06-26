@@ -10,8 +10,6 @@ keywords: Java，设计模式
 
 ## 中介者模式Mediator
 
-### 什么是中介者？
-
 假设现在你有五个模块，这五个模块之间互有联系。
 
  ![enter description here](/images/posts/designpatterns/mediator-facade/mediator-01.png)
@@ -76,8 +74,6 @@ keywords: Java，设计模式
 > 	- 不应当在职责混乱的时候使用。
 
 ## 外观模式Facade
-
-### 什么是外观模式？
 
 外观模式和中介者模式非常像，其核心思想都是把程序解耦，把各个模块之间的复杂联系集中到一个单独的类中。
 
