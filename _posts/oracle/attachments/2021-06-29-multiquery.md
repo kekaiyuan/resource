@@ -140,6 +140,7 @@ WHERE table1.column1 = table2.column2;
 
 生成的表的总条数为 m\*n
 
+`select * from A,B;`
 | A.X | A.Y | A.S | B.S | B.D |
 | --- | --- | --- | --- | --- |
 | 1   | 2   | 2  | 3   | 3   |
