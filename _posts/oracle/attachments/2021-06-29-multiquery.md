@@ -104,7 +104,14 @@ WHERE table1.column1 = table2.column2;
 
 #### 非等值连接
 使用 < , > , <= , >= , != 等关系符号连接时称为非等值连接
-例：`select * from emp,salgrade where sal between losal and hisal;`
+
+例：`select * from A,B where A.S > B.S;`
+
+| A.X | A.Y | A.S | B.S | B.D |
+| --- | --- | --- | --- | --- |
+| 1   | 2   | 4   | 3   | 3   |
+
+表A只有记录 (1,2,4) 中的S大于表B中记录 (3,3) 中的S
 
 #### 外连接
 在前两种连接中，如果表A中的某条数据与表B中的某条数据有某种对应关系。
