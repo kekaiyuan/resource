@@ -23,17 +23,6 @@ keywords: Oracle
 
 ## 1992语法
 
-- 连接的类型：
-	- 等值连接<br>
-		Equijoin
-	- 非等值连接<br>
-		Non-equijoin
-	- 外连接 <br>
-		Outer join
-	- 自连接 <br>
-		Self join
-
-### 连接种类
 92语法共有五种连接方式：
 - 等值连接
 - 非等值连接
@@ -60,7 +49,7 @@ keywords: Oracle
 | 5   | 5   | 
 
 
-#### 等值连接
+### 等值连接
 根据 **where子句** 中的等式连接两张表
 
 例：`select * from A,B where A.S = B.S;`
@@ -79,7 +68,7 @@ keywords: Oracle
 	将 table1 中的 column1 与 table2 中的 column2 相等的记录连接到一起。
 - 一般而言 column1 为 table1 的主键，column2 为 table2 的主键。
 
-#### 非等值连接
+### 非等值连接
 使用 < , > , <= , >= , != 等关系符号连接时称为非等值连接
 
 例：`select * from A,B where A.S > B.S;`
@@ -90,7 +79,7 @@ keywords: Oracle
 
 表A只有记录 (1,2,4) 中的S大于表B中记录 (3,3) 中的S
 
-#### 外连接
+### 外连接
 
 在前两种连接中，如果表中存在无法连接的记录，该记录会被舍弃。
 
@@ -98,7 +87,7 @@ keywords: Oracle
 - 外连接运算符是 (+)
 - 有左外连接和右外连接
 
-##### 左外连接
+#### 左外连接
 显示左表的全部数据
 
 `select * from A,B where A.S = B.S(+);`
@@ -109,7 +98,7 @@ keywords: Oracle
 | 1   | 2   | 3   | 3   | 3   |
 | 1   | 2   | 4   | 4   | 4   |
 
-##### 右外连接
+#### 右外连接
 显示右表的全部数据
 
 `select * from A,B where A.S(+) = B.S;`
@@ -121,7 +110,7 @@ keywords: Oracle
 |      |      |      | 5   | 5   |
 
 
-#### 自连接
+### 自连接
 和自己进行连接
 
 `select * from A A1,A A2 where A1.Y = A2.S;`
@@ -132,7 +121,7 @@ keywords: Oracle
 | 1   | 2   | 3   | 1   | 2   | 2   |
 | 1   | 2   | 4   | 1   | 2   | 2   |
 
-#### 笛卡尔积
+### 笛卡尔积
 当连接时不指定连接方式时，将默认进行笛卡尔积计算。
 
 将左表的每一条记录和右表的每一条记录进行连接。
@@ -154,7 +143,7 @@ keywords: Oracle
 | 1   | 2   | 4  | 4   | 4   |
 | 1   | 2   | 4  | 5   | 5   |
 
-#### 注意
+### 注意
 - 连接时可以给表起别名，方便操作。<br>
 	有时必须使用别名
 		- 自连接
