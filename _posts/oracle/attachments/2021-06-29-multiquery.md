@@ -67,6 +67,7 @@ WHERE table1.column1 = table2.column2;
 下文将通过表A和表B说明五种连接的区别
 
 表 A
+
 | X   | Y   | S   |  
 | --- | --- | --- |
 | 1   | 2   | 2   |
@@ -74,6 +75,7 @@ WHERE table1.column1 = table2.column2;
 | 1   | 2   | 4   |
 
 表 B
+
 | S   | D   | 
 | --- | --- | 
 | 3   | 3   | 
@@ -85,6 +87,7 @@ WHERE table1.column1 = table2.column2;
 根据 **where子句** 中的等式连接两张表
 
 例：`select * from A,B where A.S = B.S;`
+
 | A.X | A.Y | A.S | B.S | B.D |
 | --- | --- | --- | --- | --- |
 | 1   | 2   | 3   | 3   | 3   |
