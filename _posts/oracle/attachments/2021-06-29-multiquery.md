@@ -21,5 +21,20 @@ keywords: Oracle
 此时需要将两张表合并。<br>
 ![enter description here](/images/posts/oracle/multiquery/employee-department.png)
 
+## 1992语法
+- 语法规则：
+```
+SELECT table1.column, table2.column
+FROM table1, table2
+WHERE table1.column1 = table2.column2; 
+```
+- 在 WHERE 子句中写入连接条件
+- 当多个表中有重名列时，必须在列的名字前加上表名作为前缀
+- 连接的类型：
+	- 等值连接      Equijoin
+	- 非等值连接  Non-equijoin
+	- 外连接 Outer join
+	- 自连接 Self join
+
 ## 源码链接
 该文章源码链接 [](url)
