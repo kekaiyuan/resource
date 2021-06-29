@@ -24,8 +24,8 @@ keywords: Oracle
 ## 1992语法
 - 语法规则：
 ```
-SELECT table1.column, table2.column
-FROM table1, table2
+SELECT table1.column , table2.column
+FROM table1 , table2
 WHERE table1.column1 = table2.column2; 
 ```
 - 在 WHERE 子句中写入连接条件
