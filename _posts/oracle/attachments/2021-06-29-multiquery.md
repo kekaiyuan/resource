@@ -158,7 +158,32 @@ keywords: Oracle
 
 where子句 需要完成两个功能，这就使得 92语法 中的 where子句 格外的臃肿。
 
-为了解决这个问题，提出了 1999语法 。
+1999语法 解决了这个问题，并且提出了一些新的连接方式。
+
+### 语法规则
+```
+CROSS JOIN
+NATURAL JOIN
+USING子句
+ON子句
+RIGHT OUTER JOIN
+FULL OUTER JOIN
+LEFT OUTER JOIN
+Inner outer join
+```
+
+- 笛卡尔积<br>
+    `select * from table1 cross join table2;`
+- 自然连接<br>
+    `select * from table1 natural join table2;`
+	NATURAL JOIN子句基亍两个表中列名完全相同的列产生连接
+		- 两个表有相同名字的列
+		- 数据类型相同
+		- 从两个表中选出连接列的值相等的所有行
+
+
+
+
 
 ## 源码链接
 该文章源码链接 [](url)
