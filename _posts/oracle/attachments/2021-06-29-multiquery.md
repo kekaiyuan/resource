@@ -82,7 +82,13 @@ WHERE table1.column1 = table2.column2;
 
 
 #### 等值连接
-根据指定的等式连接两张表
+根据 **where子句** 中的等式连接两张表
+
+例：`select * from A,B where A.S = B.S;`
+| A.X | A.Y | A.S | B.S | B.D |
+| --- | --- | --- | --- | --- |
+| 1   | 2   | 3   | 3   | 3   |
+| 1   | 2   | 4   | 4   | 4   |
 
 - 语法规则：
 	```
@@ -91,10 +97,7 @@ WHERE table1.column1 = table2.column2;
 	WHERE table1.column1 = table2.column2;
 	```
 	将 table1 中的 column1 与 table2 中的 column2 相等的记录连接到一起。
-- 一般而言 column1 为 table1 的主键，table2 的外键<br>
-    而 column2 为 table2 的主键
-	- 在外键表中的映射字段称为 外键 Foreign key
-	- 在主键表中的唯一字段称为 主键 Primary key
+- 一般而言 column1 为 table1 的主键，column2 为 table2 的主键。
 
 #### 非等值连接
 使用 < , > , <= , >= , != 等关系符号连接时称为非等值连接
