@@ -56,8 +56,35 @@ WHERE table1.column1 = table2.column2;
 - 1、左外: 主表在左边
 - 2、右外: 主表在右边
 
+### 连接种类
+92语法共有五种连接方式：
+- 等值连接
+- 非等值连接
+- 外连接
+- 自连接
+- 笛卡尔积
+
+下文将通过表A和表B说明五种连接的区别
+
+表 A
+
+| X   | Y   | S   |  
+| --- | --- | --- |
+| 1   | 2   | 2   |
+| 1   | 2   | 3   |
+| 1   | 2   | 4   |
+
+表 B
+
+| S   | D   | 
+| --- | --- | 
+| 3   | 3   | 
+| 4   | 4   | 
+| 5   | 5   | 
+
+
 ### 等值连接
-两个表中包含相同的列名
+根据指定的等式连接两张表
 
 - 语法规则：
 	```
@@ -65,15 +92,14 @@ WHERE table1.column1 = table2.column2;
 	FROMtable1, table2
 	WHERE table1.column1 = table2.column2;
 	```
-- 笛卡尔积：表\*表 
-- 主外键
+	将 table1 中的 column1 与 table2 中的 column2 相等的记录连接到一起。
+- 一般而言 column1 为 table1 的主键，table2 的外键<br>
+    而 column2 为 table2 的主键
 	- 在外键表中的映射字段称为 外键 Foreign key
 	- 在主键表中的唯一字段称为 主键 Primary key
 
 ### 非等值连接
-两个表中没有相同的列名，但是某一个列在另一张表的列的范围之中
-
-< , > , <= , >= , != 连接时称为非等值连接
+使用 < , > , <= , >= , != 等关系符号连接时称为非等值连接
 例：`select * from emp,salgrade where sal between losal and hisal;`
 
 ### 外连接
@@ -84,19 +110,6 @@ WHERE table1.column1 = table2.column2;
 
 如：
 
-表 A
-| X   | Y   | S   |  
-| --- | --- | --- |
-| 1   | 2   | 2   |
-| 1   | 2   | 3   |
-| 1   | 2   | 4   |
-
-表 B
-| S   | D   | 
-| --- | --- | 
-| 3   | 3   | 
-| 4   | 4   | 
-| 5   | 5   | 
 
 `select * from A,B where A.S = B.S;`
 
