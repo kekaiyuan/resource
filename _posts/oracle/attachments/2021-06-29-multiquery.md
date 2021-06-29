@@ -115,6 +115,7 @@ WHERE table1.column1 = table2.column2;
 
 左外连接
 显示左表的全部
+`select * from A,B where A.S = B.S(+);`
 | A.X | A.Y | A.S | B.S | B.D |
 | --- | --- | --- | --- | --- |
 | 1   | 2   | 2   |      |      |
@@ -122,6 +123,7 @@ WHERE table1.column1 = table2.column2;
 | 1   | 2   | 4   | 4   | 4   |
 
 右外连接
+`select * from A,B where A.S(+) = B.S;`
 显示右表的全部数据
 | A.X | A.Y | A.S | B.S | B.D |
 | --- | --- | --- | --- | --- |
