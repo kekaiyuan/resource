@@ -22,14 +22,7 @@ keywords: Oracle
 ![enter description here](/images/posts/oracle/multiquery/employee-department.png)
 
 ## 1992语法
-- 语法规则：
-```
-SELECT table1.column , table2.column
-FROM table1 , table2
-WHERE table1.column1 = table2.column2; 
-```
-- 在 WHERE 子句中写入连接条件
-- 当多个表中有重名列时，必须在列的名字前加上表名作为前缀
+
 - 连接的类型：
 	- 等值连接<br>
 		Equijoin
@@ -80,7 +73,7 @@ WHERE table1.column1 = table2.column2;
 - 语法规则：
 	```
 	SELECT table1.column, table2.column
-	FROMtable1, table2
+	FROM table1, table2
 	WHERE table1.column1 = table2.column2;
 	```
 	将 table1 中的 column1 与 table2 中的 column2 相等的记录连接到一起。
@@ -163,7 +156,9 @@ WHERE table1.column1 = table2.column2;
 
 #### 注意
 - 连接时可以给表起别名，方便操作。<br>
-	有时必须使用别名，比如自连接。
+	有时必须使用别名
+		- 自连接
+		- 表中有同名列
 - 可以连接两张以上的表，但是要注意设置连接条件。<br>
     多表连接几乎不使用笛卡尔积连接，因为生成的数据太多。
 
