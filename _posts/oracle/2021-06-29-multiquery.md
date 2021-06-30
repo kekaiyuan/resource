@@ -197,6 +197,18 @@ Inner outer join
 `select * from table1 join table2 on table1.column1 > table2.column2;`
 	
 ### using 子句
+using子句 和 on子句 一样，都可以表示连接条件<br>
+`select * from table1 join table2 using(column1);`<br>
+等同于`select * from table1 join table2 on table1.column1 = table2.column1;`<br>
+
+注意
+- using子句 的连接条件是同名列，而且不能使用表名进行修饰。<br>
+	~~`select * from table1 join table2 using(table1.column1);`~~<br>
+	该语句是错误的。
+- using子句 类似于自然连接，使用同名列进行连接，同样地会去除重复的同名列。<br>
+	而 on子句 不会去除重复的同名列。
+- 当两张表存在 n 个同名列时，自然连接会将所有的同名列进行连接。<br>
+	而 using子句 则根据指定的同名列进行连接。
 	
 ### 外连接
 #### 左外连接
@@ -227,18 +239,7 @@ Inner outer join
 等同于`select * from table1 join table2 on 连接条件;`
 
 ### using子句
-using子句 和 on子句 一样，都可以表示连接条件<br>
-`select * from table1 join table2 using(column1);`<br>
-等同于`select * from table1 join table2 on table1.column1 = table2.column1;`<br>
 
-注意
-- using子句 的连接条件是同名列，而且不能使用表名进行修饰。<br>
-	~~`select * from table1 join table2 using(table1.column1);`<br>~~<br>
-	该语句是错误的。
-- using子句 类似于自然连接，使用同名列进行连接，同样地会去除重复的同名列。<br>
-	而 on子句 不会去除重复的同名列。
-- 当两张表存在 n 个同名列时，自然连接会将所有的同名列进行连接。<br>
-	而 using子句 则根据指定的同名列进行连接。
 		
 		
 
