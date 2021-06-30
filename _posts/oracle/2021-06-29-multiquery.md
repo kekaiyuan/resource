@@ -173,8 +173,12 @@ LEFT OUTER JOIN
 Inner outer join
 ```
 
-- 笛卡尔积<br>
-    `select * from table1 cross join table2;`
+99语法 中共有**八种**连接方式，其中有部分连接原理等同于 92语法 。<br>
+只是为了方便书写，更改了书写方式。
+
+### 笛卡尔积
+原理等同于 92语法 的笛卡尔积<br>
+`select * from table1 cross join table2;`
 - 自然连接<br>
     `select * from table1 natural join table2;`
 	- NATURAL JOIN子句基亍两个表中列名完全相同的列产生连接
