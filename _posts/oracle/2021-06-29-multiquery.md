@@ -66,7 +66,7 @@ keywords: Oracle
 	WHERE table1.column1 = table2.column2;
 	```
 	将 table1 中的 column1 与 table2 中的 column2 相等的记录连接到一起。
-- 一般而言 column1 为 table1 的主键，column2 为 table2 的主键。
+- 一般而言 column1 为 table1 的**外键**，column2 为 table2 的**主键**。
 
 ### 非等值连接
 使用 < , > , <= , >= , != , between and 等关系符号连接时称为非等值连接
@@ -284,7 +284,7 @@ using子句 和 on子句 一样，都可以表示连接条件<br>
 `select * from table1 inner join table2 on 连接条件;`<br>
 等同于`select * from table1 join table2 on 连接条件;`
 
-没有什么特殊意义，可直接视为 on子句。
+没有什么特殊意义，可视为 on子句。
 
 ## 总结
 在实际开发中，92语法 和 99语法 都能够运行，并没有限制。
