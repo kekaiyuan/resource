@@ -232,8 +232,10 @@ Inner outer join
 
 ### on 子句
 添加连接条件，包括等值和非等值<br>
-`select * from table1 join table2 on table1.column1 = table2.column2;`<br>
-`select * from table1 join table2 on table1.column1 > table2.column2;`
+- `select * from table1 join table2 on table1.column1 = table2.column2;`<br>
+	等同于 92语法 的等值连接
+- `select * from table1 join table2 on table1.column1 > table2.column2;`<br>
+	等同于 92语法 的非等值连接
 	
 ### using 子句
 using子句 和 on子句 一样，都可以表示连接条件<br>
