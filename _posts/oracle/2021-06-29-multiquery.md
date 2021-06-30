@@ -162,16 +162,6 @@ where子句 需要完成两个功能，这就使得 92语法 中的 where子句 
 1999语法 解决了这个问题，并且提出了一些新的连接方式。
 
 ### 语法规则
-```
-CROSS JOIN
-NATURAL JOIN
-USING子句
-ON子句
-RIGHT OUTER JOIN
-FULL OUTER JOIN
-LEFT OUTER JOIN
-Inner outer join
-```
 
 99语法 中共有**八种**连接方式，其中有部分连接原理等同于 92语法 。<br>
 只是为了方便书写，更改了书写方式。
@@ -242,7 +232,7 @@ using子句 和 on子句 一样，都可以表示连接条件<br>
 `select * from table1 join table2 using(column1);`<br>
 等同于`select * from table1 join table2 on table1.column1 = table2.column1;`<br>
 
-注意
+#### 注意
 - using子句 的连接条件是同名列，而且不能使用表名进行修饰。<br>
 	~~`select * from table1 join table2 using(table1.column1);`~~<br>
 	该语句是错误的。
