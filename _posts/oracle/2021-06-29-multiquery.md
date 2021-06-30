@@ -221,7 +221,7 @@ Inner outer join
 - 类似于 92语法 中的 **等值连接**<br>
 	但是 自然连接 会去除**重复**的列，而 等值连接 不会。
 - 自然连接会将两张表中**所有**的同名列作为连接条件。<br>
-    `select * from A natrual join C;`
+    例：`select * from A natrual join C;`
 	
 	| Y | S | A.X | C.Z |
 	| --- | --- | --- | --- |
