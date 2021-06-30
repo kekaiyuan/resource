@@ -69,7 +69,7 @@ keywords: Oracle
 - 一般而言 column1 为 table1 的主键，column2 为 table2 的主键。
 
 ### 非等值连接
-使用 < , > , <= , >= , != 等关系符号连接时称为非等值连接
+使用 < , > , <= , >= , != , between and 等关系符号连接时称为非等值连接
 
 例：`select * from A,B where A.S > B.S;`
 
@@ -189,7 +189,25 @@ Inner outer join
     添加连接条件，包括等值和非等值<br>
     `select * from table1 join table2 on table1.column1 = table2.column2;`<br>
 	`select * from table1 join table2 on table1.column1 > table2.column2;`
-
+- 外连接
+	- 左外连接<br>
+		`select * from table1 left outer join table2 on 连接条件;`
+	- 右外连接<br>
+		`select * from table1 right outer join table2 on 连接条件;`
+	- 全外连接<br>
+		99语法 的新特性<br>
+		能显示左表和右表的全部数据，兼顾了左外连接和右外连接。<br>
+		`select * from table1 full outer join table2 on 连接条件;`
+		
+		例：`select * from A full outer join B on A.S = B.S;`
+	
+		| A.X | A.Y | A.S | B.S | B.Z |
+		| --- | --- | --- | --- | --- |
+		| 1   | 2   | 3   | 3   | 3   |
+		| 1   | 2   | 4   | 4   | 4   |
+		|      |      |      | 5   | 5   |
+		| 1   | 2   | 2   |      |      |
+		
 
 
 
