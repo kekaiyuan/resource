@@ -177,8 +177,8 @@ Inner outer join
 只是为了方便书写，更改了书写方式。
 
 ### 笛卡尔积
-等同于 92语法 的笛卡尔积<br>
-`select * from table1 cross join table2;`
+`select * from table1 cross join table2;`<br>
+等同于 92语法 的笛卡尔积
 
 ### 自然连接
 `select * from table1 natural join table2;`
@@ -191,29 +191,26 @@ Inner outer join
 - 自然连接会将两张表中**所有**的同名列作为连接条件。
 - 当两张表中没有列名相同的列时，做**笛卡尔积**。
 
-
-
-### using 子句
-
-
-### on 子句<br>
-    添加连接条件，包括等值和非等值<br>
-    `select * from table1 join table2 on table1.column1 = table2.column2;`<br>
-	`select * from table1 join table2 on table1.column1 > table2.column2;`
+### on 子句
+添加连接条件，包括等值和非等值<br>
+`select * from table1 join table2 on table1.column1 = table2.column2;`<br>
+`select * from table1 join table2 on table1.column1 > table2.column2;`
 	
+### using 子句
 	
 ### 外连接
 #### 左外连接
-等同于 92语法 的左外连接<br>
-`select * from table1 left outer join table2 on 连接条件;`
+`select * from table1 left outer join table2 on 连接条件;`<br>
+等同于 92语法 的左外连接
 	
-#### 右外连接<br>
-等同于 92语法 的右外连接<br>
-`select * from table1 right outer join table2 on 连接条件;`
+#### 右外连接
+`select * from table1 right outer join table2 on 连接条件;`<br>
+等同于 92语法 的右外连接
 	
-#### 全外连接<br>
+#### 全外连接
 99语法 的新特性<br>
 能显示左表和右表的全部数据，兼顾了左外连接和右外连接。<br>
+
 `select * from table1 full outer join table2 on 连接条件;`
 
 例：`select * from A full outer join B on A.S = B.S;`
