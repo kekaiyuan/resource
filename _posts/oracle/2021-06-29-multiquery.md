@@ -165,7 +165,7 @@ where子句 需要完成两个功能，这就使得 92语法 中的 where子句 
 
 99语法 中共有**八种**连接方式，其中有部分连接原理等同于 92语法 。<br>
 只是为了方便书写，更改了书写方式。
-- 笛卡尔积
+- 交叉连接
 - 自然连接
 - on子句
 - using子句
@@ -200,7 +200,7 @@ where子句 需要完成两个功能，这就使得 92语法 中的 where子句 
 | 4   | 2   | 5   |
 | 6   | 2   | 7   |
 
-### 笛卡尔积
+### 交叉连接
 `select * from table1 cross join table2;`<br>
 等同于 92语法 的笛卡尔积
 
@@ -223,7 +223,13 @@ where子句 需要完成两个功能，这就使得 92语法 中的 where子句 
 - 当两张表中没有列名相同的列时，做**笛卡尔积**。
 
 ### on 子句
-添加连接条件，包括等值和非等值<br>
+- 自然连接的条件是基亍表中所有同名列的等值连接
+- 为了设置任意的连接条件戒者指定连接的列，需要使用ON子句
+- 连接条件与其它的查询条件分开书写
+- 使用ON 子句使查询语句更容易理解
+- 包括等值连接和非等值连接
+
+
 - `select * from table1 join table2 on table1.column1 = table2.column2;`<br>
 	等同于 92语法 的等值连接
 - `select * from table1 join table2 on table1.column1 > table2.column2;`<br>
@@ -235,7 +241,7 @@ using子句 和 on子句 一样，都可以表示连接条件<br>
 等同于`select * from table1 join table2 on table1.column1 = table2.column1;`<br>
 
 #### 注意
-- using子句 的连接条件是同名列，而且不能使用表名进行修饰。<br>
+- using子句 的连接条件是同名列，而且不能使用表名或别名进行修饰。<br>
 	~~`select * from table1 join table2 using(table1.column1);`~~<br>
 	该语句是错误的。
 - using子句 类似于自然连接，使用同名列进行连接，同样地会去除重复的同名列。<br>
