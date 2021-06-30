@@ -151,7 +151,8 @@ keywords: Oracle
 	- 自连接
 	- 不同的表中有同名列
 - 可以连接两张以上的表，但是要注意设置连接条件。<br>
-    多表连接几乎不使用笛卡尔积连接，因为生成的数据太多。
+    多表连接几乎不使用笛卡尔积连接，因为生成的数据太多。<br>
+    当有 n 张表进行连接时，至少需要 n-1 个条件，否则一定会发生笛卡尔积。
 
 ## 1999语法
 在 92语法 中，多张表的连接条件放在 where子句 中，同时 where子句 需要对表进行条件过滤。
@@ -176,10 +177,18 @@ Inner outer join
     `select * from table1 cross join table2;`
 - 自然连接<br>
     `select * from table1 natural join table2;`
-	NATURAL JOIN子句基亍两个表中列名完全相同的列产生连接
+	- NATURAL JOIN子句基亍两个表中列名完全相同的列产生连接
 		- 两个表有相同名字的列
 		- 数据类型相同
 		- 从两个表中选出连接列的值相等的所有行
+	- 类似于 92语法 中的 **等值连接**<br>
+		但是 自然连接 会去除**重复**的列，而 等值连接 不会。
+	- 当两张表中没有列名相同的列时，做**笛卡尔积**。
+- using 子句
+- on 子句<br>
+    添加连接条件，包括等值和非等值<br>
+    `select * from table1 join table2 on table1.column1 = table2.column2;`<br>
+	`select * from table1 join table2 on table1.column1 > table2.column2;`
 
 
 
