@@ -66,10 +66,10 @@ keywords: Oracle
 	WHERE table1.column1 = table2.column2;
 	```
 	将 table1 中的 column1 与 table2 中的 column2 相等的记录连接到一起。
-- 一般而言 column1 为 table1 的主键，column2 为 table2 的主键。
+- 一般而言 column1 为 table1 的**外键**，column2 为 table2 的**主键**。
 
 ### 非等值连接
-使用 < , > , <= , >= , != 等关系符号连接时称为非等值连接
+使用 < , > , <= , >= , != , between and 等关系符号连接时称为非等值连接
 
 例：`select * from A,B where A.S > B.S;`
 
@@ -151,7 +151,8 @@ keywords: Oracle
 	- 自连接
 	- 不同的表中有同名列
 - 可以连接两张以上的表，但是要注意设置连接条件。<br>
-    多表连接几乎不使用笛卡尔积连接，因为生成的数据太多。
+    多表连接几乎不使用笛卡尔积连接，因为生成的数据太多。<br>
+    当有 n 张表进行连接时，至少需要 n-1 个条件，否则一定会发生笛卡尔积。
 
 ## 1999语法
 在 92语法 中，多张表的连接条件放在 where子句 中，同时 where子句 需要对表进行条件过滤。
@@ -161,29 +162,213 @@ where子句 需要完成两个功能，这就使得 92语法 中的 where子句 
 1999语法 解决了这个问题，并且提出了一些新的连接方式。
 
 ### 语法规则
+
+99语法 中共有**八种**连接方式，其中有部分连接原理等同于 92语法 。<br>
+只是为了方便书写，更改了书写方式。
+- 交叉连接
+- 自然连接
+- on子句
+- using子句
+- 左外连接
+- 右外连接
+- 全外连接
+- 内连接
+
+使用三个表来说明 99语法 的连接方式。
+
+表 A
+
+| X   | Y   | S   |  
+| --- | --- | --- |
+| 1   | 2   | 2   |
+| 1   | 2   | 3   |
+| 1   | 2   | 4   |
+
+表 B
+
+| S   | Z   | 
+| --- | --- | 
+| 3   | 3   | 
+| 4   | 4   | 
+| 5   | 5   | 
+
+表 C
+
+| S   | Y   | Z   |  
+| --- | --- | --- |
+| 2   | 2   | 3   |
+| 4   | 2   | 5   |
+| 6   | 2   | 7   |
+
+### 交叉连接
+`select * from table1 cross join table2;`<br>
+等同于 92语法 的笛卡尔积。
+将左表的每一行和右表的每一行都进行连接。
+
+### 自然连接
+`select * from table1 natural join table2;`
+- NATURAL JOIN子句基亍两个表中列名完全相同的列产生连接
+	- 两个表有相同名字的列
+	- 数据类型相同
+	- 从两个表中选出连接列的值相等的所有行
+- 类似于 92语法 中的 **等值连接**<br>
+	但是 自然连接 会去除**重复**的列，而 等值连接 不会。
+- 自然连接会将两张表中**所有**的同名列作为连接条件。<br>
+    例：`select * from A natrual join C;`
+	
+	| Y  | S  | A.X | C.Z |
+	| --- | --- | --- | --- |
+	| 2   | 2   | 1   | 3   |
+	| 2   | 4   | 1   | 5   |
+	
+- 当两张表中没有列名相同的列时，做**笛卡尔积**。
+
+### on 子句
+- 自然连接的条件是基亍表中所有同名列的等值连接
+- 为了设置任意的连接条件戒者指定连接的列，需要使用ON子句
+- 连接条件与其它的查询条件分开书写
+- 使用ON 子句使查询语句更容易理解
+- 包括等值连接和非等值连接
+
+
+- `select * from table1 join table2 on table1.column1 = table2.column2;`<br>
+	等同于 92语法 的等值连接
+- `select * from table1 join table2 on table1.column1 > table2.column2;`<br>
+	等同于 92语法 的非等值连接
+	
+#### 使用 on子句 实现两张以上的多表连接
+`select * from table1 join table2 on 连接条件1 join table3 on 连接条件2;`
+	
+### using 子句
+using子句 和 on子句 一样，都可以表示连接条件<br>
+`select * from table1 join table2 using(column1);`<br>
+等同于`select * from table1 join table2 on table1.column1 = table2.column1;`<br>
+
+#### 注意
+- using子句 的连接条件是同名列，而且不能使用表名或别名进行修饰。<br>
+	~~`select * from table1 join table2 using(table1.column1);`~~<br>
+	该语句是错误的。
+- using子句 类似于自然连接，使用同名列进行连接，同样地会去除重复的同名列。<br>
+	而 on子句 不会去除重复的同名列。
+- 当两张表存在 n 个同名列时，自然连接会将所有的同名列进行连接。<br>
+	而 using子句 则根据指定的同名列进行连接。<br>
+    例：`select * from A join C using(S);`
+	
+	| S  | A.X | A.Y | C.Y | C.Z |
+	| --- | --- | --- | --- | --- |
+	| 2   | 1   | 2   | 2   | 3   |
+	| 4   | 1   | 2   | 2   | 5   |
+	
+	`select * from A join C using(S,Y);`
+	
+	| Y  | S  | A.X | C.Z |
+	| --- | --- | --- | --- |
+	| 2   | 2   | 1   | 3   |
+	| 2   | 4   | 1   | 5   |
+
+### 外连接
+#### 左外连接
+`select * from table1 left outer join table2 on 连接条件;`<br>
+等同于 92语法 的左外连接。<br>
+返回所有左边表中的行，即使在右边的表中没有可对应的列值。
+	
+#### 右外连接
+`select * from table1 right outer join table2 on 连接条件;`<br>
+等同于 92语法 的右外连接。<br>
+返回所有右边表中的行，即使在左边的表中没有可对应的列值。
+	
+#### 全外连接
+99语法 的新特性<br>
+能显示左表和右表的全部数据，兼顾了左外连接和右外连接。<br>
+
+`select * from table1 full outer join table2 on 连接条件;`
+
+例：`select * from A full outer join B on A.S = B.S;`
+
+| A.X | A.Y | A.S | B.S | B.Z |
+| --- | --- | --- | --- | --- |
+| 1   | 2   | 3   | 3   | 3   |
+| 1   | 2   | 4   | 4   | 4   |
+|      |      |      | 5   | 5   |
+| 1   | 2   | 2   |      |      |
+	
+### 内连接
+`select * from table1 inner join table2 on 连接条件;`<br>
+等同于`select * from table1 join table2 on 连接条件;`
+
+没有什么特殊意义，on子句 默认就是内连接。
+
+## 总结
+在实际开发中，92语法 和 99语法 都能够运行，并没有限制。
+
+但是最好使用 **99语法** 。
+
+因为 99语法 更美观，功能更强大。
+
+## 子查询
+嵌套在其他 sql 语句中的完整 sql 语句，可以称之为子查询
+分类：
+- 单行子查询
+- 多行子查询
+
+## 限制输出
+现在有这样一个问题：输出薪水最高的**5个**人，怎么做？
+
+这就需要我们限制输出的数量。
+
+在 mysql 中，限制输出的关键字是 **limit** ，非常的见名知意，而且使用非常的**简单方便**。
+
+但是在 oracle 中，限制输出的关键字是 **rownum** ，这个的使用比较**繁琐**。
+
+rownum 指的是行号，在 oracle 中，每一条数据都有对应的行号，我们需要显式地使用行号来完成限制输出的功能。
+
+注意：rownum 不能直接使用，需要**嵌套**使用。
+
+### 输出工资最高的5个人
+`select * from (select * from emp order by sal desc) where rownum <= 5;`
+
+为什么说 rownum 必须**嵌套**使用？
+- 如果这样使用<br>
+    `select * from emp where rownum<=5 order by sal desc;`
+	这条语句的执行顺序是：**先查询** emp 表中的前5条数据，**然后排序**。<br>
+    这样显然是错的。
+- 而`select * from (select * from emp order by sal desc) where rownum <= 5;`<br>
+    的执行顺序是：先将 emp 表按照工资**降序**，然后**输出**前5条数据。<br>
+    这样的结果才是正确的。
+- 因为我们必须先将**数据**处理好，然后再限制**输出**。<br>
+    如果不嵌套的话，那么结果是先限制**输出**，再处理**数据**。
+	
+### 输出工资最高的第6到10名的人
+在 oracle 中，rownum 只能 < 或 <= 某个值，而不能 > 或 >= 某个值
+
+`select * from (select * from emp order by sal desc) where rownum > 5;`<br>
+的执行结果是**空表**。
+
+这是因为 rownum 指的是行号，它是动态改变的。
+
+我们使用`rownum > 5`是为了去除前5条语句。
+而 oracle 的原理是
+
+`rownum > 5`的执行流程：
+- 去除前5条语句。
+- **更新**语句的 rownum。
+	- 类似于现实中的排队。<br>
+		你排在第六位。<br>
+		前五位走了，你就是第一位。
+- 重新执行。
+
+只有当 `rownum >= 0` 时才不会输出空表，但是这毫无意义。
+
+那么这个问题如何实现呢？
 ```
-CROSS JOIN
-NATURAL JOIN
-USING子句
-ON子句
-RIGHT OUTER JOIN
-FULL OUTER JOIN
-LEFT OUTER JOIN
-Inner outer join
+select *
+  from (select e1.*, rownum rn from (select * from emp order by sal desc) e1)
+ where rn > 5
+   and rn <= 10;
 ```
 
-- 笛卡尔积<br>
-    `select * from table1 cross join table2;`
-- 自然连接<br>
-    `select * from table1 natural join table2;`
-	NATURAL JOIN子句基亍两个表中列名完全相同的列产生连接
-		- 两个表有相同名字的列
-		- 数据类型相同
-		- 从两个表中选出连接列的值相等的所有行
+**把 rownum 加入表中成为属性。**
 
-
-
-
-
-## 源码链接
-该文章源码链接 [](url)
+**注意：**
+`select * , rownum rn`会报错<br>
+必须使用`select e1.*, rownum rn`
