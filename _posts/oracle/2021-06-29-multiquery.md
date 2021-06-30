@@ -123,7 +123,7 @@ keywords: Oracle
 | 1   | 2   | 3   | 1   | 2   | 2   |
 | 1   | 2   | 4   | 1   | 2   | 2   |
 
-### <span id="f1">1[.^](#a1)</span>笛卡尔积
+### 笛卡尔积
 当连接时不指定连接方式时，将默认进行笛卡尔积计算。
 
 将左表的每一条记录和右表的每一条记录进行连接。
@@ -177,7 +177,7 @@ Inner outer join
 只是为了方便书写，更改了书写方式。
 
 ### 笛卡尔积
-原理等同于 92语法 的笛卡尔积<sup id="a1">[[1]](#f1)</sup><br>
+等同于 92语法 的笛卡尔积<br>
 `select * from table1 cross join table2;`
 
 ### 自然连接
@@ -189,44 +189,57 @@ Inner outer join
 - 类似于 92语法 中的 **等值连接**<br>
 	但是 自然连接 会去除**重复**的列，而 等值连接 不会。
 - 当两张表中没有列名相同的列时，做**笛卡尔积**。
+
+
 ### using 子句
+
+
 ### on 子句<br>
     添加连接条件，包括等值和非等值<br>
     `select * from table1 join table2 on table1.column1 = table2.column2;`<br>
 	`select * from table1 join table2 on table1.column1 > table2.column2;`
-- 外连接
-	- 左外连接<br>
-		`select * from table1 left outer join table2 on 连接条件;`
-	- 右外连接<br>
-		`select * from table1 right outer join table2 on 连接条件;`
-	- 全外连接<br>
-		99语法 的新特性<br>
-		能显示左表和右表的全部数据，兼顾了左外连接和右外连接。<br>
-		`select * from table1 full outer join table2 on 连接条件;`
-		
-		例：`select * from A full outer join B on A.S = B.S;`
 	
-		| A.X | A.Y | A.S | B.S | B.Z |
-		| --- | --- | --- | --- | --- |
-		| 1   | 2   | 3   | 3   | 3   |
-		| 1   | 2   | 4   | 4   | 4   |
-		|      |      |      | 5   | 5   |
-		| 1   | 2   | 2   |      |      |
-- 内连接<br>
-    `select * from table1 inner join table2 on 连接条件;`<br>
-    等同于`select * from table1 join table2 on 连接条件;`
-- using子句<br>
-    using子句 和 on子句 一样，都可以表示连接条件<br>
-    `select * from table1 join table2 using(column1);`<br>
-    等同于`select * from table1 join table2 on table1.column1 = table2.column1;`<br>
-    注意
-	- using子句 的连接条件是同名列，而且不能使用表名进行修饰。<br>
-		~~`select * from table1 join table2 using(table1.column1);`<br>~~<br>
-		该语句是错误的。
-	- using子句 类似于自然连接，使用同名列进行连接，同样地会去除重复的同名列。<br>
-		而 on子句 不会去除重复的同名列。
-	- 当两张表存在 n 个同名列时，自然连接会将所有的同名列进行连接。<br>
-		而 using子句 则根据指定的同名列进行连接。
+	
+### 外连接
+#### 左外连接
+等同于 92语法 的左外连接<br>
+`select * from table1 left outer join table2 on 连接条件;`
+	
+#### 右外连接<br>
+等同于 92语法 的右外连接<br>
+`select * from table1 right outer join table2 on 连接条件;`
+	
+#### 全外连接<br>
+99语法 的新特性<br>
+能显示左表和右表的全部数据，兼顾了左外连接和右外连接。<br>
+`select * from table1 full outer join table2 on 连接条件;`
+
+例：`select * from A full outer join B on A.S = B.S;`
+
+| A.X | A.Y | A.S | B.S | B.Z |
+| --- | --- | --- | --- | --- |
+| 1   | 2   | 3   | 3   | 3   |
+| 1   | 2   | 4   | 4   | 4   |
+|      |      |      | 5   | 5   |
+| 1   | 2   | 2   |      |      |
+	
+### 内连接
+`select * from table1 inner join table2 on 连接条件;`<br>
+等同于`select * from table1 join table2 on 连接条件;`
+
+### using子句
+using子句 和 on子句 一样，都可以表示连接条件<br>
+`select * from table1 join table2 using(column1);`<br>
+等同于`select * from table1 join table2 on table1.column1 = table2.column1;`<br>
+
+注意
+- using子句 的连接条件是同名列，而且不能使用表名进行修饰。<br>
+	~~`select * from table1 join table2 using(table1.column1);`<br>~~<br>
+	该语句是错误的。
+- using子句 类似于自然连接，使用同名列进行连接，同样地会去除重复的同名列。<br>
+	而 on子句 不会去除重复的同名列。
+- 当两张表存在 n 个同名列时，自然连接会将所有的同名列进行连接。<br>
+	而 using子句 则根据指定的同名列进行连接。
 		
 		
 
