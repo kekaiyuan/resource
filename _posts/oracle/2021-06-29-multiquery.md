@@ -123,7 +123,7 @@ keywords: Oracle
 | 1   | 2   | 3   | 1   | 2   | 2   |
 | 1   | 2   | 4   | 1   | 2   | 2   |
 
-### 笛卡尔积
+### <span id="f1">1[.^](#a1)</span>笛卡尔积
 当连接时不指定连接方式时，将默认进行笛卡尔积计算。
 
 将左表的每一条记录和右表的每一条记录进行连接。
@@ -177,19 +177,20 @@ Inner outer join
 只是为了方便书写，更改了书写方式。
 
 ### 笛卡尔积
-原理等同于 92语法 的笛卡尔积<br>
+原理等同于 92语法 的笛卡尔积<sup id="a1">[[1]](#f1)</sup><br>
 `select * from table1 cross join table2;`
-- 自然连接<br>
-    `select * from table1 natural join table2;`
-	- NATURAL JOIN子句基亍两个表中列名完全相同的列产生连接
-		- 两个表有相同名字的列
-		- 数据类型相同
-		- 从两个表中选出连接列的值相等的所有行
-	- 类似于 92语法 中的 **等值连接**<br>
-		但是 自然连接 会去除**重复**的列，而 等值连接 不会。
-	- 当两张表中没有列名相同的列时，做**笛卡尔积**。
-- using 子句
-- on 子句<br>
+
+### 自然连接
+`select * from table1 natural join table2;`
+- NATURAL JOIN子句基亍两个表中列名完全相同的列产生连接
+	- 两个表有相同名字的列
+	- 数据类型相同
+	- 从两个表中选出连接列的值相等的所有行
+- 类似于 92语法 中的 **等值连接**<br>
+	但是 自然连接 会去除**重复**的列，而 等值连接 不会。
+- 当两张表中没有列名相同的列时，做**笛卡尔积**。
+### using 子句
+### on 子句<br>
     添加连接条件，包括等值和非等值<br>
     `select * from table1 join table2 on table1.column1 = table2.column2;`<br>
 	`select * from table1 join table2 on table1.column1 > table2.column2;`
