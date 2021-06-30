@@ -202,7 +202,8 @@ where子句 需要完成两个功能，这就使得 92语法 中的 where子句 
 
 ### 交叉连接
 `select * from table1 cross join table2;`<br>
-等同于 92语法 的笛卡尔积
+等同于 92语法 的笛卡尔积。
+将左表的每一行和右表的每一行都进行连接。
 
 ### 自然连接
 `select * from table1 natural join table2;`
@@ -235,6 +236,9 @@ where子句 需要完成两个功能，这就使得 92语法 中的 where子句 
 - `select * from table1 join table2 on table1.column1 > table2.column2;`<br>
 	等同于 92语法 的非等值连接
 	
+#### 使用 on子句 实现两张以上的多表连接
+`select * from table1 join table2 on 连接条件1 join table3 on 连接条件2;`
+	
 ### using 子句
 using子句 和 on子句 一样，都可以表示连接条件<br>
 `select * from table1 join table2 using(column1);`<br>
@@ -265,11 +269,13 @@ using子句 和 on子句 一样，都可以表示连接条件<br>
 ### 外连接
 #### 左外连接
 `select * from table1 left outer join table2 on 连接条件;`<br>
-等同于 92语法 的左外连接
+等同于 92语法 的左外连接。<br>
+返回所有左边表中的行，即使在右边的表中没有可对应的列值。
 	
 #### 右外连接
 `select * from table1 right outer join table2 on 连接条件;`<br>
-等同于 92语法 的右外连接
+等同于 92语法 的右外连接。<br>
+返回所有右边表中的行，即使在左边的表中没有可对应的列值。
 	
 #### 全外连接
 99语法 的新特性<br>
@@ -290,7 +296,7 @@ using子句 和 on子句 一样，都可以表示连接条件<br>
 `select * from table1 inner join table2 on 连接条件;`<br>
 等同于`select * from table1 join table2 on 连接条件;`
 
-没有什么特殊意义，可视为 on子句。
+没有什么特殊意义，on子句 默认就是内连接。
 
 ## 总结
 在实际开发中，92语法 和 99语法 都能够运行，并没有限制。
@@ -298,3 +304,71 @@ using子句 和 on子句 一样，都可以表示连接条件<br>
 但是最好使用 **99语法** 。
 
 因为 99语法 更美观，功能更强大。
+
+## 子查询
+嵌套在其他 sql 语句中的完整 sql 语句，可以称之为子查询
+分类：
+- 单行子查询
+- 多行子查询
+
+## 限制输出
+现在有这样一个问题：输出薪水最高的**5个**人，怎么做？
+
+这就需要我们限制输出的数量。
+
+在 mysql 中，限制输出的关键字是 **limit** ，非常的见名知意，而且使用非常的**简单方便**。
+
+但是在 oracle 中，限制输出的关键字是 **rownum** ，这个的使用比较**繁琐**。
+
+rownum 指的是行号，在 oracle 中，每一条数据都有对应的行号，我们需要显式地使用行号来完成限制输出的功能。
+
+注意：rownum 不能直接使用，需要**嵌套**使用。
+
+### 输出工资最高的5个人
+`select * from (select * from emp order by sal desc) where rownum <= 5;`
+
+为什么说 rownum 必须**嵌套**使用？
+- 如果这样使用<br>
+    `select * from emp where rownum<=5 order by sal desc;`
+	这条语句的执行顺序是：**先查询** emp 表中的前5条数据，**然后排序**。<br>
+    这样显然是错的。
+- 而`select * from (select * from emp order by sal desc) where rownum <= 5;`<br>
+    的执行顺序是：先将 emp 表按照工资**降序**，然后**输出**前5条数据。<br>
+    这样的结果才是正确的。
+- 因为我们必须先将**数据**处理好，然后再限制**输出**。<br>
+    如果不嵌套的话，那么结果是先限制**输出**，再处理**数据**。
+	
+### 输出工资最高的第6到10名的人
+在 oracle 中，rownum 只能 < 或 <= 某个值，而不能 > 或 >= 某个值
+
+`select * from (select * from emp order by sal desc) where rownum > 5;`<br>
+的执行结果是**空表**。
+
+这是因为 rownum 指的是行号，它是动态改变的。
+
+我们使用`rownum > 5`是为了去除前5条语句。
+而 oracle 的原理是
+
+`rownum > 5`的执行流程：
+- 去除前5条语句。
+- **更新**语句的 rownum。
+	- 类似于现实中的排队。<br>
+		你排在第六位。<br>
+		前五位走了，你就是第一位。
+- 重新执行。
+
+只有当 `rownum >= 0` 时才不会输出空表，但是这毫无意义。
+
+那么这个问题如何实现呢？
+```
+select *
+  from (select e1.*, rownum rn from (select * from emp order by sal desc) e1)
+ where rn > 5
+   and rn <= 10;
+```
+
+**把 rownum 加入表中成为属性。**
+
+**注意：**
+`select * , rownum rn`会报错<br>
+必须使用`select e1.*, rownum rn`
