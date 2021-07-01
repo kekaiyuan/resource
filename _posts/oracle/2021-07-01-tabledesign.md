@@ -35,7 +35,8 @@ Oracle 之——表设计
 - On Commit<br>
 	一旦基表有 Commit 操作，立刻刷新物化视图。
 
-## 创建视图
+## 视图的使用
+### 授权
 当普通用户第一次创建视图提示没有权限时，需要管理员去授予权限。
 - 打开 **cmd**
 - `sqlplus /nolog`
@@ -47,8 +48,10 @@ Oracle 之——表设计
 
 ![enter description here](/images/posts/oracle/tabledesign/grant.png)
 
+如果要回收用户的视图权限<br>
+`revoke create view from scott;`
 
-
+### 创建视图
 在 CREATE VIEW 语句后加入子查询
 ```
 CREATE [OR REPLACE] VIEW view [(alias[, alias]...)] AS
@@ -65,9 +68,70 @@ create or replace view v$_emp_dept as
 with read only;
 ```
 
-当视图添加了 `with read only` 后，该视图将变为只读视图。<br>
+当视图添加了 `with read only` 后，该视图将变为**只读视图**。<br>
 即只可以通过该视图进行读操作，而不能进行增、删、改的操作。
 
+### 撤销视图
+当视图不再需要的时候，用 **drop view** 撤销。<br>
+删掉视图不会导致数据的丢失，因为视图是基于数据库的表之上的一个查询定义。
+
+`drop view v$_emp_dept；`
+
+### 其他操作
+视图是一张虚拟表，其增、删、改、查的操作和实际的数据表没有什么不同。
+
+但是要 **注意：** 当视图依赖于**多个基表**时：
+- 无法执行增加操作
+- 修改操作每次只能修改一个基表的数据<br>
+	`update 视图名 set table1.column1 = ? , table2.column2 = ? where 条件;`<br>
+	这条语句是错误的，因为它同时修改了两张基表的数据。
+	每次只能修改一个基表中的数据。
+- 删除操作不会报错，但是只会删除其中一个基表中的数据<br>
+	根据简单测试，只会删除第一个表的数据，可能并不严谨。<br>
+	```
+	create view 视图名 as
+		select * from table1 join table2 on 连接条件;
+	```
+	这个视图连接时是 table1 在前。<br>
+	所以删除视图中的数据时，table1 的相关数据会被删除，但是 table2 的不会。
+	
+可以看到，视图的增、删、改操作有诸多问题。
+
+这是因为视图本身就是为了方便数据库的查询操作而提出的。
+
+尽管视图拥有增、删、改的功能，但是最好不要使用。<br>
+而是对基表进行增、删、改的操作。
+
+## 视图的好处
+例题：求平均薪水的等级最低的部门的部门名称
+注：题目所使用的数据库来源于 oracle 自带的 scott 用户
+
+- 如果使用完全子查询
+	1. 求平均薪水<br>
+		`select deptno, avg(sal) from emp group by deptno;`
+	2. 求平均薪水的等级<br>
+		```
+		select e.deptno, sg.grade
+		  from (select deptno, avg(sal) avg_sal from emp group by deptno) e
+		  join salgrade sg
+			on e.avg_sal between sg.losal and sg.hisal ;
+		```
+	3. 求平均薪水的等级最低的部门
+		```
+		select deptno
+		  from (select e.deptno, sg.grade gd
+				  from (select deptno, avg(sal) avg_sal from emp group by deptno) e
+				  join salgrade sg
+					on e.avg_sal between sg.losal and sg.hisal) t
+		 where t.gd =
+			   (select min(sg.grade)
+				  from (select deptno, avg(sal) avg_sal from emp group by deptno) e
+				  join salgrade sg
+					on e.avg_sal between sg.losal and sg.hisal);
+		```
+	4. 求平均薪水的等级最低的部门名称
+
+阅读 SQL 源码时从里向外读，从最里面的子查询开始读
 
 
 
