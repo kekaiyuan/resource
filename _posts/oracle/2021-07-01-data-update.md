@@ -85,8 +85,29 @@ DELETE [FROM] tablename
 -  `Delete from tablename;` 表示从表中删除一切元组
 	-  `truncate table` 语句也是删除表中一切元组。<br>
 		delete 有事务，truncate 没有事务。<br>
-		所以 turncate 直接**永久**删除，**无法回滚**，但是**速度快**。
+		所以 turncate 直接**永久**删除，**无法回滚**，但是**速度快**。<br>
+		效率高，但是容易发生**误操作**，**不建议**使用。
 
+## 修改
+```
+update tablename 
+set col = val1 , col2 = val2 , ...
+where condition;
+```
+可以更新或者修改满足条件的一个列或者**多个**列
+
+## 事务
+事务（Transaction）是一个操作序列。<br>
+这些操作要么都做，要么都不做，是一个不可分割的工作单位，是数据库环境中的逻辑工作单位。
+-  事务是为了保证数据库的完整性
+-  事务不能嵌套
+-  在oracle中，没有事务开始的语句。<br>
+	一个Transaction**起始于**一条DML(Insert、Update和Delete )语句<br>
+	**结束于**以下的几种情况：
+	-  用户显式执行Commit语句提交操作或Rollback语句回退。
+	-  当执行DDL(Create、Alter、Drop)语句事务自动提交。
+	-  用户正常断开连接时，Transaction自动提交。
+	-  系统崩溃或断电时事务自动回退。
 
 ## 源码链接
 该文章源码链接 [Github](url)
