@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 设计模式之——中介者 Mediator 和外观 Facade
+title: 设计模式——中介者 Mediator 和外观 Facade
 categories: DesignPatterns
-description: 设计模式之——中介者模式 Mediator 和外观模式 Facade
+description: 设计模式——中介者模式 Mediator 和外观模式 Facade
 keywords: Java，设计模式
 ---
 
-设计模式之——中介者 Mediator 和外观 Facade
+设计模式——中介者 Mediator 和外观 Facade
 
 ## 中介者模式
 
