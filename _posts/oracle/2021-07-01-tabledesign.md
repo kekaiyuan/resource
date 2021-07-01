@@ -36,6 +36,19 @@ Oracle 之——表设计
 	一旦基表有 Commit 操作，立刻刷新物化视图。
 
 ## 创建视图
+当普通用户第一次创建视图提示没有权限时，需要管理员去授予权限。
+- 打开 **cmd**
+- `sqlplus /nolog`
+- `conn sys/kky@orcl as sysdba;`<br>
+	kky 为**数据库名**
+- `grant create view to scott;`<br>
+	scott 为普通**用户名**
+- 提示 **授权成功** 即可
+
+![enter description here](/images/posts/oracle/tabledesign/grant.png)
+
+
+
 在 CREATE VIEW 语句后加入子查询
 ```
 CREATE [OR REPLACE] VIEW view [(alias[, alias]...)] AS
@@ -49,8 +62,12 @@ create or replace view v$_emp_dept as
     from emp
     join dept
       on emp.deptno = dept.deptno
-with read only
+with read only;
 ```
+
+当视图添加了 `with read only` 后，该视图将变为只读视图。<br>
+即只可以通过该视图进行读操作，而不能进行增、删、改的操作。
+
 
 
 
