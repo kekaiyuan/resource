@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Oracle 之——表设计
+title: Oracle 表设计之——视图
 categories: Oracle
-description: Oracle 之——表设计
+description: Oracle 表设计之——视图
 keywords: Oracle
 ---
 
-Oracle 之——表设计
+Oracle 表设计之——视图
 
 ## 视图
 - 视图(view)，也称虚表。<br>
