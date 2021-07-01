@@ -129,11 +129,48 @@ with read only;
 				  join salgrade sg
 					on e.avg_sal between sg.losal and sg.hisal);
 		```
-	4. 求平均薪水的等级最低的部门名称
+	4. 求平均薪水的等级最低的部门名称<br>
+		```
+		select dname
+		  from (select deptno
+				  from (select e.deptno, sg.grade gd
+						  from (select deptno, avg(sal) avg_sal
+								  from emp
+								 group by deptno) e
+						  join salgrade sg
+							on e.avg_sal between sg.losal and sg.hisal) t
+				 where t.gd =
+					   (select min(sg.grade)
+						  from (select deptno, avg(sal) avg_sal
+								  from emp
+								 group by deptno) e
+						  join salgrade sg
+							on e.avg_sal between sg.losal and sg.hisal)) d
+		  join dept
+			on d.deptno = dept.deptno;
+		```
+- 查看sql语句能够发现，sql中有很多的重复的sql子查询<br>
+	可以通过视图将重复的语句给抽象出来<br>
+	```
+	create view v_deptno_grade as
+	  select e.deptno , sg.grade
+		from (select deptno, avg(sal) avg_sal from emp group by deptno) e
+		join salgrade sg
+		  on e.avg_sal between sg.losal and sg.hisal;
 
-阅读 SQL 源码时从里向外读，从最里面的子查询开始读
-
-
+	select dname
+	  from dept d
+	  join v_deptno_grade v
+		on d.deptno = v.deptno
+	 where v.grade = (select min(grade) from v_deptno_grade);
+	```
+- 总结
+	- 使用视图可以增加代码的可读性。
+	- 视图类似于 Java 中的类和方法，体现了封装的程序思想。<br>
+		在使用视图定义了某查询语句后。<br>
+		当什么地方需要使用该查询语句时，直接使用视图，而不是复制粘贴。<br>
+		增加了代码的复用性。
+		
 
 ## 源码链接
 该文章源码链接 [](url)
