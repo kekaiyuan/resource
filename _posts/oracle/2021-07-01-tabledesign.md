@@ -173,4 +173,4 @@ with read only;
 		
 
 ## 源码链接
-该文章源码链接 [](url)
+该文章源码链接 [Github](https://github.com/kekaiyuan/database/blob/main/oracle/%E8%A7%86%E5%9B%BE.sql)
