@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="477958c5-13ce-4d85-947e-99c527592bfd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-02-singleton.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-02-singleton.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-03-strategy.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-03-strategy.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-04-factory.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-04-factory.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-05-mediator-facade.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-05-mediator-facade.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-06-decorator.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-06-decorator.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-07-chain-of-responsibility.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-07-chain-of-responsibility.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-08-observer.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-08-observer.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-09-composite.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-09-composite.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-10-flyweight.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-10-flyweight.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-11-proxy.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-11-proxy.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-12-iterator.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-12-iterator.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-13-visitor.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-13-visitor.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-14-builder.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-14-builder.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-15-adapter.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-15-adapter.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/designPatterns/2021-06-16-bridge.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/designPatterns/2021-06-16-bridge.md" afterDir="false" />
-    </list>
+    <list default="true" id="477958c5-13ce-4d85-947e-99c527592bfd" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

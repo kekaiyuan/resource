@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Oracle SQL ——数据更新
+title: Oracle SQL 之——数据更新
 categories: Oracle
-description: Oracle SQL ——数据更新
+description: Oracle SQL 之——数据更新
 keywords: Oracle，SQL
 ---
 
