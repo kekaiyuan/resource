@@ -1,9 +1,9 @@
 ---
 layout: post
 title: Oracle 之——事务
-categories: Database
+categories: Oracle
 description: Oracle 之——事务
-keywords: Database
+keywords: Oracle，事务
 ---
 
 Oracle 之——事务
