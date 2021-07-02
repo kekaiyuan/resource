@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 设计模式——组合 Composite
+title: 设计模式之——组合 Composite
 categories: DesignPatterns
-description: 设计模式——组合 Composite
+description: 设计模式之——组合 Composite
 keywords: Java，设计模式
 ---
 
-设计模式——组合 Composite
+设计模式之——组合 Composite
 
 ## 组合模式
 组合模式是一种将一组相似的对象组合成单一对象的模式。

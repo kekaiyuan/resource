@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 设计模式——享元 Flyweight
+title: 设计模式之——享元 Flyweight
 categories: DesignPatterns
-description: 设计模式——享元 Flyweight
+description: 设计模式之——享元 Flyweight
 keywords: Java，设计模式
 ---
 
-设计模式——享元 Flyweight
+设计模式之——享元 Flyweight
 
 ## 享元模式
 

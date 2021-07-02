@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 设计模式——单例 Singleton
+title: 设计模式之——单例 Singleton
 categories: DesignPatterns
-description: 设计模式——单例 Singleton
+description: 设计模式之——单例 Singleton
 keywords: Java，设计模式
 ---
 
-设计模式——单例 Singleton
+设计模式之——单例 Singleton
 
 ## 概念
 
