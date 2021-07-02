@@ -2,11 +2,11 @@
 layout: post
 title: Oracle 之——事务
 categories: Database
-description: 数据库之——事务
+description: Oracle 之——事务
 keywords: Database
 ---
 
-数据库之——事务
+Oracle 之——事务
 
 事务共分为：
 - 最基本的数据库事务
