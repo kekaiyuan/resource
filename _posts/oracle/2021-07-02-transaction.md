@@ -13,7 +13,7 @@ keywords: Database
 - 声明式事务
 - 分布式事务
 
-其中所有关系型数据库的事务机制都是一样的。
+其中所有关系型数据库 ( Oracle , mysql ) 的事务机制都是一样的。
 
 ## 事务
 事务（Transaction）是一个操作序列。<br>
