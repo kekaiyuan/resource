@@ -1,12 +1,12 @@
 ---
 layout: post
-title: 事务
-categories: Oracle
-description: Oracle的事务机制
-keywords: Oracle
+title: 数据库之——事务
+categories: Database
+description: 数据库之——事务
+keywords: Database
 ---
 
-Oracle的事务机制
+数据库之——事务
 
 所有关系型数据库的事务机制都是一样的。
 
