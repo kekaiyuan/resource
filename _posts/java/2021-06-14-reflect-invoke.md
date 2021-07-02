@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Java反射之通过字符串调用类和方法
+title: Java 反射之——通过字符串调用类和方法
 categories: Java
-description: Java反射之通过字符串调用类和方法
+description: Java 反射之——通过字符串调用类和方法
 keywords: Java，反射
 ---
 
-如何利用Java的反射机制通过字符串调用同名的类和方法？
+如何利用 Java 的反射机制通过字符串调用同名的类和方法？
 
 # 过程详解
 1. 通过类名创建对象

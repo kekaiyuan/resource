@@ -1,12 +1,10 @@
 ---
 layout: post
-title: Java——使用 Netty 实现 CS 模型
+title: Java 之——使用 Netty 实现 CS 模型
 categories: Java
-description: Java——使用 Netty 实现 CS 模型
+description: Java 之——使用 Netty 实现 CS 模型
 keywords: Java, Netty
 ---
-
-Java——使用 Netty 实现 CS 模型
 
 Netty 实现了对 **NIO** 的**封装**，使用起来更加方便
 

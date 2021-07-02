@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Java 学习笔记之02——数据类型和运算符
+title: Java 学习笔记之 02 ——数据类型和运算符
 categories: Java
-description: Java 学习笔记之02——数据类型和运算符
+description: Java 学习笔记之 02 ——数据类型和运算符
 keywords: Java
 ---
 
-Java 学习笔记之02——数据类型和运算符
+Java 学习笔记之 02 ——数据类型和运算符
 
 # 标识符
 - 作用
