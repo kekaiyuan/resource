@@ -101,3 +101,15 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
 加上 `-Dfile.encoding=utf-8` 
 
 重启 IDEA
+
+### 修改 File Header
+打开 `File` / `Settings` / `Editor` / `File and Code Templates/Includes`
+
+添加
+
+```
+/**
+ * @author kky
+ * @date ${YEAR}/${MONTH}/${DAY} ${TIME}
+ */
+ ```
