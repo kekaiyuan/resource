@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3e6b967-82f5-4da5-acca-2748553a5208" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/java/study/2021-05-27-02-datatype-operator.md" beforeDir="false" afterPath="$PROJECT_DIR$/java/study/2021-05-27-02-datatype-operator.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/study/2021-05-28-03-process.md" beforeDir="false" afterPath="$PROJECT_DIR$/java/study/2021-05-28-03-process.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/study/2021-05-29-04-array.md" beforeDir="false" afterPath="$PROJECT_DIR$/java/study/2021-05-29-04-array.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/study/2021-05-30-05-oop.md" beforeDir="false" afterPath="$PROJECT_DIR$/java/study/2021-05-30-05-oop.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/study/2021-06-02-06-exception.md" beforeDir="false" afterPath="$PROJECT_DIR$/java/study/2021-06-02-06-exception.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/study/2021-06-04-08-collection.md" beforeDir="false" afterPath="$PROJECT_DIR$/java/study/2021-06-04-08-collection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/study/2021-06-05-09-io.md" beforeDir="false" afterPath="$PROJECT_DIR$/java/study/2021-06-05-09-io.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/study/2021-06-08-12-net.md" beforeDir="false" afterPath="$PROJECT_DIR$/java/study/2021-06-08-12-net.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/study/2021-06-09-13-lambda.md" beforeDir="false" afterPath="$PROJECT_DIR$/java/study/2021-06-09-13-lambda.md" afterDir="false" />
-    </list>
+    <list default="true" id="b3e6b967-82f5-4da5-acca-2748553a5208" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
