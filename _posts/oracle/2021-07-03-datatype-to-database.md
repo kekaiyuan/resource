@@ -23,11 +23,11 @@ keywords: keyword1, keyword2
 | NUMBER | java.sql.Types.FLOAT | double | oracle.sql.NUMBER |
 | NUMBER | java.sql.Types.DOUBLE | double | oracle.sql.NUMBER |
 | RAW | java.sql.Types.BINARY | byte[] | oracle.sql.RAW |
-| RAW | java.sql.Types.VARBINARY | byte[] | oracle.sql.RAW |
+| RAW | java.sql.Types.<br>VARBINARY | byte[] | oracle.sql.RAW |
 | LONGRAW | java.sql.Types.<br>LONGVARBINARY | byte[] | oracle.sql.RAW |
 | DATE | java.sql.Types.DATE | java.sql.Date | oracle.sql.DATE |
 | DATE | java.sql.Types.TIME | java.sql.Time | oracle.sql.DATE |
-| TIMESTAMP | java.sql.Types.TIMESTAMP | javal.sql.Timestamp | oracle.sql.TIMESTAMP |
+| TIMESTAMP | java.sql.Types.<br>TIMESTAMP | javal.sql.Timestamp | oracle.sql.TIMESTAMP |
 |   | 2.0标准的JDBC类型: |   |   |
 | BLOB | java.sql.Types.BLOB | java.sql.Blob | oracle.sql.BLOB |
 | CLOB | java.sql.Types.CLOB | java.sql.Clob | oracle.sql.CLOB |
