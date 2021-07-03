@@ -7,7 +7,7 @@ keywords: keyword1, keyword2
 ---
 
 
-| SQL数据类型 | JDBC类型代码 | 标准的Java类型 | Oracle扩展的Java类型<br>省略 oracle.sql. 前缀 |
+| SQL数据类型 | JDBC类型代码 | 标准的Java类型 | Oracle扩展的Java类型<br>省略 **oracle.sql.** 前缀 |
 | ---- | ---- | ---- | ---- |
 |   | 1.0标准的JDBC类型: |   |   |
 | CHAR | java.sql.Types.CHAR | java.lang.String | CHAR |
