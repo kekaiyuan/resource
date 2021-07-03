@@ -74,7 +74,7 @@ keywords: keyword1, keyword2
 |   | Oracle扩展: |   |   |
 | BFILE | oracle.jdbc.OracleTypes.<br>BFILE | N/A | oracle.sql.<br>BFILE |
 | ROWID | oracle.jdbc.OracleTypes.<br>ROWID | N/A | oracle.sql.<br>ROWID |
-| REF CURSOR | oracle.jdbc.OracleTypes.<br>CURSOR | java.sql.ResultSet | oracle.jdbc.OracleResultSet |
+| REF CURSOR | oracle.jdbc.OracleTypes.<br>CURSOR | java.sql.ResultSet | oracle.jdbc.<br>OracleResultSet |
 | TIMESTAMP | oracle.jdbc.OracleTypes.<br>TIMESTAMP | java.sql.Timestamp | oracle.sql.<br>TIMESTAMP |
 | TIMESTAMP WITH TIME ZONE | oracle.jdbc.OracleTypes.<br>TIMESTAMPTZ | java.sql.Timestamp | oracle.sql.<br>TIMESTAMPTZ |
 | TIMESTAMP WITH LOCAL TIME ZONE | oracle.jdbc.OracleTypes.<br>TIMESTAMPLTZ | java.sql.Timestamp | oracle.sql.<br>TIMESTAMPLTZ |
