@@ -1,10 +1,12 @@
 ---
 layout: post
 title: Java 之——数据库类型对照表
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+categories: Java
+description: Java 之——数据库类型对照表
+keywords: Java
 ---
+
+Java 之——数据库类型对照表
 
 | SQL数据类型 | JDBC类型代码 | 标准的Java类型 | Oracle扩展的Java类型 |
 | ---- | ---- | ---- | ---- |
