@@ -9,11 +9,11 @@ keywords: keyword1, keyword2
 | SQL数据类型 | JDBC类型代码 | 标准的Java类型 | Oracle扩展的Java类型 |
 | ---- | ---- | ---- | ---- |
 |   | 1.0标准的JDBC类型: |   |   |
-| CHAR | java.sql.Types.<br>CHAR | java.lang.<br>String | oracle.sql.CHAR |
-| VARCHAR2 | java.sql.Types.<br>VARCHAR | java.lang.<br>String | oracle.sql.CHAR |
-| LONG | java.sql.Types.<br>LONGVARCHAR | java.lang.<br>String | oracle.sql.CHAR |
-| NUMBER | java.sql.Types.<br>NUMERIC | java.math.<br>BigDecimal | oracle.sql.NUMBER |
-| NUMBER | java.sql.Types.<br>DECIMAL | java.math.<br>BigDecimal | oracle.sql.NUMBER |
+| CHAR | java.sql.Types.<br>CHAR | java.lang.String | oracle.sql.CHAR |
+| VARCHAR2 | java.sql.Types.<br>VARCHAR | java.lang.String | oracle.sql.CHAR |
+| LONG | java.sql.Types.<br>LONGVARCHAR | java.lang.String | oracle.sql.CHAR |
+| NUMBER | java.sql.Types.<br>NUMERIC | java.math.BigDecimal | oracle.sql.NUMBER |
+| NUMBER | java.sql.Types.<br>DECIMAL | java.math.BigDecimal | oracle.sql.NUMBER |
 | NUMBER | java.sql.Types.<br>BIT | boolean | oracle.sql.NUMBER |
 | NUMBER | java.sql.Types.<br>TINYINT | byte | oracle.sql.NUMBER |
 | NUMBER | java.sql.Types.<br>SMALLINT | short | oracle.sql.NUMBER |
