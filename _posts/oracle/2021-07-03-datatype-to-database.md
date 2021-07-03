@@ -7,7 +7,7 @@ keywords: keyword1, keyword2
 ---
 
 
-| SQL数据类型 | JDBC类型代码 | 标准的Java类型 | Oracle扩展的Java类型 |
+| SQL数据类型 | JDBC类型代码 | 标准的Java类型 | Oracle扩展的Java类型<br>省略 oracle.sql. 前缀 |
 | ---- | ---- | ---- | ---- |
 |   | 1.0标准的JDBC类型: |   |   |
 | CHAR | java.sql.Types.CHAR | java.lang.String | oracle.sql.CHAR |
@@ -28,7 +28,7 @@ keywords: keyword1, keyword2
 | LONGRAW | java.sql.Types.LONGVARBINARY | byte[] | oracle.sql.RAW |
 | DATE | java.sql.Types.DATE | java.sql.Date | oracle.sql.DATE |
 | DATE | java.sql.Types.TIME | java.sql.Time | oracle.sql.DATE |
-| TIMESTAMP | java.sql.Types.TIMESTAMP | javal.sql.Timestamp | oracle.sql.TIMESTAMP |
+| TIMESTAMP | java.sql.Types.TIMESTAMP | java.sql.Timestamp | oracle.sql.TIMESTAMP |
 |   | 2.0标准的JDBC类型: |   |   |
 | BLOB | java.sql.Types.BLOB | java.sql.Blob | oracle.sql.BLOB |
 | CLOB | java.sql.Types.CLOB | java.sql.Clob | oracle.sql.CLOB |
