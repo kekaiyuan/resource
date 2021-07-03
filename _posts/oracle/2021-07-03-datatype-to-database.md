@@ -35,7 +35,7 @@ keywords: keyword1, keyword2
 | 用户定义的对象 | STRUCT | java.sql.Struct | STRUCT |
 | 用户定义的参考 | REF | java.sql.Ref | REF |
 | 用户定义的集合 | ARRAY | java.sql.Array | ARRAY |
-|   | Oracle扩展:<br>省略 oracle.jdbc.OracleTypes.<br> 前缀 |   |   |
+|   | Oracle扩展:<br>省略 oracle.jdbc.<br>OracleTypes.<br> 前缀 |   |   |
 | BFILE | BFILE | N/A | BFILE |
 | ROWID | ROWID | N/A | ROWID |
 | REF CURSOR | CURSOR | java.sql.ResultSet | oracle.jdbc.OracleResultSet |
@@ -72,12 +72,12 @@ keywords: keyword1, keyword2
 | 用户定义的参考 | java.sql.Types.<br>REF | java.sql.Ref | oracle.sql.<br>REF |
 | 用户定义的集合 | java.sql.Types.<br>ARRAY | java.sql.Array | oracle.sql.<br>ARRAY |
 |   | Oracle扩展: |   |   |
-| BFILE | oracle.jdbc.OracleTypes.<br>BFILE | N/A | oracle.sql.<br>BFILE |
-| ROWID | oracle.jdbc.OracleTypes.<br>ROWID | N/A | oracle.sql.<br>ROWID |
-| REF CURSOR | oracle.jdbc.OracleTypes.<br>CURSOR | java.sql.ResultSet | oracle.jdbc.<br>OracleResultSet |
-| TIMESTAMP | oracle.jdbc.OracleTypes.<br>TIMESTAMP | java.sql.Timestamp | oracle.sql.<br>TIMESTAMP |
-| TIMESTAMP WITH TIME ZONE | oracle.jdbc.OracleTypes.<br>TIMESTAMPTZ | java.sql.Timestamp | oracle.sql.<br>TIMESTAMPTZ |
-| TIMESTAMP WITH LOCAL TIME ZONE | oracle.jdbc.OracleTypes.<br>TIMESTAMPLTZ | java.sql.Timestamp | oracle.sql.<br>TIMESTAMPLTZ |
+| BFILE | oracle.jdbc.<br>OracleTypes.<br>BFILE | N/A | oracle.sql.<br>BFILE |
+| ROWID | oracle.jdbc.<br>OracleTypes.<br>ROWID | N/A | oracle.sql.<br>ROWID |
+| REF CURSOR | oracle.jdbc.<br>OracleTypes.<br>CURSOR | java.sql.ResultSet | oracle.jdbc.<br>OracleResultSet |
+| TIMESTAMP | oracle.jdbc.<br>OracleTypes.<br>TIMESTAMP | java.sql.Timestamp | oracle.sql.<br>TIMESTAMP |
+| TIMESTAMP WITH TIME ZONE | oracle.jdbc.<br>OracleTypes.<br>TIMESTAMPTZ | java.sql.Timestamp | oracle.sql.<br>TIMESTAMPTZ |
+| TIMESTAMP WITH LOCAL TIME ZONE | oracle.jdbc.<br>OracleTypes.<br>TIMESTAMPLTZ | java.sql.Timestamp | oracle.sql.<br>TIMESTAMPLTZ |
 
 
 ## 源码链接
