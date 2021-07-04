@@ -109,7 +109,30 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
 
 ```
 /**
- * @author kky
+ * @author 柯凯元
  * @date ${YEAR}/${MONTH}/${DAY} ${TIME}
  */
  ```
+ 
+ ![enter description here](/images/wiki/intellij-idea/fileheader.png)
+ 
+ ### 自动换行
+ 
+ 打开 `File` / `Settings` / `Editor` / `Code Style`
+ 
+勾选 `Wrap on typing` ，左侧 `Hard wrap at` 设置每行的长度。
+
+ ![enter description here](/images/wiki/intellij-idea/autowrap01.png)
+
+### Ctrl + L 代码排版时自动换行
+ 打开 `File` / `Settings` / `Editor` / `Code Style` / `Java` / `Wrapping and Braces`
+ 
+ 勾选 `Ensure right margin is not exceeded`
+ 
+ ![enter description here](/images/wiki/intellij-idea/autowrap02.png)
+
+
+ 
+
+ 
+ 
