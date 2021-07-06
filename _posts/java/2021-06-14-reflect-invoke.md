@@ -9,83 +9,76 @@ keywords: Java，反射
 如何利用 Java 的反射机制通过字符串调用同名的类和方法？
 
 # 过程详解
-1. 通过类名创建对象
-	- 找到同名类并创建一个该类的实例
+
+现在有一个 Test 类，如何通过反射调用其中的方法？
+
+```java
+public class Test {
+
+	public Test(){}
+
+    public void Test() {
+        System.out.println("I'm Test1");
+    }
+
+    public void Test(String str) {
+        System.out.println("I'm Test2");
+    }
+
+    public void Test(String str, boolean b) {
+        System.out.println("I'm Test3");
+    }
+
+}
+```
+
+1. 创建 Class 对象
 	```java
-	//要调用的类的包名+类名
-	String className = "com.kky.Test";
-	//找到对应的类
-	Class clz = Class.forName(className);
-	//创建对象
-	Object object = clz.newInstance();
+	Class<Test> testClass = Test.class;
 	```
-	- 这三步等于实现了
+
+2. 创建实例
 	```java
-	Test object = new Test();
+	Object object = testClass.newInstance();
 	```
+	这里使用的 newInstance 并没有传参，也就是调用类的**无参构造器**创建实例。
+	
+	这一步非常关键。<br>
+	现在很多的框架底层原理都是通过反射来生成实例。<br>
+	所以在实际开发中，最好把每个类的无参构造器都写出来，而不是由 JVM 默认生成。<br>
+	否则使用某些框架时会报错。
 	
 	
-2. 调用方法
-	- 现在Test类有三个test()方法，同名，但是参数不同，属于方法的重载
+3. 查找方法并调用<br>
+	无论是查找还是调用，都需要注意传入正确的参数列表。
+	- 查找 Test() 并调用
 		```java
-		public void Test() {
-			System.out.println("I'm Test1");
-		}
-
-		public void Test(String str) {
-			System.out.println("I'm Test2");
-		}
-
-		public void Test(String str, boolean b) {
-			System.out.println("I'm Test3");
-		}
-		```
-		
-	- 通过**字符串**调用
-		```java
-		String methodName = "Test";
-		Method method = clz.getDeclaredMethod(methodName);
+		Method method = clz.getDeclaredMethod("Test");
 		method.invoke(object);
-
-		method = clz.getDeclaredMethod(methodName, String.class);
-		method.invoke(object, "helloworld");
-
-		method = clz.getDeclaredMethod(methodName, String.class, boolean.class);
-		method.invoke(object, "helloworld", true);
 		```
-		- 结果
+		结果
 		```
 		I'm Test1
+		```		
+	- 查找 Test(String str) 并调用
+		```java
+		method = clz.getDeclaredMethod("Test", String.class);
+		method.invoke(object, "helloworld");
+		```
+		结果
+		```
 		I'm Test2
+		```
+	- 查找 Test(String str,boolean b) 并调用
+		```java
+		method = clz.getDeclaredMethod("Test", String.class, boolean.class);
+		method.invoke(object, "helloworld", true);
+		```
+		结果
+		```
 		I'm Test3
 		```
-		- 需要注意，在使用`Class.getDeclaredMethod()方法`获取`Method`对象时，传参除了需要**方法名**，还需要该方法的**参数列表**，顺序不能颠倒。使用`Method.invoke()`调用方法时，也必须正确地**传参**。
 
-
-	- 通过对象的**方法数组**调用方法
-		```java
-		//获取Method数组
-		Method[] methods = object.getClass().getDeclaredMethods();
-		for (Method m : methods) {
-			System.out.println(m.toString());
-		}
-		```
-		- 结果
-		```java
-		public static void com.kky.Test.main(java.lang.String[]) throws java.lang.Exception
-		public void com.kky.Test.Test(java.lang.String)
-		public void com.kky.Test.Test(java.lang.String,boolean)
-		public void com.kky.Test.Test()
-		```
-		- 当`getDeclaredMethods()`方法无参时，返回的是一个`Method`数组，我们可以打印查看该对象具有的所有方法。
-		- 调用方法**没有区别**，注意**传参**。
-		```java
-		//调用方法
-		methods[3].invoke(object);
-		methods[1].invoke(object, "helloworld");
-		methods[2].invoke(object, "helloworld", true);
-		```
-		
 # 全部代码
 ```java
 package com.kky;
