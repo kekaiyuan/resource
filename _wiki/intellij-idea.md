@@ -114,7 +114,7 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
  */
  ```
  
- ![enter description here](/images/wiki/intellij-idea/fileheader.png)
+ ![enter description here](/images/wiki/intellij-idea/fileheader.jpg)
  
  ### 自动换行
  
