@@ -130,9 +130,4 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
  勾选 `Ensure right margin is not exceeded`
  
  ![enter description here](/images/wiki/intellij-idea/autowrap02.png)
-
-
- 
-
- 
  
