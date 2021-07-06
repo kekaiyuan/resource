@@ -114,9 +114,9 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
  */
 ```
  
- ![enter description here](/images/wiki/intellij-idea/fileheader.jpg)
+![enter description here](/images/wiki/intellij-idea/fileheader.jpg)
  
- ### 自动换行
+### 自动换行
  
  打开 `File` / `Settings` / `Editor` / `Code Style`
  
