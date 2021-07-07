@@ -92,7 +92,9 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
 
 完成
 
-### Maven 找不到包
+### Maven can't resolve
+当 Maven 下载包下到一半时出现网络问题**断开**，重新下载时已下载的部分文件会发生冲突，将已下载文件全部**删除**即可。
+
 打开 `Setting` ， 输入 `maven` ，打开 `local repository`，把相关的文件删除，重新 `reload`
 
 ### Gradle 项目控制台乱码
