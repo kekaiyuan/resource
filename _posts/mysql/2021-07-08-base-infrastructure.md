@@ -4,6 +4,7 @@ title: Mysql 之——基础架构
 categories: [cate1, cate2]
 description: some word here
 keywords: keyword1, keyword2
+mermaid: true
 flow: true
 ---
 
