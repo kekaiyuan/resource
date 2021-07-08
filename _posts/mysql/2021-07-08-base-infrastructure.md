@@ -25,6 +25,11 @@ keywords: keyword1, keyword2
 
 在优化器中可以查看 sql 语句的执行计划，可以采用对应的优化点，来加快查询
 
+```mermaid
+graph LR
+A[创建 INSTANCE 对象]  --> B[设置初值] --> C[返回实例]
+```
+
 
 
 ### 三、MySQL基础架构零件分析
