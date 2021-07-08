@@ -30,6 +30,7 @@ graph LR
 A[创建 INSTANCE 对象]  --> B[设置初值] --> C[返回实例]
 ```
 
+![绘图](./attachments/1625718895049.drawio.html)
 
 
 ### 三、MySQL基础架构零件分析
