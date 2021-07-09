@@ -143,7 +143,8 @@ CREATE TABLE employees(
 
 - 外键是表中的一个列，其值必须在另一表的主键或者唯一键中列出
 - 作为主键的表称为“主表”，作为外键的关系称为“依赖表”
-- 外键参照的是主表的主键或者唯一键
+- 外键参照的是主表的**主键**或者**唯一键**
+- 声明外键时，外键的列和依赖的列**数据类型**必须一致。
 - 对于主表的删除和修改主键值的操作，会对依赖关系产生影响。
 	以删除为例：当要删除主表的某个记录为例，即删除一个主键值，有 3 种做法
 	1. **restrict** 方式
@@ -157,7 +158,7 @@ CREATE TABLE employees(
 		- 自动执行。
 
 外键的声明<br>
-`foreign key (列名) reference 主表(主键或唯一键) [on delete [cascade|set null]]` <br>
+`foreign key (列名) references 主表(主键或唯一键) [on delete [cascade|set null]]` <br>
 如果省略 on 短语，缺省将使用 **restrict** 方式
 
 ### check约束
