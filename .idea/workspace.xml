@@ -2,39 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="477958c5-13ce-4d85-947e-99c527592bfd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/_posts/mysql/attachments/1625718895049.drawio.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/oracle/2021-06-27-v11gsetup.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/oracle/2021-06-27-v11gsetup.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/oracle/2021-06-28-sql-query.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/oracle/2021-06-28-sql-query.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/oracle/2021-06-30-rowtocol.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/oracle/2021-06-30-rowtocol.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/oracle/2021-07-01-view.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/oracle/2021-07-01-view.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/oracle/2021-07-03-nf.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/oracle/2021-07-03-nf.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/designpatterns/iterator/iterator2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/designpatterns/iterator/未命名文件.pos" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/nf/3nf.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/query/department.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/query/employee-department.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/query/employee.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/query/function.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/query/functiontype.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/query/multi-subquery-operator.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/query/multi-subquery.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/query/nest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/query/single-subquery-operator.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/query/single-subquery.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/query/singlefunction.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/rowtocol/rowtocol.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/rowtocol/微信截图_20210630223639.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/tabledesign/grant.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/v11gsetup/cmd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/v11gsetup/createfailure01.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/v11gsetup/createfailure02.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/v11gsetup/createfailure03.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/v11gsetup/database.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/v11gsetup/netmanager.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/v11gsetup/newbase.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/v11gsetup/plwrong.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/v11gsetup/services.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/posts/oracle/v11gsetup/services02.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/globals/common.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/globals/common.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,5 +44,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
