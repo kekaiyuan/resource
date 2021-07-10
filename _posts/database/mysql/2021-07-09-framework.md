@@ -1,11 +1,12 @@
 ---
 layout: post
 title: Mysql 之——底层架构
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
+categories: Mysql
+description: Mysql 之——底层架构
+keywords: Mysql
 ---
 
+Mysql 之——底层架构
 
 ## 序言
 
