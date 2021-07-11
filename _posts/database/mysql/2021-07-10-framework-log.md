@@ -165,7 +165,7 @@ Redo Log Buffer 和 Redo Log File 都是被划分为一个个 Redo Log Block 的
 
 MySQL 默认使用 `innodb_flush_log_at_trx_commit = 1`，因为该方式虽然慢，但是最安全。
 
-另外两种方式都以秒为单位，也就是说，当系统崩溃时，我们会丢失**一秒钟**的事务。
+另外两种方式都以秒为单位，也就是说，当系统崩溃时，我们可能会丢失**一秒钟**的数据。
 
 #### 文件结构
 
@@ -217,7 +217,7 @@ write pos 和 check point 之间的部分就是 Redo Log File 中可以写入的
 
 ### Undo Log
 
-Undo Log 实现了事务的原子性。<br>
+Undo Log 实现了事务的**原子性**。<br>
 在 MySQL 数据库 InnoDB 存储引擎中，还用 Undo Log 来实现多版本并发控制 (简称：**MVCC**)。
 
 在操作任何数据之前，首先将数据备份到一个地方（这个存储数据备份的地方称为 Undo Log ），然后进行数据的修改。<br>
@@ -284,12 +284,9 @@ Bin Log 是 Server 层的日志，主要做 MySQL 功能层面的事情。
 
 ----------
 
+Redo Log 的提交分为 prepare 和 commit 两个阶段，所以称之为**两阶段提交**。
 
-Redo Log 的两阶段提交
-
-Redo Log 的提交分为 prepare 和 commit 两个阶段，所以称之为两阶段提交。
-
-为什么必须有“两阶段提交”呢？
+为什么必须有“两阶段提交”呢？<br>
 如果不使用两阶段提交，假设当前 ID=2 的行，字段 c 的值是 0，使用 update 语句修改该行的字段 c 的值为 1。<br>
 当写完第一个日志后，还没有写第二个日志时，发生了 crash 。
 1. 先写 Redo Log 后写 Bin Log <br>
