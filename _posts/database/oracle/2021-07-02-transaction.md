@@ -78,7 +78,7 @@ savepoint 指保存点。
 此时如果需要回滚到某一个状态的话使用 rollback to 保存点。
 
 例如<br>
-```
+```sql
 SQL语句1
 SQL语句2
 savepoint sp1;

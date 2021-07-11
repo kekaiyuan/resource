@@ -63,14 +63,14 @@ Oracle 之——约束
 		可以定义任何约束。
 	- 表级约束<br>
 		先定义列，然后再定义约束。<br>
-		```
+		```sql
 		列1 , 列2 , ...
 		[CONSTRAINT 约束名] 约束类型(列1 , 列2 , ...)
 		```
 		可以约束表中的任意一列或多列。<br>
 		可以定义除了 **not null** 以外的任何约束。
 	- 有些时候，列级约束无法实现某种约束的定义，比如联合主键的定义，就要用到**表级约束**：<br>
-		```
+		```sql
 		create table test(
 			id1 number,
 			id2 number, 
@@ -82,7 +82,7 @@ Oracle 之——约束
 确保字段值不允许为空
 
 只能在字段级定义
-```
+```sql
 CREATE TABLE employees(
 	name VARCHAR2(25) not null,
 	hire_date DATE CONSTRAINT emp_hire_date_nn not null
@@ -94,7 +94,7 @@ CREATE TABLE employees(
 - 唯一性约束条件的字段允许出现空值
 - Oracle将为唯一性约束条件创建对应的唯一性索引
 - 定义方式
-	```
+	```sql
 	CREATE TABLE employees(
 		name VARCHAR2(25) not null unique,
 		email VARCHAR2(25),
@@ -111,7 +111,7 @@ CREATE TABLE employees(
 - 主键字段可以是单字段或者是多字段的组合
 - Oracle 为主键创建对应的唯一性**索引**
 - 定义方式
-	```
+	```sql
 	create table t3(
 		id number(4) primary key
 	)
@@ -164,7 +164,7 @@ CREATE TABLE employees(
 ### check约束
 - check 约束用于对一个属性的值加以限制
 - 在 check 中定义检查的条件表达式，数据需要符合设置的条件
-	```
+	```sql
 	create table emp3( 
 		age number(2) check(age > 0 and age < 100),
 		salary number(7,2),
@@ -184,19 +184,19 @@ CREATE TABLE employees(
 
 ## 查看约束
 - 查看某表的约束
-	```
+	```sql
 	select constraint_name, constraint_type
 	  from user_constraints
 	 where table_name = upper(表名);
 	```
 - 查看某表的约束及列名	
-	```
+	```sql
 	select constraint_name, column_name
 	  from user_cons_columns
 	 where table_name = upper(表名);
 	```
 - 查看某数据库所有表的约束
-	```
+	```sql
 	select constraint_name, constraint_type
 	  from user_constraints
 	 where owner = 用户名;

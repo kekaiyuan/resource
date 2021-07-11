@@ -24,7 +24,7 @@ keywords: Oracle，SQL
 
 ### 查询结果的插入
 可以用 insert 语句把一个 select 语句的查询结果插入到一个基本表中，语法如下：
-```
+```sql
 Insert into tablename(column,..) 
 select * from tablename2
 ```
@@ -70,7 +70,7 @@ A：一般在实际的操作中，很少一条条插入，更多的是**批量�
 SQL的删除操作是指从基本表中删除元组。
 
 语法如下：
-```
+```sql
 DELETE [FROM] tablename
 [WHERE condition];
 ```
@@ -82,7 +82,7 @@ DELETE [FROM] tablename
 		效率高，但是容易发生**误操作**，**不建议**使用。
 
 ## 修改
-```
+```sql
 update tablename 
 set col = val1 , col2 = val2 , ...
 where condition;
