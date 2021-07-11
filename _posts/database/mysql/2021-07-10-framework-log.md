@@ -1,12 +1,12 @@
 ---
 layout: post
-title: MySQL 之——基础架构与日志
+title: MySQL 之——基础架构与日志系统
 categories: MySQL
-description: MySQL 之——基础架构与日志
+description: MySQL 之——基础架构与日志系统
 keywords: MySQL
 ---
 
-MySQL 之——基础架构与日志
+MySQL 之——基础架构与日志系统
 
 
 ## 基础架构
