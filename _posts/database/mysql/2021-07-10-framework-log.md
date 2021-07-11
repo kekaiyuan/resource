@@ -1,63 +1,231 @@
 ---
 layout: post
-title: MySQL 之——日志
-categories: [cate1, cate2]
-description: some word here
-keywords: keyword1, keyword2
-mermain: true
+title: MySQL 之——基础架构与日志
+categories: MySQL
+description: MySQL 之——基础架构与日志
+keywords: MySQL
 ---
 
+MySQL 之——基础架构与日志
+
+
+## 基础架构
+
+![enter description here](/images/posts/database/mysql/framework-log/framework.png)
+
+### 连接器
+连接器负责跟客户端**建立连接**，**获取权限**、**维持和管理连接**
+- 用户名密码**验证**
+- 查询**权限**信息，分配对应的权限<br>
+	MySQL 的权限控制比 oracle 的要宽松。
+- 可以使用 `show processlist` 查看现在的连接
+- 如果太长时间没有动静，就会**自动断开**，通过 `wait_timeout` 控制，默认 8 小时
+
+连接可以分为两类：
+- 长连接<br>
+	推荐使用，但是要周期性的断开长连接<br>
+	连接池用的就是长连接。
+- 短连接
+
+### 查询缓存
+当执行查询语句的时候，会先去查询缓存中查看结果。<br>
+之前执行过的 sql 语句及其结果可能以 key-value 的形式存储在缓存中。<br>
+如果能找到则直接返回，如果找不到，就继续执行后续的阶段。
+
+但是，**不推荐**使用查询缓存：
+1. 查询缓存的失效比较频繁，只要表更新，缓存就会**清空**
+2. 缓存对应新更新的数据**命中率**比较低
+
+MySQL 8.0 之后没有缓存了，即使是 8.0 以前的版本，缓存也是默认关闭的，需要手动开启。
+
+### 分析器
+词法分析：MySQL 需要把输入的字符串进行识别每个部分代表什么意思
+- 把字符串 T 识别成 表名 T
+- 把字符串 ID 识别成 列 ID
+
+语法分析：<br>
+根据语法规则判断这个 sql 语句是否满足 MySQL 的语法。<br>
+如果不符合就会报错 
+```
+You have an error in your SQL syntax;
+```
+
+### 优化器
+在具体执行SQL语句之前，要先经过优化器的处理
+- 当表中有多个索引的时候，决定用哪个索引
+- 当sql语句需要做多表关联的时候，决定表的连接顺序
+- 等等
+
+不同的执行方式对SQL语句的执行效率影响很大
+- RBO<br>
+	基于规则的优化
+- CBO<br>
+	基于成本的优化<br>
+	现在**更多**的使用基于成本的优化。
 
 
 
-WAL技术（Write-Ahead Logging）。先写日志，再写磁盘。
+## 日志系统
 
-
-## Redo Log
+### Redo Log
 Redo Log 是 InnoDB 专有的日志文件。
 
-.当发生数据修改的时候，innodb引擎会先将记录写到 Redo Log中，并更新内存，此时更新就算是完成了，同时innodb引擎会在合适的时机将记录操作到磁盘中
+当发生数据修改的时候， InnoDB引擎会先将记录写到 Redo Log中，并更新内存，此时更新就算是完成了，同时 InnoDB引擎会在合适的时机将记录操作到磁盘中
 
-.Redo Log是固定大小的，是循环写的过程
-
-.有了 Redo Log之后，innodb就可以保证即使数据库发生异常重启，之前的记录也不会丢失，叫做crash-safe
+有了 Redo Log之后， InnoDB就可以保证即使数据库发生异常重启，之前的记录也不会丢失，叫做 **crash-safe** 。
 
 
-![enter description here](/images/posts/database/mysql/framework-log/redolog.png)
+#### Redo Log 如何保证事务持久化
+事务持久化的定义：<br>
+一旦事务提交，那么它对数据库中的对应数据的状态的变更就会永久保存到数据库中。<br>
+即使发生系统崩溃或机器宕机等故障，只要数据库能够重新启动，那么一定能够将其恢复到事务成功结束的状态。
+
+MySQL 通过 WAL(**W**rite **A**head **L**og) 技术来保证事务的持久性，即**先写日志**，**再写磁盘**。
+1. 在修改数据之前，先把更新后的值写入 Redo Log 中。
+2. Redo Log 写入完毕后，再去修改数据。
+3. 当系统突然崩溃重启时，根据 Redo Log 中的值进行数据恢复。
+
 
 ----------
 
+Q：Redo Log 在磁盘中，数据库也在磁盘中，为什么不直接更新数据库？
 
-疑惑
+> 先讲个故事：
+> 
+> 小柯和小王都有一本书，叫 **《数据库》**。
+> 有一天，他们想把 **《数据库》** 中所有的英文单词都变成大写。
+> 
+> 因为不知道哪一页哪一行有英文单词，所以他们需要把 **《数据库》** 从头到尾读一遍，找到存在的英文单词。
+> 任务量也很大，有**很多**英文单词需要改。
+> 
+> 小王从早上改到下午，没改完，这时一个小伙伴约小王出去玩。
+> 当小王玩到晚上回来后，小王把这件事忘得一干二净。
+> 于是小王的是烂尾工程。
+> 
+> 小柯也遇到了和小王一样的问题。
+> 但他有一本私人珍藏 **《日志》** 。
+>  **《日志》** 也很厚，小柯不知道  **《日志》** 中哪一页哪一行有什么。
+>  但他直接翻开  **《日志》** 的最后一页，在最后一行写下了：
+>  “把所有英文单词改成大写。”
+>  并在这句话后面打了个 × 。
+> 
+> 小柯从早上改到下午，没改完，这时也有一个小伙伴约小柯出去玩。
+> 当小柯玩到晚上回来后，也把这件事忘得一干二净。
+> 但是小柯有个好习惯，回家后先看  **《日志》** 。
+> 他看到了：“把所有英文单词改成大写。”和这句话后面的 × 。
+> 他想起来了，他白天没做完的事是什么。
+> 于是他接着做，成功完成了任务。
+ 
+现在把故事映射到计算机中：
+随机 I/O :<br>
+指读写操作时间连续，但访问地址不连续，随机分布在磁盘的地址空间中。<br>
+就像小柯和小王的  **《数据库》** 中哪里都可能有英文单词一样，是随机分布的。
 
-.既然要避免io，为什么写 Redo Log的时候不会造成io的问题？
+顺序 I/O :<br>
+顺序 I/O 是指读写操作的访问地址连续。<br>
+在故事中小柯只是写下了 1 条日志，但如果小柯要写 10 条日志也好，100 条日志也好，都只需要顺着往下写，前面的内容跟他没关系。
+
+1. 刷脏是 随机 I/O ，写 Redo Log File 是 顺序 I/O ，随机 I/O 比顺序 I/O 快得多。
+	- 刷脏：<br>
+		内存中的数据被修改后称之为脏数据，把脏数据同步回磁盘的过程叫做刷脏。
+	- 随机 I/O ：
+		指读写操作时间连续，但访问地址**不连续**，**随机**分布在磁盘的地址空间中。<br>
+		就像小柯和小王的  **《数据库》** 中哪里都可能有英文单词一样，是随机分布的。
+	- 顺序 I/O ：
+		顺序 I/O 是指读写操作的访问地址**连续**。
+		在故事中小柯只是写下了 1 条日志，但如果小柯要写 10 条日志也好，100 条日志也好，都只需要顺着往下写，前面的内容跟他没关系。
+2. 刷脏很可能需要刷很多页的数据，但是写入 Redo Log File 的数据量很少。
+
+**速度快**，**数据少**，所以**先写日志**，再写磁盘。
 
 
-----------
 
+#### 缓冲池
+内存中的 Redo Log 并不是直接写入 Redo Log File 中的，这样的速度会很慢。
 
-日志文件的写入过程<br>
+而是通过缓冲池的机制来实现。
+
 ![enter description here](/images/posts/database/mysql/framework-log/innodb.jpg)
-在 InnoDB 中，每次 commit 事务后，记录会先写入 InnoDB 的 **Log Buffer** ，这个缓冲区位于内存中的**用户区**。<br>
-然后记录会从 Log Buffer 写入 **OS Buffer** ，该缓冲区位于内存中的**内核区**。<br>
-最终 OS Buffer 会使用 **fsync() 函数** **同步**内存中所有已修改的文件数据到储存设备。
+
+Redo Log 会先写入 InnoDB 的 **Log Buffer** ，这个缓存位于内存中的**用户区**。
+
+然后写入 **OS Buffer** ，该缓存位于内存中的**内核区**。
+
+最终 OS Buffer 会使用 **fsync() 函数** 将数据**同步**到文件中。
+
+#### Redo Log Block
+![enter description here](/images/posts/database/mysql/framework-log/redolog2.png)
+
+Redo Log Buffer 和 Redo Log File 都是被划分为一个个 Redo Log Block 的。<br>
+多条 Redo Log 可以存入一个 Block 中，而一个 Block 的大小是 512 字节，刚好是一个扇区的大小。
+
+扇区是读写的最小单位，这样的设计有助于进一步加快 Redo Log 写入 Redo Log File 的速度。
 
 
-----------
+#### 刷新策略
+在 MySQL 中，有一个变量名为 `innodb_flush_log_at_trx_commit`，用来控制redo log刷新到磁盘的策略。
 
-写入策略<br>
 ![enter description here](/images/posts/database/mysql/framework-log/buffer.jpg)
-1. 每次 commit 直接写入 Log Buffer ，然后每秒写入 OS Buffer，并调用 fsync() 刷到磁盘。
-2. 每次 commit 直接写入 OS Buffer ，并调用 fsync() 刷到磁盘。
-3. 每次 commit 直接写入 OS Buffer ，然后每秒调用 fsync() 刷到磁盘。
+- `innodb_flush_log_at_trx_commit = 0`<br>
+	每次 commit 直接写入 Log Buffer ，然后每秒写入 OS Buffer，并调用 fsync() 刷到磁盘。
+- `innodb_flush_log_at_trx_commit = 1`<br>
+	 每次 commit 直接写入 OS Buffer ，并调用 fsync() 刷到磁盘。
+- `innodb_flush_log_at_trx_commit = 2`<br>
+	每次 commit 直接写入 OS Buffer ，然后每秒调用 fsync() 刷到磁盘。
 
-第二种方式最稳定，花费最高。
+MySQL 默认使用 `innodb_flush_log_at_trx_commit = 1`，因为该方式虽然慢，但是最安全。
 
+另外两种方式都以秒为单位，也就是说，当系统崩溃时，我们会丢失**一秒钟**的事务。
+
+#### 文件结构
+
+InnoDB 使用 ib_logfile 文件存储 Redo Log。
+
+ib_logfile 的文件可以有多个，每一个都是同样的大小。
+
+这些文件组成一个**环状**的结构。
+
+![enter description here](/images/posts/database/mysql/framework-log/ib_logfile.png)
+
+----------
+**循环写**
+
+write pos 是写指针，一边写一边向后移动。<br>
+当写到最后一个文件的末尾时（例如 ib_logfile3 ），会移动到第一个文件 (ib_logfile0) 的开头。
+
+采用循环写的方式能够控制文件大小，加快读取速度。
 
 ----------
 
 
-## Undo Log
+**check point**
+
+为了保证 Redo Log File 中的数据已经被同步到磁盘中，加入了 check point 指针。
+
+check point 之前的内容是已经被刷入磁盘的，之后的内容并没有刷入到磁盘。
+
+write pos 和 check point 之间的部分就是 Redo Log File 中可以写入的部分。
+
+当 write pos 追上 check point 时，必须先等 check point 往前推进，然后 write pos 才能继续前进。
+
+
+----------
+
+**好处：**
+1. 缩短数据库的恢复时间。<br>
+	当系统崩溃需要恢复时，check point 前面的 Redo Log 已经刷入磁盘，不需要恢复。<br>
+	只需要恢复 check point 之后的 Redo Log。
+2. 缓冲池不够用时，将脏页刷新到磁盘。<br>
+	在高并发的情况下，如果使用每隔一秒写入一次文件的策略，缓冲池是有可能会满的。<br>
+	此时需要使用 LRU 算法，替换**最少使用**的页，如果该页是脏页，强制刷新到磁盘中。
+3. Redo Log 不可用时，将脏页刷新到磁盘。<br>
+	Redo Log File 是会满的，但是其中的数据并不是全部都有用的。<br>
+	事实上，只需要能够保证系统崩溃时所有**未完成**的事务能够继续执行即可。<br>
+	所以 Redo Log 的时效性很短，每过一秒，就有大量的 Redo Log 失效，因为它们已经被同步到磁盘中去了。<br>
+	write pos 和 check point 之间的部分就可以被视为**无用的**，当有新的 Redo Log 写入时，可以直接覆盖这部分内容。
+
+
+### Undo Log
 
 Undo Log 实现了事务的原子性。<br>
 在 MySQL 数据库 InnoDB 存储引擎中，还用 Undo Log 来实现多版本并发控制 (简称：**MVCC**)。
@@ -72,11 +240,11 @@ Undo Log 是逻辑日志，可以理解为：
 - 当 **update** 一条记录时，它记录一条对应**相反**的 update 记录
 
 
-## Bin Log
+### Bin Log
 
+Bin Log 是 Server 层的日志，主要做 MySQL 功能层面的事情。
 
-
-Bin Log 是 Server 层的日志，主要做 MySQL 功能层面的事情
+在 MySQL 中，Bin Log 默认是**不开启**的，需要手动开启。
 
 与 Redo Log 的区别:
 1. Redo Log 是 InnoDB **独有**的。 <br>
@@ -84,18 +252,35 @@ Bin Log 是 Server 层的日志，主要做 MySQL 功能层面的事情
 2. Redo Log 是**物理**日志，记录的是在某个数据页上做了什么修改。<br>
 	Bin Log 是**逻辑**日志，记录的是这个语句的原始逻辑。
 3. Redo Log 是**循环写**的，空间会用完。<br>
-	Bin Log 是**追加写**的，不会覆盖之前的日志信息。
+	Bin Log 是**追加写**的，当 Bin Log 文件达到一定大小后写入新的文件，不会覆盖之前的日志信息。
+
+#### 备份系统
+每个企业都必须实现属于的备份系统，用于用于恢复数据。
+
+一般而言，备份系统会包含以下两个内容：
+1. 整库备份
+2. 存储一段时间内的所有 Bin Log
+
+恢复数据的流程：
+1. 找到最近一次的**全量备份**数据<br>
+2. 从备份的时间点开始，将备份的 Bin Log 取出来，重放到要恢复的那个时刻。<br>
+
+例：现在是 2021-7-11-12:38 ，我不小心把数据库删了，如何恢复？
+1. 找到离 2021-7-11-12:38 这个时间点最近的备份，假设是 2021-7-11 凌晨 0 点的备份。
+2. 从备份系统中取出 2021-7-11-0:00 到 2021-7-11-12:38 的 Bin Log 并执行。
+
+在设计备份系统时，应该考量以下两点：
+- 整库备份的周期<br>
+	是一天一备还是一周一备？或是……
+- 在备份系统中存储多长时间的所有 Bin Log
+	- 如果存储的是一周内的所有 Bin Log，那么数据可以恢复到一周内的任意时刻。
+	- 如果存储的是两周内的所有 Bin Log，那么数据可以恢复到两周内的任意时刻。
+	- ……
 
 
-一般在企业中数据库会有备份系统，可以定期执行备份，备份的周期可以自己设置<br>
-恢复数据的过程：
-1. 找到最近一次的全量备份数据
-2. 从备份的时间点开始，将备份的 Bin Log 取出来，重放到要恢复的那个时刻
-
-Bin Log 默认是不开启的，需要手动开启。
 
 
-## Redo Log 的两阶段提交
+### Redo Log 的两阶段提交
 
 数据更新 DML 的流程
 ![enter description here](/images/posts/database/mysql/framework-log/process.png)
@@ -136,9 +321,3 @@ Redo Log 的提交分为 prepare 和 commit 两个阶段，所以称之为两阶
 | 有记录 | prepare | 在 Bin Log 写完提交事务之前的 crash | 提交事务 |
 | 无记录 | prepare | 在 Bin Log 写完之前的 crash | 回滚事务 |
 | 无记录 | 无记录 | 在 Redo Log 写之前 crash | 回滚事务 |
-
-
-
-----------
-
-
