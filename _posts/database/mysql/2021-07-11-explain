@@ -81,7 +81,9 @@ explain select * from emp;
 ```
 
 --primary:查询中若包含任何复杂的子查询，最外层查询则被标记为Primary
+```
 explain select staname,ename supname from (select ename staname,mgr from emp) t join emp on t.mgr=emp.empno ;
+```
 
 --union:若第二个select出现在union之后，则被标记为union
 explain select * from emp where deptno = 10 union select * from emp where sal >2000;
