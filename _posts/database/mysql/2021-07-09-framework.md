@@ -1,12 +1,12 @@
 ---
 layout: post
-title: MySQL 之——底层架构
-categories: MySQL
-description: MySQL 之——底层架构
-keywords: MySQL
+title: Mysql 之——底层架构
+categories: Mysql
+description: Mysql 之——底层架构
+keywords: Mysql
 ---
 
-MySQL 之——底层架构
+Mysql 之——底层架构
 
 ## 序言
 
@@ -16,7 +16,7 @@ MySQL 之——底层架构
 连接器负责跟客户端**建立连接**，**获取权限**、**维持和管理连接**
 - 用户名密码**验证**
 - 查询**权限**信息，分配对应的权限<br>
-	MySQL 的权限控制比 oracle 的要宽松。
+	mysql 的权限控制比 oracle 的要宽松。
 - 可以使用 `show processlist` 查看现在的连接
 - 如果太长时间没有动静，就会**自动断开**，通过 `wait_timeout` 控制，默认 8 小时
 
@@ -35,15 +35,15 @@ MySQL 之——底层架构
 1. 查询缓存的失效比较频繁，只要表更新，缓存就会**清空**
 2. 缓存对应新更新的数据**命中率**比较低
 
-MySQL 8.0 之后没有缓存了，即使是 8.0 以前的版本，缓存也是默认关闭的，需要手动开启。
+Mysql 8.0 之后没有缓存了，即使是 8.0 以前的版本，缓存也是默认关闭的，需要手动开启。
 
 ## 分析器
-词法分析：MySQL 需要把输入的字符串进行识别每个部分代表什么意思
+词法分析：Mysql 需要把输入的字符串进行识别每个部分代表什么意思
 - 把字符串 T 识别成 表名 T
 - 把字符串 ID 识别成 列 ID
 
 语法分析：<br>
-根据语法规则判断这个 sql 语句是否满足 MySQL 的语法。<br>
+根据语法规则判断这个 sql 语句是否满足 mysql 的语法。<br>
 如果不符合就会报错 
 ```
 You have an error in your SQL syntax;
