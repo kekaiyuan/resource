@@ -10,15 +10,15 @@ Mysql 之——底层架构
 
 ## 序言
 
-![enter description here](/images/posts/database/mysql/framework/framework.png)
+![enter description here](/images/posts/database/mysql/framework-log/framework.png)
 
 ## 连接器
-连接器负责跟客户端建立连接，获取权限、维持和管理连接
-- 用户名密码验证
-- 查询权限信息，分配对应的权限<br>
+连接器负责跟客户端**建立连接**，**获取权限**、**维持和管理连接**
+- 用户名密码**验证**
+- 查询**权限**信息，分配对应的权限<br>
 	mysql 的权限控制比 oracle 的要宽松。
 - 可以使用 `show processlist` 查看现在的连接
-- 如果太长时间没有动静，就会自动断开，通过 `wait_timeout` 控制，默认 8 小时
+- 如果太长时间没有动静，就会**自动断开**，通过 `wait_timeout` 控制，默认 8 小时
 
 连接可以分为两类：
 - 长连接<br>
