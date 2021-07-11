@@ -88,6 +88,8 @@ explain select staname,ename supname from (select ename staname,mgr from emp) t 
 --union:若第二个select出现在union之后，则被标记为union
 explain select * from emp where deptno = 10 union select * from emp where sal >2000;
 
+union 先执行
+
 --dependent union:跟union类似，此处的depentent表示union或union all联合而成的结果会受外部表影响
 explain select * from emp e where e.empno  in ( select empno from emp where deptno = 10 union select empno from emp where sal >2000)
 
