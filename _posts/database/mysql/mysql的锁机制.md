@@ -1,3 +1,18 @@
+
+
+---
+layout: post
+title: MySQL 之——锁机制
+categories: MySQL
+description: MySQL 之——锁机制
+
+keywords: MySQL, 锁
+---
+
+MySQL 之——锁机制
+
+
+
 # mysql的锁机制
 
 ### 1、MySQL锁的基本介绍
@@ -85,7 +100,7 @@ MyISAM存储引擎有一个系统变量 concurrent_insert ，专门用来控制�
 
 - 值为 1 时
 
-  如果表中间没有被删除的行，MyISAM允许一个进程读表的同时，另一个进程从表尾插入记录
+  如果表中间没有被删除的行（空洞），MyISAM允许一个进程读表的同时，另一个进程从表尾插入记录
 
 - 值为 2 时
 
