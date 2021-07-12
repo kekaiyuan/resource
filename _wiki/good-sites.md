@@ -16,3 +16,6 @@ keywords: 网站，推荐
 	- visualgo的国内版，内容略少
 - sorting [http://sorting.at/](http://sorting.at/)
 
+# MySQL
+MySQL 5.6 中文参考手册 [https://github.com/mysql2cn/manual56](https://github.com/mysql2cn/manual56)
+
