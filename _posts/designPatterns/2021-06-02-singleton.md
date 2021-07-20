@@ -174,7 +174,7 @@ public class Mgr05 {
  * */
 public class Mgr06 {
 
-	//使用volatile关键字，防止JVM内部语句重排后，没有初始化就放回INSTANCE
+	//使用volatile关键字，防止JVM内部语句重排后，没有初始化就返回INSTANCE
     private static volatile Mgr06 INSTANCE;
 
     private Mgr06(){}
@@ -193,15 +193,7 @@ public class Mgr06 {
 
 }
 ```
-- 指令重排<br>
-  在编译阶段，Java会被编译为汇编语言。<br>
-  一句Java会被编译多句汇编语言。<br>
-  此时可能会发生只创建了 INSTANCE 对象，但没有正确地设置初值的情况。<br>
-  此时得到的单例是半初始化的实例。<br>
-  该情况几率很低，极难复现，百万级别的并发下可能会出现。<br>
-- volatile 关键字
-	- 线程间可见
-	- 防止指令重排
+在双检锁中，必须使用 volatile 关键字，原因是 [防止指令重排](https://kekaiyuan.github.io//2021/07/16/volatile/#%E7%A6%81%E7%94%A8%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92)
 
 
 ### 静态内部类
