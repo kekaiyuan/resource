@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="477958c5-13ce-4d85-947e-99c527592bfd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/_posts/database/mysql/2021-07-08-index.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/database/mysql/2021-07-08-index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/database/mysql/2021-07-09-framework.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/database/oracle/2021-06-28-sql-query.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/database/oracle/2021-06-28-sql-query.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/database/oracle/2021-06-30-rowtocol.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/database/oracle/2021-06-30-rowtocol.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/database/oracle/2021-07-01-sequence.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/database/oracle/2021-07-01-sequence.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/database/oracle/2021-07-01-sql-update.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/database/oracle/2021-07-01-sql-update.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/database/oracle/2021-07-01-view.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/database/oracle/2021-07-01-view.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/database/oracle/2021-07-02-constraint.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/database/oracle/2021-07-02-constraint.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/database/oracle/2021-07-02-indexes.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/database/oracle/2021-07-02-index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/database/oracle/2021-07-02-table.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/database/oracle/2021-07-02-table.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/database/oracle/2021-07-02-transaction.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/database/oracle/2021-07-02-transaction.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +20,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/_posts/database" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
