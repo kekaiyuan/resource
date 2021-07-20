@@ -26,8 +26,8 @@ keywords: Java，设计模式
 - ……
 
 这就是模板方法：<br>
-- 在父类中定义所有子类必须实现的方法。
-- 子类自定义地具体实现这些方法。
+- 在父类中定义所有子类**必须**实现的方法。
+- 子类自定义地**具体**实现这些方法。
 
 # 概念
 
@@ -120,15 +120,15 @@ class Subclass2 extends Superclass{
 
 调用
 ```java
-    public static void main(String[] args) {
-        Superclass aClass1 = new Subclass1();
-        aClass1.templateMethod();
+public static void main(String[] args) {
+	Superclass aClass1 = new Subclass1();
+	aClass1.templateMethod();
 
-		System.out.println("------");
+	System.out.println("------");
 
-        Superclass aClass2 = new Subclass2();
-        aClass2.templateMethod();
-    }
+	Superclass aClass2 = new Subclass2();
+	aClass2.templateMethod();
+}
 ```
 结果
 ```java
