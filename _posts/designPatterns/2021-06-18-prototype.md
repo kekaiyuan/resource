@@ -105,8 +105,6 @@ class Location {
     }
 }
 ```
-Person 类中有三个属性
-
 测试
 ```java
 public static void main(String[] args) throws Exception {
@@ -157,7 +155,7 @@ true
 public static void main(String[] args) throws Exception {
         Person p1 = new Person();
         Person p2 = (Person) p1.clone();
-		
+
 		p1.age = 18;
         System.out.println(p2.age);
 
