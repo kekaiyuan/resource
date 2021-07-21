@@ -11,6 +11,8 @@ keywords: Java，设计模式
 # 序言
 
 
+
+
 # 概念
 
 > 以下内容引用自 [菜鸟教程](https://www.runoob.com/design-pattern/template-pattern.html)
@@ -96,14 +98,6 @@ class Location {
     String street;
     int roomNo;
 
-    @Override
-    public String toString() {
-        return "Location{" +
-                "street='" + street + '\'' +
-                ", roomNo=" + roomNo +
-                '}';
-    }
-
     public Location(String street, int roomNo) {
         this.street = street;
         this.roomNo = roomNo;
@@ -151,7 +145,7 @@ public static void main(String[] args) throws Exception {
 ```java
 true
 ```
-这意味着 `p1` 的 `loc` 和 `p2` 的 `loc` 是**同一个**对象！
+这意味着 `p1.loc` 和 `p2.loc` 是**同一个**对象！
 
 这是因为 `loc` 本身是个地址，指向了某个 `Location` 对象。
 
@@ -167,7 +161,7 @@ public static void main(String[] args) throws Exception {
         System.out.println(p2.age);
 
         p1.loc.street = "sh";
-        System.out.println(p2.loc);
+        System.out.println(p2.loc.street);
     }
 ```
 结果
@@ -175,20 +169,79 @@ public static void main(String[] args) throws Exception {
 8
 Location{street='sh', roomNo=22}
 ```
-修改 `p1` 中的 `age` ，`p2` 的 `age` 没有变。<br>
-但是修改 `p1` 中的 `loc` ，`p2` 的 `loc` 也变了。
+修改 `p1.age` ，`p2.age` 没有变。<br>
+但是修改 `p1.loc` ，`p2.loc` 也变了。
 
 这就是**浅克隆**：<br>
 **把被克隆对象的所有成员变量的值复制到新对象中去，无论该成员变量是什么类型**。
 
 ## 深克隆
 深克隆可以解决浅克隆中引用类型指向同一个对象的问题。
+
+办法很简单，**使所有的引用类型都继承 Cloneable 接口并重写 clone() 方法**。
 ```java
+class Person implements Cloneable {
+    int age = 8;
+    int score = 100;
+
+    Location loc = new Location("bj", 22);
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        Person person = (Person) super.clone();
+        person.loc = (Location) this.loc.clone();
+        return person;
+    }
+}
+
+class Location implements Cloneable {
+    String street;
+    int roomNo;
+
+    public Location(String street, int roomNo) {
+        this.street = street;
+        this.roomNo = roomNo;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
 ```
+测试
 ```java
+public static void main(String[] args) throws Exception {
+        Person p1 = new Person();
+        Person p2 = (Person) p1.clone();
+
+        System.out.println(p1.loc == p2.loc);
+        p1.loc.street = "sh";
+        System.out.println(p2.loc.street);
+    }
 ```
+结果
 ```java
+false
+bj
 ```
+`p1.loc` 和 `p2.loc` 不再指向同一个对象。
+
+修改 `p1.loc` ， `p2.loc` 不会受影响。
+
+
+----------
+
+为什么 `Location` 中的 `String street` 不需要实现单独的克隆？
+
+因为 `String` 类型指向的字符串在常量池中，常量池是不能修改的。
+
+修改 `String` 类型的值只是将其指向了常量池中的另一个常量，并不是修改原有的常量。
+
+比如：<br>
+一开始 `street` 指向常量池中的 `bj` ，后来令 `street = "sh"` 是将 `street` 指向常量池中的 `sh`。<br>
+常量池中依然存在 `bj` 。
+
 ```java
 ```
 ```java
