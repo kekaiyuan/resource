@@ -9,9 +9,9 @@ keywords: Java，设计模式
 设计模式之——原型 Prototype
 
 # 序言
+原型模式是 Java 中自带的模式。
 
-
-
+用于从一个固定的对象中**克隆**出多个相同的对象。
 
 # 概念
 
@@ -73,6 +73,11 @@ keywords: Java，设计模式
 1. 继承 Cloneable 接口
 2. 重写 clone() 方法
 
+事实上，不继承 `Cloneable` 接口也可以重写 `clone()` 方法。<br>
+因为 `Cloneable` 是一个空接口（里面什么都没有）。<br>
+而 `clone()` 方法是 `Object` 类（所有类共同的父类）的方法。
+
+但是，不继承 `Cloneable` 接口**编译可以通过**，调用  `clone()` 方法时会有**异常**！
 ```java
 class Person implements Cloneable {
     int age = 8;
@@ -229,36 +234,69 @@ bj
 修改 `p1.loc` ， `p2.loc` 不会受影响。
 
 
-----------
+## 字符串如何处理？
+`String` `StringBuffer` `StringBuilder` 三种类型的字符串，哪些在克隆中不需要处理，哪些需要处理？
+```java
+public class Test {
+    public static void main(String[] args) throws Exception {
+        StringTest test1 = new StringTest(
+                new String("abc"), new StringBuffer("abc"), new StringBuilder("abc"));
+        StringTest test2 = (StringTest) test1.clone();
 
-为什么 `Location` 中的 `String street` 不需要实现单独的克隆？
+        test1.str1="cba";
+        System.out.println(test2.str1);
 
-因为 `String` 类型指向的字符串是常量池中的常量，常量是不能修改的。
+        test1.str2.reverse();
+        System.out.println(test2.str2);
 
-修改 `String` 类型的值只是将其指向了常量池中的另一个常量，并不是修改原有的常量。
+        test1.str3.reverse();
+        System.out.println(test2.str3);
+    }
+}
 
-比如：<br>
-一开始 `street` 指向常量池中的 `bj` ，后来令 `street = "sh"` 是将 `street` 指向常量池中的 `sh`。<br>
-常量池中依然存在 `bj` ，那些指向 `bj` 的字符串不会被修改。
+class StringTest implements Cloneable{
+    String str1;
+    StringBuffer str2;
+    StringBuilder str3;
 
-```java
+    public StringTest(String str1, StringBuffer str2, StringBuilder str3) {
+        this.str1 = str1;
+        this.str2 = str2;
+        this.str3 = str3;
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
 ```
+`test1` 中的三个字符串原来都是 `abc` ，把它们变成 `cba` 后。<br>
+`test2` 中的字符串会变成什么样？
+
+结果
 ```java
+abc
+cba
+cba
 ```
+可以看到，`String` 类型只需要浅克隆就可以。
+而 `StringBuffer` 和 `StringBuilder` 类型都需要深克隆。
+
+修改 `clone()` 方法
 ```java
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return new StringTest(this.str1, new StringBuffer(this.str2), new StringBuilder(this.str3));
+    }
 ```
+重新运行程序，结果：
 ```java
+abc
+abc
+abc
 ```
-```java
-```
-```java
-```
-```java
-```
-```java
-```
-```java
-```
+
 
 # 源码链接
-该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/templatemethod)
+该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/prototype)
