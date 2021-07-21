@@ -65,6 +65,148 @@ keywords: Java，设计模式
 > 注意事项
 > - 与通过对一个类进行实例化来构造新对象不同的是，原型模式是通过拷贝一个现有对象生成新对象的。浅拷贝实现 Cloneable，重写，深拷贝是通过实现 Serializable 读取二进制流。
 
+# 案例
+## 浅克隆
+实现克隆有两步：
+1. 继承 Cloneable 接口
+2. 重写 clone() 方法
+```java
+class Person implements Cloneable {
+    int age = 8;
+    int score = 100;
+
+    Location loc = new Location("bj", 22);
+
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "age=" + age +
+                ", score=" + score +
+                ", loc=" + loc +
+                '}';
+    }
+}
+
+class Location {
+    String street;
+    int roomNo;
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "street='" + street + '\'' +
+                ", roomNo=" + roomNo +
+                '}';
+    }
+
+    public Location(String street, int roomNo) {
+        this.street = street;
+        this.roomNo = roomNo;
+    }
+}
+```
+Person 类中有三个属性
+
+测试
+```java
+public static void main(String[] args) throws Exception {
+        Person p1 = new Person();
+        Person p2 = (Person) p1.clone();
+		
+        System.out.println(p1 == p2);
+		
+        System.out.println(p1.toString().equals(p2.toString()));
+    }
+```
+结果
+```java
+false
+true
+```
+需要克隆某对象时直接调用 `clone()` 方法。
+
+可以看到 p1 和 p2 本身的值不相等，但是内容是一样的。<br>
+说明实现了克隆。
+
+
+----------
+
+
+浅克隆的意思是什么？
+
+```java
+public static void main(String[] args) throws Exception {
+        Person p1 = new Person();
+        Person p2 = (Person) p1.clone();
+		
+        System.out.println(p1.loc == p2.loc);
+    }
+```
+结果
+```java
+true
+```
+这意味着 `p1` 的 `loc` 和 `p2` 的 `loc` 是**同一个**对象！
+
+这是因为 `loc` 本身是个地址，指向了某个 `Location` 对象。
+
+![](\images\posts\designpatterns\prototype\loc.png)
+
+于是会出现以下情形
+```java
+public static void main(String[] args) throws Exception {
+        Person p1 = new Person();
+        Person p2 = (Person) p1.clone();
+		
+		p1.age = 18;
+        System.out.println(p2.age);
+
+        p1.loc.street = "sh";
+        System.out.println(p2.loc);
+    }
+```
+结果
+```java
+8
+Location{street='sh', roomNo=22}
+```
+修改 `p1` 中的 `age` ，`p2` 的 `age` 没有变。<br>
+但是修改 `p1` 中的 `loc` ，`p2` 的 `loc` 也变了。
+
+这就是**浅克隆**：<br>
+**把被克隆对象的所有成员变量的值复制到新对象中去，无论该成员变量是什么类型**。
+
+## 深克隆
+深克隆可以解决浅克隆中引用类型指向同一个对象的问题。
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
+```java
+```
 
 # 源码链接
 该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/templatemethod)
