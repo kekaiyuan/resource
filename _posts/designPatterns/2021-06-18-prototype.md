@@ -166,7 +166,7 @@ public static void main(String[] args) throws Exception {
 结果
 ```java
 8
-Location{street='sh', roomNo=22}
+sh
 ```
 修改 `p1.age` ，`p2.age` 没有变。<br>
 但是修改 `p1.loc` ，`p2.loc` 也变了。
@@ -233,13 +233,13 @@ bj
 
 为什么 `Location` 中的 `String street` 不需要实现单独的克隆？
 
-因为 `String` 类型指向的字符串在常量池中，常量池是不能修改的。
+因为 `String` 类型指向的字符串是常量池中的常量，常量是不能修改的。
 
 修改 `String` 类型的值只是将其指向了常量池中的另一个常量，并不是修改原有的常量。
 
 比如：<br>
 一开始 `street` 指向常量池中的 `bj` ，后来令 `street = "sh"` 是将 `street` 指向常量池中的 `sh`。<br>
-常量池中依然存在 `bj` 。
+常量池中依然存在 `bj` ，那些指向 `bj` 的字符串不会被修改。
 
 ```java
 ```
