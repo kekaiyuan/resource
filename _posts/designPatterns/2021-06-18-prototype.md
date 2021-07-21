@@ -156,7 +156,7 @@ public static void main(String[] args) throws Exception {
         Person p1 = new Person();
         Person p2 = (Person) p1.clone();
 
-		p1.age = 18;
+        p1.age = 18;
         System.out.println(p2.age);
 
         p1.loc.street = "sh";
