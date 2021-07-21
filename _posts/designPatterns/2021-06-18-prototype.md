@@ -72,6 +72,7 @@ keywords: Java，设计模式
 实现克隆有两步：
 1. 继承 Cloneable 接口
 2. 重写 clone() 方法
+
 ```java
 class Person implements Cloneable {
     int age = 8;
