@@ -285,11 +285,11 @@ cba
 
 修改 `clone()` 方法
 ```java
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return new StringTest(
-			this.str1, new StringBuffer(this.str2), new StringBuilder(this.str3));
-    }
+@Override
+protected Object clone() throws CloneNotSupportedException {
+	return new StringTest(
+		this.str1, new StringBuffer(this.str2), new StringBuilder(this.str3));
+}
 ```
 重新运行程序，结果：
 ```java
