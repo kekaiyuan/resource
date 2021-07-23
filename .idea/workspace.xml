@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="477958c5-13ce-4d85-947e-99c527592bfd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/_includes/sidebar-search.html" beforeDir="false" afterPath="$PROJECT_DIR$/_includes/sidebar-search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/components/boxed-group.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/components/boxed-group.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/components/collection.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/components/collection.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/sections/mini-repo-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/sections/mini-repo-list.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/sections/repo-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/sections/repo-list.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,10 +71,11 @@
       <file leaf-file-name="sidebar-search.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_includes/sidebar-search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="4" column="78" lean-forward="true" selection-start-line="4" selection-start-column="78" selection-end-line="4" selection-end-column="78" />
+            <state relative-caret-position="360">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
               <folding>
-                <element signature="n#style#0;n#input#1;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,6 +94,8 @@
       <find>search</find>
       <find>site_search</find>
       <find>350</find>
+      <find>style attribute</find>
+      <find>14px</find>
     </findStrings>
     <replaceStrings>
       <replace>源码链接 [</replace>
@@ -274,12 +273,12 @@
       <option name="presentableId" value="Default" />
       <updated>1624609887265</updated>
       <workItem from="1627035519563" duration="97000" />
-      <workItem from="1627037615012" duration="402000" />
+      <workItem from="1627037615012" duration="574000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="499000" />
+    <option name="totallyTimeSpent" value="671000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -398,10 +397,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/_includes/sidebar-search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="4" column="78" lean-forward="true" selection-start-line="4" selection-start-column="78" selection-end-line="4" selection-end-column="78" />
+        <state relative-caret-position="360">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
           <folding>
-            <element signature="n#style#0;n#input#1;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#ul#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
