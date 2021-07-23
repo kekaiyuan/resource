@@ -237,4 +237,4 @@ EmbeddedChannel 是一个虚假的 Channel ，并没有通过网络连接，是 
 
 
 # 源码链接
-该文章源码链接[https://github.com/kekaiyuan/javaquestion/tree/main/nettydemo](https://github.com/kekaiyuan/javaquestion/tree/main/nettydemo)
+该文章源码链接 [https://github.com/kekaiyuan/javaquestion/tree/main/nettydemo](https://github.com/kekaiyuan/javaquestion/tree/main/nettydemo)
