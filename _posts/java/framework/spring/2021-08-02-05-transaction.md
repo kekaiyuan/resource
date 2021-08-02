@@ -694,7 +694,7 @@ public class BookService {
 }
 ```
 
-# 配置事务属性
+# 配置 [事务](https://kekaiyuan.github.io//2021/07/02/transaction/#%E4%BA%8B%E5%8A%A1) 属性
 
 ## 传播特性
 isolation：设置事务的隔离级别
@@ -702,7 +702,7 @@ isolation：设置事务的隔离级别
 propagation：事务的传播行为
 
 ## 隔离级别
-可设置事务的 [隔离级别]()
+可设置事务的 [隔离级别](https://kekaiyuan.github.io//2021/07/02/transaction/#%E9%9A%94%E7%A6%BB%E6%80%A7-isolation)
 
 ## 设置超时
 可通过设置 `timeout` 属性来设置超时，单位为**秒**。<br>
