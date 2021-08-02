@@ -136,7 +136,7 @@ commit;
 - 序列化 serializable
 - 隔离级别越高，效率越低。
 
-隔离性通过 [锁](https://kekaiyuan.github.io//2021/07/12/lock/)来实现
+隔离性通过 [锁](https://kekaiyuan.github.io//2021/07/02/transaction/#%E9%94%81) 来实现
 
 #### 读未提交 read uncommitted
 - [x] 脏读<br>
