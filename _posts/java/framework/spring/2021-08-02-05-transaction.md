@@ -694,15 +694,42 @@ public class BookService {
 }
 ```
 
-# 配置 [事务](https://kekaiyuan.github.io//2021/07/02/transaction/#%E4%BA%8B%E5%8A%A1) 属性
+# 配置事务属性
+
+[事务详解](https://kekaiyuan.github.io//2021/07/02/transaction/#%E4%BA%8B%E5%8A%A1)
 
 ## 传播特性
-isolation：设置事务的隔离级别
+
 
 propagation：事务的传播行为
 
 ## 隔离级别
 可设置事务的 [隔离级别](https://kekaiyuan.github.io//2021/07/02/transaction/#%E9%9A%94%E7%A6%BB%E6%80%A7-isolation)
+
+使用所连接数据库**默认**的隔离级别
+```java
+@Transactional(isolation = Isolation.DEFAULT)
+```
+
+读未提交
+```java
+@Transactional(isolation = Isolation.READ_UNCOMMITTED)
+```
+
+读已提交
+```java
+@Transactional(isolation = Isolation.READ_COMMITTED)
+```
+
+可重复读
+```java
+@Transactional(isolation = Isolation.REPEATABLE_READ)
+```
+
+序列化
+```java
+@Transactional(isolation = Isolation.SERIALIZABLE)
+```
 
 ## 设置超时
 可通过设置 `timeout` 属性来设置超时，单位为**秒**。<br>
