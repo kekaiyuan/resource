@@ -1,18 +1,18 @@
 ---
 layout: post
-title: Java Spring 05 —— 使用 AOP 实现事务
+title: Java Spring 05 —— APO 的高级应用
 categories: Spring
-description: Java Spring 05 —— 使用 AOP 实现事务
+description: Java Spring 05 —— APO 的高级应用
 keywords: Java, Spring
 ---
 
-Java Spring 05 —— 使用 AOP 实现事务
+Java Spring 05 —— APO 的高级应用
 
-# 05Spring AOP的应用配置
+# Spring JdbcTemplate
 
-### 1、Spring JdbcTemplate
-
-在spring中为了更加方便的操作JDBC，在JDBC的基础之上定义了一个抽象层，此设计的目的是为不同类型的JDBC操作提供模板方法，每个模板方法都能控制	整个过程，并允许覆盖过程中的特定任务，通过这种方式，可以尽可能保留灵活性，将数据库存取的工作量讲到最低。
+在 Spring 中为了更加方便的操作 JDBC，在 JDBC 的基础之上定义了一个抽象层。<br>
+此设计的目的是为不同类型的 JDBC 操作提供模板方法，每个模板方法都能控制整个过程，并允许覆盖过程中的特定任务。<br>
+通过这种方式，可以尽可能保留灵活性，将数据库存取的工作量讲到最低。
 
 ##### 1、配置并测试数据源
 
@@ -438,174 +438,24 @@ public class MyTest {
 ```
 
 ### 2、声明式事务
-
-##### 1、环境准备
-
-tx.sql
-
-```sql
-/*
-Navicat MySQL Data Transfer
-
-Source Server         : localhost
-Source Server Version : 50528
-Source Host           : localhost:3306 
-Source Database       : tx
-
-Target Server Type    : MYSQL
-Target Server Version : 50528
-File Encoding         : 65001
-
-Date: 2020-02-13 19:19:32
-*/
-
-SET FOREIGN_KEY_CHECKS=0;
--- ----------------------------
--- Table structure for `account`
--- ----------------------------
-DROP TABLE IF EXISTS `account`;
-CREATE TABLE `account` (
-  `username` varchar(10) NOT NULL DEFAULT '',
-  `balance` double DEFAULT NULL,
-  PRIMARY KEY (`username`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of account
--- ----------------------------
-INSERT INTO account VALUES ('lisi', '1000');
-INSERT INTO account VALUES ('zhangsan', '1000');
-
--- ----------------------------
--- Table structure for `book`
--- ----------------------------
-DROP TABLE IF EXISTS `book`;
-CREATE TABLE `book` (
-  `id` int(10) NOT NULL,
-  `book_name` varchar(10) DEFAULT NULL,
-  `price` double DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of book
--- ----------------------------
-INSERT INTO book VALUES ('1', '西游记', '100');
-INSERT INTO book VALUES ('2', '水浒传', '100');
-INSERT INTO book VALUES ('3', '三国演义', '100');
-INSERT INTO book VALUES ('4', '红楼梦', '100');
-
--- ----------------------------
--- Table structure for `book_stock`
--- ----------------------------
-DROP TABLE IF EXISTS `book_stock`;
-CREATE TABLE `book_stock` (
-  `id` int(255) NOT NULL DEFAULT '0',
-  `stock` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of book_stock
--- ----------------------------
-INSERT INTO book_stock VALUES ('1', '1000');
-INSERT INTO book_stock VALUES ('2', '1000');
-INSERT INTO book_stock VALUES ('3', '1000');
-INSERT INTO book_stock VALUES ('4', '1000');
-
-```
-
-BookDao.java
-
+现有某 service 类 ，调用某 dao ，执行了一系列 SQL 操作，此时如何为其添加事务支持？
 ```java
-package com.mashibing.dao;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public class BookDao {
-
-    @Autowired
-    JdbcTemplate jdbcTemplate;
-
-    /**
-     * 减去某个用户的余额
-     * @param userName
-     * @param price
-     */
-    public void updateBalance(String userName,int price){
-        String sql = "update account set balance=balance-? where username=?";
-        jdbcTemplate.update(sql,price,userName);
-    }
-
-    /**
-     * 按照图书的id来获取图书的价格
-     * @param id
-     * @return
-     */
-    public int getPrice(int id){
-        String sql = "select price from book where id=?";
-        return jdbcTemplate.queryForObject(sql,Integer.class,id);
-    }
-
-    /**
-     * 减库存，减去某本书的库存
-     * @param id
-     */
-    public void updateStock(int id){
-        String sql = "update book_stock set stock=stock-1 where id=?";
-        jdbcTemplate.update(sql,id);
-    }
-}
-```
-
-BookService.java
-
-```java
-package com.mashibing.service;
-
-import com.mashibing.dao.BookDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 @Service
-public class BookService {
+public class AService {
 
     @Autowired
-    BookDao bookDao;
+    ADao aDao;
 
-    /**
-     * 结账：传入哪个用户买了哪本书
-     * @param username
-     * @param id
-     */
-    public void checkout(String username,int id){
-
-        bookDao.updateStock(id);
-        int price = bookDao.getPrice(id);
-        bookDao.updateBalance(username,price);
+    public void aMethod(...){
+		aDao.select(...);
+		aDao.update(...);
+		aDao.insert(...);
+		aDao.delete(...);
+		...
     }
 }
 ```
 
-MyTest.java
-
-```java
-import com.mashibing.service.BookService;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import java.sql.SQLException;
-
-public class MyTest {
-    public static void main(String[] args) throws SQLException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("jdbcTemplate.xml");
-        BookService bookService = context.getBean("bookService", BookService.class);
-        bookService.checkout("zhangsan","1");
-    }
-}
-```
 
 总结：在事务控制方面，主要有两个分类：
 
@@ -663,33 +513,22 @@ jdbcTemplate.xml
 </beans>
 ```
 
-BookService.java
 
+添加注解
 ```java
-package com.mashibing.service;
-
-import com.mashibing.dao.BookDao;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 @Service
-public class BookService {
+public class AService {
 
     @Autowired
-    BookDao bookDao;
+    ADao aDao;
 
-    /**
-     * 结账：传入哪个用户买了哪本书
-     * @param username
-     * @param id
-     */
     @Transactional
-    public void checkout(String username,int id){
-
-        bookDao.updateStock(id);
-        int price = bookDao.getPrice(id);
-        bookDao.updateBalance(username,price);
+    public void aMethod(...){
+		aDao.select(...);
+		aDao.update(...);
+		aDao.insert(...);
+		aDao.delete(...);
+		...
     }
 }
 ```
@@ -699,6 +538,63 @@ public class BookService {
 [事务详解](https://kekaiyuan.github.io//2021/07/02/transaction/#%E4%BA%8B%E5%8A%A1)
 
 ## 传播特性
+
+|  传播属性   |  描述   |
+| :---: | :--- |
+| REQUIRED |  如果有事务在运行，当前的方法就在这个事务内运行，否则，就启动一个新的事务，并在自己的事务内运行   |
+| REQUIRES_NEW |     |
+| SUPPORTS |     |
+| NOT_SUPPORTED |     |
+| MANDATORY |     |
+| NEVER |     |
+| NESTED |     |
+
+
+```java
+@Service
+public class AService {
+
+    @Autowired
+    ADao aDao;
+
+	@Transactional(propagation = Propagation.XXX, rollbackFor = {Exception.class})
+    public void methodA() throws Exception {
+		aDao.update();
+		aDao.update();
+    }
+	
+	@Transactional(propagation = Propagation.XXX, rollbackFor = {Exception.class})
+    public void methodB() throws Exception{
+		aDao.update();
+		aDao.update();
+    }
+}
+```
+
+```java
+@Service
+public class MultService {
+
+    @Autowired
+    private AService aService;
+
+    @Transactional
+    public void mult() throws Exception {
+        aService.methodA();
+        aService.methodB();
+    }
+	
+}
+```
+有异常都回滚
+
+
+REQUIRES_NEW
+
+
+
+
+
 
 
 propagation：事务的传播行为
@@ -733,7 +629,7 @@ propagation：事务的传播行为
 
 ## 设置超时
 可通过设置 `timeout` 属性来设置超时，单位为**秒**。<br>
-当事务执行时间超时后，将自动**终止**该事务并**回滚**。
+当事务执行时间**超时**后，将自动**终止**该事务并**回滚**。
 
 ```java
 @Transactional(timeout = 3)
@@ -756,7 +652,7 @@ propagation：事务的传播行为
 ```
 
 ## 异常处理
-当事务执行过程中发生异常时，**默认**情况下
+当**事务**执行过程中发生异常时，**默认**情况下
 - RunTimeExpcetion 及其子类会自动回滚
 - 其他异常不会自动回滚
 
@@ -785,16 +681,6 @@ propagation：事务的传播行为
 		@Transactional(rollbackForClassName = "java.io.FileNotFoundException")
 		```
 
-
-##### 8、设置隔离级别
-
-隔离级别没有接触的同学可以看我之前的事务视频，里面有详细讲解，此处不再赘述。
-
-BookService.java
-
-```java
-package com.mashibing.service;import com.mashibing.dao.BookDao;import org.springframework.beans.factory.annotation.Autowired;import org.springframework.stereotype.Service;import org.springframework.transaction.annotation.Isolation;import org.springframework.transaction.annotation.Transactional;import java.io.File;import java.io.FileInputStream;import java.io.FileNotFoundException;@Servicepublic class BookService {    @Autowired    BookDao bookDao;    /**     * 结账：传入哪个用户买了哪本书     * @param username     * @param id     */    @Transactional(timeout = 3,isolation = Isolation.READ_COMMITTED)    public void checkout(String username,int id) throws FileNotFoundException {        bookDao.updateStock(id);        int price = bookDao.getPrice(id);        bookDao.updateBalance(username,price);//        int i = 1/0;        new FileInputStream("aaa.txt");    }}
-```
 
 ##### 9、事务的传播特性
 
