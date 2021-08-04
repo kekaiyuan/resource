@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Java Spring 05 —— APO 的高级应用
+title: Java Spring 05—— AOP 的高级应用
 categories: Spring
-description: Java Spring 05 —— APO 的高级应用
+description: Java Spring 05—— AOP 的高级应用
 keywords: Java, Spring
 ---
 
-Java Spring 05 —— APO 的高级应用
+Java Spring 05—— AOP 的高级应用
 
 # Spring JdbcTemplate
 
@@ -14,10 +14,10 @@ Java Spring 05 —— APO 的高级应用
 此设计的目的是为不同类型的 JDBC 操作提供模板方法，每个模板方法都能控制整个过程，并允许覆盖过程中的特定任务。<br>
 通过这种方式，可以尽可能保留灵活性，将数据库存取的工作量讲到最低。
 
-##### 1、配置并测试数据源
+## 环境配置
+添加 pom 依赖
 
 pom.xml
-
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
@@ -36,7 +36,6 @@ pom.xml
             <artifactId>spring-context</artifactId>
             <version>5.2.3.RELEASE</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -78,8 +77,13 @@ pom.xml
 </project>
 ```
 
-dbconfig.properties
 
+----------
+
+
+编写数据库连接的配置文件
+
+dbconfig.properties
 ```properties
 jdbc.username=root123
 password=123456
@@ -87,8 +91,13 @@ url=jdbc:mysql://localhost:3306/demo
 driverClassName=com.mysql.jdbc.Driver
 ```
 
-applicationContext.xml
 
+----------
+
+
+通过 xml 文件导入 dataSource 对象
+
+applicationContext.xml
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -112,215 +121,145 @@ applicationContext.xml
 </beans>
 ```
 
-MyTest.java
 
+----------
+
+
+测试
 ```java
-import com.alibaba.druid.pool.DruidDataSource;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import java.sql.SQLException;
-
-public class MyTest {
-    public static void main(String[] args) throws SQLException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("jdbcTemplate.xml");
-        DruidDataSource dataSource = context.getBean("dataSource", DruidDataSource.class);
-        System.out.println(dataSource);
-        System.out.println(dataSource.getConnection());
-    }
+ApplicationContext context = new ClassPathXmlApplicationContext("jdbcTemplate.xml");
+DruidDataSource dataSource = context.getBean("dataSource", DruidDataSource.class);
+System.out.println(dataSource.getConnection());
 }
 ```
+结果
+```java
+com.mysql.jdbc.JDBC4Connection@611889f4
+```
+成功地使用 druid 与 mysql 建立了连接。
 
-##### 2、给spring容器添加JdbcTemplate
-
-spring容器提供了一个JdbcTemplate类，用来方便操作数据库。
-
-1、添加pom依赖
+## 添加 JdbcTemplate 对象
+添加 pom 依赖
 
 pom.xml
-
 ```xml
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>5.2.3.RELEASE</version>
-        </dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-orm</artifactId>
+	<version>5.2.3.RELEASE</version>
+</dependency>
 ```
 
-jdbcTemplate.xml
 
+----------
+
+
+在 xml 文件中添加 JdbcTemplate 对象
+
+applicationContext.xml
 ```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context
-       http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/aop
-       https://www.springframework.org/schema/aop/spring-aop.xsd
-">
-    <context:property-placeholder location="classpath:dbconfig.properties"></context:property-placeholder>
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
-        <property name="username" value="${jdbc.username}"></property>
-        <property name="password" value="${jdbc.password}"></property>
-        <property name="url" value="${jdbc.url}"></property>
-        <property name="driverClassName" value="${jdbc.driverClassName}"></property>
-    </bean>
-    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-        <constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
-    </bean>
-</beans>
+...
+<context:property-placeholder location="classpath:dbconfig.properties"></context:property-placeholder>
+<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+	<property name="username" value="${jdbc.username}"></property>
+	<property name="password" value="${jdbc.password}"></property>
+	<property name="url" value="${jdbc.url}"></property>
+	<property name="driverClassName" value="${jdbc.driverClassName}"></property>
+</bean>
+<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+	<constructor-arg name="dataSource" ref="dataSource"></constructor-arg>
+</bean>
+...
 ```
 
-MyTest.java
+在创建 JdbcTemplate 对象必须传入一个 dataSource 对象。
+
+
+----------
+
+
+测试
+```java
+ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
+System.out.println(jdbcTemplate);
+```
+结果
+```java
+org.springframework.jdbc.core.JdbcTemplate@37858383
+```
+
+成功创建了 JdbcTemplate 对象
+
+## 使用 JdbcTemplate 对象读写数据
+使用 JdbcTemplate 对象读写数据非常地方便。<br>
+我们只需要定义 sql 语句即可，其他细节 Spring 会帮我们自动完成。
+
+
+### 插入单条数据
+
 
 ```java
-import com.alibaba.druid.pool.DruidDataSource;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
+ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
+String sql = "insert into emp(empno,ename) values(?,?)";
+int result = jdbcTemplate.update(sql, 1111, "zhangsan");
+System.out.println(result);
+```
 
-import java.sql.SQLException;
+是不是很方便，只需要写 sql 语句，然后直接调用 JdbcTemplate 的方法执行 sql 语句即可。
 
-public class MyTest {
-    public static void main(String[] args) throws SQLException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("jdbcTemplate.xml");
-        JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
-        System.out.println(jdbcTemplate);
-    }
+### 插入批量数据
+
+
+```java
+ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
+String sql = "insert into emp(empno,ename) values(?,?)";
+List<Object[]> list = new ArrayList<Object[]>();
+list.add(new Object[]{1,"zhangsan1"});
+list.add(new Object[]{2,"zhangsan2"});
+list.add(new Object[]{3,"zhangsan3"});
+int[] result = jdbcTemplate.batchUpdate(sql, list);
+for (int i : result) {
+	System.out.println(i);
 }
 ```
 
-##### 3、插入数据
+### 查询单个对象
 
-MyTest.java
 
 ```java
-import com.alibaba.druid.pool.DruidDataSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
+ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
+String sql = "select * from emp where empno = ?";
+Emp emp = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Emp.class), 7369);
+System.out.println(emp);
+```
 
-import java.sql.SQLException;
+注：Emp 是与数据表 emp 对应的实体类。
 
-public class MyTest {
-    public static void main(String[] args) throws SQLException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("jdbcTemplate.xml");
-        JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
-        String sql = "insert into emp(empno,ename) values(?,?)";
-        int result = jdbcTemplate.update(sql, 1111, "zhangsan");
-        System.out.println(result);
-    }
+### 查询多个对象
+
+```java
+ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
+String sql = "select * from emp where sal > ?";
+List<Emp> query = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Emp.class), 1500);
+for (Emp emp : query) {
+	System.out.println(emp);
 }
 ```
 
-##### 4、批量插入数据
-
-MyTest.java
+### 执行组合函数
 
 ```java
-import com.alibaba.druid.pool.DruidDataSource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
-public class MyTest {
-    public static void main(String[] args) throws SQLException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("jdbcTemplate.xml");
-        JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
-        String sql = "insert into emp(empno,ename) values(?,?)";
-        List<Object[]> list = new ArrayList<Object[]>();
-        list.add(new Object[]{1,"zhangsan1"});
-        list.add(new Object[]{2,"zhangsan2"});
-        list.add(new Object[]{3,"zhangsan3"});
-        int[] result = jdbcTemplate.batchUpdate(sql, list);
-        for (int i : result) {
-            System.out.println(i);
-        }
-    }
-}
-```
-
-##### 5、查询某个值，并以对象的方式返回
-
-MyTest.java
-
-```java
-import com.mashibing.bean.Emp;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import java.sql.SQLException;
-
-public class MyTest {
-    public static void main(String[] args) throws SQLException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("jdbcTemplate.xml");
-        JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
-        String sql = "select * from emp where empno = ?";
-        Emp emp = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Emp.class), 7369);
-        System.out.println(emp);
-    }
-}
-```
-
-##### 6、查询返回集合对象
-
-MyTest.java
-
-```java
-import com.mashibing.bean.Emp;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import java.sql.SQLException;
-import java.util.List;
-
-public class MyTest {
-    public static void main(String[] args) throws SQLException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("jdbcTemplate.xml");
-        JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
-        String sql = "select * from emp where sal > ?";
-        List<Emp> query = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Emp.class), 1500);
-        for (Emp emp : query) {
-            System.out.println(emp);
-        }
-    }
-}
-```
-
-##### 7、返回组合函数的值
-
-MyTest.java
-
-```java
-import com.mashibing.bean.Emp;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import java.sql.SQLException;
-import java.util.List;
-
-public class MyTest {
-    public static void main(String[] args) throws SQLException {
-        ApplicationContext context = new ClassPathXmlApplicationContext("jdbcTemplate.xml");
-        JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
-        String sql = "select max(sal) from emp";
-        Double aDouble = jdbcTemplate.queryForObject(sql, Double.class);
-        System.out.println(aDouble);
-    }
-}
+ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
+String sql = "select max(sal) from emp";
+Double aDouble = jdbcTemplate.queryForObject(sql, Double.class);
+System.out.println(aDouble);
 ```
 
 ##### 8、使用具备具名函数的JdbcTemplate
@@ -359,13 +298,8 @@ jdbcTemplate.xml
 MyTest.java
 
 ```java
-import com.mashibing.bean.Emp;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-
+ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+JdbcTemplate jdbcTemplate = context.getBean("jdbcTemplate", JdbcTemplate.class);
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
@@ -437,7 +371,7 @@ public class MyTest {
 }
 ```
 
-### 2、声明式事务
+# 声明式事务
 现有某 service 类 ，调用某 dao ，执行了一系列 SQL 操作，此时如何为其添加事务支持？
 ```java
 @Service
@@ -538,6 +472,8 @@ public class AService {
 [事务详解](https://kekaiyuan.github.io//2021/07/02/transaction/#%E4%BA%8B%E5%8A%A1)
 
 ## 传播特性
+当某个事务**调用**了另一个事务，此时它们之间的关系是怎样的？<br>
+传播特性就是用于处理这个的。
 
 |  传播属性   |  描述   |
 | :---: | :--- |
@@ -573,13 +509,13 @@ public class AService {
 
 ```java
 @Service
-public class MultService {
+public class MulService {
 
     @Autowired
     private AService aService;
 
     @Transactional
-    public void mult() throws Exception {
+    public void mul() throws Exception {
         aService.methodA();
         aService.methodB();
     }
@@ -595,9 +531,67 @@ REQUIRES_NEW
 
 
 
+### 详解 REQUIRED, REQUIRES_NEW, NESTED
+这三个传播特性的描述很类似，它们具体有什么不同呢？
 
 
-propagation：事务的传播行为
+----------
+
+
+情况一
+
+```java
+@Service
+public class AService {
+
+    @Autowired
+    ADao aDao;
+
+	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor = {Exception.class})
+    public void methodA() {
+		aDao.update();
+		aDao.update();
+        throw new Exception();
+    }
+	
+	@Transactional
+    public void methodB() {
+		aDao.update();
+		aDao.update();
+    }
+}
+```
+
+```java
+@Service
+public class MulService {
+
+    @Autowired
+    private AService aService;
+
+    @Transactional
+    public void mul() {
+		try{
+			aService.methodA();
+		}catch (Exception e){
+            e.printStackTrace();
+		}
+        aService.methodB();
+    }
+	
+}
+```
+`methodA()` 抛出的异常被**捕获**了，`methodB()` 会回滚吗？<br>
+**会**！<br>
+如果 `methodA()` 的传播级别为 **REQUIRES_NEW** 和 **NESTED**，`methodB()` **不会回滚**！
+
+
+----------
+
+
+
+
+
 
 ## 隔离级别
 可设置事务的 [隔离级别](https://kekaiyuan.github.io//2021/07/02/transaction/#%E9%9A%94%E7%A6%BB%E6%80%A7-isolation)
