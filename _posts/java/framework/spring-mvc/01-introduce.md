@@ -255,6 +255,29 @@ ${msg}
 
 http://localhost:8080/hello
 
+
+
+idea 里要配置lib
+
+当使用 Idea 开发项目时，会遇到以下错误<br>
+![](\images\posts\java\framework\spring-mvc\01-introduce\500.png)<br>
+仔细看，异常信息是 `java.lang.ClassNotFoundException: org.springframework.web.servlet.DispatcherServlet`<br>
+说明 Spring MVC 相关的 jar 包并没有导入到程序中。
+
+打开 `Project Structure`，在 `WEB-INF` 目录下新建一个 `lib` 包<br>
+![](\images\posts\java\framework\spring-mvc\01-introduce\500-1.png)<br>
+![](\images\posts\java\framework\spring-mvc\01-introduce\500-2.png)<br>
+
+右键 `lib` 包，点击 `Add Copy of` ，点击 `Library Files`<br>
+![](\images\posts\java\framework\spring-mvc\01-introduce\500-3.png)
+
+将 Spring MVC 相关的 jar 包导进去<br>
+![](\images\posts\java\framework\spring-mvc\01-introduce\500-4.png)<br>
+![](\images\posts\java\framework\spring-mvc\01-introduce\500-5.png)<br>
+
+重新运行即可解决该错误
+
+
 ### 4、基于注解的Hello_SpringMVC
 
 1、添加pom依赖
