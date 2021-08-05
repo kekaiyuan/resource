@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Java Spring MVC 01——简单介绍及使用
-categories: SpringMVC
+categories: Spring MVC
 description: Java SpringMVC 01——简单介绍及使用
 keywords: Spring MVC, Java
 ---
