@@ -2,8 +2,8 @@
 layout: post
 title: Java Spring MVC 01——简单介绍及使用
 categories: SpringMVC
-description: Java SpringMVC 01——简单介绍及使用
-keywords: SpringMVC, Java
+description: Java Spring MVC 01——简单介绍及使用
+keywords: Spring MVC, Java
 ---
 
 Java Spring MVC 01——简单介绍及使用
@@ -36,9 +36,9 @@ MVC 不是一种设计模式，而是一种架构模式，不同的 MVC 存在�
 
 ![mvc](\images\posts\java\framework\spring-mvc\01-introduce\mvc.png)
 
-# SpringMVC
+# Spring MVC
 
-## SpringMVC 的介绍
+## Spring MVC 的介绍
 
 > 以下内容引用自 [官网](https://docs.spring.io/spring-framework/docs/current/reference/html/web.html) 
 > 
@@ -52,7 +52,7 @@ MVC 不是一种设计模式，而是一种架构模式，不同的 MVC 存在�
 
 SpringMVC 框架的核心关键是 **DispatcherServlet**。
 
-## SpringMVC 的优点
+## Spring MVC 的优点
 
 1. 清晰的角色划分
 	
@@ -99,7 +99,7 @@ SpringMVC 框架的核心关键是 **DispatcherServlet**。
 	
 	可以被限制在当前的HTTp Request或者HTTp Session。准确的说，这并非Spring MVC框架本身特性，而应归属于Spring MVC使用的WebApplicationContext容器。
 
-## SpringMVC 的实现原理
+## Spring MVC 的实现原理
 
 SpringMVC 的 MVC 模式：
 
