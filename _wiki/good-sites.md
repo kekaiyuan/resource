@@ -22,3 +22,10 @@ keywords: 网站，推荐
 
 # Tomcat
 [Tomcat 乱码](https://blog.csdn.net/qq_25775675/article/details/104839569)
+
+# 小工具
+[取名](https://unbug.github.io/codelf)<br>
+[印记中文](https://docschina.org/)<br>
+[正则表达式大全](https://any86.github.io/any-rule/)<br>
+[在线工具大全](https://any86.github.io/any-rule/)<br>
+[找资源](http://www.549.tv/)
