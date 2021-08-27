@@ -81,7 +81,7 @@ keywords: Java，设计模式
 该文件系统有文件和文件夹两种成员，文件夹下可以添加任意个文件夹和文件。
 
 - UML图
-![enter description here](/images/posts/designpatterns/composite/uml.png)
+![picture](/images/posts/designpatterns/composite/uml.png)
 
 - 抽象类
 	- 文件夹和文件都继承于这个抽象类

@@ -17,7 +17,7 @@ Java 学习笔记之 02 ——数据类型和运算符
 	- 大小写敏感，长度无限制。
 	- 不可以是Java的关键字。
 		- Java关键字是Java语言保留供内部使用的，是预先设置好的，有特殊意义的标识符。
-		 ![aaa](/images/posts/java/study/02-datatype-operator/keyword.png)  
+		 ![aaa](/images/posts/java/javase/02-datatype-operator/keyword.png)  
 	- 注意
 		- Java不采用通常语言使用的ASCII字符集，而是采用unicode这样的标准的国际字符集。
 		- 因此Java命名所使用的字母除了英文还包括汉字，但是不推荐使用汉字。
@@ -69,17 +69,17 @@ Java 学习笔记之 02 ——数据类型和运算符
 - Unicode
 	- 国际通用字符集 
 	- 2个字节
-- ![enter description here](/images/posts/java/study/02-datatype-operator/char-set.jpg)
+- ![picture](/images/posts/java/javase/02-datatype-operator/char-set.jpg)
 
 # Java数据类型
 - Java是一种强类型语言
 	- 常量是有数据类型的
 	- 变量都必须声明其数据类型。
-	 ![enter description here](/images/posts/java/study/02-datatype-operator/datatype.png)
+	 ![picture](/images/posts/java/javase/02-datatype-operator/datatype.png)
 
 
 ## 整型常量
- ![enter description here](/images/posts/java/study/02-datatype-operator/integer.png)
+ ![picture](/images/posts/java/javase/02-datatype-operator/integer.png)
 - 十进制整数
 	- 99,-500,0
 - 八进制整数
@@ -90,7 +90,7 @@ Java 学习笔记之 02 ——数据类型和运算符
 
 
 ## 浮点型
- ![enter description here](/images/posts/java/study/02-datatype-operator/float.png)
+ ![picture](/images/posts/java/javase/02-datatype-operator/float.png)
 - float类型
 	- 单精度，尾数到小数点后7位数，大多数情况下精度不够
 - double类型
@@ -107,7 +107,7 @@ Java 学习笔记之 02 ——数据类型和运算符
 - char类型用来表示在Unicode编码表中的字符
 	- Unicode编码被设计用来处理各种语言的所有文字，它占2个字节，可允许有65536个字符；ASCII码占1个字节，可允许有128个字符（最高位是0），是Unicode编码表中前128个字符。
 - 使用转义字符‘\’来将其后的字符转变为其它的含义
-	 ![enter description here](/images/posts/java/study/02-datatype-operator/char.png)
+	 ![picture](/images/posts/java/javase/02-datatype-operator/char.png)
 - char类型在内存中存储的是该字符的Unicode编码值，所以char类型可以当做int类型来处理
 
 
@@ -134,7 +134,7 @@ Java 学习笔记之 02 ——数据类型和运算符
 
 
 ## 算术运算符
- ![enter description here](/images/posts/java/study/02-datatype-operator/math-op.png)
+ ![picture](/images/posts/java/javase/02-datatype-operator/math-op.png)
 - 二元运算符的类型提升
 	- 整数运算
 		- 如果两个操作数有一个为Long,则结果也为long
@@ -143,7 +143,7 @@ Java 学习笔记之 02 ——数据类型和运算符
 		- 如果两个操作数有一个为double,则结果为double.
 		- 只有两个操作数都是float,则结果才为float.
 - 一元运算符  ++,\-\-
-	 ![enter description here](/images/posts/java/study/02-datatype-operator/unitary.png)
+	 ![picture](/images/posts/java/javase/02-datatype-operator/unitary.png)
 
 
 ## 赋值运算符
@@ -151,7 +151,7 @@ Java 学习笔记之 02 ——数据类型和运算符
 	- =
 - 扩展赋值运算符
 	- 算术运算符和赋值运算符结合
-- ![enter description here](/images/posts/java/study/02-datatype-operator/ex-op.png)
+- ![picture](/images/posts/java/javase/02-datatype-operator/ex-op.png)
 
 
 ## 关系运算符
@@ -162,7 +162,7 @@ Java 学习笔记之 02 ——数据类型和运算符
 ## 逻辑运算符
 - 逻辑运算符与布尔操作数一起使用，组成逻辑表达式
 - 逻辑表达式的结果是布尔值
-  ![enter description here](/images/posts/java/study/02-datatype-operator/logic-op.png)
+  ![picture](/images/posts/java/javase/02-datatype-operator/logic-op.png)
 - &和&&的区别
 	- &
 		- 无论任何情况，“&”两边的表达式都会参与计算
@@ -174,7 +174,7 @@ Java 学习笔记之 02 ——数据类型和运算符
 ## 位运算符
 - 对操作数以二进制比特位为单位进行操作和运算，操作数和结果都是整型数
 - 如果操作的对象是char、byte、short，位移动作发生前其值会自动晋升为int，运算结果也为int
-- ![enter description here](/images/posts/java/study/02-datatype-operator/an-op.png)
+- ![picture](/images/posts/java/javase/02-datatype-operator/an-op.png)
 
 
 ## 条件运算符
@@ -193,7 +193,7 @@ Java 学习笔记之 02 ——数据类型和运算符
 
 
 ## 运算符的优先级
-- ![enter description here](/images/posts/java/study/02-datatype-operator/op-priority.png)
+- ![picture](/images/posts/java/javase/02-datatype-operator/op-priority.png)
 - 赋值<三目<逻辑<关系 <算术<单目
 
 # 类型转换
@@ -207,7 +207,7 @@ Java 学习笔记之 02 ——数据类型和运算符
 - 算术运算时的转换
 	- 整型，浮点型，字符型数据可以混合运算。
 	- 运算中不同类型的数据先转化为同一类型，然后进行运算，转换从低级到高级。
-	- ![enter description here](/images/posts/java/study/02-datatype-operator/math-trans.png)
+	- ![picture](/images/posts/java/javase/02-datatype-operator/math-trans.png)
 	
 	
 	
