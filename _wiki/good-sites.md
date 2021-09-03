@@ -29,3 +29,6 @@ keywords: 网站，推荐
 [正则表达式大全](https://any86.github.io/any-rule/)<br>
 [在线工具大全](https://any86.github.io/any-rule/)<br>
 [找资源](http://www.549.tv/)
+
+# Windows
+[在鼠标右键中添加 cmd 选项（管理员模式）](https://blog.csdn.net/ujsDui/article/details/79191921)
