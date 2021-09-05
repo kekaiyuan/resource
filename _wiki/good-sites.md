@@ -36,3 +36,4 @@ keywords: 网站，推荐
 # 加密
 [BCrypt 密码加密和解密](https://www.jianshu.com/p/fc910a1f7c8d/)
 [JWT](https://www.jianshu.com/p/576dbf44b2ae)
+[常见三种加密（MD5、非对称加密，对称加密）](https://www.cnblogs.com/shoshana-kong/p/10934550.html)
