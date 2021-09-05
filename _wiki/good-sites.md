@@ -32,3 +32,6 @@ keywords: 网站，推荐
 
 # Windows
 [在鼠标右键中添加 cmd 选项（管理员模式）](https://blog.csdn.net/ujsDui/article/details/79191921)
+
+# 加密
+[BCrypt 密码加密和解密](https://www.jianshu.com/p/fc910a1f7c8d/)
