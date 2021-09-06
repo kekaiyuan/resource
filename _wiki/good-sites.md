@@ -27,7 +27,7 @@ keywords: 网站，推荐
 [取名](https://unbug.github.io/codelf)<br>
 [印记中文](https://docschina.org/)<br>
 [正则表达式大全](https://any86.github.io/any-rule/)<br>
-[在线工具大全](https://any86.github.io/any-rule/)<br>
+[在线工具大全](https://tool.lu/)<br>
 [找资源](http://www.549.tv/)
 
 # Windows
