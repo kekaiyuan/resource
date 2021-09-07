@@ -28,6 +28,7 @@ keywords: 网站，推荐
 [印记中文](https://docschina.org/)<br>
 [正则表达式大全](https://any86.github.io/any-rule/)<br>
 [在线工具大全](https://tool.lu/)<br>
+[极速数据](https://tool.jisuapi.com/)<br>
 [找资源](http://www.549.tv/)
 
 # Windows
@@ -37,3 +38,6 @@ keywords: 网站，推荐
 [BCrypt 密码加密和解密](https://www.jianshu.com/p/fc910a1f7c8d/)
 [JWT](https://www.jianshu.com/p/576dbf44b2ae)
 [常见三种加密（MD5、非对称加密，对称加密）](https://www.cnblogs.com/shoshana-kong/p/10934550.html)
+
+# Redis
+[Windows Redis 安装教程](https://blog.csdn.net/weixin_41381863/article/details/88231397)
