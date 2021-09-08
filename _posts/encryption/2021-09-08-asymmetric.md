@@ -22,7 +22,7 @@ Note over A: 生成密钥对
 A->B: 发送公钥 A
 Note over B: 生成密钥对
 B->A: 发送公钥 B
-Note over A: 使用\n公钥 B\n加密数据
+Note over A: 使用\n公钥 B 加密\n数据
 A->B: 发送密文
 Note over B: 使用私钥 B 解密数据
 Note over B: 使用公钥 A 加密数据
@@ -35,23 +35,9 @@ Note over A: 使用私钥 A 解密数据
 
 但是非对称加密的效率极低，比对称加密慢**数千倍**。
 
-所以往往混合使用
+所以往往**混合**使用
 - 使用非对称加密传递对称加密的密钥
 - 使用对称加密传递一般数据
-
-```sequence
-title: 混合使用
-Note over A: 生成密钥对
-A->B: 发送公钥 A
-Note over B: 生成密钥对
-B->A: 发送公钥 B
-Note over A: 使用\n公钥 B\n加密数据
-A->B: 发送密文
-Note over B: 使用私钥 B 解密数据
-Note over B: 使用公钥 A 加密数据
-B->A: 发送密文
-Note over A: 使用私钥 A 解密数据
-```
 
 
 # 源码链接
