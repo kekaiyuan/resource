@@ -17,13 +17,13 @@ sequenceDiagram
 </div>
 
 ```sequence
-Node over A: 生成密钥对
+Note over China: China thinks\nabout it
 Andrew->China: Says Hello
-Note over of China: China thinks\nabout it
 China-->Andrew: How are you?
 Andrew->>China: I am good thanks!
 ```
 
+Node over A: 生成密钥对
 
 # 源码链接
 该文章源码链接 [Github](url)
