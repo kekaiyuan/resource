@@ -42,3 +42,6 @@ keywords: 网站，推荐
 
 # Redis
 [Windows Redis 安装教程](https://blog.csdn.net/weixin_41381863/article/details/88231397)
+
+# Markdown
+[sequence 图](https://www.jianshu.com/p/70e329dd4a00)
