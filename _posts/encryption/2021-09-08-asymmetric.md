@@ -135,7 +135,7 @@ Note over B: 执行错误操作
 原本，我们通过网络直接传递公钥。<br>
 但现在，我们通过数字证书传递公钥。
 
-1. 服务器通过提交各类信息和自己的公钥向专业机构申请证书。
+1. 服务器通过提交**各类信息**和自己的**公钥**向专业机构申请证书。
 2. 专业机构在验证信息后，会形成证书。<br>
 	**并且将证书使用自己的私钥加密（机构也有属于自己的密钥对）**。
 3. 专业机构将加密后的证书交给服务器，服务器之后发送响应报文时会带上这张证书。
@@ -143,7 +143,7 @@ Note over B: 执行错误操作
 	客户端收到响应报文后，会在列表中寻找能解开数字证书的**公钥**。<br>
 	一般而言，会发生以下两种安全问题：
 	- 证书的颁发机构不受信任。<br>
-		![image](\images\posts\encryption\asymmetric\not-trusted.png)
+		![image](\images\posts\encryption\asymmetric\not-trusted.jpeg)
 	- 证书的内容被修改了。<br>
 		![image](\images\posts\encryption\asymmetric\be-modified.png)
 5. 如果证书没问题，则客户端使用证书中记载的**服务器的公钥**解开报文。
