@@ -18,7 +18,7 @@ sequenceDiagram
 
 ```sequence
 Andrew->China: Says Hello
-Note mid of China: China thinks\nabout it
+Note over of China: China thinks\nabout it
 China-->Andrew: How are you?
 Andrew->>China: I am good thanks!
 ```
