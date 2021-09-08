@@ -16,7 +16,7 @@ sequenceDiagram
     John-->>Alice: Great!
 </div>
 
-```sequence!
+```sequence
 Andrew->China: Says Hello
 Note mid of China: China thinks\nabout it
 China-->Andrew: How are you?
