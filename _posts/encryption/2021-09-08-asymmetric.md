@@ -39,6 +39,22 @@ Note over A: 使用\n私钥 A 解密\n数据
 - 使用非对称加密传递对称加密的密钥
 - 使用对称加密传递一般数据
 
+## 中间人攻击
+```sequence
+title: 中间人
+participant C as 中间人
+Note over A: 生成密钥对
+A->C: 发送公钥 A
+Note over C: 截取公钥
+Note over B: 生成密钥对
+B->A: 发送公钥 B
+Note over A: 使用\n公钥 B 加密\n数据
+A->B: 发送密文
+Note over B: 使用\n私钥 B 解密\n数据
+Note over B: 使用\n公钥 A 加密\n数据
+B->A: 发送密文
+Note over A: 使用\n私钥 A 解密\n数据
+```
 
 # 源码链接
 该文章源码链接 [Github](url)
