@@ -57,17 +57,17 @@ File file = new File("abc.txt");
 maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
 
 搜索spring context<br>
-![picture](/images/wiki/intellij-idea/mavenindex.png)<br><br>
+![image](/images/wiki/intellij-idea/mavenindex.png)<br><br>
 
 ---------- 
 
-![picture](/images/wiki/intellij-idea/mavenspring01.png)<br><br>
+![image](/images/wiki/intellij-idea/mavenspring01.png)<br><br>
 选择需要的版本<br>
-![picture](/images/wiki/intellij-idea/mavenspring02.png)<br><br>
+![image](/images/wiki/intellij-idea/mavenspring02.png)<br><br>
 复制代码<br>
-![picture](/images/wiki/intellij-idea/mavenspring03.png)<br><br>
+![image](/images/wiki/intellij-idea/mavenspring03.png)<br><br>
 把代码粘贴进`<dependencies></dependencies>`标签中<br>
-![picture](/images/wiki/intellij-idea/mavenspring04.png)<br>
+![image](/images/wiki/intellij-idea/mavenspring04.png)<br>
 
 打开 Maven 窗口，右键 `Reload project` 项目，等待下载完成
 
@@ -88,7 +88,7 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
 
 在 `Build and run` 窗口，点击 `Modify options` ， 勾选 `Allow multify instances`
 
-![picture](/images/wiki/intellij-idea/multify-instances.png)
+![image](/images/wiki/intellij-idea/multify-instances.png)
 
 完成
 
@@ -116,7 +116,7 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
  */
 ```
  
-![picture](/images/wiki/intellij-idea/fileheader.jpg)
+![image](/images/wiki/intellij-idea/fileheader.jpg)
  
 ### 自动换行
  
@@ -124,12 +124,12 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
  
 勾选 `Wrap on typing` ，左侧 `Hard wrap at` 设置每行的长度。
 
- ![picture](/images/wiki/intellij-idea/autowrap01.png)
+ ![image](/images/wiki/intellij-idea/autowrap01.png)
 
 ### Ctrl + L 代码排版时自动换行
  打开 `File` / `Settings` / `Editor` / `Code Style` / `Java` / `Wrapping and Braces`
  
  勾选 `Ensure right margin is not exceeded`
  
- ![picture](/images/wiki/intellij-idea/autowrap02.png)
+ ![image](/images/wiki/intellij-idea/autowrap02.png)
  

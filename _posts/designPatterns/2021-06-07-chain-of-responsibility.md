@@ -34,7 +34,7 @@ keywords: Java,设计模式
 - 第三环是坦克和墙的碰撞逻辑
 - 第四环是子弹和墙的碰撞逻辑
 
-![picture](/images/posts/designpatterns/chain-of-responsibility/process.png)
+![image](/images/posts/designpatterns/chain-of-responsibility/process.png)
  
 这就是责任链，把对某种对象的处理流程组成一个链条，这样只需要把对象放入链条中，它就会被正确的处理 
 
@@ -181,7 +181,7 @@ Request 需要 Filter 过滤掉不必要的前端信息。<br>
 Response 需要 Filter 加上必要的前端信息。
 
 如果采用这样的设计<br>
-![picture](/images/posts/designpatterns/chain-of-responsibility/server01.png)
+![image](/images/posts/designpatterns/chain-of-responsibility/server01.png)
 这需要实现两个责任链，六个 Filter ，而且需要建立两次 Http 请求。<br>
 一次 Http 请求是从
 

@@ -11,10 +11,10 @@ keywords: Navicat
 ### 连接 Oracle 数据库
 工具 / 选项 / 
 
-![picture](/images/wiki/navicat/connect-oracle-01.jpg)
+![image](/images/wiki/navicat/connect-oracle-01.jpg)
 
-![picture](/images/wiki/navicat/connect-oracle-02.png)
+![image](/images/wiki/navicat/connect-oracle-02.png)
 
-![picture](/images/wiki/navicat/connect-oracle-03.jpg)
+![image](/images/wiki/navicat/connect-oracle-03.jpg)
 
  
