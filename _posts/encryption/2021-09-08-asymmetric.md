@@ -9,7 +9,7 @@ mermaid: true
 
 # 非对称加密
 
-<div class="mermaid>
+<div class="mermaid">
 sequenceDiagram
     Alice-->>John: Hello John, how are you?
     John-->>Alice: Great!
