@@ -40,15 +40,16 @@ Note over A: 使用\n私钥 A 解密\n数据
 - 使用对称加密传递一般数据
 
 ## 中间人攻击
+非对称加密看上去很美，但它真的就是完美无缺的了吗？
+
+非对称加密依然可以被**破解**。
 ```sequence
 title: 中间人攻击
 participant A
 participant 中间人 as C
 participant B
 Note over A: 生成密钥对 A
-A->C: 发送公钥 A
-Note over C: 截取公钥 A/n得到公钥 A
-C->B: 发送公钥 A
+A->B: 发送公钥 A
 Note over B: 生成密钥对 B
 B->C: 发送公钥 B
 Note over C: 截取公钥 B
@@ -59,7 +60,7 @@ A->C: 发送密文
 Note over C: 截取密文
 Note over C: 使用\n私钥 C 解密\n数据
 Note over C: 修改原始数据
-Note over C: 使用\n公钥 A 加密\n数据
+Note over C: 使用\n公钥 B 加密\n修改后的数据
 C->B: 发送修改后的密文
 Note over B: 使用\n私钥 B 解密\n修改后的数据
 Note over B: 执行错误操作
