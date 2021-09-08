@@ -41,21 +41,26 @@ Note over A: 使用\n私钥 A 解密\n数据
 
 ## 中间人攻击
 ```sequence
-title: 中间人
-participant C as 中间人
+title: 中间人攻击
+participant 中间人 as C
 Note over A: 生成密钥对 A
 A->C: 发送公钥 A
 Note over C: 截取公钥 A
 Note over C: 生成密钥对 C
 C->B: 发送公钥 A
+Note over B: 生成密钥对 B
+B->C: 发送公钥 B
+Note over C: 截取公钥 B
 C->A: 发送公钥 C
 Note over A: 使用\n公钥 C 加密\n数据
 A->C: 发送密文
 Note over C: 截取密文
 Note over C: 使用\n私钥 C 解密\n数据
 Note over C: 修改原始数据
-Note over C: 使用\n公钥 C 加密\n数据
-
+Note over C: 使用\n公钥 A 加密\n数据
+C->B: 发送修改后的密文
+Note over B: 使用\n私钥 B 解密\n修改后的数据
+Note over B: 执行错误操作
 ```
 Note over B: 生成密钥对
 B->A: 发送公钥 B
