@@ -24,10 +24,10 @@ Note over B: 生成密钥对
 B->A: 发送公钥 B
 Note over A: 使用\n公钥 B 加密\n数据
 A->B: 发送密文
-Note over B: 使用私钥 B 解密数据
-Note over B: 使用公钥 A 加密数据
+Note over B: 使用\n私钥 B 解密\n数据
+Note over B: 使用\n公钥 A 加密\n数据
 B->A: 发送密文
-Note over A: 使用私钥 A 解密数据
+Note over A: 使用\n私钥 A 解密\n数据
 ```
 非对称加密的安全性极高。
 - 在网络中传递的只有公钥，并没有传递私钥。
