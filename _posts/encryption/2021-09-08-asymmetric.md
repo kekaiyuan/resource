@@ -47,12 +47,12 @@ participant 中间人 as C
 participant B
 Note over A: 生成密钥对 A
 A->C: 发送公钥 A
-Note over C: 截取公钥 A
-Note over C: 生成密钥对 C
+Note over C: 截取公钥 A/n得到公钥 A
 C->B: 发送公钥 A
 Note over B: 生成密钥对 B
 B->C: 发送公钥 B
 Note over C: 截取公钥 B
+Note over C: 生成密钥对 C
 C->A: 发送公钥 C
 Note over A: 使用\n公钥 C 加密\n数据
 A->C: 发送密文
