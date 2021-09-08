@@ -17,7 +17,8 @@ sequenceDiagram
 </div>
 
 ```sequence
-Note over China: China thinks\nabout it
+Note over A: 生成密钥对
+A->B: lll
 Andrew->China: Says Hello
 China-->Andrew: How are you?
 Andrew->>China: I am good thanks!
