@@ -18,10 +18,15 @@ sequenceDiagram
 
 ```sequence
 Note over A: 生成密钥对
-A->B: lll
-Andrew->China: Says Hello
-China-->Andrew: How are you?
-Andrew->>China: I am good thanks!
+A->B: 发送公钥 A
+Note over B: 生成密钥对
+B->A: 发送公钥 B
+Note over A: 使用公钥 B 加密数据
+A->B: 发送密文
+Note over B: 使用私钥 B 解密数据
+Note over B: 使用公钥 A 加密数据
+B->A: 发送密文
+Note over A: 使用私钥 A 解密数据
 ```
 
 Node over A: 生成密钥对
