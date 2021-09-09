@@ -45,3 +45,6 @@ keywords: 网站，推荐
 
 # Markdown
 [sequence 图](https://www.jianshu.com/p/70e329dd4a00)
+
+# IDEA
+[JRebel 安装教程](https://blog.csdn.net/lianghecai52171314/article/details/105637251)
