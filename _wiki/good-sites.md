@@ -48,3 +48,6 @@ keywords: 网站，推荐
 
 # IDEA
 [JRebel 安装教程](https://blog.csdn.net/lianghecai52171314/article/details/105637251)
+
+# PowerDesigner
+[PowerDesigner 安装教程](https://blog.csdn.net/csdn_0911/article/details/83106782)
