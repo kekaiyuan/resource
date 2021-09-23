@@ -59,10 +59,12 @@
         </entry>
       </file>
       <file leaf-file-name="2021-07-09-jdbc-connect-pool.md" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/_drafts/java.multithreading/2021-07-09-jdbc-connect-pool.md">
+        <entry file="file://$PROJECT_DIR$/_drafts/java/multithreading/2021-07-09-jdbc-connect-pool.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor />
+              <first_editor relative-caret-position="468">
+                <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+              </first_editor>
               <second_editor />
             </state>
           </provider>
@@ -187,6 +189,12 @@
             <path>
               <item name="jquery.toc.js" type="b2602c69:ProjectViewProjectNode" />
               <item name="kekaiyuan.github.io" type="462c0819:PsiDirectoryNode" />
+              <item name="_drafts" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jquery.toc.js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="kekaiyuan.github.io" type="462c0819:PsiDirectoryNode" />
               <item name="_posts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -270,6 +278,9 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\KKY\Github\kekaiyuan.github.io\_drafts\java\multithreading" />
+      <recent name="E:\KKY\Github\kekaiyuan.github.io\_drafts\java\javase" />
+      <recent name="E:\KKY\Github\kekaiyuan.github.io\_drafts\java" />
       <recent name="E:\KKY\Github\kekaiyuan.github.io\_drafts\java.javase" />
       <recent name="E:\KKY\Github\kekaiyuan.github.io\_drafts\java.multithreading" />
     </key>
@@ -347,15 +358,16 @@
       <workItem from="1630259860957" duration="5915000" />
       <workItem from="1631097725952" duration="85000" />
       <workItem from="1631103532510" duration="606000" />
-      <workItem from="1631493555611" duration="728000" />
+      <workItem from="1631493555611" duration="1549000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11605000" />
+    <option name="totallyTimeSpent" value="12426000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -746,10 +758,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/_drafts/java.multithreading/2021-07-09-jdbc-connect-pool.md">
+    <entry file="file://$PROJECT_DIR$/_drafts/java/multithreading/2021-07-09-jdbc-connect-pool.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor />
+          <first_editor relative-caret-position="468">
+            <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          </first_editor>
           <second_editor />
         </state>
       </provider>
