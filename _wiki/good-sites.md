@@ -51,3 +51,6 @@ keywords: 网站，推荐
 
 # PowerDesigner
 [PowerDesigner 安装教程](https://blog.csdn.net/csdn_0911/article/details/83106782)
+
+# RestTemplate
+[使用RestTemplate访问https实现SSL请求](https://blog.csdn.net/MyronCham/article/details/103481046)
