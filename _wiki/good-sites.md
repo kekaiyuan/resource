@@ -35,9 +35,9 @@ keywords: 网站，推荐
 [在鼠标右键中添加 cmd 选项（管理员模式）](https://blog.csdn.net/ujsDui/article/details/79191921)
 
 # 加密
-[BCrypt 密码加密和解密](https://www.jianshu.com/p/fc910a1f7c8d/)
-[JWT](https://www.jianshu.com/p/576dbf44b2ae)
-[常见三种加密（MD5、非对称加密，对称加密）](https://www.cnblogs.com/shoshana-kong/p/10934550.html)
+[BCrypt 密码加密和解密](https://www.jianshu.com/p/fc910a1f7c8d/)<br>
+[JWT](https://www.jianshu.com/p/576dbf44b2ae)<br>
+[常见三种加密（MD5、非对称加密，对称加密）](https://www.cnblogs.com/shoshana-kong/p/10934550.html)<br>
 [非对称加密源码](https://www.cnblogs.com/frank-quan/p/7073457.html)
 
 # Redis
@@ -54,3 +54,6 @@ keywords: 网站，推荐
 
 # RestTemplate
 [使用RestTemplate访问https实现SSL请求](https://blog.csdn.net/MyronCham/article/details/103481046)
+
+# Linux
+[Mac 安装 brew（最新教程，绝对可行，一行代码搞定，不报错）](https://www.cnblogs.com/liyihua/p/12753163.html)
