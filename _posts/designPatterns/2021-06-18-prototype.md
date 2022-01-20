@@ -69,77 +69,66 @@ keywords: Java，设计模式
 
 # 案例
 ## 浅克隆
-实现克隆有两步：
+实现克隆有三步：
 1. 继承 Cloneable 接口
 2. 重写 clone() 方法
+3. 调用 clone() 方法
 
 事实上，不继承 `Cloneable` 接口也可以重写 `clone()` 方法。<br>
 因为 `Cloneable` 是一个空接口（里面什么都没有）。<br>
 而 `clone()` 方法是 `Object` 类（所有类共同的父类）的方法。
 
-但是，不继承 `Cloneable` 接口**编译可以通过**，调用  `clone()` 方法时会有**异常**！
+但是，不继承 `Cloneable` 接口**编译可以通过**，**调用**  `clone()` 方法时会报 `java.lang.CloneNotSupportedException` **异常**！
 ```java
-class Person implements Cloneable {
-    int age = 8;
-    int score = 100;
-
-    Location loc = new Location("bj", 22);
+@AllArgsConstructor
+@ToString
+class Person implements Cloneable{
+    int age;
+    int score;
+    Location loc;
 
     @Override
     public Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "age=" + age +
-                ", score=" + score +
-                ", loc=" + loc +
-                '}';
-    }
 }
 
+@AllArgsConstructor
+@ToString
 class Location {
     String street;
     int roomNo;
-
-    public Location(String street, int roomNo) {
-        this.street = street;
-        this.roomNo = roomNo;
-    }
 }
 ```
-测试
+需要克隆对象时直接调用 `clone()` 方法。
 ```java
 public static void main(String[] args) throws Exception {
-        Person p1 = new Person();
+        Person p1 = new Person(18, 100, new Location("bj", 22));
+        System.out.println(p1);
+
         Person p2 = (Person) p1.clone();
-		
+        System.out.println(p2);
+
         System.out.println(p1 == p2);
-		
-        System.out.println(p1.toString().equals(p2.toString()));
     }
 ```
 结果
 ```java
+Person(age=18, score=100, loc=Location(street=bj, roomNo=22))
+Person(age=18, score=100, loc=Location(street=bj, roomNo=22))
 false
-true
 ```
-需要克隆某对象时直接调用 `clone()` 方法。
-
-可以看到 p1 和 p2 本身的值不相等，但是内容是一样的。<br>
-说明实现了克隆。
+可以看到 p1 和 p2 内容一样，且是两个不同的对象。
 
 
 ----------
 
 
-浅克隆的意思是什么？
+什么是浅克隆？
 
 ```java
 public static void main(String[] args) throws Exception {
-        Person p1 = new Person();
+        Person p1 = new Person(18, 100, new Location("bj", 22));
         Person p2 = (Person) p1.clone();
 		
         System.out.println(p1.loc == p2.loc);
@@ -151,9 +140,24 @@ true
 ```
 这意味着 `p1.loc` 和 `p2.loc` 是**同一个**对象！
 
-这是因为 `loc` 本身是个地址，指向了某个 `Location` 对象。
+这就是浅克隆，新对象和旧对象的值**完全一致**。
 
 ![](\images\posts\designpatterns\prototype\loc.png)
+
+```java
+    protected native Object clone() throws CloneNotSupportedException;
+```
+`clone()` 是个 `native` 方法，本地找不到其实现，可以简单地将 `Person` 类的 `clone()` 视为这样的：
+```java
+@Override
+public Object clone() throws CloneNotSupportedException {
+	Person clone = new Person();
+	clone.age = this.age;
+	clone.score = this.score;
+	clone.loc = this.loc;
+	return clone;
+}
+```
 
 于是会出现以下情形
 ```java
@@ -176,8 +180,7 @@ sh
 修改 `p1.age` ，`p2.age` 没有变。<br>
 但是修改 `p1.loc` ，`p2.loc` 也变了。
 
-这就是**浅克隆**：<br>
-**把被克隆对象的所有成员变量的值复制到新对象中去，无论该成员变量是什么类型**。
+
 
 ## 深克隆
 深克隆可以解决浅克隆中引用类型指向同一个对象的问题。
