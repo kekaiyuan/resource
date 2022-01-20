@@ -69,6 +69,7 @@ keywords: Java，设计模式
 
 # 案例
 ## 浅克隆
+### 实现
 实现克隆有三步：
 1. 继承 Cloneable 接口
 2. 重写 clone() 方法
@@ -120,11 +121,7 @@ false
 ```
 可以看到 p1 和 p2 内容一样，且是两个不同的对象。
 
-
-----------
-
-
-什么是浅克隆？
+### 什么是浅克隆？
 
 ```java
 public static void main(String[] args) throws Exception {
@@ -162,10 +159,10 @@ public Object clone() throws CloneNotSupportedException {
 于是会出现以下情形
 ```java
 public static void main(String[] args) throws Exception {
-        Person p1 = new Person();
+        Person p1 = new Person(18, 100, new Location("bj", 22));
         Person p2 = (Person) p1.clone();
 
-        p1.age = 18;
+        p1.age = 8;
         System.out.println(p2.age);
 
         p1.loc.street = "sh";
@@ -174,24 +171,23 @@ public static void main(String[] args) throws Exception {
 ```
 结果
 ```java
-8
+18
 sh
 ```
 修改 `p1.age` ，`p2.age` 没有变。<br>
 但是修改 `p1.loc` ，`p2.loc` 也变了。
-
-
 
 ## 深克隆
 深克隆可以解决浅克隆中引用类型指向同一个对象的问题。
 
 办法很简单，**使所有的引用类型都继承 Cloneable 接口并重写 clone() 方法**。
 ```java
+@AllArgsConstructor
+@ToString
 class Person implements Cloneable {
-    int age = 8;
-    int score = 100;
-
-    Location loc = new Location("bj", 22);
+    int age;
+    int score;
+    Location loc;
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
@@ -201,14 +197,11 @@ class Person implements Cloneable {
     }
 }
 
+@AllArgsConstructor
+@ToString
 class Location implements Cloneable {
     String street;
     int roomNo;
-
-    public Location(String street, int roomNo) {
-        this.street = street;
-        this.roomNo = roomNo;
-    }
 
     @Override
     protected Object clone() throws CloneNotSupportedException {
@@ -219,7 +212,7 @@ class Location implements Cloneable {
 测试
 ```java
 public static void main(String[] args) throws Exception {
-        Person p1 = new Person();
+        Person p1 = new Person(18, 100, new Location("bj", 22));
         Person p2 = (Person) p1.clone();
 
         System.out.println(p1.loc == p2.loc);
@@ -236,71 +229,29 @@ bj
 
 修改 `p1.loc` ， `p2.loc` 不会受影响。
 
+## 哪些变量不需要深克隆？
+常量不需要深克隆
+- 八种基本类型没有深浅克隆的说法：
+	- byte
+	- short
+	- int
+	- long
+	- float
+	- double
+	- char
+	- boolean
+- 八种包装类型不需要深克隆：
+	- Byte
+	- Short
+	- Integer
+	- Long
+	- Float
+	- Double
+	- Character
+	- Boolean
+- String 不需要深克隆
 
-## 字符串如何处理？
-`String` `StringBuffer` `StringBuilder` 三种类型的字符串，哪些在克隆中不需要处理，哪些需要处理？
-```java
-public class Test {
-    public static void main(String[] args) throws Exception {
-        StringTest test1 = new StringTest(
-                new String("abc"), new StringBuffer("abc"), new StringBuilder("abc"));
-        StringTest test2 = (StringTest) test1.clone();
-
-        test1.str1="cba";
-        System.out.println(test2.str1);
-
-        test1.str2.reverse();
-        System.out.println(test2.str2);
-
-        test1.str3.reverse();
-        System.out.println(test2.str3);
-    }
-}
-
-class StringTest implements Cloneable{
-    String str1;
-    StringBuffer str2;
-    StringBuilder str3;
-
-    public StringTest(String str1, StringBuffer str2, StringBuilder str3) {
-        this.str1 = str1;
-        this.str2 = str2;
-        this.str3 = str3;
-    }
-
-    @Override
-    protected Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
-}
-```
-`test1` 中的三个字符串原来都是 `abc` ，把它们变成 `cba` 后。<br>
-`test2` 中的字符串会变成什么样？
-
-结果
-```java
-abc
-cba
-cba
-```
-可以看到，`String` 类型只需要浅克隆就可以。
-而 `StringBuffer` 和 `StringBuilder` 类型都需要深克隆。
-
-修改 `clone()` 方法
-```java
-@Override
-protected Object clone() throws CloneNotSupportedException {
-	return new StringTest(
-		this.str1, new StringBuffer(this.str2), new StringBuilder(this.str3));
-}
-```
-重新运行程序，结果：
-```java
-abc
-abc
-abc
-```
-
+修改以上 17 种类型的变量的值时，并不是修改其中的内容，而是将其
 
 # 源码链接
 该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/prototype)
