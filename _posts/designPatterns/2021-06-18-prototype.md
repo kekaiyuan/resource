@@ -229,6 +229,114 @@ bj
 
 修改 `p1.loc` ， `p2.loc` 不会受影响。
 
+## 反序列化
+还可以通过序列化和反序列化的方式实现深克隆。
+
+将对象序列化为字节流，然后再反序列化为对象。<br>
+反序列化创建的是新对象，并没有复制现有对象。
+
+`CloneUtil` 工具类，通过序列化和反序列化克隆对象
+```java
+/**
+ * 通过序列化和反序列化克隆对象
+ */
+public class CloneUtil {
+
+    public static <T extends Serializable> T clone(T object) {
+        T result = null;
+
+        try (ByteArrayOutputStream byteOutput = new ByteArrayOutputStream();
+             ObjectOutputStream objectOutput = new ObjectOutputStream(byteOutput)) {
+            objectOutput.writeObject(object);
+            try (ByteArrayInputStream byteInput = new ByteArrayInputStream(byteOutput.toByteArray());
+                 ObjectInputStream objectInput = new ObjectInputStream(byteInput);
+            ) {
+                result = (T) objectInput.readObject();
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+}
+```
+
+对象不需要实现 `Cloneable` 接口，而是需要实现 `Serializable` 接口
+```java
+@AllArgsConstructor
+@ToString
+class Person implements Serializable {
+    private static final long serialVersionUID = -280939426127136800L;
+    int age;
+    int score;
+    Location loc;
+}
+
+@AllArgsConstructor
+@ToString
+class Location implements Serializable {
+    private static final long serialVersionUID = 5934373144430208588L;
+    String street;
+    int roomNo;
+}
+```
+
+测试
+```java
+    public static void main(String[] args) throws Exception {
+        Person p1 = new Person(18, 100, new Location("bj", 22));
+        Person p2 = CloneUtil.clone(p1);
+        System.out.println(p2);
+
+        System.out.println(p1.loc == p2.loc);
+        p1.loc.street = "sh";
+        System.out.println(p2.loc.street);
+    }
+```
+
+结果
+```java
+Person(age=18, score=100, loc=Location(street=bj, roomNo=22))
+false
+bj
+```
+
+## 性能测试
+### 深克隆与反序列化
+克隆十万个对象
+- 深克隆：
+	- 11 ms
+	- 10 ms
+	- 11 ms
+- 反序列化：
+	- 1309 ms
+	- 1223 ms
+	- 1233 ms
+- 深克隆比反序列化快了**百倍**
+
+
+### 直接创建对象与深克隆
+一千万个对象
+
+|Jdk 版本|直接创建时间（ms）|深克隆时间（ms）|
+|:--:|:--:|:--:|
+| Jdk 8 | 78, 61, 61| 163, 153, 156|
+| Jdk 11 | 122,97,100 | 39, 39, 39 |
+| Jdk 13 | 125, 106, 98  | 40, 48, 44 |
+| Jdk 15 | 11, 10, 9 | 93, 101, 97 |
+| Jdk 17 | 10, 12, 12 | 97, 111, 101 |
+
+可以看到，时间对比的结果很神奇。
+- 经典的 Jdk 8 是直接创建比较快
+- Jdk 8 之后一些中版本，是深克隆快
+- 新版本是直接创建比较快
+
+99% 的对象都是通过 `new` 关键字生成的，所以 Jdk 肯定是会着重针对此做优化的。<br>
+这样的结果不知道是 BUG 或是其他原因，将来有时间了研究一下。
+
+网上的通用结论是：**直接创建对象比较快，除非构造函数里面有复杂的运算**。
+
 ## 哪些变量不需要深克隆？
 常量不需要深克隆
 - 八种基本类型没有深浅克隆的说法：
@@ -251,7 +359,7 @@ bj
 	- Boolean
 - String 不需要深克隆
 
-修改以上 17 种类型的变量的值时，并不是修改其中的内容，而是将其
+修改以上 17 种类型的变量的值时，并不是修改常量，而是将其指向了新的常量。
 
 # 源码链接
 该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/prototype)
