@@ -30,6 +30,13 @@ Dubbo 的诞生时间很早，所以比起目前主流的微服务架构少了�
 
 在项目量级不够时，可以使用 Dubbo 实现简单的分布式服务。
 
+## Spring Cloud
+目前全世界范围内**最流行**的微服务框架。
+
+Spring Cloud 除了把各种第三方公司的组件整合进来，还做了一个很重要的事——**基于 SpringBoot 实现了组件的自动装配，简化流程，实现了良好的开箱即用体验**。
+- 开发中一定要注意 Spring Cloud 和 Spring Boot 两者版本是否**兼容**。
+
+
 ## Spring Cloud Alibaba
 Dubbo 并不是一套成熟的微服务架构，所以阿里在经过一段时间后，也是推出了属于自己的微服务架构——Spring Cloud Alibaba。
 - 既然开头是 Spring Cloud，说明 Spring Cloud Alibaba 是继承于 Spring Cloud 的，很多东西一脉相承。<br>
