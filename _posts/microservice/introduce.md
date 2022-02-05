@@ -13,11 +13,11 @@ keywords: 微服务简介
 | | Dubbo | Spring Cloud | Spring Cloud Alibaba |
 | :--: | :--: | :--: | :--: |
 | 年份 |  |  |  |
-| 注册中心 | Zookeeper, Redis | Euraka, Consul| 
-| 服务远程调用 | Dubbo 协议 | Feign（http协议）|
-| 配置中心 | 无 | Spring Cloud Config|
-| 服务网关 | 无 | Spring Cloud Gateway, Zuul|
-| 服务监控和保护 | dubbo-admin（功能弱） | Hystrix|
+| 注册中心 | Zookeeper, Redis | Euraka, Consul| Nacos, Euraka |
+| 服务远程调用 | Dubbo 协议 | Feign（http协议）| Dubbo, Feign |
+| 配置中心 | 无 | Spring Cloud Config| Spring Cloud Config, Nacos |
+| 服务网关 | 无 | Spring Cloud Gateway, Zuul| Spring Cloud Gateway, Zuul| 
+| 服务监控和保护 | dubbo-admin（功能弱） | Hystrix| Sentinel |
 
 ## Dubbo
 Dubbo 的诞生时间很早，所以比起目前主流的微服务架构少了很多组件。
@@ -30,6 +30,25 @@ Dubbo 的诞生时间很早，所以比起目前主流的微服务架构少了�
 
 在项目量级不够时，可以使用 Dubbo 实现简单的分布式服务。
 
+## Spring Cloud Alibaba
+Dubbo 并不是一套成熟的微服务架构，所以阿里在经过一段时间后，也是推出了属于自己的微服务架构——Spring Cloud Alibaba。
+- 既然开头是 Spring Cloud，说明 Spring Cloud Alibaba 是继承于 Spring Cloud 的，很多东西一脉相承。<br>
+- 除此之外，Spring Cloud Alibaba 还把 Dubbo 整合了进来。
+
+所以 Spring Cloud Alibaba 可以视为 Dubbo 和 Spring Cloud 两种微服务架构的整合版。
+- 比如 Nacos 即支持 Dubbo，又支持 Feign。
+
+Spring Cloud Alibaba 最近的热度越来越高，有赶超 Spring Cloud 的趋势。
+
+## 企业需求
+当今企业的架构需求可以概括为以下四种：
+
+||技术栈|服务接口风格|服务调用方式|
+|:--:|:--:|:--:|:--:|
+|Spring Cloud + Feign |Spring Cloud | Restful | Feign |
+|Spring Cloud Alibaba + Feign | Spring Cloud Alibaba | Restful | Feign |
+|Spring Cloud Alibaba + Dubbo | Spring Cloud Alibaba | Dubbo | Dubbo |
+| Dubbo | Dubbo | Dubbo | Dubbo |
 
 # 源码链接
 该文章源码链接 [Github](url)
