@@ -13,10 +13,10 @@ keywords: 微服务简介
 | | Dubbo | Spring Cloud | Spring Cloud Alibaba |
 | :--: | :--: | :--: | :--: |
 | 年份 |  |  |  |
-| 注册中心 | Zookeeper, Redis | Euraka, Consul| Nacos, Euraka |
-| 服务远程调用 | Dubbo 协议 | Feign（http协议）| Dubbo, Feign |
-| 配置中心 | 无 | Spring Cloud Config| Spring Cloud Config, Nacos |
-| 服务网关 | 无 | Spring Cloud Gateway, Zuul| Spring Cloud Gateway, Zuul| 
+| 注册中心 | Zookeeper,<br>Redis | Euraka,<br>Consul| Nacos,<br>Euraka |
+| 服务远程调用 | Dubbo 协议 | Feign（http协议）| Dubbo,<br>Feign |
+| 配置中心 | 无 | Spring Cloud Config| Spring Cloud Config,<br>Nacos |
+| 服务网关 | 无 | Spring Cloud Gateway,<br>Zuul| Spring Cloud Gateway,<br>Zuul| 
 | 服务监控和保护 | dubbo-admin（功能弱） | Hystrix| Sentinel |
 
 ## Dubbo
