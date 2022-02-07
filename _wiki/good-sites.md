@@ -19,6 +19,7 @@ keywords: 网站，推荐
 # MySQL
 [MySQL 5.6 中文参考手册](https://github.com/mysql2cn/manual56)
 [MySQL 5.7 64位下载教程](https://blog.csdn.net/mulinghanxue/article/details/93917244)
+[Mac下干净彻底地卸载 MySQL](https://www.jianshu.com/p/276c1271ae14)
 
 # Tomcat
 [Tomcat 乱码](https://blog.csdn.net/qq_25775675/article/details/104839569)
