@@ -15,6 +15,7 @@ keywords: 网站，推荐
 - [fmdca380](http://ds.fmdca380.com/index.html)
 	- visualgo的国内版，内容略少
 - [sorting](http://sorting.at/)
+- [十大经典排序算法（动图演示）](https://www.cnblogs.com/onepixel/articles/7674659.html)
 
 # MySQL
 [MySQL 5.6 中文参考手册](https://github.com/mysql2cn/manual56)
