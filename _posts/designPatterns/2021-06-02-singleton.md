@@ -72,192 +72,214 @@ keywords: Java，设计模式
 - 缺点
 	- 存在实例创建后，整个程序运行周期都未使用该实例，使得实例对象**饿死**，造成资源浪费。
 
-饿汉式的称呼由来已久，但是仔细思考会发现一个问题：什么类，会在不使用的情况下，去加载？<br>
-一般情况下，我们在程序中调用某个类，如果 JVM 发现这个类没有被加载，那么会去加载，从而触发静态变量的初始化和静态代码块的执行。<br>
-所以饿汉式的说法是站不住脚的，我们很难找到这样的一个情况：从来没有使用过该单例，但是该单例类已经被加载了，完成了实例初始化。
+饿汉式是**最经典**的单例模式，通过**静态变量**或**静态代码块**创建实例，即在**类加载**时创建，那么此时是不存在多线程并发的，所以无需考虑线程安全问题。
 
-但是这种情况是有的，需要深究 JVM 的底层原理，搞明白哪些因素会触发类加载，从中找到符合饿死单例的 case。<br>
-这种 case 是存在的，但是不具备普遍性，正常编程中见不到。
+优点很明显，设计简单，不容易出错，不需要关心线程不安全的问题，同时逻辑简洁，运行效率高。
 
-所以饿汉式是实至名归的单例之王，经典中的经典。
+至于所谓的缺点，即饿汉式这个名称的由来：<br>
+该单例模式的创建和使用是分开的，所以存在创建实例后却没有执行任何任务，发生对象饿死的情况。
+
+这个问题是分场景的：
+
+JVM 共有四种类加载器：
+- 启动类加载器<br>
+	加载 `<JAVA_HOME>/lib` 目录，属于常用基础库：
+	- `java.util.*`, `java.io.*`, `java.lang.*` 这些以 `java` 开头的类库。
+	-  因为语言差异，一些底层原理需要用 C 语言实现的类。
+- 扩展类加载器<br>
+	加载 `<JAVA_HOME>/lib/ext` 目录，属于 JVM 扩展类：
+	- swing 系列，js 引擎，xml 解析器等，这些类库以 `javax` 开头
+- 系统类加载器<br>
+	加载用户路径（ClassPath）上的类，也是使用次数最多的类加载器，用于加载我们自定义的类和引入的第三方 jar 包。
+- 自定义加载器<br>
+	除了 JVM 定义的三种类加载器，我们可以自定义实现一个加载器。
+
+那么哪些类会在程序开始运行后，立即加载的呢？
+
+只有启动类和扩展类。<br>
+而我们自定义的类和第三方 jar 包则是使用时才加载，也就是说天然就是懒加载的。
+
+所以在平常使用时，饿汉式的单例模式是不会饿死的。
+
+除非你在写 Java 的底层类库。
 
 
 ----------
 #### 静态变量
 
 ```java
-public class Mgr01 {
+public class Singleton01 {
 
-    private static final Mgr01 INSTANCE = new Mgr01();
+    private static final Singleton01 INSTANCE = new Singleton01();
 
-    private Mgr01(){}
-	
-    public static Mgr01 getInstance(){
+    private Singleton01(){}
+
+    public static Singleton01 getInstance(){
         return INSTANCE;
     }
-	
 }
 ```
 
 #### 静态代码块
 
 ```java
-public class Mgr02 {
+public class Singleton02 {
 
-    private static final Mgr02 INSTANCE;
-	
+    private static final Singleton02 INSTANCE;
+
     static {
-        INSTANCE = new Mgr02();
+        INSTANCE = new Singleton02();
     }
-	
-    private Mgr02(){}
-	
-    public static Mgr02 getInstance(){
+
+    private Singleton02(){}
+
+    public static Singleton02 getInstance(){
         return INSTANCE;
     }
-
 }
 ```
 
 ### 懒汉式
+
+懒汉式即实现懒加载，用到的时候才创建实例。
+
+那么此时需要考虑线程安全问题：<br>
+某一时刻实例尚未创建，如果此时有多个线程同时访问该实例，就会创建多个实例，违反单例模式的定义。
+
+所以需要实现线程同步。
+
 ```java
-/*
-* 用的时候才初始化
-* 多线程并发访问时容易创建出多个实例，无法达成单例的目的
-* */
-public class Mgr03 {
+public class Singleton03 {
 
-    private static Mgr03 INSTANCE;
+    private static Singleton03 INSTANCE;
 
-    private Mgr03(){}
-
-    public static Mgr03 getInstance() {
-        if(INSTANCE == null){
-            INSTANCE = new Mgr03();
-        }
-        return INSTANCE;
+    private Singleton03(){
     }
 
-}
-
-```
-```java
-/*
-* Mgr03的改进，实现线程同步，但是效率会下降
-* */
-public class Mgr04 {
-
-    private static Mgr04 INSTANCE;
-
-    private Mgr04(){}
-
-    public static synchronized Mgr04 getInstance() {
+    public static synchronized Singleton03 getInstance() {
         if(INSTANCE == null){
-            INSTANCE = new Mgr04();
-        }
-        return INSTANCE;
-    }
-
-}
-
-```
-```java
-/*
-* Mgr04的改进，尝试减小同步代码块，结果不可行
-* */
-public class Mgr05 {
-
-    private static Mgr05 INSTANCE;
-
-    private Mgr05(){}
-
-    public static Mgr05 getInstance() {
-        if(INSTANCE == null){
-            //该方法不可行！！!
-            synchronized (Mgr05.class){
-				INSTANCE = new Mgr05();
-            }        
+            INSTANCE = new Singleton03();
         }
         return INSTANCE;
     }
 }
-
 ```
+
 ### 双检锁
+双检锁是懒汉式的升级，懒汉式使用的是同步方法，这也导致了每次取实例对象都需要上锁，浪费资源。
+
+实际上只需要保证创建实例时线程同步，不要创建多个是来即可。<br>
+
+取实例时直接取即可，不需要上锁。
+
 ```java
-/*
- * Mgr05的改进，双重检查
- * 完美版本1
- * */
-public class Mgr06 {
+public class Singleton04 {
 
-	//使用volatile关键字，防止JVM内部语句重排后，没有初始化就返回INSTANCE
-    private static volatile Mgr06 INSTANCE;
+    //使用volatile关键字，防止JVM内部语句重排后，没有初始化就返回INSTANCE
+    private static volatile Singleton04 INSTANCE;
 
-    private Mgr06(){}
+    private Singleton04(){
+    }
 
-    public static Mgr06 getInstance() {
+    public static Singleton04 getInstance() {
         if(INSTANCE == null){
-            //双重检查
-            synchronized (Mgr06.class){
+            // 上锁
+            synchronized (Singleton04.class){
+                //双重检查
                 if(INSTANCE == null){
-                   INSTANCE = new Mgr06();
+                    INSTANCE = new Singleton04();
                 }
             }
         }
         return INSTANCE;
     }
-
 }
 ```
 在双检锁中，必须使用 volatile 关键字，原因是 [防止指令重排](https://kekaiyuan.github.io//2021/07/16/volatile/#%E7%A6%81%E7%94%A8%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92)
 
 
 ### 静态内部类
+
+可以采用静态内部类的方式，由 JVM 保证单例。<br>
+同时加载外部类时并不会加载内部类，可以实现懒加载。
+
 ```java
-/*
-* 静态内部类方式
-* 由JVM保证单例
-* 加载外部类时不会加载内部类，实现懒加载
-* 完美版本2
-* */
-public class Mgr07 {
+public class Singleton05 {
 
-    private Mgr07(){}
+    private Singleton05(){}
 
-    private static class Mgr07Holder{
-        private final static Mgr07 INSTANCE = new Mgr07();
+    private static class Singleton{
+        private final static Singleton05 INSTANCE = new Singleton05();
     }
 
-    public static Mgr07 getInstance(){
-        return Mgr07Holder.INSTANCE;
+    public static Singleton05 getInstance(){
+        return Singleton.INSTANCE;
     }
-	
 }
 ```
 
-java的反射可以通过class文件new实例，以上七种办法都无法抵挡。
-想要防止反序列化，需要设置一些内部变量，非常复杂。
-最简单的办法就是枚举单例，因为枚举类没有构造方法。
-
 ### 枚举
+**使用反射破坏单例模式**
+
+以上四种单例模式的关键之一在于将**构造函数私有化**，从而阻止其它创建实例的行为。
+
+但是 Java 的反射机制可以获取一个类的**私有构造器**，并设置成可访问的，从而破坏单例模式。
 
 ```java
-/*
-* 不仅可以解决线程同步，还可以防止反序列化
-* 完美版本3
-* */
-public enum Mgr08 {
+public static void main(String[] args) throws Exception {
+	// 创建实例 1
+	Singleton01 singleton01 = Singleton01.getInstance();
+
+	// 通过反射获取构造器
+	Class<? extends Singleton01> aClass = singleton01.getClass();
+	Constructor<? extends Singleton01> constructor = aClass.getDeclaredConstructor();
+
+	// 设置构造器为可访问的
+	constructor.setAccessible(true);
+
+	// 创建实例 2
+	Singleton01 singleton02 = constructor.newInstance();
+
+	// 对比是否是同一个对象
+	System.out.println(singleton01 == singleton02); // false
+}
+```
+
+注意，只能通过 `getDeclaredConstructor()` 方法获取 `private` 构造器。<br>
+`getConstructor()` 方法和 `getConstructors()` 方法都无效。
+
+结果
+```java
+false
+```
+
+可以看到，单例模式失效了。
+
+
+
+
+----------
+如果要防止反射的话，可以使用枚举来实现单例模式。
+
+枚举这种特殊的数据类型天生就是单例的，而且无法通过反射获取其构造器，还可以**防止反序列化**。
+
+```java
+public enum Singleton06 {
 
     INSTANCE;
 
+    public static Singleton06 getInstance(){
+        return INSTANCE;
+    }
 }
 ```
+
 ## 如何检查是否是单例模式？
+通过 `hashCode()` 方法判断
 ```java
 //多线程访问，通过hashcode检验是否是单例模式
 for(int i=0;i<100;i++){
-	new Thread(()-> System.out.println(MgrXX.getInstance().hashCode())).start();
+	new Thread(()-> System.out.println(Singleton06.getInstance().hashCode())).start();
 }
 ```
 
