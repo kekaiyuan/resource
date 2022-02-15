@@ -78,16 +78,16 @@ keywords: Java，设计模式
 
 JVM 共有四种类加载器：
 - 启动类加载器<br>
-	加载 `<JAVA_HOME>/lib` 目录，属于常用基础库：
+	加载 `<JAVA_HOME>/lib` 目录下的常用**基础**库：
 	- `java.util.*`, `java.io.*`, `java.lang.*` 这些以 `java` 开头的类库。
 	-  因为语言差异，一些底层原理需要用 C 语言实现的类。
 - 扩展类加载器<br>
-	加载 `<JAVA_HOME>/lib/ext` 目录，属于 JVM 扩展类：
+	加载 `<JAVA_HOME>/lib/ext` 目录下的 JVM **扩展**类：
 	- swing 系列，js 引擎，xml 解析器等，这些类库以 `javax` 开头
 - 系统类加载器<br>
-	加载用户路径（ClassPath）上的类，也是使用次数最多的类加载器，用于加载我们自定义的类和引入的第三方 jar 包。
+	加载用户路径（ClassPath）下的类，也是使用次数最多的类加载器，用于加载我们**自定义**的类和引入的**第三方** jar 包。
 - 自定义加载器<br>
-	除了 JVM 定义的三种类加载器，我们可以自定义实现一个加载器。
+	除了 JVM 定义的三种类加载器，我们可以**自定义**实现一个加载器。
 
 那么哪些类会在程序开始运行后，立即加载的呢？
 
@@ -96,7 +96,7 @@ JVM 共有四种类加载器：
 
 所以在平常使用时，饿汉式的单例模式是不会饿死的。
 
-除非你在写 Java 的底层类库。
+除非你写的是 Java 底层。
 
 
 ----------
@@ -163,14 +163,14 @@ public class Singleton03 {
 ### 双检锁
 双检锁是懒汉式的升级，懒汉式使用的是同步方法，这也导致了每次取实例对象都需要上锁，浪费资源。
 
-实际上只需要保证创建实例时线程同步，不要创建多个是来即可。<br>
+实际上只需要保证创建实例时线程同步，不要创建多个实例即可。<br>
 
-取实例时直接取即可，不需要上锁。
+取实例时直接取，不需要上锁。
 
 ```java
 public class Singleton04 {
 
-    //使用volatile关键字，防止JVM内部语句重排后，没有初始化就返回INSTANCE
+    //使用volatile关键字，禁止指令重排
     private static volatile Singleton04 INSTANCE;
 
     private Singleton04(){
@@ -190,7 +190,7 @@ public class Singleton04 {
     }
 }
 ```
-在双检锁中，必须使用 volatile 关键字，原因是 [防止指令重排](https://kekaiyuan.github.io//2021/07/16/volatile/#%E7%A6%81%E7%94%A8%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92)
+在双检锁中，必须使用 volatile 关键字，原因是 [禁止指令重排](https://kekaiyuan.github.io//2021/07/16/volatile/#%E7%A6%81%E7%94%A8%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92)
 
 
 ### 静态内部类
