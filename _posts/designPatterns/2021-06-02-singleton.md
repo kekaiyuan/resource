@@ -8,7 +8,7 @@ keywords: Java，设计模式
 
 设计模式之——单例 Singleton
 
-## 概念
+# 概念
 
 > 以下内容引用自 [菜鸟教程](https://www.runoob.com/design-pattern/singleton-pattern.html)
 > 
@@ -59,13 +59,13 @@ keywords: Java，设计模式
 > 注意事项
 > - getInstance() 方法中需要使用同步锁 synchronized (Singleton.class) 防止多线程同时进入造成 instance 被多次实例化。
 
-## 实现
+# 实现
 单例模式的关键在于：
 1. 将**构造函数私有化**，使得外部无法创建实例。
 2. 由该类自己创建实例，并且保证**实例唯一**。<br>
 	需要考虑多线程并发下的安全问题。
 
-### 饿汉式
+## 饿汉式
 
 饿汉式是**最经典**的单例模式，通过**静态变量**或**静态代码块**创建实例，即在**类加载**时创建，那么此时是不存在多线程并发的，所以无需考虑线程安全问题。
 
@@ -100,7 +100,7 @@ JVM 共有四种类加载器：
 
 
 ----------
-#### 静态变量
+### 静态变量
 
 ```java
 public class Singleton01 {
@@ -115,7 +115,7 @@ public class Singleton01 {
 }
 ```
 
-#### 静态代码块
+### 静态代码块
 
 ```java
 public class Singleton02 {
@@ -134,7 +134,7 @@ public class Singleton02 {
 }
 ```
 
-### 懒汉式
+## 懒汉式
 
 懒汉式即实现懒加载，用到的时候才创建实例。
 
@@ -160,7 +160,7 @@ public class Singleton03 {
 }
 ```
 
-### 双检锁
+## 双检锁
 双检锁是懒汉式的升级，懒汉式使用的是同步方法，这也导致了每次取实例对象都需要上锁，浪费资源。
 
 实际上只需要保证创建实例时线程同步，不要创建多个实例即可。<br>
@@ -193,7 +193,7 @@ public class Singleton04 {
 在双检锁中，必须使用 volatile 关键字，原因是 [禁止指令重排](https://kekaiyuan.github.io//2021/07/16/volatile/#%E7%A6%81%E7%94%A8%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92)
 
 
-### 静态内部类
+## 静态内部类
 
 可以采用静态内部类的方式，由 JVM 保证单例。<br>
 同时加载外部类时并不会加载内部类，可以实现懒加载。
@@ -213,7 +213,7 @@ public class Singleton05 {
 }
 ```
 
-### 枚举
+## 枚举
 **使用反射破坏单例模式**
 
 以上四种单例模式的关键之一在于将**构造函数私有化**，从而阻止其它创建实例的行为。
@@ -269,7 +269,7 @@ public enum Singleton06 {
 }
 ```
 
-## 如何检查是否是单例模式？
+# 如何检查是否是单例模式？
 通过 `hashCode()` 方法判断
 ```java
 //多线程访问，通过hashcode检验是否是单例模式
@@ -278,5 +278,5 @@ for(int i=0;i<100;i++){
 }
 ```
 
-## 源码链接
+# 源码链接
 该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/singleton)
