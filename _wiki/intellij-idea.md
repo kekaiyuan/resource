@@ -105,14 +105,17 @@ maven 网址[https://mvnrepository.com/](https://mvnrepository.com/)
 重启 IDEA
 
 ### 修改 File Header
-打开 `File` / `Settings` / `Editor` / `File and Code Templates/Includes`
+打开 `File` / `Settings` / `Editor` / `File and Code Templates`/`Includes`
 
-添加
+在 `File Header` 里添加
 
 ```java
-/**
+ /**
+ * 
+ * ${DESCRIPTION}
+ *
  * @author 柯凯元
- * @date ${YEAR}/${MONTH}/${DAY} ${TIME}
+ * @date ${YEAR}-${MONTH}-${DAY} ${TIME}
  */
 ```
  
