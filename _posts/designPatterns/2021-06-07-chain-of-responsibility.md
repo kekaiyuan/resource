@@ -17,7 +17,7 @@ mermaid: true
 ```mermaid
 graph LR; 
 A[Class A]
-B(method1)
+B("method1(A a)")
 C(method2)
 D(method3)
 E(......)
