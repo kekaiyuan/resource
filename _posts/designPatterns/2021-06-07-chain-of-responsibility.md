@@ -13,10 +13,13 @@ mermaid: true
 
 责任链是一个类似于**流水线**的设计模式。
 
-假如现在程序里有对象 A 和多个处理对象 A 的函数
+假如现在程序里有类 A 和多个处理 A 的函数
 <div class="mermaid">
-graph LR;
-A
+graph LR; 
+A-->B; 
+A-->C; 
+B-->D; 
+C-->D; 
 </div>
 
 ```mermaid
@@ -26,6 +29,12 @@ A-->C;
 B-->D; 
 C-->D; 
 ``` 
+
+
+
+B(method1(A a))
+C(method2(A a))
+D(method3(A a))
 
 现在有一款坦克大战的小游戏，里面有三种对象，坦克、子弹、墙
 
