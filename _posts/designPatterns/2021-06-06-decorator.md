@@ -13,11 +13,12 @@ keywords: Java，设计模式
 装饰者模式，是一种可以给对象**无限**加“**装饰**”的模式。
 
 何为**无限**？
-1. 数量无限<br>
-	**穿衣服**就是装饰者模式。<br>
-	我可以穿**任意**件衣服，一件、两件……。
-2. 搭配无限<br>
-	我可以随意**搭配**衣服，衬衫+牛仔裤，羽绒服配围巾……
+1. 数量无限
+2. 搭配无限
+
+**穿衣服**是装饰者模式。
+- 我可以穿**任意数量**衣服，一件、两件……。
+- 我可以**随意搭配**衣服，衬衫 + 牛仔裤，羽绒服 + 围巾……
 
 **奶茶**也是装饰者模式。
 - 可以假设杯子无限大，钱包也无限大，那么配料的**数量**就是无限多的。
@@ -74,54 +75,61 @@ keywords: Java，设计模式
 装饰者模式的关键在于：
 **被装饰类和装饰类都必须继承于同一个类。**
 
-- 抽象类
+定义抽象类 Beverage，装饰类和被装饰类都**必须**继承于这个类
+```java
+public abstract class Beverage {
 
-	Beverage 是被装饰类和装饰类共同的父类
-	```java
-	public abstract class Beverage {
-
-		//饮料的描述
-		protected String description = null;
-		public String getDescription(){
-			return description;
-		}
-
-		//饮料的价格
-		public abstract double cost();
+	//饮料的描述
+	protected String description = null;
+	public String getDescription(){
+		return description;
 	}
-	```
-	
-	配料装饰类
-	```java
-	//配料装饰类
-	public abstract class CondimentDecorator extends Beverage{
 
-		//被装饰的对象
-		protected Beverage beverage = null;
+	//饮料的价格
+	public abstract double cost();
+}
+```
 
-		@Override
-		public abstract String getDescription();
+
+----------
+
+
+**被装饰类：绿茶**
+```java
+public class GreenTea extends Beverage{
+
+	public GreenTea(){
+		this.description = "绿茶";
 	}
-	```
-	
-- 奶茶的茶底 绿茶
 
-
-	```java
-	public class GreenTea extends Beverage{
-
-		public GreenTea(){
-			this.description = "绿茶";
-		}
-
-		@Override
-		public double cost() {
-			return 8;
-		}
+	@Override
+	public double cost() {
+		return 8;
 	}
-	```
-	
-- 奶茶的装饰 珍珠和椰果
+}
+```
+
+----------
+
+
+**装饰抽象类：奶茶配料**
+```java
+//配料装饰类
+public abstract class CondimentDecorator extends Beverage{
+
+	//被装饰的对象
+	protected Beverage beverage = null;
+
+	@Override
+	public abstract String getDescription();
+}
+```
+
+
+----------
+
+**装饰类**
+- 珍珠
 	```java
 	//珍珠
 	public class Pearl extends CondimentDecorator{
@@ -143,6 +151,7 @@ keywords: Java，设计模式
 		}
 	}
 	```
+- 椰果
 	```java
 	//椰果
 	public class Coco extends CondimentDecorator{
@@ -188,7 +197,7 @@ keywords: Java，设计模式
 	}
 	```
 	
-- 输出
+- 结果
 	```java
 	绿茶 : 8.0
 	绿茶 + 珍珠 : 9.0
