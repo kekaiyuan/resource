@@ -73,7 +73,9 @@ keywords: Java，设计模式
 用装饰者模式实现一杯配料无限的超级奶茶。
 
 装饰者模式的关键在于：
-**被装饰类和装饰类都必须继承于同一个类。**
+1. 被装饰类和装饰类都必须**继承**于同一个抽象类。
+2. 被装饰类是装饰类的**成员属性**。
+3. 无限调用构造方法，形成类似于**套娃**的效果。
 
 定义抽象类 Beverage，装饰类和被装饰类都**必须**继承于这个类
 ```java
@@ -174,50 +176,51 @@ public abstract class CondimentDecorator extends Beverage{
 	}
 	```
 	
-- 测试
-	```java
-	public class Main {
-		public static void main(String[] args) {
-			Beverage beverage = new GreenTea();
-			System.out.println(beverage.getDescription() + " : "+beverage.cost());
 
-			beverage = new Pearl(beverage);
-			System.out.println(beverage.getDescription() + " : "+beverage.cost());
 
-			beverage = new Pearl(beverage);
-			System.out.println(beverage.getDescription() + " : "+beverage.cost());
+----------
 
-			beverage = new Coco(beverage);
-			System.out.println(beverage.getDescription() + " : "+beverage.cost());
 
-			beverage = new Coco(beverage);
-			System.out.println(beverage.getDescription() + " : "+beverage.cost());
+**测试**
+```java
+public class Main {
+	public static void main(String[] args) {
+		Beverage beverage = new GreenTea();
+		System.out.println(beverage.getDescription() + " : "+beverage.cost());
 
-		}
+		beverage = new Pearl(beverage);
+		System.out.println(beverage.getDescription() + " : "+beverage.cost());
+
+		beverage = new Pearl(beverage);
+		System.out.println(beverage.getDescription() + " : "+beverage.cost());
+
+		beverage = new Coco(beverage);
+		System.out.println(beverage.getDescription() + " : "+beverage.cost());
+
+		beverage = new Coco(beverage);
+		System.out.println(beverage.getDescription() + " : "+beverage.cost());
+
 	}
-	```
-	
-- 结果
-	```java
-	绿茶 : 8.0
-	绿茶 + 珍珠 : 9.0
-	绿茶 + 珍珠 + 珍珠 : 10.0
-	绿茶 + 珍珠 + 珍珠 + 椰果 : 12.0
-	绿茶 + 珍珠 + 珍珠 + 椰果 + 椰果 : 14.0
-	```
-	
-### 总结
-通过测试代码可以看到，只要愿意，我们可以无限地给绿茶加装饰。
+}
+```
+
+**结果**
+```java
+绿茶 : 8.0 元
+绿茶 + 珍珠 : 9.0 元
+绿茶 + 珍珠 + 珍珠 : 10.0 元
+绿茶 + 珍珠 + 珍珠 + 椰果 : 12.0 元
+绿茶 + 珍珠 + 珍珠 + 椰果 + 椰果 : 14.0 元
+```
+
+
+----------
+
+
+**总结**
+通过示例可以看到，只要愿意，我们可以无限地给绿茶加装饰。<br>
 而且其描述和价格是动态改变的，不需要我们关心。
 
-其关键在于：
-1. 被装饰的类和装饰类继承于同一个类。<br>
-	配料装饰类 CondimentDecorator 是可以省略的，直接让珍珠和椰果继承于 Beverage 类同样可以实现这个效果。<br>
-	只不过把装饰分类设计上更科学。<br>
-	也许我们给绿茶做的不只是配料的装饰，还可以在外包装上做装饰。<br>
-	此时把装饰分类就是一件有意义的事情了。
-2. 通过无限调用构造方式形成套娃，与递归函数很类似。
 
-
-## 源码链接
+# 源码链接
 该文章源码链接 [Github](https://github.com/kekaiyuan/designpatterns/tree/main/src/main/java/com/kky/dp/decorator)
