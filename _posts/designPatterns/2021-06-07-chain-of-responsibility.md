@@ -18,8 +18,8 @@ mermaid: true
 graph LR; 
 A[Class A]
 B("method1(A a)")
-C(method2)
-D(method3)
+B("method2(A a)")
+B("method3(A a)")
 E(......)
 ``` 
 
