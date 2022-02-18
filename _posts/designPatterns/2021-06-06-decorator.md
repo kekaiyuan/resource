@@ -13,8 +13,8 @@ keywords: Java，设计模式
 装饰者模式，是一种可以给对象**无限**加“**装饰**”的模式。
 
 何为**无限**？
-1. 数量无限
-2. 搭配无限
+1. **数量**无限
+2. **搭配**无限
 
 **穿衣服**是装饰者模式。
 - 我可以穿**任意数量**衣服，一件、两件……。
@@ -81,14 +81,19 @@ keywords: Java，设计模式
 ```java
 public abstract class Beverage {
 
-	//饮料的描述
-	protected String description = null;
-	public String getDescription(){
-		return description;
-	}
+    //饮料的描述
+    protected String description = null;
 
-	//饮料的价格
-	public abstract double cost();
+    public String getDescription() {
+        return description;
+    }
+
+    //饮料的价格
+    public abstract double cost();
+
+    public void printDescription() {
+        System.out.println(getDescription() + " : " + cost() + " 元");
+    }
 }
 ```
 
@@ -100,14 +105,14 @@ public abstract class Beverage {
 ```java
 public class GreenTea extends Beverage{
 
-	public GreenTea(){
-		this.description = "绿茶";
-	}
+    public GreenTea(){
+        this.description = "绿茶";
+    }
 
-	@Override
-	public double cost() {
-		return 8;
-	}
+    @Override
+    public double cost() {
+        return 8;
+    }
 }
 ```
 
@@ -116,14 +121,14 @@ public class GreenTea extends Beverage{
 
 **装饰抽象类：奶茶配料**
 ```java
-//配料装饰类
-public abstract class CondimentDecorator extends Beverage{
+public abstract class CondimentDecorator extends Beverage {
 
-	//被装饰的对象
-	protected Beverage beverage = null;
+    //被装饰的对象
+    protected Beverage beverage = null;
 
-	@Override
-	public abstract String getDescription();
+    @Override
+    public abstract String getDescription();
+
 }
 ```
 
@@ -183,24 +188,21 @@ public abstract class CondimentDecorator extends Beverage{
 
 **测试**
 ```java
-public class Main {
-	public static void main(String[] args) {
-		Beverage beverage = new GreenTea();
-		System.out.println(beverage.getDescription() + " : "+beverage.cost());
+public static void main(String[] args) {
+    Beverage beverage = new GreenTea();
+    beverage.printDescription();
 
-		beverage = new Pearl(beverage);
-		System.out.println(beverage.getDescription() + " : "+beverage.cost());
+    beverage = new Pearl(beverage);
+    beverage.printDescription();
 
-		beverage = new Pearl(beverage);
-		System.out.println(beverage.getDescription() + " : "+beverage.cost());
+    beverage = new Pearl(beverage);
+    beverage.printDescription();
 
-		beverage = new Coco(beverage);
-		System.out.println(beverage.getDescription() + " : "+beverage.cost());
+    beverage = new Coco(beverage);
+    beverage.printDescription();
 
-		beverage = new Coco(beverage);
-		System.out.println(beverage.getDescription() + " : "+beverage.cost());
-
-	}
+    beverage = new Coco(beverage);
+    beverage.printDescription();
 }
 ```
 
