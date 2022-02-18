@@ -17,17 +17,12 @@ mermaid: true
 ```mermaid
 graph LR; 
 A[Class A]
-B(method1(A a))
-C(method2(A a))
-D(method3(A a))
+B(method1)
+C(method2)
+D(method3)
 E(......)
 ``` 
 
-
-
-B(method1(A a))
-C(method2(A a))
-D(method3(A a))
 
 现在有一款坦克大战的小游戏，里面有三种对象，坦克、子弹、墙
 
