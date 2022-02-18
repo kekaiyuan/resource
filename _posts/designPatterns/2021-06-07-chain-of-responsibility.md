@@ -14,20 +14,13 @@ mermaid: true
 责任链是一个类似于**流水线**的设计模式。
 
 假如现在程序里有类 A 和多个处理 A 的函数
-<div class="mermaid">
-graph LR; 
-A-->B; 
-A-->C; 
-B-->D; 
-C-->D; 
-</div>
-
 ```mermaid
 graph LR; 
-A-->B; 
-A-->C; 
-B-->D; 
-C-->D; 
+A[Class A]
+B(method1(A a))
+C(method2(A a))
+D(method3(A a))
+E(......)
 ``` 
 
 
