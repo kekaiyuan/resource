@@ -26,6 +26,9 @@ keywords: 网站，推荐
 # Java
 [windows系统下安装JDK8](https://www.cnblogs.com/heqiyoujing/p/9502726.html)
 
+# MyBatis
+[mybatis自动生成代码工具（逆向工程）](https://www.cnblogs.com/michaelcnblogs/p/11333031.html)
+
 # Tomcat
 [Tomcat 乱码](https://blog.csdn.net/qq_25775675/article/details/104839569)
 
