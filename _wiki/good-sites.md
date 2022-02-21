@@ -23,6 +23,9 @@ keywords: 网站，推荐
 [Mac下干净彻底地卸载 MySQL](https://www.jianshu.com/p/276c1271ae14)
 [MAC安装Mysql超详细完整教程(图文并茂)](https://blog.csdn.net/baidu_26315231/article/details/88963558)
 
+# Java
+[windows系统下安装JDK8](https://www.cnblogs.com/heqiyoujing/p/9502726.html)
+
 # Tomcat
 [Tomcat 乱码](https://blog.csdn.net/qq_25775675/article/details/104839569)
 
