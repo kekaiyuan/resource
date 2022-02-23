@@ -13,7 +13,7 @@ mermaid: true
 
 责任链是一个类似于**流水线**的设计模式。
 
-通过三个问题理解责任链模式：
+通过**三个问题**理解责任链模式：
 
 
 ----------
@@ -39,19 +39,19 @@ return a;
 
 **Q2**
 
-如果说这 100 个方法不是需要全部调用，而是选择式的。<br>
+如果说这 100 个方法**不需要全部调用**，而是选择式的。<br>
 即先调用 `method1()` 处理，如果处理成功，则不调用剩下的方法。
 如果处理失败，则调用 `method2()`……
 ```java
 A a = new A();
 if(method1(a)){
-	return a;
+    return a;
 }
 if(method2(a)){
-	return a;
+    return a;
 }
 if(method3(a)){
-	return a;
+    return a;
 }
 ……
 method100(a);
@@ -105,7 +105,7 @@ Q1 和 Q2 还可以尝试用最粗暴的编程思想去解决，但是 Q3 却没
 至于 Q3，所有的处理类**继承**于同一个**接口**，然后可以用 `List` 这样的集合来保存这些处理类。<br>
 然后调用 `List` 类的 `add()` 和 `remove()` 方法就可以很简单的实现**动态扩展**。
 
-## 概念
+# 概念
 
 > 以下内容引用自 [菜鸟教程](https://www.runoob.com/design-pattern/chain-of-responsibility-pattern.html)
 > 
@@ -154,13 +154,13 @@ Q1 和 Q2 还可以尝试用最粗暴的编程思想去解决，但是 Q3 却没
 > 注意事项
 > - 在 JAVA WEB 中遇到很多应用。
 
-## 碰撞链
+# 碰撞链
 实现坦克大战中，坦克与坦克、坦克与子弹、坦克与墙、子弹与墙的碰撞链<br>
 坦克、子弹、墙都是 GameObject 的子类
 
 - 接口
 	```java
-	//负责游戏物体的碰撞
+	//负责游戏物体的碰撞.
 	public interface Collider {
 		boolean collide(GameObject o1,GameObject o2);
 	}
@@ -239,7 +239,7 @@ Q1 和 Q2 还可以尝试用最粗暴的编程思想去解决，但是 Q3 却没
 	只需要用双重循环遍历游戏对象所有可能的两两组合，并把组合传入责任链中，即可实现碰撞检测。
 	这样写可以实现程序的解耦，无论责任链怎么变，外部的调用都不需要修改。
 	
-## Servlet中的责任链
+# Servlet中的责任链
 Servlet 是常用的前后端交互的技术，它把前端发送的请求传入后端进行处理然后再返回给前端。<br>
 从 Client 到 Server ，称为 Request 。<br>
 从后端到 Client ，称为 Response 。<br>
@@ -270,5 +270,5 @@ Response 需要 Filter 加上必要的前端信息。
 ```java
 
 ```
-## 源码链接
+# 源码链接
 该文章源码链接 [url](url)
