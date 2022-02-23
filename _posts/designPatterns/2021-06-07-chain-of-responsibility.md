@@ -58,20 +58,20 @@ method100(a);
 return a;
 ```
 
-这样的调用方式肯定是不好的，一个比较抖机灵的办法是定义一个自定义异常。<br>
-如果这 100 个方法抛出了该异常，则代表处理成功。
+这样的调用方式肯定是不好的，一个比较抖机灵的办法是**自定义异常**。<br>
+如果这 100 个方法抛出了该异常，则代表**处理成功**。
 ```java
 A a = new A();
 try{
-	method1(a);
-	method2(a);
-	method3(a);
-	……
-	method100(a);
+    method1(a);
+    method2(a);
+    method3(a);
+    ……
+    method100(a);
 }catch(MyException e){
 	……
 }finally{
-	return a;
+    return a;
 }
 ```
 
