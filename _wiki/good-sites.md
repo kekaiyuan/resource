@@ -57,6 +57,7 @@ keywords: 网站，推荐
 
 # IDEA
 [JRebel 安装教程](https://blog.csdn.net/lianghecai52171314/article/details/105637251)
+[idea,eclipse中注解使用的计算机用户名修改](https://blog.csdn.net/GrondBellion/article/details/111312246)
 
 # PowerDesigner
 [PowerDesigner 安装教程](https://blog.csdn.net/csdn_0911/article/details/83106782)
