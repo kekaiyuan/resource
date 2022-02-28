@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="477958c5-13ce-4d85-947e-99c527592bfd" name="Default Changelist" comment="" />
+    <list default="true" id="477958c5-13ce-4d85-947e-99c527592bfd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -238,6 +240,7 @@
       <workItem from="1631493555611" duration="1549000" />
       <workItem from="1645175667387" duration="411000" />
       <workItem from="1645971304525" duration="323000" />
+      <workItem from="1646016666664" duration="28000" />
     </task>
     <servers />
   </component>
@@ -293,7 +296,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/assets/vendor/share.js/dist/js/share.min.js">
