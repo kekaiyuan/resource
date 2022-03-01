@@ -251,6 +251,7 @@ public class ChainOfResponsibility implements ProcessInterface {
 
 
 
+
 - 责任链
 	```java
 	public class ColliderChain implements Collider {
