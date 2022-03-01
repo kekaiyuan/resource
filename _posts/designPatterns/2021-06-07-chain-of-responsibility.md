@@ -154,37 +154,100 @@ Q1 和 Q2 还可以尝试用最粗暴的编程思想去解决，但是 Q3 却没
 > 注意事项
 > - 在 JAVA WEB 中遇到很多应用。
 
-# 碰撞链
-实现坦克大战中，坦克与坦克、坦克与子弹、坦克与墙、子弹与墙的碰撞链<br>
-坦克、子弹、墙都是 GameObject 的子类
+# 实现
+**定义接口**
+```java
+public interface ProcessInterface {
+    boolean execute(Object o);
+}
+```
 
-- 接口
-	```java
-	//负责游戏物体的碰撞.
-	public interface Collider {
-		boolean collide(GameObject o1,GameObject o2);
-	}
-	```
-- 子弹与坦克的碰撞
-	```java
-	public class BulletTankCollider implements Collider {
 
-		@Override
-		public boolean collide(GameObject o1, GameObject o2) {
-			if (o1 instanceof Tank && o2 instanceof Bullet) {
-				交换 o1 和 o2
-			}
-			if (o1 instanceof Bullet && o2 instanceof Tank) {
-					处理子弹与坦克的碰撞
-				}
-				return true;
-			}
-			return false;
-		}
+----------
 
-	}
-	```
-其他三个类雷同，分别是 TanksCollider , BulletWallCollier , TankWallCollider 
+**定义三个实现类**
+```java
+public class Process1 implements ProcessInterface {
+    @Override
+    public boolean execute(Object o) {
+        System.out.println("执行方法 1");
+        Random random = new Random();
+        if (random.nextInt(10) > 8) {
+            return true;
+        }
+        return false;
+    }
+}
+```
+```java
+public class Process2 implements ProcessInterface {
+    @Override
+    public boolean execute(Object o) {
+        System.out.println("执行方法 2");
+        Random random = new Random();
+        if (random.nextInt(10) > 8) {
+            return true;
+        }
+        return false;
+    }
+}
+```
+```java
+public class Process3 implements ProcessInterface {
+    @Override
+    public boolean execute(Object o) {
+        System.out.println("执行方法 3");
+        Random random = new Random();
+        if (random.nextInt(10) > 8) {
+            return true;
+        }
+        return false;
+    }
+}
+```
+
+
+----------
+
+**责任链**
+```java
+public class ChainOfResponsibility implements ProcessInterface {
+    private List<ProcessInterface> chain = new ArrayList<ProcessInterface>(){{
+        add(new Process1());
+        add(new Process2());
+        add(new Process3());
+    }};
+
+    public void addMethod(ProcessInterface method){
+        chain.add(method);
+    }
+
+    public void removeMethod(ProcessInterface method){
+        chain.remove(method);
+    }
+
+    @Override
+    public boolean execute(Object o) {
+        for (ProcessInterface method : chain) {
+            boolean result = method.execute(o);
+            if(result){
+                return true;
+            }
+        }
+        return false;
+    }
+}
+```
+
+
+----------
+
+**说明**
+1. 类之间是**解耦**的，不知道彼此的存在，它们的组合由责任链控制。
+2. 方法的返回值**任意**，不一定是 `boolean`，用 `int`, `String`, `Object` 都可以。<br>
+	甚至可以是 `void`，通过读取参数的值或是抛出异常来实现。<br>
+	只要能提供一个**判断依据**即可。
+3. 责任链最好也**实现接口**，这样多个责任链的**结构统一**，而且可以实现多个责任链的**组合**。
 
 - 责任链
 	```java
