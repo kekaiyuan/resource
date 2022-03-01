@@ -249,6 +249,7 @@ public class ChainOfResponsibility implements ProcessInterface {
 	只要能提供一个**判断依据**即可。
 3. 责任链最好也**实现接口**，这样多个责任链的**结构统一**，而且可以实现多个责任链的**组合**。
 
+
 - 责任链
 	```java
 	public class ColliderChain implements Collider {
