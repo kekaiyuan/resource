@@ -39,7 +39,7 @@ return a;
 
 **Q2**
 
-如果说这 100 个方法**不需要全部调用**，而是选择式的。<br>
+如果说这 100 个方法**不需要全部调用**，而是**选择式**的。<br>
 即先调用 `method1()` 处理，如果处理成功，则不调用剩下的方法。
 如果处理失败，则调用 `method2()`……
 ```java
@@ -69,7 +69,7 @@ try{
     ……
     method100(a);
 }catch(MyException e){
-	……
+    ……
 }finally{
     return a;
 }
@@ -249,6 +249,10 @@ public class ChainOfResponsibility implements ProcessInterface {
 	只要能提供一个**判断依据**即可。
 3. 责任链最好也**实现接口**，这样多个责任链的**结构统一**，而且可以实现多个责任链的**组合**。
 
+
+----------
+
+**测试**
 
 
 - 责任链
