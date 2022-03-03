@@ -47,11 +47,11 @@
       });
 </script>
 
-{% if page.mermaid %}
+<!--{% if page.mermaid %}-->
 <!--<script src="{{ assets_base_url }}/assets/js/mermaid.min.js"></script>-->
 <!--<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>-->
 <!--<script>mermaid.initialize({startOnLoad:true});</script>-->
-<!--{\% if page.mermaid \%}-->
+{\% if page.mermaid \%}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.1.0/mermaid.min.js"></script>
 <script>
     var config = {
@@ -82,7 +82,7 @@
         }
     });
 </script>
-<!--{\% endif \%}-->
+{\% endif \%}
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js"></script>-->
 <!--<script>-->
@@ -97,7 +97,7 @@
 <!--    mermaid.initialize(config);-->
 <!--    window.mermaid.init(undefined, document.querySelectorAll('.language-mermaid'));-->
 <!--</script>-->
-{% endif %}
+<!--{% endif %}-->
 
 {% if page.sequence %}
 <script src="{{ assets_base_url }}/assets/js/webfont.js"></script>
