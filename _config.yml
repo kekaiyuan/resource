@@ -109,12 +109,10 @@ plugins:
     - jekyll-github-metadata
     - rouge
 #     - jekyll-html-pipeline
-#    - jekyll-spaceship
     - jekyll-paginate
     - jekyll-sitemap
     - jekyll-feed
     - jemoji
-    - jekyll-mermaid-diagrams
 #     - jekyll-mentions
 collections:
     wiki:
