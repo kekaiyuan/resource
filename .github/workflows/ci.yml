@@ -20,8 +20,8 @@ jobs:
 
       - name: Install and Build
         run: |
-          gem install jekyll-mermaid-diagrams
-          gem install bundler
+#          gem install jekyll-mermaid-diagrams
+#          gem install bundler
           bundle install
           bundle exec jekyll build
 
