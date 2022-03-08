@@ -39,7 +39,7 @@ return a;
 
 **Q2**
 
-如果说这 100 个方法**不需要全部调用**，而是选择式的。<br>
+如果说这 100 个方法**不需要全部调用**，而是**选择式**的。<br>
 即先调用 `method1()` 处理，如果处理成功，则不调用剩下的方法。
 如果处理失败，则调用 `method2()`……
 ```java
@@ -69,7 +69,7 @@ try{
     ……
     method100(a);
 }catch(MyException e){
-	……
+    ……
 }finally{
     return a;
 }
@@ -222,8 +222,8 @@ public class ChainOfResponsibility implements ProcessInterface {
         chain.add(method);
     }
 
-    public void removeMethod(ProcessInterface method){
-        chain.remove(method);
+    public void removeMethod(int index){
+        chain.remove(index);
     }
 
     @Override
@@ -250,60 +250,59 @@ public class ChainOfResponsibility implements ProcessInterface {
 3. 责任链最好也**实现接口**，这样多个责任链的**结构统一**，而且可以实现多个责任链的**组合**。
 
 
+----------
 
-- 责任链
+**测试**
+- 简单调用
 	```java
-	public class ColliderChain implements Collider {
-
-		private List<Collider> colliders = new LinkedList<>();
-
-		public ColliderChain() {
-			add(new BulletTankCollider());
-			add(new TanksCollider());
-			add(new BulletWallCollier());
-			add(new TankWallCollider());
-		}
-
-		public void add(Collider collider) {
-			colliders.add(collider);
-		}
-
-		@Override
-		public boolean collide(GameObject o1, GameObject o2) {
-			for (int i = 0; i < colliders.size(); i++) {
-				if (colliders.get(i).collide(o1, o2)) {
-					return false;
-				}
-			}
-			return true;
-		}
-
-	}
+	ChainOfResponsibility chainOfResponsibility = new ChainOfResponsibility();
+	Object obj = new Object();
+	chainOfResponsibility.execute(obj);
 	```
-	- ColliderChain 继承 Collider 的好处
-		- 可以把责任链合并
-	- 为什么 collider 方法的返回值是 boolean
-		- 实现责任链的断开。
-		- BulletTankCollider 是碰撞链的第一环，当它检测到传入责任链的参数是坦克和子弹时，那么就没有必要把参数传入下一环。
-
-- 如何调用
 	```java
-	//碰撞检测的责任链
-    ColliderChain colliderChain = new ColliderChain();
-	
-	//碰撞检测，使用责任链
-	for (int i = 0; i < objects.size(); i++) {
-            for (int j = i + 1; j < objects.size(); j++) {
-                GameObject o1 = objects.get(i);
-                GameObject o2 = objects.get(j);
-                colliderChain.collide(o1, o2);
-            }
-        }
+	执行方法 1
+	执行方法 2
+	执行方法 3
 	```
-	objects 是存储坦克大战中所有游戏对象的数组。
-	只需要用双重循环遍历游戏对象所有可能的两两组合，并把组合传入责任链中，即可实现碰撞检测。
-	这样写可以实现程序的解耦，无论责任链怎么变，外部的调用都不需要修改。
+- 添加方法
+	```java
+	chainOfResponsibility.addMethod(new Process1());
+	chainOfResponsibility.execute(obj);
+	```
+	```java
+	执行方法 1
+	执行方法 2
+	执行方法 3
+	执行方法 1
+	```
+- 移除方法
+	```java
+	chainOfResponsibility.removeMethod(2);
+	chainOfResponsibility.execute(obj);
+	```
+	```java
+	执行方法 1
+	执行方法 2
+	执行方法 1
+	```
+- 拼接两个责任链
+	```java
+	ChainOfResponsibility chainOfResponsibility2 = new ChainOfResponsibility();
+	chainOfResponsibility.addMethod(chainOfResponsibility2);
+	chainOfResponsibility.execute(obj);
+	```
+	```java
+	执行方法 1
+	执行方法 2
+	执行方法 1
+	执行方法 1
+	执行方法 2
+	执行方法 3
+	```
 	
+可以看到，使用**责任链**以后我们可以很方便地组织对某个对象的处理过程。
+
+
 # Servlet中的责任链
 Servlet 是常用的前后端交互的技术，它把前端发送的请求传入后端进行处理然后再返回给前端。<br>
 从 Client 到 Server ，称为 Request 。<br>
