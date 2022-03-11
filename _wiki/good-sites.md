@@ -18,10 +18,11 @@ keywords: 网站，推荐
 - [十大经典排序算法（动图演示）](https://www.cnblogs.com/onepixel/articles/7674659.html)
 
 # MySQL
-[MySQL 5.6 中文参考手册](https://github.com/mysql2cn/manual56)
-[MySQL 5.7 64位下载教程](https://blog.csdn.net/mulinghanxue/article/details/93917244)
-[Mac下干净彻底地卸载 MySQL](https://www.jianshu.com/p/276c1271ae14)
-[MAC安装Mysql超详细完整教程(图文并茂)](https://blog.csdn.net/baidu_26315231/article/details/88963558)
+[MySQL 5.6 中文参考手册](https://github.com/mysql2cn/manual56)<br>
+[MySQL 5.7 64位下载教程](https://blog.csdn.net/mulinghanxue/article/details/93917244)<br>
+[Mac下干净彻底地卸载 MySQL](https://www.jianshu.com/p/276c1271ae14)<br>
+[MAC安装Mysql超详细完整教程(图文并茂)](https://blog.csdn.net/baidu_26315231/article/details/88963558)<br>
+[服务器设置mysql端口开放](https://blog.csdn.net/sinat_41679832/article/details/104790108)
 
 # Java
 [windows系统下安装JDK8](https://www.cnblogs.com/heqiyoujing/p/9502726.html)
