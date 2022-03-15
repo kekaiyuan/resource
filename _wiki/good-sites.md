@@ -10,10 +10,10 @@ keywords: 网站，推荐
 
 # 数据结构可视化
 - [Data structure visualizations](http://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
-- [visualgo](https://visualgo.net/zh)
-	- 部分中文
-- [fmdca380](http://ds.fmdca380.com/index.html)
-	- visualgo的国内版，内容略少
+- [visualgo](https://visualgo.net/zh)<br>
+	部分中文
+- [fmdca380](http://ds.fmdca380.com/index.html)<br>
+	visualgo的国内版，内容略少
 - [sorting](http://sorting.at/)
 - [十大经典排序算法（动图演示）](https://www.cnblogs.com/onepixel/articles/7674659.html)
 
