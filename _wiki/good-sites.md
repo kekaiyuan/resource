@@ -58,7 +58,7 @@ keywords: 网站，推荐
 [sequence 图](https://www.jianshu.com/p/70e329dd4a00)
 
 # IDEA
-[JRebel 安装教程](https://blog.csdn.net/lianghecai52171314/article/details/105637251)
+[JRebel 安装教程](https://blog.csdn.net/lianghecai52171314/article/details/105637251)<br>
 [idea,eclipse中注解使用的计算机用户名修改](https://blog.csdn.net/GrondBellion/article/details/111312246)
 
 # PowerDesigner
