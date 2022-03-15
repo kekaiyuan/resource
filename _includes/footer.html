@@ -47,29 +47,29 @@
       });
 </script>
 
-<!--{% if page.mermaid %}-->
+{% if page.mermaid %}
+<script src="{{ assets_base_url }}/assets/js/mermaid.min.js"></script>
+<script>mermaid.initialize({startOnLoad:true});</script>
 <!--<script src="{{ assets_base_url }}/assets/js/mermaid.min.js"></script>-->
-<!--<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>-->
 <!--<script>mermaid.initialize({startOnLoad:true});</script>-->
 {\% if page.mermaid \%}
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/7.1.0/mermaid.min.js"></script>
 <script>
     var config = {
-        startOnLoad: true,
-        flowchart: {
-            useMaxWidth: false,
-            htmlLabels: true
+        startOnLoad:true,
+        flowchart:{
+            useMaxWidth:false,
+            htmlLabels:true
         }
     };
     mermaid.initialize(config);
-    $(function () {
+    $(function(){
         var elements = document.getElementsByClassName("language-mermaid");
         for (var i = elements.length; i--;) {
             element = elements[i];
             var graphDefinition = element.innerText;
             if (graphDefinition) {
-                var svg = mermaid.render('ha_mermaid_' + i, graphDefinition, function (svg) {
-                });
+                var svg = mermaid.render('ha_mermaid_' + i, graphDefinition, function(svg){});
                 if (svg) {
                     var svgElement = document.createElement('div');
                     preNode = element.parentNode;
@@ -83,6 +83,7 @@
     });
 </script>
 {\% endif \%}
+{% endif %}
 
 <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.0.0/mermaid.min.js"></script>-->
 <!--<script>-->
