@@ -10,10 +10,10 @@ keywords: 网站，推荐
 
 # 数据结构可视化
 - [Data structure visualizations](http://www.cs.usfca.edu/~galles/visualization/Algorithms.html)
-- [visualgo](https://visualgo.net/zh)
-	- 部分中文
-- [fmdca380](http://ds.fmdca380.com/index.html)
-	- visualgo的国内版，内容略少
+- [visualgo](https://visualgo.net/zh)<br>
+	部分中文
+- [fmdca380](http://ds.fmdca380.com/index.html)<br>
+	visualgo的国内版，内容略少
 - [sorting](http://sorting.at/)
 - [十大经典排序算法（动图演示）](https://www.cnblogs.com/onepixel/articles/7674659.html)
 
@@ -58,7 +58,7 @@ keywords: 网站，推荐
 [sequence 图](https://www.jianshu.com/p/70e329dd4a00)
 
 # IDEA
-[JRebel 安装教程](https://blog.csdn.net/lianghecai52171314/article/details/105637251)
+[JRebel 安装教程](https://blog.csdn.net/lianghecai52171314/article/details/105637251)<br>
 [idea,eclipse中注解使用的计算机用户名修改](https://blog.csdn.net/GrondBellion/article/details/111312246)
 
 # PowerDesigner
