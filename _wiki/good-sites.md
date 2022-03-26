@@ -81,3 +81,6 @@ keywords: 网站，推荐
 
 # Cron 表达式
 [在线Cron表达式生成器](https://cron.qqe2.com/)
+
+# VPN
+[OpenVPN记住账号密码自动连接](https://www.bbsmax.com/A/kvJ3WRVXJg/)
