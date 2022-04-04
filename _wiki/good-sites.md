@@ -67,7 +67,8 @@ keywords: 网站，推荐
 [JRebel 安装教程](https://blog.csdn.net/lianghecai52171314/article/details/105637251)<br>
 [idea,eclipse中注解使用的计算机用户名修改](https://blog.csdn.net/GrondBellion/article/details/111312246)<br>
 [IDEA springboot 项目静态文件修改不更新的问题](http://t.zoukankan.com/yg_zhang-p-10730507.html)<br>
-[IntelliJ IDEA新版本中compiler.automake.allow.when.app.running不存在的问题](https://www.cnblogs.com/fanqisoft/p/15200894.html)
+[IntelliJ IDEA新版本中compiler.automake.allow.when.app.running不存在的问题](https://www.cnblogs.com/fanqisoft/p/15200894.html)<br>
+[IntelliJ IDEA的破解及安装教程（2021版） ](https://www.cnblogs.com/bsytz/p/15346827.html)
 
 # PowerDesigner
 [PowerDesigner 安装教程](https://blog.csdn.net/csdn_0911/article/details/83106782)
