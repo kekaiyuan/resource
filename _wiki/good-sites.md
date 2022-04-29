@@ -30,6 +30,7 @@ keywords: 网站，推荐
 [MAC安装Mysql超详细完整教程(图文并茂)](https://blog.csdn.net/baidu_26315231/article/details/88963558)<br>
 [服务器设置mysql端口开放](https://blog.csdn.net/sinat_41679832/article/details/104790108)<br>
 [解决远程连接mysql很慢的方法](https://www.cnblogs.com/shenyixin/p/10478604.html)
+
 ## Redis
 [Windows Redis 安装教程](https://blog.csdn.net/weixin_41381863/article/details/88231397)
 ## SQL Server
@@ -59,8 +60,6 @@ keywords: 网站，推荐
 [JWT](https://www.jianshu.com/p/576dbf44b2ae)<br>
 [常见三种加密（MD5、非对称加密，对称加密）](https://www.cnblogs.com/shoshana-kong/p/10934550.html)<br>
 [非对称加密源码](https://www.cnblogs.com/frank-quan/p/7073457.html)
-
-
 
 # Markdown
 [sequence 图](https://www.jianshu.com/p/70e329dd4a00)
