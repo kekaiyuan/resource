@@ -50,7 +50,9 @@ keywords: 网站，推荐
 [找资源](http://www.549.tv/)
 
 # Windows
-[在鼠标右键中添加 cmd 选项（管理员模式）](https://blog.csdn.net/ujsDui/article/details/79191921)
+[在鼠标右键中添加 cmd 选项（管理员模式）](https://blog.csdn.net/ujsDui/article/details/79191921)<br>
+[Win10远程连接和远程桌面用户怎么设置](https://zhidao.baidu.com/question/1642764557058672300.html)<br>
+[Win10怎样配置远程桌面账户不用密码登录](https://jingyan.baidu.com/article/425e69e6e05eaeff15fc1689.html)
 
 # 加密
 [BCrypt 密码加密和解密](https://www.jianshu.com/p/fc910a1f7c8d/)<br>
