@@ -22,6 +22,10 @@ keywords: 网站，推荐
 # Java
 [windows系统下安装JDK8](https://www.cnblogs.com/heqiyoujing/p/9502726.html)
 
+## SpringBoot
+- [springboot 开发时启用热部署](https://blog.csdn.net/qq_29012499/article/details/123118487)
+- [2021版IDEA没有compiler.automake.allow.when.app.running](https://blog.csdn.net/qq_52978553/article/details/122376118)
+
 # 数据库
 ## MySQL
 [MySQL 5.6 中文参考手册](https://github.com/mysql2cn/manual56)<br>
